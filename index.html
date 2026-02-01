@@ -1,0 +1,1131 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Correio da Manhã - O seu portal de notícias. Política, Economia, Esportes, Cultura e muito mais."
+        />
+        <meta
+            name="keywords"
+            content="notícias, política, economia, esportes, cultura, brasil, rio, são paulo"
+        />
+        <title>Correio da Manhã - Notícias do Brasil e do Mundo</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-left">
+                    <span id="current-date"></span>
+                </div>
+                <div class="top-bar-center">
+                    <a href="#assinatura" class="cta-button">Assine</a>
+                </div>
+                <div class="top-bar-right">
+                    <a href="#login">Entrar</a>
+                    <a href="#newsletter">Newsletter</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <a href="/">
+                            <h1 class="logo">CORREIO DA MANHÃ</h1>
+                            <span class="logo-tagline"
+                                >O jornal de referência do Brasil</span
+                            >
+                        </a>
+                    </div>
+                    <div class="search-section">
+                        <div class="search-box">
+                            <input
+                                type="text"
+                                placeholder="Buscar notícias..."
+                                id="search-input"
+                            />
+                            <button class="search-btn" aria-label="Buscar">
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Navigation -->
+        <nav class="main-nav">
+            <div class="container">
+                <button
+                    class="mobile-menu-toggle"
+                    id="mobile-menu-toggle"
+                    aria-label="Menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="opiniao.html" class="nav-link">Opinião</a></li>
+                    <li>
+                        <a href="politica.html" class="nav-link">Política</a>
+                    </li>
+                    <li>
+                        <a href="economia.html" class="nav-link">Economia</a>
+                    </li>
+                    <li><a href="justica.html" class="nav-link">Justiça</a></li>
+                    <li><a href="brasil.html" class="nav-link">Brasil</a></li>
+                    <li><a href="#regioes" class="nav-link">Regiões ▾</a></li>
+                    <li>
+                        <a href="esportes.html" class="nav-link">Esportes</a>
+                    </li>
+                    <li><a href="cultura.html" class="nav-link">Cultura</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Breaking News Ticker -->
+        <div class="breaking-news">
+            <div class="container">
+                <span class="breaking-label">AO VIVO</span>
+                <div class="ticker-wrapper">
+                    <div class="ticker-content" id="breaking-news-ticker">
+                        <span
+                            >🔴 [Placeholder] Notícia de última hora sobre
+                            política nacional</span
+                        >
+                        <span
+                            >🔴 [Placeholder] Atualizações sobre a economia
+                            brasileira</span
+                        >
+                        <span
+                            >🔴 [Placeholder] Novidades do mundo dos
+                            esportes</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Hero Section -->
+                <section class="hero-section">
+                    <div class="hero-main">
+                        <article class="hero-article">
+                            <span class="article-tag">DESTAQUE</span>
+                            <a href="#" class="hero-image-wrapper">
+                                <img
+                                    src="https://placehold.co/1200x600/e5e5e5/333333?text=Manchete+Principal"
+                                    alt="Manchete principal"
+                                />
+                            </a>
+                            <div class="hero-content">
+                                <span class="category-tag politics"
+                                    >Política</span
+                                >
+                                <h2>
+                                    [Placeholder] Título principal da notícia de
+                                    destaque aqui
+                                </h2>
+                                <p>
+                                    [Placeholder] Lorem ipsum dolor sit amet,
+                                    consectetur adipiscing elit. Sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna
+                                    aliqua.
+                                </p>
+                                <div class="article-meta">
+                                    <span class="author"
+                                        >Por [Nome do Autor]</span
+                                    >
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="hero-side">
+                        <article class="side-article">
+                            <span class="article-tag">EM DESTAQUE</span>
+                            <a href="#" class="side-image-wrapper">
+                                <img
+                                    src="https://placehold.co/600x300/e5e5e5/333333?text=Notícia+Secundária"
+                                    alt="Notícia secundária"
+                                />
+                            </a>
+                            <span class="category-tag economy">Economia</span>
+                            <h3>[Placeholder] Título da notícia secundária</h3>
+                            <span class="time">Há [X] horas</span>
+                        </article>
+                        <article class="side-article">
+                            <span class="article-tag">EM DESTAQUE</span>
+                            <a href="#" class="side-image-wrapper">
+                                <img
+                                    src="https://placehold.co/600x300/e5e5e5/333333?text=Notícia+Secundária"
+                                    alt="Notícia secundária"
+                                />
+                            </a>
+                            <span class="category-tag sports">Esportes</span>
+                            <h3>
+                                [Placeholder] Título da outra notícia secundária
+                            </h3>
+                            <span class="time">Há [X] horas</span>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Advertisement Placeholder -->
+                <div class="ad-placeholder">
+                    <div class="ad-label">PUBLICIDADE</div>
+                    <div class="ad-space">
+                        <img
+                            src="https://placehold.co/970x250/f0f0f0/999999?text=Espaço+Publicitário+-+970x250"
+                            alt="Espaço publicitário"
+                        />
+                    </div>
+                </div>
+
+                <!-- Opinion Section -->
+                <section id="opiniao" class="section opinion-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Opinião</h2>
+                        <a href="opiniao.html" class="section-link"
+                            >Ver todos →</a
+                        >
+                    </div>
+                    <div class="opinion-grid">
+                        <article class="opinion-article featured">
+                            <div class="opinion-author">
+                                <img
+                                    src="https://placehold.co/100x100/e5e5e5/333333?text=Foto"
+                                    alt="Colunista"
+                                />
+                                <div class="author-info">
+                                    <span class="author-name"
+                                        >[Nome do Colunista]</span
+                                    >
+                                    <span class="author-role"
+                                        >Editor-chefe</span
+                                    >
+                                </div>
+                            </div>
+                            <h3 class="opinion-title">
+                                [Placeholder] Título do artigo de opinião
+                                principal
+                            </h3>
+                            <p class="opinion-excerpt">
+                                [Placeholder] Lorem ipsum dolor sit amet,
+                                consectetur adipiscing elit. Sed do eiusmod
+                                tempor.
+                            </p>
+                            <a href="opiniao.html" class="read-more"
+                                >Ler artigo completo</a
+                            >
+                        </article>
+                        <article class="opinion-article">
+                            <div class="opinion-author">
+                                <img
+                                    src="https://placehold.co/100x100/e5e5e5/333333?text=Foto"
+                                    alt="Colunista"
+                                />
+                                <div class="author-info">
+                                    <span class="author-name"
+                                        >[Nome do Colunista]</span
+                                    >
+                                    <span class="author-role">Jornalista</span>
+                                </div>
+                            </div>
+                            <h4>[Placeholder] Título da opinião</h4>
+                        </article>
+                        <article class="opinion-article">
+                            <div class="opinion-author">
+                                <img
+                                    src="https://placehold.co/100x100/e5e5e5/333333?text=Foto"
+                                    alt="Colunista"
+                                />
+                                <div class="author-info">
+                                    <span class="author-name"
+                                        >[Nome do Colunista]</span
+                                    >
+                                    <span class="author-role"
+                                        >Analista político</span
+                                    >
+                                </div>
+                            </div>
+                            <h4>[Placeholder] Título da opinião</h4>
+                        </article>
+                        <article class="opinion-article">
+                            <div class="opinion-author">
+                                <img
+                                    src="https://placehold.co/100x100/e5e5e5/333333?text=Foto"
+                                    alt="Colunista"
+                                />
+                                <div class="author-info">
+                                    <span class="author-name"
+                                        >[Nome do Colunista]</span
+                                    >
+                                    <span class="author-role">Economista</span>
+                                </div>
+                            </div>
+                            <h4>[Placeholder] Título da opinião</h4>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Advertisement Placeholder -->
+                <div class="ad-placeholder">
+                    <div class="ad-label">PUBLICIDADE</div>
+                    <div class="ad-space ad-medium">
+                        <img
+                            src="https://placehold.co/300x250/f0f0f0/999999?text=Anúncio+300x250"
+                            alt="Espaço publicitário"
+                        />
+                    </div>
+                </div>
+
+                <!-- Politics Section -->
+                <section id="politica" class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Política</h2>
+                        <a href="politica.html" class="section-link"
+                            >Ver todos →</a
+                        >
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card large">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/800x500/e5e5e5/333333?text=Notícia+Política"
+                                    alt="Notícia política"
+                                />
+                                <span class="category-tag">Política</span>
+                            </div>
+                            <div class="news-content">
+                                <h3>
+                                    [Placeholder] Título da notícia política
+                                    principal
+                                </h3>
+                                <p>
+                                    [Placeholder] Lorem ipsum dolor sit amet,
+                                    consectetur adipiscing elit.
+                                </p>
+                                <div class="article-meta">
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Política"
+                                    alt="Notícia política"
+                                />
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    [Placeholder] Título da notícia política
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Política"
+                                    alt="Notícia política"
+                                />
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    [Placeholder] Título da notícia política
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </div>
+                        </article>
+                        <article class="news-card compact">
+                            <h4>[Placeholder] Título da notícia compacta</h4>
+                            <span class="time">Há [X] horas</span>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Economy Section -->
+                <section id="economia" class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Economia</h2>
+                        <a href="economia.html" class="section-link"
+                            >Ver todos →</a
+                        >
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card large">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/800x500/e5e5e5/333333?text=Notícia+Economia"
+                                    alt="Notícia economia"
+                                />
+                                <span class="category-tag economy"
+                                    >Economia</span
+                                >
+                            </div>
+                            <div class="news-content">
+                                <h3>
+                                    [Placeholder] Título da notícia de economia
+                                </h3>
+                                <p>
+                                    [Placeholder] Lorem ipsum dolor sit amet,
+                                    consectetur adipiscing elit.
+                                </p>
+                                <div class="article-meta">
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Economia"
+                                    alt="Notícia economia"
+                                />
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    [Placeholder] Título da notícia de economia
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Economia"
+                                    alt="Notícia economia"
+                                />
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    [Placeholder] Título da notícia de economia
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </div>
+                        </article>
+                        <article class="news-card compact">
+                            <h4>[Placeholder] Título da notícia compacta</h4>
+                            <span class="time">Há [X] horas</span>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Justice Section -->
+                <section id="justica" class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            Justiça e Funcionários Públicos
+                        </h2>
+                        <a href="justica.html" class="section-link"
+                            >Ver todos →</a
+                        >
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card large">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/800x500/e5e5e5/333333?text=Notícia+Justiça"
+                                    alt="Notícia Justiça"
+                                />
+                                <span class="category-tag justice"
+                                    >Justiça</span
+                                >
+                            </div>
+                            <div class="news-content">
+                                <h3>
+                                    [Placeholder] Título da notícia de justiça
+                                </h3>
+                                <p>
+                                    [Placeholder] Lorem ipsum dolor sit amet,
+                                    consectetur adipiscing elit.
+                                </p>
+                                <div class="article-meta">
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Justiça"
+                                    alt="Notícia Justiça"
+                                />
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    [Placeholder] Título da notícia de justiça
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Justiça"
+                                    alt="Notícia Justiça"
+                                />
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    [Placeholder] Título da notícia de justiça
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </div>
+                        </article>
+                        <article class="news-card compact">
+                            <h4>[Placeholder] Título da notícia compacta</h4>
+                            <span class="time">Há [X] horas</span>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- National/Regions Section -->
+                <section id="regioes" class="section regions-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Nacional e Regiões</h2>
+                    </div>
+                    <div class="regions-tabs">
+                        <button class="region-tab active" data-region="brasil">
+                            Brasil
+                        </button>
+                        <button class="region-tab" data-region="sp">
+                            São Paulo
+                        </button>
+                        <button class="region-tab" data-region="rio">
+                            Rio de Janeiro
+                        </button>
+                        <button class="region-tab" data-region="sul-fluminense">
+                            Sul Fluminense
+                        </button>
+                        <button class="region-tab" data-region="petropolitano">
+                            Petrópolis
+                        </button>
+                        <button class="region-tab" data-region="df">
+                            Distrito Federal
+                        </button>
+                    </div>
+
+                    <!-- Region: Brasil -->
+                    <div class="region-content active" id="region-brasil">
+                        <div class="region-header">
+                            <h3>Notícias do Brasil</h3>
+                            <a href="brasil.html" class="region-link"
+                                >Ver todas as notícias →</a
+                            >
+                        </div>
+                        <div class="news-grid">
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=Brasil"
+                                        alt="Brasil"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>[Placeholder] Notícia do Brasil</h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=Brasil"
+                                        alt="Brasil"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>[Placeholder] Notícia do Brasil</h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                            <article class="news-card compact">
+                                <h4>
+                                    [Placeholder] Notícia compacta do Brasil
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </article>
+                            <article class="news-card compact">
+                                <h4>
+                                    [Placeholder] Notícia compacta do Brasil
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Region: SP -->
+                    <div class="region-content" id="region-sp">
+                        <div class="region-header">
+                            <h3>Notícias de São Paulo</h3>
+                            <a
+                                href="https://www.correiodamanhasp.com.br/"
+                                target="_blank"
+                                class="region-site-button"
+                            >
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                    ></path>
+                                    <polyline
+                                        points="15 3 21 3 21 9"
+                                    ></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visitar Correio da Manhã SP
+                            </a>
+                        </div>
+                        <div class="news-grid">
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=São+Paulo"
+                                        alt="São Paulo"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>[Placeholder] Notícia de São Paulo</h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=São+Paulo"
+                                        alt="São Paulo"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>[Placeholder] Notícia de São Paulo</h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Region: Rio -->
+                    <div class="region-content" id="region-rio">
+                        <div class="region-header">
+                            <h3>Notícias do Rio de Janeiro</h3>
+                            <a
+                                href="https://www.correiodamanha.com.br/"
+                                target="_blank"
+                                class="region-site-button"
+                            >
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                    ></path>
+                                    <polyline
+                                        points="15 3 21 3 21 9"
+                                    ></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visitar Correio da Manhã RJ
+                            </a>
+                        </div>
+                        <div class="news-grid">
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=Rio+de+Janeiro"
+                                        alt="Rio de Janeiro"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        [Placeholder] Notícia do Rio de Janeiro
+                                    </h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=Rio+de+Janeiro"
+                                        alt="Rio de Janeiro"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        [Placeholder] Notícia do Rio de Janeiro
+                                    </h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Region: Sul Fluminense -->
+                    <div class="region-content" id="region-sul-fluminense">
+                        <div class="region-header">
+                            <h3>Notícias do Sul Fluminense</h3>
+                            <a
+                                href="https://correiosulfluminense.com.br/"
+                                target="_blank"
+                                class="region-site-button"
+                            >
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                    ></path>
+                                    <polyline
+                                        points="15 3 21 3 21 9"
+                                    ></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visitar Correio Sul Fluminense
+                            </a>
+                        </div>
+                        <div class="news-grid">
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=Sul+Fluminense"
+                                        alt="Sul Fluminense"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        [Placeholder] Notícia do Sul Fluminense
+                                    </h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=Sul+Fluminense"
+                                        alt="Sul Fluminense"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        [Placeholder] Notícia do Sul Fluminense
+                                    </h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Region: Petrópolis -->
+                    <div class="region-content" id="region-petropolitano">
+                        <div class="region-header">
+                            <h3>Notícias de Petrópolis</h3>
+                            <a
+                                href="https://correiopetropolitano.com.br/"
+                                target="_blank"
+                                class="region-site-button"
+                            >
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                    ></path>
+                                    <polyline
+                                        points="15 3 21 3 21 9"
+                                    ></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visitar Correio Petropolitano
+                            </a>
+                        </div>
+                        <div class="news-grid">
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=Petrópolis"
+                                        alt="Petrópolis"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>[Placeholder] Notícia de Petrópolis</h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=Petrópolis"
+                                        alt="Petrópolis"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>[Placeholder] Notícia de Petrópolis</h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Region: DF -->
+                    <div class="region-content" id="region-df">
+                        <div class="region-header">
+                            <h3>Notícias do Distrito Federal</h3>
+                            <a
+                                href="https://www.correiodamanhadf.com.br/"
+                                target="_blank"
+                                class="region-site-button"
+                            >
+                                <svg
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                                    ></path>
+                                    <polyline
+                                        points="15 3 21 3 21 9"
+                                    ></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visitar Correio da Manhã DF
+                            </a>
+                        </div>
+                        <div class="news-grid">
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=Distrito+Federal"
+                                        alt="Distrito Federal"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        [Placeholder] Notícia do Distrito
+                                        Federal
+                                    </h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                            <article class="news-card">
+                                <div class="news-image">
+                                    <img
+                                        src="https://placehold.co/400x250/e5e5e5/333333?text=Distrito+Federal"
+                                        alt="Distrito Federal"
+                                    />
+                                </div>
+                                <div class="news-content">
+                                    <h4>
+                                        [Placeholder] Notícia do Distrito
+                                        Federal
+                                    </h4>
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Advertisement Placeholder -->
+                <div class="ad-placeholder">
+                    <div class="ad-label">PUBLICIDADE</div>
+                    <div class="ad-space ad-medium">
+                        <img
+                            src="https://placehold.co/300x250/f0f0f0/999999?text=Anúncio+300x250"
+                            alt="Espaço publicitário"
+                        />
+                    </div>
+                </div>
+
+                <!-- Sports Section -->
+                <section id="esportes" class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Esportes</h2>
+                        <a href="esportes.html" class="section-link"
+                            >Ver todos →</a
+                        >
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card large">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/800x500/e5e5e5/333333?text=Notícia+Esportes"
+                                    alt="Notícia esportes"
+                                />
+                                <span class="category-tag sports"
+                                    >Esportes</span
+                                >
+                            </div>
+                            <div class="news-content">
+                                <h3>
+                                    [Placeholder] Título da notícia de esportes
+                                </h3>
+                                <p>
+                                    [Placeholder] Lorem ipsum dolor sit amet,
+                                    consectetur adipiscing elit.
+                                </p>
+                                <div class="article-meta">
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Esportes"
+                                    alt="Notícia esportes"
+                                />
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    [Placeholder] Título da notícia de esportes
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Esportes"
+                                    alt="Notícia esportes"
+                                />
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    [Placeholder] Título da notícia de esportes
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </div>
+                        </article>
+                        <article class="news-card compact">
+                            <h4>[Placeholder] Título da notícia compacta</h4>
+                            <span class="time">Há [X] horas</span>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Culture Section -->
+                <section id="cultura" class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Cultura</h2>
+                        <a href="cultura.html" class="section-link"
+                            >Ver todos →</a
+                        >
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card large">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/800x500/e5e5e5/333333?text=Notícia+Cultura"
+                                    alt="Notícia cultura"
+                                />
+                                <span class="category-tag culture"
+                                    >Cultura</span
+                                >
+                            </div>
+                            <div class="news-content">
+                                <h3>
+                                    [Placeholder] Título da notícia de cultura
+                                </h3>
+                                <p>
+                                    [Placeholder] Lorem ipsum dolor sit amet,
+                                    consectetur adipiscing elit.
+                                </p>
+                                <div class="article-meta">
+                                    <span class="time">Há [X] horas</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Cultura"
+                                    alt="Notícia cultura"
+                                />
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    [Placeholder] Título da notícia de cultura
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </div>
+                        </article>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img
+                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Cultura"
+                                    alt="Notícia cultura"
+                                />
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    [Placeholder] Título da notícia de cultura
+                                </h4>
+                                <span class="time">Há [X] horas</span>
+                            </div>
+                        </article>
+                        <article class="news-card compact">
+                            <h4>[Placeholder] Título da notícia compacta</h4>
+                            <span class="time">Há [X] horas</span>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Newsletter Section -->
+                <section class="newsletter-section">
+                    <div class="newsletter-content">
+                        <h3>Receba as principais notícias do dia</h3>
+                        <p>
+                            Cadastre-se gratuitamente e fique por dentro de tudo
+                            que acontece no Brasil e no mundo.
+                        </p>
+                        <form class="newsletter-form" id="newsletter-form">
+                            <input
+                                type="email"
+                                placeholder="Seu melhor e-mail"
+                                required
+                                id="newsletter-email"
+                            />
+                            <button type="submit">Inscrever-se</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h4 class="footer-title">Sobre</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Quem somos</a></li>
+                            <li><a href="#">Expediente</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                            <li><a href="#">Termos de Uso</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Editorias</h4>
+                        <ul class="footer-links">
+                            <li><a href="opiniao.html">Opinião</a></li>
+                            <li><a href="politica.html">Política</a></li>
+                            <li><a href="economia.html">Economia</a></li>
+                            <li><a href="justica.html">Justiça</a></li>
+                            <li><a href="esportes.html">Esportes</a></li>
+                            <li><a href="cultura.html">Cultura</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Portais Regionais</h4>
+                        <ul class="footer-links">
+                            <li>
+                                <a
+                                    href="https://www.correiodamanha.com.br/"
+                                    target="_blank"
+                                    >Correio da Manhã RJ</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Correio da Manhã SP</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >Correio Sul Fluminense</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://correiopetropolitano.com.br/"
+                                    target="_blank"
+                                    >Correio Petropolitano</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.correiodamanhadf.com.br/"
+                                    target="_blank"
+                                    >Correio da Manhã DF</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Contato</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Fale conosco</a></li>
+                            <li><a href="#">Trabalhe conosco</a></li>
+                            <li><a href="#">Anuncie</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-logo">CORREIO DA MANHÃ</div>
+                    <p>
+                        &copy; 2026 Correio da Manhã. Todos os direitos
+                        reservados.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

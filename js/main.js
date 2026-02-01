@@ -1,0 +1,504 @@
+/**
+ * Correio da Manhã - Portal de Notícias
+ * JavaScript Principal
+ */
+
+// ========================================
+// Utilitários
+// ========================================
+
+const Utils = {
+  // Formata data atual
+  formatDate() {
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const date = new Date().toLocaleDateString("pt-BR", options);
+    return date.charAt(0).toUpperCase() + date.slice(1);
+  },
+
+  // Debounce para otimizar eventos
+  debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  },
+
+  // Animação suave de scroll
+  smoothScroll(target, duration = 500) {
+    const targetPosition =
+      target.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    function easeInOutQuad(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t + b;
+      t--;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+  },
+};
+
+// ========================================
+// Data e Hora
+// ========================================
+
+const DateTime = {
+  init() {
+    this.updateDate();
+    setInterval(() => this.updateTime(), 1000);
+  },
+
+  updateDate() {
+    const dateElement = document.getElementById("current-date");
+    if (dateElement) {
+      dateElement.textContent = Utils.formatDate();
+    }
+  },
+
+  updateTime() {
+    const timeElements = document.querySelectorAll(".live-time");
+    const now = new Date();
+    const timeString = now.toLocaleTimeString("pt-BR");
+
+    timeElements.forEach((el) => {
+      el.textContent = timeString;
+    });
+  },
+};
+
+// ========================================
+// Menu Mobile
+// ========================================
+
+const MobileMenu = {
+  init() {
+    this.toggle = document.getElementById("mobile-menu-toggle");
+    this.menu = document.getElementById("nav-menu");
+    this.bindEvents();
+  },
+
+  bindEvents() {
+    if (this.toggle) {
+      this.toggle.addEventListener("click", () => this.toggleMenu());
+    }
+
+    // Fechar menu ao clicar em um link
+    const navLinks = this.menu?.querySelectorAll(".nav-link");
+    navLinks?.forEach((link) => {
+      link.addEventListener("click", () => this.closeMenu());
+    });
+
+    // Fechar menu ao clicar fora
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".main-nav")) {
+        this.closeMenu();
+      }
+    });
+  },
+
+  toggleMenu() {
+    this.menu.classList.toggle("active");
+    this.toggle.classList.toggle("active");
+
+    // Animação do ícone hamburguer
+    const spans = this.toggle.querySelectorAll("span");
+    if (this.menu.classList.contains("active")) {
+      spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+      spans[1].style.opacity = "0";
+      spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
+    } else {
+      spans[0].style.transform = "";
+      spans[1].style.opacity = "";
+      spans[2].style.transform = "";
+    }
+  },
+
+  closeMenu() {
+    this.menu.classList.remove("active");
+    this.toggle.classList.remove("active");
+
+    const spans = this.toggle.querySelectorAll("span");
+    if (spans.length) {
+      spans[0].style.transform = "";
+      spans[1].style.opacity = "";
+      spans[2].style.transform = "";
+    }
+  },
+};
+
+// ========================================
+// Abas de Regiões
+// ========================================
+
+const RegionTabs = {
+  init() {
+    this.tabs = document.querySelectorAll(".region-tab");
+    this.contents = document.querySelectorAll(".region-content");
+    this.bindEvents();
+  },
+
+  bindEvents() {
+    this.tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const region = tab.dataset.region;
+        this.switchTab(region);
+      });
+    });
+  },
+
+  switchTab(region) {
+    // Remove active de todos
+    this.tabs.forEach((t) => t.classList.remove("active"));
+    this.contents.forEach((c) => c.classList.remove("active"));
+
+    // Adiciona active no selecionado
+    const selectedTab = document.querySelector(`[data-region="${region}"]`);
+    const selectedContent = document.getElementById(`region-${region}`);
+
+    if (selectedTab && selectedContent) {
+      selectedTab.classList.add("active");
+      selectedContent.classList.add("active");
+
+      // Animação de fade in
+      selectedContent.classList.add("fade-in");
+      setTimeout(() => {
+        selectedContent.classList.remove("fade-in");
+      }, 500);
+    }
+  },
+};
+
+// ========================================
+// Busca de Notícias
+// ========================================
+
+const Search = {
+  init() {
+    this.input = document.getElementById("search-input");
+    this.bindEvents();
+  },
+
+  bindEvents() {
+    if (this.input) {
+      this.input.addEventListener(
+        "input",
+        Utils.debounce((e) => {
+          this.handleSearch(e.target.value);
+        }, 300),
+      );
+
+      this.input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          this.handleSearch(e.target.value);
+        }
+      });
+    }
+  },
+
+  handleSearch(query) {
+    if (query.length < 2) return;
+
+    // Efeito visual nos cards
+    const cards = document.querySelectorAll(
+      ".news-card, .opinion-article, .news-list-item",
+    );
+    const normalizedQuery = query.toLowerCase();
+
+    cards.forEach((card) => {
+      const title =
+        card.querySelector("h2, h3, h4")?.textContent.toLowerCase() || "";
+      const excerpt = card.querySelector("p")?.textContent.toLowerCase() || "";
+
+      if (
+        title.includes(normalizedQuery) ||
+        excerpt.includes(normalizedQuery)
+      ) {
+        card.style.display = "";
+        card.classList.add("search-highlight");
+        setTimeout(() => card.classList.remove("search-highlight"), 1000);
+      } else {
+        card.style.display = query.length > 0 ? "none" : "";
+      }
+    });
+  },
+};
+
+// ========================================
+// Newsletter
+// ========================================
+
+const Newsletter = {
+  init() {
+    this.form = document.getElementById("newsletter-form");
+    this.emailInput = document.getElementById("newsletter-email");
+    this.bindEvents();
+  },
+
+  bindEvents() {
+    if (this.form) {
+      this.form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        this.subscribe();
+      });
+    }
+  },
+
+  subscribe() {
+    const email = this.emailInput.value;
+
+    if (!this.validateEmail(email)) {
+      this.showError("Por favor, insira um e-mail válido.");
+      return;
+    }
+
+    // Simulação de envio
+    this.showLoading();
+
+    setTimeout(() => {
+      this.showSuccess(
+        "Obrigado por se inscrever! Você receberá nossas notícias em breve.",
+      );
+      this.emailInput.value = "";
+    }, 1500);
+  },
+
+  validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  },
+
+  showLoading() {
+    const button = this.form.querySelector("button");
+    if (button) {
+      button.disabled = true;
+      button.textContent = "Enviando...";
+      button.classList.add("loading");
+    }
+  },
+
+  showSuccess(message) {
+    const button = this.form.querySelector("button");
+    if (button) {
+      button.disabled = false;
+      button.textContent = "Inscrever-se";
+      button.classList.remove("loading");
+    }
+
+    alert(message);
+  },
+
+  showError(message) {
+    alert(message);
+    if (this.emailInput) {
+      this.emailInput.focus();
+    }
+  },
+};
+
+// ========================================
+// Breaking News Ticker
+// ========================================
+
+const BreakingNews = {
+  init() {
+    this.ticker = document.getElementById("breaking-news-ticker");
+    this.pauseOnHover();
+  },
+
+  pauseOnHover() {
+    if (this.ticker) {
+      this.ticker.parentElement.addEventListener("mouseenter", () => {
+        this.ticker.style.animationPlayState = "paused";
+      });
+
+      this.ticker.parentElement.addEventListener("mouseleave", () => {
+        this.ticker.style.animationPlayState = "running";
+      });
+    }
+  },
+};
+
+// ========================================
+// Scroll Navigation
+// ========================================
+
+const ScrollNav = {
+  init() {
+    this.lastScroll = 0;
+    this.nav = document.querySelector(".main-nav");
+    this.bindEvents();
+  },
+
+  bindEvents() {
+    window.addEventListener(
+      "scroll",
+      Utils.debounce(() => {
+        this.handleScroll();
+      }, 10),
+    );
+  },
+
+  handleScroll() {
+    const currentScroll = window.pageYOffset;
+
+    // Adiciona sombra ao menu quando scrolled
+    if (this.nav && currentScroll > 50) {
+      this.nav.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
+    } else if (this.nav) {
+      this.nav.style.boxShadow = "0 1px 2px rgba(0,0,0,0.08)";
+    }
+
+    this.lastScroll = currentScroll;
+  },
+};
+
+// ========================================
+// Animações ao Scroll
+// ========================================
+
+const ScrollAnimations = {
+  init() {
+    this.elements = document.querySelectorAll(
+      ".section, .news-card, .opinion-article",
+    );
+    this.initObserver();
+  },
+
+  initObserver() {
+    if ("IntersectionObserver" in window) {
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("fade-in");
+              this.observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        },
+      );
+
+      this.elements.forEach((el) => this.observer.observe(el));
+    }
+  },
+};
+
+// ========================================
+// Compartilhamento Social
+// ========================================
+
+const SocialShare = {
+  init() {
+    // Prepara links de compartilhamento
+    this.addShareButtons();
+  },
+
+  addShareButtons() {
+    const articles = document.querySelectorAll(".news-card, .opinion-article");
+
+    articles.forEach((article) => {
+      const shareBtn = document.createElement("button");
+      shareBtn.className = "share-button";
+      shareBtn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+            `;
+      shareBtn.addEventListener("click", () => this.share(article));
+
+      const content = article.querySelector(".news-content, .opinion-content");
+      if (content) {
+        content.appendChild(shareBtn);
+      }
+    });
+  },
+
+  share(article) {
+    const title = article.querySelector("h3, h4")?.textContent || "";
+    const url = window.location.href;
+
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        url: url,
+      });
+    } else {
+      // Fallback: copiar para clipboard
+      this.copyToClipboard(url);
+    }
+  },
+
+  copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Link copiado para a área de transferência!");
+    });
+  },
+};
+
+// ========================================
+// Inicialização
+// ========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Inicializa todos os módulos
+  DateTime.init();
+  MobileMenu.init();
+  RegionTabs.init();
+  Search.init();
+  Newsletter.init();
+  BreakingNews.init();
+  ScrollNav.init();
+  ScrollAnimations.init();
+  SocialShare.init();
+
+  // Adiciona classe ao body para indicar que JS está carregado
+  document.body.classList.add("js-loaded");
+
+  console.log("Correio da Manhã - Portal inicializado com sucesso");
+});
+
+// ========================================
+// Exports para debug
+// ========================================
+
+window.CM = {
+  Utils,
+  DateTime,
+  MobileMenu,
+  RegionTabs,
+  Search,
+  Newsletter,
+  BreakingNews,
+  ScrollNav,
+  ScrollAnimations,
+  SocialShare,
+};

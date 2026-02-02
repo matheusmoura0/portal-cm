@@ -742,7 +742,6 @@ button {
 @media (max-width: 768px) {
     .featured-grid-desktop {
         display: grid;
-        grid-template-columns: 1fr 1fr;
         gap: var(--spacing-sm);
     }
 

@@ -89,6 +89,86 @@ const DateTime = {
 };
 
 // ========================================
+// Header Info - Clima, Finanças
+// ========================================
+
+const HeaderInfo = {
+  init() {
+    this.updateWeather();
+    this.updateFinance();
+    // Atualiza a cada 5 minutos
+    setInterval(() => {
+      this.updateWeather();
+      this.updateFinance();
+    }, 300000);
+  },
+
+  updateWeather() {
+    const weatherElement = document.getElementById("weather-info");
+    if (weatherElement) {
+      // Simulação de dados do clima - Em produção, usar uma API real
+      const weatherData = this.getMockWeatherData();
+      weatherElement.textContent = `${weatherData.city}: ${weatherData.temp}°C ${weatherData.condition}`;
+    }
+  },
+
+  updateFinance() {
+    const usdElement = document.getElementById("usd-rate");
+    const ibovElement = document.getElementById("ibov-rate");
+
+    if (usdElement) {
+      // Simulação de taxa de câmbio - Em produção, usar uma API real
+      const usdData = this.getMockUSDData();
+      const changeClass = usdData.change >= 0 ? "value-up" : "value-down";
+      const changeArrow = usdData.change >= 0 ? "↗" : "↘";
+      usdElement.innerHTML = `R$ ${usdData.rate} <span class="${changeClass}">${changeArrow} ${Math.abs(usdData.change)}%</span>`;
+    }
+
+    if (ibovElement) {
+      // Simulação de IBOV - Em produção, usar uma API real
+      const ibovData = this.getMockIBOVData();
+      const changeClass = ibovData.change >= 0 ? "value-up" : "value-down";
+      const changeArrow = ibovData.change >= 0 ? "↗" : "↘";
+      ibovElement.innerHTML = `${ibovData.points} <span class="${changeClass}">${changeArrow} ${ibovData.change}%</span>`;
+    }
+  },
+
+  getMockWeatherData() {
+    const conditions = [
+      "Parcialmente nublado",
+      "Ensolarado",
+      "Nublado",
+      "Chuva leve",
+    ];
+    return {
+      city: "Rio de Janeiro",
+      temp: 22,
+      condition: conditions[Math.floor(Math.random() * conditions.length)],
+    };
+  },
+
+  getMockUSDData() {
+    // Variação aleatória pequena em torno de 5,04
+    const baseRate = 5.04;
+    const variation = (Math.random() - 0.5) * 0.1;
+    const rate = (baseRate + variation).toFixed(2);
+    const change = (Math.random() - 0.5) * 2;
+    return { rate, change: change.toFixed(1) };
+  },
+
+  getMockIBOVData() {
+    // Variação aleatória pequena em torno de 134.874
+    const basePoints = 134874;
+    const variation = Math.floor((Math.random() - 0.5) * 1000);
+    const points = (basePoints + variation)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    const change = (Math.random() * 2 - 0.5).toFixed(1);
+    return { points, change };
+  },
+};
+
+// ========================================
 // Menu Mobile
 // ========================================
 
@@ -465,12 +545,55 @@ const SocialShare = {
 };
 
 // ========================================
+// Navegação de Notícias
+// ========================================
+
+const NewsNavigation = {
+  init() {
+    this.makeNewsClickable();
+  },
+
+  makeNewsClickable() {
+    // Seleciona todos os cards de notícia
+    const newsCards = document.querySelectorAll(
+      ".news-card, .opinion-article, .hero-article, .side-article, .most-read-item, .featured-item, .carousel-item",
+    );
+
+    newsCards.forEach((card) => {
+      // Se o card já tem um link direto, não precisa modificar
+      const existingLink = card.querySelector("a[href]");
+      if (existingLink && existingLink.getAttribute("href") !== "#") {
+        return;
+      }
+
+      // Adiciona evento de clique no card inteiro
+      card.addEventListener("click", (e) => {
+        // Se clicou em um link válido ou botão, não intercepta
+        if (
+          e.target.closest("a[href]:not([href='#'])") ||
+          e.target.closest("button")
+        ) {
+          return;
+        }
+
+        // Navega para a página de notícia singular
+        window.location.href = "noticia.html";
+      });
+
+      // Adiciona cursor pointer para indicar que é clicável
+      card.style.cursor = "pointer";
+    });
+  },
+};
+
+// ========================================
 // Inicialização
 // ========================================
 
 document.addEventListener("DOMContentLoaded", () => {
   // Inicializa todos os módulos
   DateTime.init();
+  HeaderInfo.init();
   MobileMenu.init();
   RegionTabs.init();
   Search.init();
@@ -479,11 +602,12 @@ document.addEventListener("DOMContentLoaded", () => {
   ScrollNav.init();
   ScrollAnimations.init();
   SocialShare.init();
+  NewsNavigation.init();
 
   // Adiciona classe ao body para indicar que JS está carregado
   document.body.classList.add("js-loaded");
 
-  console.log("Correio da Manhã - Portal inicializado com sucesso");
+  console.log("portal CM - Portal inicializado com sucesso");
 });
 
 // ========================================
@@ -493,6 +617,7 @@ document.addEventListener("DOMContentLoaded", () => {
 window.CM = {
   Utils,
   DateTime,
+  HeaderInfo,
   MobileMenu,
   RegionTabs,
   Search,
@@ -501,4 +626,5 @@ window.CM = {
   ScrollNav,
   ScrollAnimations,
   SocialShare,
+  NewsNavigation,
 };

@@ -7,7 +7,7 @@
             name="description"
             content="Brasil - Correio da Manhã. Notícias nacionais e cobertura de todos os estados brasileiros."
         />
-        <title>Brasil | Correio da Manhã</title>
+        <title>Brasil | CM</title>
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,19 +17,170 @@
         />
     </head>
     <body>
-        <!-- Top Bar -->
-        <div class="top-bar">
+        <!-- Header Info Bar - Data, Clima, Finanças -->
+        <div class="header-info-bar">
             <div class="container">
-                <div class="top-bar-left">
-                    <span id="current-date"></span>
+                <div class="header-info-section">
+                    <div class="header-info-item">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <rect
+                                x="3"
+                                y="4"
+                                width="18"
+                                height="18"
+                                rx="2"
+                                ry="2"
+                            ></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span id="current-date"
+                            >Terça-feira, 3 de fevereiro de 2026</span
+                        >
+                    </div>
+                    <div class="header-info-item">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"
+                            ></path>
+                        </svg>
+                        <span id="weather-info"
+                            >Rio de Janeiro: 22°C Parcialmente nublado</span
+                        >
+                    </div>
+                    <div class="header-info-item">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path
+                                d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                            ></path>
+                        </svg>
+                        <span
+                            >USD: <span id="usd-rate">R$ 5,04</span>
+                            <span class="value-stable">↗ 0%</span></span
+                        >
+                    </div>
+                    <div class="header-info-item">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                        <span
+                            >IBOV: <span id="ibov-rate">134.874</span>
+                            <span class="value-up">↗ 0,8%</span></span
+                        >
+                    </div>
                 </div>
-                <div class="top-bar-center">
-                    <a href="#assinatura" class="cta-button">Assine</a>
+                <div class="header-links">
+                    <div class="header-social-icons">
+                        <a
+                            href="https://instagram.com"
+                            target="_blank"
+                            aria-label="Instagram"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <rect
+                                    x="2"
+                                    y="2"
+                                    width="20"
+                                    height="20"
+                                    rx="5"
+                                    ry="5"
+                                ></rect>
+                                <path
+                                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                                ></path>
+                                <line
+                                    x1="17.5"
+                                    y1="6.5"
+                                    x2="17.51"
+                                    y2="6.5"
+                                ></line>
+                            </svg>
+                        </a>
+                        <a
+                            href="https://youtube.com"
+                            target="_blank"
+                            aria-label="YouTube"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"
+                                ></path>
+                                <polygon
+                                    points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+                                ></polygon>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Compartilhar">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line
+                                    x1="8.59"
+                                    y1="13.51"
+                                    x2="15.42"
+                                    y2="17.49"
+                                ></line>
+                                <line
+                                    x1="15.41"
+                                    y1="6.51"
+                                    x2="8.59"
+                                    y2="10.49"
+                                ></line>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="header-utility-links">
+                        <a href="#newsletter">Newsletter</a>
+                        <a href="#anuncie">Anuncie</a>
+                    </div>
                 </div>
-                <div class="top-bar-right">
-                    <a href="#login">Entrar</a>
-                    <a href="#newsletter">Newsletter</a>
-                </div>
+            </div>
+        </div>
+
+        <!-- CTA Bar -->
+        <div class="top-bar-cta">
+            <div class="container">
+                <a href="#assinatura" class="cta-button">Cadastre-se</a>
             </div>
         </div>
 
@@ -39,9 +190,9 @@
                 <div class="header-content">
                     <div class="logo-section">
                         <a href="/">
-                            <h1 class="logo">CORREIO DA MANHÃ</h1>
+                            <h1 class="logo">CM</h1>
                             <span class="logo-tagline"
-                                >O jornal de referência do Brasil</span
+                                >Há 125 anos Direito e Direito</span
                             >
                         </a>
                     </div>
@@ -125,7 +276,7 @@
 
                 <!-- Regional Sites Links -->
                 <section class="section region-sites-section">
-                    <h2 class="section-title">Nossos Portais Regionais</h2>
+                    <h2 class="section-title">Nossos PortaisoRegionais</h2>
                     <div class="region-sites-grid">
                         <a
                             href="https://www.correiodamanha.com.br/"
@@ -467,11 +618,8 @@
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <div class="footer-logo">CORREIO DA MANHÃ</div>
-                    <p>
-                        &copy; 2026 Correio da Manhã. Todos os direitos
-                        reservados.
-                    </p>
+                    <div class="footer-logo">PORTAL CM</div>
+                    <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
                 </div>
             </div>
         </footer>

@@ -25,11 +25,11 @@
 
     /* Cores de Editorias */
     --color-politics: #d0021b;
-    --color-economy: #0056b3;
-    --color-sports: #00853e;
-    --color-culture: #6a1b9a;
-    --color-justice: #ff6b00;
-    --color-brasil: #009c3b;
+    --color-economy: #d0021b;
+    --color-sports: #d0021b;
+    --color-culture: #d0021b;
+    --color-justice: #d0021b;
+    --color-brasil: #d0021b;
 
     /* Cores de UI */
     --color-border: #e0e0e0;
@@ -126,7 +126,7 @@ button {
     padding: 0 var(--spacing-lg);
 }
 
-/* Top Bar - Vermelho */
+/* Top Bar - Vermelho (Header Principal) */
 .top-bar {
     background-color: var(--color-primary);
     color: #ffffff;
@@ -138,15 +138,123 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
 }
 
-.top-bar-left span {
+/* Header com informações - Data, Clima, Finanças */
+.header-info-bar {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-size: 0.8125rem;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-info-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.header-info-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.header-info-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: #ffffff;
     font-weight: 500;
 }
 
-.top-bar-center {
+.header-info-item svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.header-info-item .value-up {
+    color: #4ade80;
+}
+
+.header-info-item .value-down {
+    color: #f87171;
+}
+
+.header-info-item .value-stable {
+    color: #ffffff;
+}
+
+.header-links {
     display: flex;
-    gap: var(--spacing-lg);
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.header-social-icons {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.header-social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: #ffffff;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.header-social-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.header-social-icons svg {
+    width: 16px;
+    height: 16px;
+}
+
+.header-utility-links {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.header-utility-links a {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+}
+
+.header-utility-links a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Top Bar original - Apenas para CTA */
+.top-bar-cta {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-size: 0.8125rem;
+    padding: var(--spacing-xs) 0;
+}
+
+.top-bar-cta .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cta-button {
@@ -158,24 +266,11 @@ button {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    transition: var(--transition);
 }
 
 .cta-button:hover {
     background-color: var(--color-bg-alt);
-}
-
-.top-bar-right {
-    display: flex;
-    gap: var(--spacing-lg);
-}
-
-.top-bar-right a {
-    color: #ffffff;
-    font-weight: 500;
-}
-
-.top-bar-right a:hover {
-    text-decoration: underline;
 }
 
 /* Header */
@@ -199,11 +294,12 @@ button {
 
 .logo {
     font-family: var(--font-display);
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 900;
     color: var(--color-text);
-    letter-spacing: -1px;
+    letter-spacing: -2px;
     line-height: 1;
+    word-spacing: 0.5rem;
 }
 
 .logo-tagline {
@@ -1243,7 +1339,7 @@ button {
     }
 
     .logo {
-        font-size: 2rem;
+        font-size: 2.8rem;
     }
 
     .nav-menu {

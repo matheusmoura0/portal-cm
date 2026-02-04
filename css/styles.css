@@ -478,6 +478,47 @@ button {
     height: auto;
 }
 
+/* Ad Sizes */
+.ad-970x150 {
+    max-width: 970px;
+}
+
+.ad-970x150 img {
+    width: 970px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.ad-300x600 {
+    max-width: 300px;
+}
+
+.ad-300x600 img {
+    width: 300px;
+    height: 600px;
+    object-fit: cover;
+}
+
+.ad-300x250 {
+    max-width: 300px;
+}
+
+.ad-300x250 img {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.ad-320x150 {
+    max-width: 320px;
+}
+
+.ad-320x150 img {
+    width: 320px;
+    height: 150px;
+    object-fit: cover;
+}
+
 .ad-medium {
     max-width: 300px;
 }

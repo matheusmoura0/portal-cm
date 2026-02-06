@@ -184,10 +184,26 @@ const MobileMenu = {
       this.toggle.addEventListener("click", () => this.toggleMenu());
     }
 
-    // Fechar menu ao clicar em um link
+    // Fechar menu ao clicar em um link (exceto dropdown toggle)
     const navLinks = this.menu?.querySelectorAll(".nav-link");
     navLinks?.forEach((link) => {
-      link.addEventListener("click", () => this.closeMenu());
+      // Se não for um dropdown toggle, fecha o menu ao clicar
+      if (!link.classList.contains("dropdown-toggle")) {
+        link.addEventListener("click", () => this.closeMenu());
+      }
+    });
+
+    // Dropdown toggle para mobile
+    const dropdownToggles = this.menu?.querySelectorAll(".dropdown-toggle");
+    dropdownToggles?.forEach((toggle) => {
+      toggle.addEventListener("click", (e) => {
+        // Em mobile, previne o comportamento padrão e toggle o dropdown
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const dropdown = toggle.closest(".nav-dropdown");
+          dropdown?.classList.toggle("active");
+        }
+      });
     });
 
     // Fechar menu ao clicar fora
@@ -225,6 +241,12 @@ const MobileMenu = {
       spans[1].style.opacity = "";
       spans[2].style.transform = "";
     }
+
+    // Fecha todos os dropdowns
+    const dropdowns = this.menu?.querySelectorAll(".nav-dropdown");
+    dropdowns?.forEach((dropdown) => {
+      dropdown.classList.remove("active");
+    });
   },
 };
 

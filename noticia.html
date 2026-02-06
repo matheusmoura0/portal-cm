@@ -1,970 +1,1314 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Leia a matéria completa no portal CM" />
-    <title>[Título da Notícia] | portal CM</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
-    <style>
-        /* Article Page Styles */
-        .article-page {
-            background-color: var(--color-bg);
-        }
-
-        /* Section Bar */
-        .section-bar {
-            background-color: #1a3a5c;
-            padding: var(--spacing-sm) 0;
-        }
-
-        .section-bar .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .section-bar-title {
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-bar-date {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Article Header */
-        .article-header {
-            padding: var(--spacing-xl) 0 var(--spacing-md);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .article-category {
-            display: inline-block;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            background-color: var(--color-primary);
-            color: #ffffff;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .article-category.politics {
-            background-color: var(--color-politics);
-        }
-
-        .article-category.economy {
-            background-color: var(--color-economy);
-        }
-
-        .article-category.sports {
-            background-color: var(--color-sports);
-        }
-
-        .article-category.culture {
-            background-color: var(--color-culture);
-        }
-
-        .article-category.justice {
-            background-color: var(--color-justice);
-        }
-
-        .article-category.brasil {
-            background-color: var(--color-brasil);
-        }
-
-        .article-title {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--color-text);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .article-subtitle {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 400;
-            font-style: italic;
-            line-height: 1.4;
-            color: var(--color-text-gray);
-            margin-bottom: var(--spacing-lg);
-            padding-bottom: var(--spacing-md);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        /* Article Main Image */
-        .article-media {
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .article-media-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            background-color: var(--color-bg-alt);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .article-media-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .article-media-caption {
-            font-family: var(--font-body);
-            font-size: 0.8125rem;
-            color: var(--color-text-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .article-media-credits {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .media-share-buttons {
-            display: flex;
-            gap: var(--spacing-xs);
-        }
-
-        .media-share-btn {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--color-bg-alt);
-            border: 1px solid var(--color-border);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .media-share-btn:hover {
-            background-color: var(--color-primary);
-            border-color: var(--color-primary);
-        }
-
-        .media-share-btn:hover svg {
-            stroke: #ffffff;
-        }
-
-        .media-share-btn svg {
-            width: 14px;
-            height: 14px;
-            stroke: var(--color-text-gray);
-        }
-
-        /* Article Meta */
-        .article-meta {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-xl);
-            padding-bottom: var(--spacing-lg);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .article-author {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .article-author-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-color: var(--color-bg-alt);
-        }
-
-        .article-author-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .article-author-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .article-author-name {
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--color-text);
-        }
-
-        .article-author-role {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            color: var(--color-text-light);
-        }
-
-        .article-publish-info {
-            margin-left: auto;
-            text-align: right;
-        }
-
-        .article-date {
-            font-family: var(--font-body);
-            font-size: 0.8125rem;
-            color: var(--color-text-gray);
-        }
-
-        .article-time {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            color: var(--color-text-light);
-        }
-
-        /* Article Content Layout */
-        .article-content-layout {
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: var(--spacing-xl);
-        }
-
-        /* Article Body */
-        .article-body {
-            font-family: "Noto Serif", Georgia, serif;
-            font-size: 1.125rem;
-            line-height: 1.8;
-            color: var(--color-text);
-        }
-
-        .article-body p {
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .article-body p:first-of-type::first-letter {
-            font-size: 4rem;
-            float: left;
-            line-height: 1;
-            margin-right: var(--spacing-sm);
-            font-weight: 700;
-            color: var(--color-text);
-        }
-
-        .article-body a {
-            color: var(--color-primary);
-            text-decoration: underline;
-            transition: var(--transition);
-        }
-
-        .article-body a:hover {
-            color: var(--color-primary-dark);
-        }
-
-        .article-body strong {
-            font-weight: 700;
-        }
-
-        .article-body em {
-            font-style: italic;
-        }
-
-        /* Blockquote */
-        .article-body blockquote {
-            margin: var(--spacing-xl) 0;
-            padding: var(--spacing-lg) var(--spacing-xl);
-            background-color: var(--color-bg-alt);
-            border-left: 4px solid var(--color-primary);
-            font-style: italic;
-            font-size: 1.25rem;
-            line-height: 1.6;
-        }
-
-        .article-body blockquote politics {
-            border-left-color: var(--color-politics);
-        }
-
-        /* Article Inline Elements */
-        .article-inline-media {
-            margin: var(--spacing-xl) 0;
-        }
-
-        .article-inline-media img {
-            width: 100%;
-            height: auto;
-            border-radius: var(--radius-sm);
-        }
-
-        .article-inline-media figcaption {
-            font-family: var(--font-body);
-            font-size: 0.8125rem;
-            color: var(--color-text-light);
-            text-align: center;
-            margin-top: var(--spacing-sm);
-        }
-
-        /* Article Tags */
-        .article-tags {
-            margin-top: var(--spacing-xl);
-            padding-top: var(--spacing-lg);
-            border-top: 1px solid var(--color-border);
-        }
-
-        .article-tags-title {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: var(--color-text-light);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .article-tags-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-xs);
-        }
-
-        .article-tag {
-            padding: var(--spacing-xs) var(--spacing-sm);
-            background-color: var(--color-bg-alt);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            font-size: 0.75rem;
-            color: var(--color-text-gray);
-            transition: var(--transition);
-        }
-
-        .article-tag:hover {
-            background-color: var(--color-primary);
-            border-color: var(--color-primary);
-            color: #ffffff;
-        }
-
-        /* Sidebar */
-        .article-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xl);
-        }
-
-        .sidebar-widget {
-            background-color: var(--color-bg-alt);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-        }
-
-        .sidebar-widget-title {
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--color-text);
-            padding: var(--spacing-md);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .sidebar-widget-content {
-            padding: var(--spacing-md);
-        }
-
-        /* Sidebar Articles */
-        .sidebar-article {
-            display: flex;
-            gap: var(--spacing-sm);
-            padding: var(--spacing-sm) 0;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .sidebar-article:last-child {
-            border-bottom: none;
-        }
-
-        .sidebar-article-image {
-            width: 80px;
-            height: 60px;
-            flex-shrink: 0;
-            overflow: hidden;
-            background-color: var(--color-bg);
-            border-radius: var(--radius-sm);
-        }
-
-        .sidebar-article-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .sidebar-article-content {
-            flex: 1;
-        }
-
-        .sidebar-article-title {
-            font-family: var(--font-body);
-            font-size: 0.8125rem;
-            font-weight: 500;
-            line-height: 1.4;
-            color: var(--color-text);
-        }
-
-        .sidebar-article-time {
-            font-family: var(--font-body);
-            font-size: 0.6875rem;
-            color: var(--color-text-light);
-            margin-top: var(--spacing-xs);
-        }
-
-        /* Sidebar Ad */
-        .sidebar-ad {
-            width: 100%;
-            aspect-ratio: 3 / 5;
-            background-color: var(--color-bg-alt);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-        }
-
-        .sidebar-ad img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Newsletter Widget */
-        .newsletter-widget {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            color: #ffffff;
-        }
-
-        .newsletter-widget .sidebar-widget-title {
-            color: #ffffff;
-            border-bottom-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .newsletter-widget-content {
-            padding: var(--spacing-md);
-            text-align: center;
-        }
-
-        .newsletter-widget-text {
-            font-size: 0.8125rem;
-            margin-bottom: var(--spacing-md);
-            opacity: 0.9;
-        }
-
-        .newsletter-widget-input {
-            width: 100%;
-            padding: var(--spacing-sm);
-            border: none;
-            border-radius: var(--radius-sm);
-            font-family: var(--font-body);
-            font-size: 0.8125rem;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .newsletter-widget-button {
-            width: 100%;
-            padding: var(--spacing-sm);
-            background-color: var(--color-text);
-            color: #ffffff;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-family: var(--font-body);
-            font-size: 0.8125rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .newsletter-widget-button:hover {
-            background-color: #000000;
-        }
-
-        /* Related Articles */
-        .related-articles {
-            margin-top: var(--spacing-2xl);
-            padding-top: var(--spacing-xl);
-            border-top: 2px solid var(--color-border);
-        }
-
-        .related-articles-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .related-articles-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-lg);
-        }
-
-        .related-article-card {
-            background-color: var(--color-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .related-article-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-
-        .related-article-image {
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-        }
-
-        .related-article-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .related-article-content {
-            padding: var(--spacing-md);
-        }
-
-        .related-article-category {
-            display: inline-block;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            background-color: var(--color-primary);
-            color: #ffffff;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .related-article-title {
-            font-family: var(--font-body);
-            font-size: 0.9375rem;
-            font-weight: 600;
-            line-height: 1.4;
-            color: var(--color-text);
-        }
-
-        /* Comments Section */
-        .comments-section {
-            margin-top: var(--spacing-2xl);
-            padding-top: var(--spacing-xl);
-            border-top: 2px solid var(--color-border);
-        }
-
-        .comments-section-title {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .article-content-layout {
-                grid-template-columns: 1fr 280px;
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Leia a matéria completa no portal CM"
+        />
+        <title>[Título da Notícia] | portal CM</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* Article Page Styles */
+            .article-page {
+                background-color: var(--color-bg);
             }
-        }
 
-        @media (max-width: 768px) {
+            /* Section Bar */
+            .section-bar {
+                background-color: #1a3a5c;
+                padding: var(--spacing-sm) 0;
+            }
+
+            .section-bar .container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .section-bar-title {
+                font-family: var(--font-body);
+                font-size: 0.875rem;
+                font-weight: 700;
+                color: #ffffff;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .section-bar-date {
+                font-family: var(--font-body);
+                font-size: 0.75rem;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            /* Article Header */
+            .article-header {
+                padding: var(--spacing-xl) 0 var(--spacing-md);
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .article-category {
+                display: inline-block;
+                padding: var(--spacing-xs) var(--spacing-sm);
+                background-color: var(--color-primary);
+                color: #ffffff;
+                font-size: 0.6875rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                margin-bottom: var(--spacing-md);
+            }
+
+            .article-category.politics {
+                background-color: var(--color-politics);
+            }
+
+            .article-category.economy {
+                background-color: var(--color-economy);
+            }
+
+            .article-category.sports {
+                background-color: var(--color-sports);
+            }
+
+            .article-category.culture {
+                background-color: var(--color-culture);
+            }
+
+            .article-category.justice {
+                background-color: var(--color-justice);
+            }
+
+            .article-category.brasil {
+                background-color: var(--color-brasil);
+            }
+
             .article-title {
-                font-size: 1.75rem;
+                font-family: var(--font-display);
+                font-size: 2.5rem;
+                font-weight: 700;
+                line-height: 1.2;
+                color: var(--color-text);
+                margin-bottom: var(--spacing-md);
             }
 
             .article-subtitle {
-                font-size: 1rem;
+                font-family: var(--font-display);
+                font-size: 1.25rem;
+                font-weight: 400;
+                font-style: italic;
+                line-height: 1.4;
+                color: var(--color-text-gray);
+                margin-bottom: var(--spacing-lg);
+                padding-bottom: var(--spacing-md);
+                border-bottom: 1px solid var(--color-border);
             }
 
+            /* Article Main Image */
+            .article-media {
+                margin-bottom: var(--spacing-xl);
+            }
+
+            .article-media-wrapper {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+                background-color: var(--color-bg-alt);
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .article-media-wrapper img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .article-media-caption {
+                font-family: var(--font-body);
+                font-size: 0.8125rem;
+                color: var(--color-text-light);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .article-media-credits {
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-sm);
+            }
+
+            .media-share-buttons {
+                display: flex;
+                gap: var(--spacing-xs);
+            }
+
+            .media-share-btn {
+                width: 28px;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--color-bg-alt);
+                border: 1px solid var(--color-border);
+                border-radius: 50%;
+                cursor: pointer;
+                transition: var(--transition);
+            }
+
+            .media-share-btn:hover {
+                background-color: var(--color-primary);
+                border-color: var(--color-primary);
+            }
+
+            .media-share-btn:hover svg {
+                stroke: #ffffff;
+            }
+
+            .media-share-btn svg {
+                width: 14px;
+                height: 14px;
+                stroke: var(--color-text-gray);
+            }
+
+            /* Article Meta */
+            .article-meta {
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-md);
+                margin-bottom: var(--spacing-xl);
+                padding-bottom: var(--spacing-lg);
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .article-author {
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-sm);
+            }
+
+            .article-author-avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                overflow: hidden;
+                background-color: var(--color-bg-alt);
+            }
+
+            .article-author-avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .article-author-info {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .article-author-name {
+                font-family: var(--font-body);
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: var(--color-text);
+            }
+
+            .article-author-role {
+                font-family: var(--font-body);
+                font-size: 0.75rem;
+                color: var(--color-text-light);
+            }
+
+            .article-publish-info {
+                margin-left: auto;
+                text-align: right;
+            }
+
+            .article-date {
+                font-family: var(--font-body);
+                font-size: 0.8125rem;
+                color: var(--color-text-gray);
+            }
+
+            .article-time {
+                font-family: var(--font-body);
+                font-size: 0.75rem;
+                color: var(--color-text-light);
+            }
+
+            /* Article Content Layout */
             .article-content-layout {
-                grid-template-columns: 1fr;
+                display: grid;
+                grid-template-columns: 1fr 320px;
+                gap: var(--spacing-xl);
             }
 
-            .article-sidebar {
-                order: 2;
+            /* Article Body */
+            .article-body {
+                font-family: "Noto Serif", Georgia, serif;
+                font-size: 1.125rem;
+                line-height: 1.8;
+                color: var(--color-text);
             }
 
-            .related-articles-grid {
-                grid-template-columns: 1fr;
+            .article-body p {
+                margin-bottom: var(--spacing-lg);
             }
 
             .article-body p:first-of-type::first-letter {
-                font-size: 3rem;
+                font-size: 4rem;
+                float: left;
+                line-height: 1;
+                margin-right: var(--spacing-sm);
+                font-weight: 700;
+                color: var(--color-text);
             }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header Info Bar -->
-    <div class="header-info-bar">
-        <div class="container">
-            <div class="header-info-section">
-                <div class="header-info-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                    <span id="current-date">Terça-feira, 3 de fevereiro de 2026</span>
+
+            .article-body a {
+                color: var(--color-primary);
+                text-decoration: underline;
+                transition: var(--transition);
+            }
+
+            .article-body a:hover {
+                color: var(--color-primary-dark);
+            }
+
+            .article-body strong {
+                font-weight: 700;
+            }
+
+            .article-body em {
+                font-style: italic;
+            }
+
+            /* Blockquote */
+            .article-body blockquote {
+                margin: var(--spacing-xl) 0;
+                padding: var(--spacing-lg) var(--spacing-xl);
+                background-color: var(--color-bg-alt);
+                border-left: 4px solid var(--color-primary);
+                font-style: italic;
+                font-size: 1.25rem;
+                line-height: 1.6;
+            }
+
+            .article-body blockquote politics {
+                border-left-color: var(--color-politics);
+            }
+
+            /* Article Inline Elements */
+            .article-inline-media {
+                margin: var(--spacing-xl) 0;
+            }
+
+            .article-inline-media img {
+                width: 100%;
+                height: auto;
+                border-radius: var(--radius-sm);
+            }
+
+            .article-inline-media figcaption {
+                font-family: var(--font-body);
+                font-size: 0.8125rem;
+                color: var(--color-text-light);
+                text-align: center;
+                margin-top: var(--spacing-sm);
+            }
+
+            /* Article Tags */
+            .article-tags {
+                margin-top: var(--spacing-xl);
+                padding-top: var(--spacing-lg);
+                border-top: 1px solid var(--color-border);
+            }
+
+            .article-tags-title {
+                font-family: var(--font-body);
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: var(--color-text-light);
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .article-tags-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: var(--spacing-xs);
+            }
+
+            .article-tag {
+                padding: var(--spacing-xs) var(--spacing-sm);
+                background-color: var(--color-bg-alt);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-sm);
+                font-size: 0.75rem;
+                color: var(--color-text-gray);
+                transition: var(--transition);
+            }
+
+            .article-tag:hover {
+                background-color: var(--color-primary);
+                border-color: var(--color-primary);
+                color: #ffffff;
+            }
+
+            /* Sidebar */
+            .article-sidebar {
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-xl);
+            }
+
+            .sidebar-widget {
+                background-color: var(--color-bg-alt);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-sm);
+                overflow: hidden;
+            }
+
+            .sidebar-widget-title {
+                font-family: var(--font-body);
+                font-size: 0.875rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: var(--color-text);
+                padding: var(--spacing-md);
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .sidebar-widget-content {
+                padding: var(--spacing-md);
+            }
+
+            /* Sidebar Articles */
+            .sidebar-article {
+                display: flex;
+                gap: var(--spacing-sm);
+                padding: var(--spacing-sm) 0;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .sidebar-article:last-child {
+                border-bottom: none;
+            }
+
+            .sidebar-article-image {
+                width: 80px;
+                height: 60px;
+                flex-shrink: 0;
+                overflow: hidden;
+                background-color: var(--color-bg);
+                border-radius: var(--radius-sm);
+            }
+
+            .sidebar-article-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .sidebar-article-content {
+                flex: 1;
+            }
+
+            .sidebar-article-title {
+                font-family: var(--font-body);
+                font-size: 0.8125rem;
+                font-weight: 500;
+                line-height: 1.4;
+                color: var(--color-text);
+            }
+
+            .sidebar-article-time {
+                font-family: var(--font-body);
+                font-size: 0.6875rem;
+                color: var(--color-text-light);
+                margin-top: var(--spacing-xs);
+            }
+
+            /* Sidebar Ad */
+            .sidebar-ad {
+                width: 100%;
+                aspect-ratio: 3 / 5;
+                background-color: var(--color-bg-alt);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-sm);
+            }
+
+            .sidebar-ad img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            /* Newsletter Widget */
+            .newsletter-widget {
+                background: linear-gradient(
+                    135deg,
+                    var(--color-primary) 0%,
+                    var(--color-primary-dark) 100%
+                );
+                color: #ffffff;
+            }
+
+            .newsletter-widget .sidebar-widget-title {
+                color: #ffffff;
+                border-bottom-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .newsletter-widget-content {
+                padding: var(--spacing-md);
+                text-align: center;
+            }
+
+            .newsletter-widget-text {
+                font-size: 0.8125rem;
+                margin-bottom: var(--spacing-md);
+                opacity: 0.9;
+            }
+
+            .newsletter-widget-input {
+                width: 100%;
+                padding: var(--spacing-sm);
+                border: none;
+                border-radius: var(--radius-sm);
+                font-family: var(--font-body);
+                font-size: 0.8125rem;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .newsletter-widget-button {
+                width: 100%;
+                padding: var(--spacing-sm);
+                background-color: var(--color-text);
+                color: #ffffff;
+                border: none;
+                border-radius: var(--radius-sm);
+                font-family: var(--font-body);
+                font-size: 0.8125rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: var(--transition);
+            }
+
+            .newsletter-widget-button:hover {
+                background-color: #000000;
+            }
+
+            /* Related Articles */
+            .related-articles {
+                margin-top: var(--spacing-2xl);
+                padding-top: var(--spacing-xl);
+                border-top: 2px solid var(--color-border);
+            }
+
+            .related-articles-title {
+                font-family: var(--font-display);
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--color-text);
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .related-articles-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--spacing-lg);
+            }
+
+            .related-article-card {
+                background-color: var(--color-bg);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-sm);
+                overflow: hidden;
+                transition: var(--transition);
+            }
+
+            .related-article-card:hover {
+                box-shadow: var(--shadow-md);
+                transform: translateY(-2px);
+            }
+
+            .related-article-image {
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+            }
+
+            .related-article-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .related-article-content {
+                padding: var(--spacing-md);
+            }
+
+            .related-article-category {
+                display: inline-block;
+                padding: var(--spacing-xs) var(--spacing-sm);
+                background-color: var(--color-primary);
+                color: #ffffff;
+                font-size: 0.6875rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .related-article-title {
+                font-family: var(--font-body);
+                font-size: 0.9375rem;
+                font-weight: 600;
+                line-height: 1.4;
+                color: var(--color-text);
+            }
+
+            /* Comments Section */
+            .comments-section {
+                margin-top: var(--spacing-2xl);
+                padding-top: var(--spacing-xl);
+                border-top: 2px solid var(--color-border);
+            }
+
+            .comments-section-title {
+                font-family: var(--font-display);
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: var(--color-text);
+                margin-bottom: var(--spacing-lg);
+            }
+
+            /* Responsive */
+            @media (max-width: 1024px) {
+                .article-content-layout {
+                    grid-template-columns: 1fr 280px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .article-title {
+                    font-size: 1.75rem;
+                }
+
+                .article-subtitle {
+                    font-size: 1rem;
+                }
+
+                .article-content-layout {
+                    grid-template-columns: 1fr;
+                }
+
+                .article-sidebar {
+                    order: 2;
+                }
+
+                .related-articles-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .article-body p:first-of-type::first-letter {
+                    font-size: 3rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-left">
+                    <span id="current-date"></span>
+                    <span class="top-bar-separator">|</span>
+                    <span id="weather-info"
+                        >Rio de Janeiro: 22°C Parcialmente nublado</span
+                    >
+                    <span class="top-bar-separator">|</span>
+                    <span id="usd-rate">USD: R$ 5.07</span>
+                    <span class="top-bar-separator">|</span>
+                    <span id="ibov-rate">IBOV: 135.152</span>
                 </div>
-                <div class="header-info-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                    </svg>
-                    <span id="weather-info">Rio de Janeiro: 22°C Parcialmente nublado</span>
-                </div>
-                <div class="header-info-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                    </svg>
-                    <span>USD: <span id="usd-rate">R$ 5,04</span> <span class="value-stable">↗ 0%</span></span>
-                </div>
-                <div class="header-info-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="20" x2="18" y2="10"></line>
-                        <line x1="12" y1="20" x2="12" y2="4"></line>
-                        <line x1="6" y1="20" x2="6" y2="14"></line>
-                    </svg>
-                    <span>IBOV: <span id="ibov-rate">134.874</span> <span class="value-up">↗ 0,8%</span></span>
-                </div>
-            </div>
-            <div class="header-links">
-                <div class="header-social-icons">
-                    <a href="https://instagram.com" target="_blank" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                <div class="top-bar-right">
+                    <a
+                        href="https://instagram.com"
+                        target="_blank"
+                        class="social-icon"
+                        aria-label="Instagram"
+                    >
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <rect
+                                x="2"
+                                y="2"
+                                width="20"
+                                height="20"
+                                rx="5"
+                                ry="5"
+                            ></rect>
+                            <path
+                                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                                fill="none"
+                                stroke="white"
+                                stroke-width="2"
+                            ></path>
+                            <line
+                                x1="17.5"
+                                y1="6.5"
+                                x2="17.51"
+                                y2="6.5"
+                                stroke="white"
+                                stroke-width="2"
+                            ></line>
                         </svg>
                     </a>
-                    <a href="https://youtube.com" target="_blank" aria-label="YouTube">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path>
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                    <a
+                        href="https://youtube.com"
+                        target="_blank"
+                        class="social-icon"
+                        aria-label="YouTube"
+                    >
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
+                                fill="none"
+                                stroke="white"
+                                stroke-width="2"
+                            ></path>
+                            <polygon
+                                points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+                                fill="white"
+                            ></polygon>
+                        </svg>
+                    </a>
+                    <a
+                        href="#share"
+                        class="social-icon"
+                        aria-label="Compartilhar"
+                    >
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line
+                                x1="8.59"
+                                y1="13.51"
+                                x2="15.42"
+                                y2="17.49"
+                            ></line>
+                            <line
+                                x1="15.41"
+                                y1="6.51"
+                                x2="8.59"
+                                y2="10.49"
+                            ></line>
                         </svg>
                     </a>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- CTA Bar -->
-    <div class="top-bar-cta">
-        <div class="container">
-            <a href="#assinatura" class="cta-button">Cadastre-se</a>
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <a href="index.html">
-                        <h1 class="logo">CM</h1>
-                        <span class="logo-tagline">Há 125 anos Direito e Direito</span>
-                    </a>
-                </div>
-                <div class="search-section">
-                    <div class="search-box">
-                        <input type="text" placeholder="Buscar notícias..." id="search-input" />
-                        <button class="search-btn" aria-label="Buscar">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <path d="m21 21-4.35-4.35"></path>
-                            </svg>
-                        </button>
+        <!-- Header -->
+        <header class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <a href="index.html">
+                            <h1 class="logo">CM</h1>
+                            <span class="logo-tagline"
+                                >Há 125 anos Direito e Direito</span
+                            >
+                        </a>
+                    </div>
+                    <div class="search-section">
+                        <div class="search-box">
+                            <input
+                                type="text"
+                                placeholder="Buscar notícias..."
+                                id="search-input"
+                            />
+                            <button class="search-btn" aria-label="Buscar">
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Main Navigation -->
-    <nav class="main-nav">
-        <div class="container">
-            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="opiniao.html" class="nav-link">Opinião</a></li>
-                <li><a href="politica.html" class="nav-link">Política</a></li>
-                <li><a href="economia.html" class="nav-link">Economia</a></li>
-                <li><a href="justica.html" class="nav-link">Justiça</a></li>
-                <li><a href="brasil.html" class="nav-link">Brasil</a></li>
-                <li><a href="esportes.html" class="nav-link">Esportes</a></li>
-                <li><a href="cultura.html" class="nav-link">Cultura</a></li>
-                <li><a href="noticias.html" class="nav-link">Todas</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Section Bar -->
-    <div class="section-bar">
-        <div class="container">
-            <span class="section-bar-title">Política</span>
-            <span class="section-bar-date" id="article-date">Terça-feira, 3 de fevereiro de 2026</span>
-        </div>
-    </div>
-
-    <!-- Article Content -->
-    <main class="main-content article-page">
-        <div class="container">
-            <!-- Article Header -->
-            <div class="article-header">
-                <span class="article-category politics">Política</span>
-                <h1 class="article-title">[Placeholder] Título Principal da Matéria Aqui</h1>
-                <p class="article-subtitle">[Placeholder] Subtítulo da matéria que fornece contexto adicional sobre o assunto abordado nesta importante notícia.</p>
+        <!-- Main Navigation -->
+        <nav class="main-nav">
+            <div class="container">
+                <button
+                    class="mobile-menu-toggle"
+                    id="mobile-menu-toggle"
+                    aria-label="Menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="opiniao.html" class="nav-link">Opinião</a></li>
+                    <li>
+                        <a href="politica.html" class="nav-link">Política</a>
+                    </li>
+                    <li>
+                        <a href="economia.html" class="nav-link">Economia</a>
+                    </li>
+                    <li><a href="justica.html" class="nav-link">Justiça</a></li>
+                    <li><a href="brasil.html" class="nav-link">Brasil</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#regioes" class="nav-link dropdown-toggle"
+                            >Regiões ▾</a
+                        >
+                        <ul class="dropdown-menu">
+                            <li><a href="brasil.html">Brasil</a></li>
+                            <li>
+                                <a
+                                    href="https://www.correiodamanha.com.br/"
+                                    target="_blank"
+                                    >Rio de Janeiro</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >São Paulo</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >Sul Fluminense</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://correiopetropolitano.com.br/"
+                                    target="_blank"
+                                    >Petrópolis</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.correiodamanhadf.com.br/"
+                                    target="_blank"
+                                    >Distrito Federal</a
+                                >
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="cultura.html" class="nav-link">Cultura</a></li>
+                    <li>
+                        <a href="esportes.html" class="nav-link">Esportes</a>
+                    </li>
+                </ul>
             </div>
+        </nav>
 
-            <!-- Article Media -->
-            <div class="article-media">
-                <div class="article-media-wrapper">
-                    <img src="https://placehold.co/1200x675/e5e5e5/333333?text=Imagem+Principal+da+Notícia" alt="Imagem da notícia" />
-                </div>
-                <div class="article-media-caption">
-                    <div class="article-media-credits">
-                        <span>Foto: Nome do Fotógrafo</span>
-                    </div>
-                    <div class="media-share-buttons">
-                        <button class="media-share-btn" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </button>
-                        <button class="media-share-btn" aria-label="Twitter">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                            </svg>
-                        </button>
-                        <button class="media-share-btn" aria-label="WhatsApp">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                            </svg>
-                        </button>
-                        <button class="media-share-btn" aria-label="Compartilhar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="18" cy="5" r="3"></circle>
-                                <circle cx="6" cy="12" r="3"></circle>
-                                <circle cx="18" cy="19" r="3"></circle>
-                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Article Meta -->
-            <div class="article-meta">
-                <div class="article-author">
-                    <div class="article-author-avatar">
-                        <img src="https://placehold.co/100x100/e5e5e5/333333?text=Foto" alt="Autor" />
-                    </div>
-                    <div class="article-author-info">
-                        <span class="article-author-name">Por [Nome do Autor]</span>
-                        <span class="article-author-role">Jornalista</span>
-                    </div>
-                </div>
-                <div class="article-publish-info">
-                    <span class="article-date">03/02/2026</span>
-                    <span class="article-time">Atualizado há 2 horas</span>
-                </div>
-            </div>
-
-            <!-- Article Content Layout -->
-            <div class="article-content-layout">
-                <!-- Article Body -->
-                <article class="article-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <strong>Excepteur sint occaecat cupidatat non proident</strong>, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                    <blockquote>
-                        "Es una de las grandes transformaciones estructurales de este país y vamos a asegurarnos de que sea un bien común para todos los ciudadanos."
-                    </blockquote>
-
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
-                    <figure class="article-inline-media">
-                        <img src="https://placehold.co/800x450/e5e5e5/333333?text=Imagem+Secundária" alt="Imagem secundária" />
-                        <figcaption>Legenda da imagem secundária que ilustra o conteúdo abordado no texto.</figcaption>
-                    </figure>
-
-                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
-
-                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-
-                    <!-- Article Tags -->
-                    <div class="article-tags">
-                        <div class="article-tags-title">Tags</div>
-                        <div class="article-tags-list">
-                            <a href="#" class="article-tag">política</a>
-                            <a href="#" class="article-tag">governo</a>
-                            <a href="#" class="article-tag">legislação</a>
-                            <a href="#" class="article-tag">congresso</a>
-                            <a href="#" class="article-tag">nacional</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Sidebar -->
-                <aside class="article-sidebar">
-                    <!-- Newsletter Widget -->
-                    <div class="sidebar-widget newsletter-widget">
-                        <div class="sidebar-widget-title">Newsletter</div>
-                        <div class="newsletter-widget-content">
-                            <p class="newsletter-widget-text">Receba as principais notícias do dia no seu e-mail.</p>
-                            <input type="email" class="newsletter-widget-input" placeholder="Seu e-mail" />
-                            <button class="newsletter-widget-button">Inscrever-se</button>
-                        </div>
-                    </div>
-
-                    <!-- Most Read -->
-                    <div class="sidebar-widget">
-                        <div class="sidebar-widget-title">Mais Lidas</div>
-                        <div class="sidebar-widget-content">
-                            <article class="sidebar-article">
-                                <div class="sidebar-article-image">
-                                    <img src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia" alt="Notícia" />
-                                </div>
-                                <div class="sidebar-article-content">
-                                    <h4 class="sidebar-article-title">[Placeholder] Título da matéria mais lida</h4>
-                                    <span class="sidebar-article-time">Há 2 horas</span>
-                                </div>
-                            </article>
-                            <article class="sidebar-article">
-                                <div class="sidebar-article-image">
-                                    <img src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia" alt="Notícia" />
-                                </div>
-                                <div class="sidebar-article-content">
-                                    <h4 class="sidebar-article-title">[Placeholder] Segunda matéria mais acessada</h4>
-                                    <span class="sidebar-article-time">Há 4 horas</span>
-                                </div>
-                            </article>
-                            <article class="sidebar-article">
-                                <div class="sidebar-article-image">
-                                    <img src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia" alt="Notícia" />
-                                </div>
-                                <div class="sidebar-article-content">
-                                    <h4 class="sidebar-article-title">[Placeholder] Terceira matéria em destaque</h4>
-                                    <span class="sidebar-article-time">Há 6 horas</span>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar Ad -->
-                    <div class="sidebar-ad">
-                        <img src="https://placehold.co/300x500/f0f0f0/999999?text=Anúncio" alt="Espaço publicitário" />
-                    </div>
-                </aside>
-            </div>
-
-            <!-- Related Articles -->
-            <section class="related-articles">
-                <h2 class="related-articles-title">Matérias Relacionadas</h2>
-                <div class="related-articles-grid">
-                    <a href="noticia.html" class="related-article-card">
-                        <div class="related-article-image">
-                            <img src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+1" alt="Notícia relacionada" />
-                        </div>
-                        <div class="related-article-content">
-                            <span class="related-article-category politics">Política</span>
-                            <h4 class="related-article-title">[Placeholder] Título da matéria relacionada</h4>
-                        </div>
-                    </a>
-                    <a href="noticia.html" class="related-article-card">
-                        <div class="related-article-image">
-                            <img src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+2" alt="Notícia relacionada" />
-                        </div>
-                        <div class="related-article-content">
-                            <span class="related-article-category economy">Economia</span>
-                            <h4 class="related-article-title">[Placeholder] Outra matéria relacionada ao tema</h4>
-                        </div>
-                    </a>
-                    <a href="noticia.html" class="related-article-card">
-                        <div class="related-article-image">
-                            <img src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+3" alt="Notícia relacionada" />
-                        </div>
-                        <div class="related-article-content">
-                            <span class="related-article-category justice">Justiça</span>
-                            <h4 class="related-article-title">[Placeholder] Terceira matéria sobre o assunto</h4>
-                        </div>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Comments Section -->
-            <section class="comments-section">
-                <h2 class="comments-section-title">Comentários</h2>
-                <p style="color: var(--color-text-gray);">Os comentários estão desabilitados nesta matéria.</p>
-            </section>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3 class="footer-title">PORTAL CM</h3>
-                    <p class="footer-text">Há 125 anos defendendo os direitos dos funcionários públicos e do cidadão brasileiro.</p>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-heading">Editorias</h4>
-                    <ul class="footer-links">
-                        <li><a href="politica.html">Política</a></li>
-                        <li><a href="economia.html">Economia</a></li>
-                        <li><a href="justica.html">Justiça</a></li>
-                        <li><a href="brasil.html">Brasil</a></li>
-                        <li><a href="esportes.html">Esportes</a></li>
-                        <li><a href="cultura.html">Cultura</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-heading">Institucional</h4>
-                    <ul class="footer-links">
-                        <li><a href="#sobre">Sobre nós</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                        <li><a href="#privacidade">Política de Privacidade</a></li>
-                        <li><a href="#termos">Termos de Uso</a></li>
-                        <li><a href="#anuncie">Anuncie</a></li>
-                    </ul>
-                </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 CM. Todos os direitos reservados.</p>
+        <!-- Section Bar -->
+        <div class="section-bar">
+            <div class="container">
+                <span class="section-bar-title">Política</span>
+                <span class="section-bar-date" id="article-date"
+                    >Terça-feira, 3 de fevereiro de 2026</span
+                >
             </div>
         </div>
-    </footer>
 
-    <script src="js/main.js"></script>
-</body>
+        <!-- Article Content -->
+        <main class="main-content article-page">
+            <div class="container">
+                <!-- Article Header -->
+                <div class="article-header">
+                    <span class="article-category politics">Política</span>
+                    <h1 class="article-title">
+                        [Placeholder] Título Principal da Matéria Aqui
+                    </h1>
+                    <p class="article-subtitle">
+                        [Placeholder] Subtítulo da matéria que fornece contexto
+                        adicional sobre o assunto abordado nesta importante
+                        notícia.
+                    </p>
+                </div>
+
+                <!-- Article Media -->
+                <div class="article-media">
+                    <div class="article-media-wrapper">
+                        <img
+                            src="https://placehold.co/1200x675/e5e5e5/333333?text=Imagem+Principal+da+Notícia"
+                            alt="Imagem da notícia"
+                        />
+                    </div>
+                    <div class="article-media-caption">
+                        <div class="article-media-credits">
+                            <span>Foto: Nome do Fotógrafo</span>
+                        </div>
+                        <div class="media-share-buttons">
+                            <button
+                                class="media-share-btn"
+                                aria-label="Facebook"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                                    ></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="media-share-btn"
+                                aria-label="Twitter"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+                                    ></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="media-share-btn"
+                                aria-label="WhatsApp"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                                    ></path>
+                                </svg>
+                            </button>
+                            <button
+                                class="media-share-btn"
+                                aria-label="Compartilhar"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <circle cx="18" cy="5" r="3"></circle>
+                                    <circle cx="6" cy="12" r="3"></circle>
+                                    <circle cx="18" cy="19" r="3"></circle>
+                                    <line
+                                        x1="8.59"
+                                        y1="13.51"
+                                        x2="15.42"
+                                        y2="17.49"
+                                    ></line>
+                                    <line
+                                        x1="15.41"
+                                        y1="6.51"
+                                        x2="8.59"
+                                        y2="10.49"
+                                    ></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article Meta -->
+                <div class="article-meta">
+                    <div class="article-author">
+                        <div class="article-author-avatar">
+                            <img
+                                src="https://placehold.co/100x100/e5e5e5/333333?text=Foto"
+                                alt="Autor"
+                            />
+                        </div>
+                        <div class="article-author-info">
+                            <span class="article-author-name"
+                                >Por [Nome do Autor]</span
+                            >
+                            <span class="article-author-role">Jornalista</span>
+                        </div>
+                    </div>
+                    <div class="article-publish-info">
+                        <span class="article-date">03/02/2026</span>
+                        <span class="article-time">Atualizado há 2 horas</span>
+                    </div>
+                </div>
+
+                <!-- Article Content Layout -->
+                <div class="article-content-layout">
+                    <!-- Article Body -->
+                    <article class="article-body">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                        </p>
+
+                        <p>
+                            Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur.
+                            <strong
+                                >Excepteur sint occaecat cupidatat non
+                                proident</strong
+                            >, sunt in culpa qui officia deserunt mollit anim id
+                            est laborum.
+                        </p>
+
+                        <blockquote>
+                            "Es una de las grandes transformaciones
+                            estructurales de este país y vamos a asegurarnos de
+                            que sea un bien común para todos los ciudadanos."
+                        </blockquote>
+
+                        <p>
+                            Sed ut perspiciatis unde omnis iste natus error sit
+                            voluptatem accusantium doloremque laudantium, totam
+                            rem aperiam, eaque ipsa quae ab illo inventore
+                            veritatis et quasi architecto beatae vitae dicta
+                            sunt explicabo.
+                        </p>
+
+                        <figure class="article-inline-media">
+                            <img
+                                src="https://placehold.co/800x450/e5e5e5/333333?text=Imagem+Secundária"
+                                alt="Imagem secundária"
+                            />
+                            <figcaption>
+                                Legenda da imagem secundária que ilustra o
+                                conteúdo abordado no texto.
+                            </figcaption>
+                        </figure>
+
+                        <p>
+                            Nemo enim ipsam voluptatem quia voluptas sit
+                            aspernatur aut odit aut fugit, sed quia consequuntur
+                            magni dolores eos qui ratione voluptatem sequi
+                            nesciunt. Neque porro quisquam est, qui dolorem
+                            ipsum quia dolor sit amet.
+                        </p>
+
+                        <p>
+                            Ut enim ad minima veniam, quis nostrum
+                            exercitationem ullam corporis suscipit laboriosam,
+                            nisi ut aliquid ex ea commodi consequatur? Quis
+                            autem vel eum iure reprehenderit qui in ea voluptate
+                            velit esse quam nihil molestiae consequatur.
+                        </p>
+
+                        <p>
+                            At vero eos et accusamus et iusto odio dignissimos
+                            ducimus qui blanditiis praesentium voluptatum
+                            deleniti atque corrupti quos dolores et quas
+                            molestias excepturi sint occaecati cupiditate non
+                            provident.
+                        </p>
+
+                        <!-- Article Tags -->
+                        <div class="article-tags">
+                            <div class="article-tags-title">Tags</div>
+                            <div class="article-tags-list">
+                                <a href="#" class="article-tag">política</a>
+                                <a href="#" class="article-tag">governo</a>
+                                <a href="#" class="article-tag">legislação</a>
+                                <a href="#" class="article-tag">congresso</a>
+                                <a href="#" class="article-tag">nacional</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    <aside class="article-sidebar">
+                        <!-- Newsletter Widget -->
+                        <div class="sidebar-widget newsletter-widget">
+                            <div class="sidebar-widget-title">Newsletter</div>
+                            <div class="newsletter-widget-content">
+                                <p class="newsletter-widget-text">
+                                    Receba as principais notícias do dia no seu
+                                    e-mail.
+                                </p>
+                                <input
+                                    type="email"
+                                    class="newsletter-widget-input"
+                                    placeholder="Seu e-mail"
+                                />
+                                <button class="newsletter-widget-button">
+                                    Inscrever-se
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Most Read -->
+                        <div class="sidebar-widget">
+                            <div class="sidebar-widget-title">Mais Lidas</div>
+                            <div class="sidebar-widget-content">
+                                <article class="sidebar-article">
+                                    <div class="sidebar-article-image">
+                                        <img
+                                            src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia"
+                                            alt="Notícia"
+                                        />
+                                    </div>
+                                    <div class="sidebar-article-content">
+                                        <h4 class="sidebar-article-title">
+                                            [Placeholder] Título da matéria mais
+                                            lida
+                                        </h4>
+                                        <span class="sidebar-article-time"
+                                            >Há 2 horas</span
+                                        >
+                                    </div>
+                                </article>
+                                <article class="sidebar-article">
+                                    <div class="sidebar-article-image">
+                                        <img
+                                            src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia"
+                                            alt="Notícia"
+                                        />
+                                    </div>
+                                    <div class="sidebar-article-content">
+                                        <h4 class="sidebar-article-title">
+                                            [Placeholder] Segunda matéria mais
+                                            acessada
+                                        </h4>
+                                        <span class="sidebar-article-time"
+                                            >Há 4 horas</span
+                                        >
+                                    </div>
+                                </article>
+                                <article class="sidebar-article">
+                                    <div class="sidebar-article-image">
+                                        <img
+                                            src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia"
+                                            alt="Notícia"
+                                        />
+                                    </div>
+                                    <div class="sidebar-article-content">
+                                        <h4 class="sidebar-article-title">
+                                            [Placeholder] Terceira matéria em
+                                            destaque
+                                        </h4>
+                                        <span class="sidebar-article-time"
+                                            >Há 6 horas</span
+                                        >
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar Ad -->
+                        <div class="sidebar-ad">
+                            <img
+                                src="https://placehold.co/300x500/f0f0f0/999999?text=Anúncio"
+                                alt="Espaço publicitário"
+                            />
+                        </div>
+                    </aside>
+                </div>
+
+                <!-- Related Articles -->
+                <section class="related-articles">
+                    <h2 class="related-articles-title">
+                        Matérias Relacionadas
+                    </h2>
+                    <div class="related-articles-grid">
+                        <a href="noticia.html" class="related-article-card">
+                            <div class="related-article-image">
+                                <img
+                                    src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+1"
+                                    alt="Notícia relacionada"
+                                />
+                            </div>
+                            <div class="related-article-content">
+                                <span class="related-article-category politics"
+                                    >Política</span
+                                >
+                                <h4 class="related-article-title">
+                                    [Placeholder] Título da matéria relacionada
+                                </h4>
+                            </div>
+                        </a>
+                        <a href="noticia.html" class="related-article-card">
+                            <div class="related-article-image">
+                                <img
+                                    src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+2"
+                                    alt="Notícia relacionada"
+                                />
+                            </div>
+                            <div class="related-article-content">
+                                <span class="related-article-category economy"
+                                    >Economia</span
+                                >
+                                <h4 class="related-article-title">
+                                    [Placeholder] Outra matéria relacionada ao
+                                    tema
+                                </h4>
+                            </div>
+                        </a>
+                        <a href="noticia.html" class="related-article-card">
+                            <div class="related-article-image">
+                                <img
+                                    src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+3"
+                                    alt="Notícia relacionada"
+                                />
+                            </div>
+                            <div class="related-article-content">
+                                <span class="related-article-category justice"
+                                    >Justiça</span
+                                >
+                                <h4 class="related-article-title">
+                                    [Placeholder] Terceira matéria sobre o
+                                    assunto
+                                </h4>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Comments Section -->
+                <section class="comments-section">
+                    <h2 class="comments-section-title">Comentários</h2>
+                    <p style="color: var(--color-text-gray)">
+                        Os comentários estão desabilitados nesta matéria.
+                    </p>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h4 class="footer-title">Sobre</h4>
+                        <ul class="footer-links">
+                            <li><a href="#sobre">Quem somos</a></li>
+                            <li><a href="#expediente">Expediente</a></li>
+                            <li>
+                                <a href="#privacidade"
+                                    >Política de Privacidade</a
+                                >
+                            </li>
+                            <li><a href="#termos">Termos de Uso</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Editorias</h4>
+                        <ul class="footer-links">
+                            <li><a href="opiniao.html">Opinião</a></li>
+                            <li><a href="politica.html">Política</a></li>
+                            <li><a href="economia.html">Economia</a></li>
+                            <li><a href="justica.html">Justiça</a></li>
+                            <li><a href="esportes.html">Esportes</a></li>
+                            <li><a href="cultura.html">Cultura</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Portais Regionais</h4>
+                        <ul class="footer-links">
+                            <li>
+                                <a
+                                    href="https://www.correiodamanha.com.br/"
+                                    target="_blank"
+                                    >Portal CM RJ</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Portal CM SP</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >Correio Sul Fluminense</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://correiopetropolitano.com.br/"
+                                    target="_blank"
+                                    >Correio Petropolitano</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.correiodamanhadf.com.br/"
+                                    target="_blank"
+                                    >Portal CM DF</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Contato</h4>
+                        <ul class="footer-links">
+                            <li><a href="#contato">Fale conosco</a></li>
+                            <li><a href="#trabalhe">Trabalhe conosco</a></li>
+                            <li><a href="#anuncie">Anuncie</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-logo">PORTAL CM</div>
+                    <p>&copy; 2026 Portal CM. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+    </body>
 </html>

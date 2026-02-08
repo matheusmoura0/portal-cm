@@ -7,7 +7,7 @@
             name="description"
             content="Leia a matéria completa no portal CM"
         />
-        <title>[Título da Notícia] | portal CM</title>
+        <title id="page-title">[Título da Notícia] | portal CM</title>
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -69,23 +69,18 @@
             .article-category.politics {
                 background-color: var(--color-politics);
             }
-
             .article-category.economy {
                 background-color: var(--color-economy);
             }
-
             .article-category.sports {
                 background-color: var(--color-sports);
             }
-
             .article-category.culture {
                 background-color: var(--color-culture);
             }
-
             .article-category.justice {
                 background-color: var(--color-justice);
             }
-
             .article-category.brasil {
                 background-color: var(--color-brasil);
             }
@@ -237,7 +232,6 @@
                 font-size: 0.8125rem;
                 color: var(--color-text-gray);
             }
-
             .article-time {
                 font-family: var(--font-body);
                 font-size: 0.75rem;
@@ -262,7 +256,6 @@
             .article-body p {
                 margin-bottom: var(--spacing-lg);
             }
-
             .article-body p:first-of-type::first-letter {
                 font-size: 4rem;
                 float: left;
@@ -275,17 +268,13 @@
             .article-body a {
                 color: var(--color-primary);
                 text-decoration: underline;
-                transition: var(--transition);
             }
-
             .article-body a:hover {
                 color: var(--color-primary-dark);
             }
-
             .article-body strong {
                 font-weight: 700;
             }
-
             .article-body em {
                 font-style: italic;
             }
@@ -301,7 +290,7 @@
                 line-height: 1.6;
             }
 
-            .article-body blockquote politics {
+            .article-body blockquote.politics {
                 border-left-color: var(--color-politics);
             }
 
@@ -309,13 +298,11 @@
             .article-inline-media {
                 margin: var(--spacing-xl) 0;
             }
-
             .article-inline-media img {
                 width: 100%;
                 height: auto;
                 border-radius: var(--radius-sm);
             }
-
             .article-inline-media figcaption {
                 font-family: var(--font-body);
                 font-size: 0.8125rem;
@@ -397,7 +384,6 @@
                 padding: var(--spacing-sm) 0;
                 border-bottom: 1px solid var(--color-border);
             }
-
             .sidebar-article:last-child {
                 border-bottom: none;
             }
@@ -591,6 +577,33 @@
                 margin-bottom: var(--spacing-lg);
             }
 
+            /* Loading State */
+            .loading-state {
+                display: none;
+            }
+            .loading-state.active {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 40px 0;
+            }
+            .loading-spinner {
+                width: 40px;
+                height: 40px;
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid var(--color-primary);
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+            }
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
             /* Responsive */
             @media (max-width: 1024px) {
                 .article-content-layout {
@@ -602,23 +615,18 @@
                 .article-title {
                     font-size: 1.75rem;
                 }
-
                 .article-subtitle {
                     font-size: 1rem;
                 }
-
                 .article-content-layout {
                     grid-template-columns: 1fr;
                 }
-
                 .article-sidebar {
                     order: 2;
                 }
-
                 .related-articles-grid {
                     grid-template-columns: 1fr;
                 }
-
                 .article-body p:first-of-type::first-letter {
                     font-size: 3rem;
                 }
@@ -849,26 +857,38 @@
         <!-- Section Bar -->
         <div class="section-bar">
             <div class="container">
-                <span class="section-bar-title">Política</span>
+                <span class="section-bar-title" id="section-category"
+                    >Política</span
+                >
                 <span class="section-bar-date" id="article-date"
                     >Terça-feira, 3 de fevereiro de 2026</span
                 >
             </div>
         </div>
 
+        <!-- Loading State -->
+        <div class="loading-state" id="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Carregando matéria...</p>
+        </div>
+
         <!-- Article Content -->
-        <main class="main-content article-page">
+        <main
+            class="main-content article-page"
+            id="article-content"
+            style="display: none"
+        >
             <div class="container">
                 <!-- Article Header -->
                 <div class="article-header">
-                    <span class="article-category politics">Política</span>
-                    <h1 class="article-title">
-                        [Placeholder] Título Principal da Matéria Aqui
+                    <span class="article-category" id="article-category"
+                        >Política</span
+                    >
+                    <h1 class="article-title" id="article-title">
+                        [Título Principal da Matéria]
                     </h1>
-                    <p class="article-subtitle">
-                        [Placeholder] Subtítulo da matéria que fornece contexto
-                        adicional sobre o assunto abordado nesta importante
-                        notícia.
+                    <p class="article-subtitle" id="article-subtitle">
+                        [Subtítulo da matéria]
                     </p>
                 </div>
 
@@ -876,18 +896,22 @@
                 <div class="article-media">
                     <div class="article-media-wrapper">
                         <img
-                            src="https://placehold.co/1200x675/e5e5e5/333333?text=Imagem+Principal+da+Notícia"
+                            id="article-image"
+                            src=""
                             alt="Imagem da notícia"
                         />
                     </div>
                     <div class="article-media-caption">
                         <div class="article-media-credits">
-                            <span>Foto: Nome do Fotógrafo</span>
+                            <span id="article-image-credits"
+                                >Foto: Nome do Fotógrafo</span
+                            >
                         </div>
                         <div class="media-share-buttons">
                             <button
                                 class="media-share-btn"
                                 aria-label="Facebook"
+                                onclick="shareFacebook()"
                             >
                                 <svg
                                     viewBox="0 0 24 24"
@@ -903,6 +927,7 @@
                             <button
                                 class="media-share-btn"
                                 aria-label="Twitter"
+                                onclick="shareTwitter()"
                             >
                                 <svg
                                     viewBox="0 0 24 24"
@@ -918,6 +943,7 @@
                             <button
                                 class="media-share-btn"
                                 aria-label="WhatsApp"
+                                onclick="shareWhatsApp()"
                             >
                                 <svg
                                     viewBox="0 0 24 24"
@@ -926,35 +952,8 @@
                                     stroke-width="2"
                                 >
                                     <path
-                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
                                     ></path>
-                                </svg>
-                            </button>
-                            <button
-                                class="media-share-btn"
-                                aria-label="Compartilhar"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <circle cx="18" cy="5" r="3"></circle>
-                                    <circle cx="6" cy="12" r="3"></circle>
-                                    <circle cx="18" cy="19" r="3"></circle>
-                                    <line
-                                        x1="8.59"
-                                        y1="13.51"
-                                        x2="15.42"
-                                        y2="17.49"
-                                    ></line>
-                                    <line
-                                        x1="15.41"
-                                        y1="6.51"
-                                        x2="8.59"
-                                        y2="10.49"
-                                    ></line>
                                 </svg>
                             </button>
                         </div>
@@ -966,105 +965,39 @@
                     <div class="article-author">
                         <div class="article-author-avatar">
                             <img
-                                src="https://placehold.co/100x100/e5e5e5/333333?text=Foto"
+                                id="article-author-avatar"
+                                src=""
                                 alt="Autor"
                             />
                         </div>
                         <div class="article-author-info">
-                            <span class="article-author-name"
+                            <span
+                                class="article-author-name"
+                                id="article-author-name"
                                 >Por [Nome do Autor]</span
                             >
-                            <span class="article-author-role">Jornalista</span>
+                            <span
+                                class="article-author-role"
+                                id="article-author-role"
+                                >Jornalista</span
+                            >
                         </div>
                     </div>
                     <div class="article-publish-info">
-                        <span class="article-date">03/02/2026</span>
-                        <span class="article-time">Atualizado há 2 horas</span>
+                        <span class="article-date" id="article-date-full"
+                            >03/02/2026</span
+                        >
+                        <span class="article-time" id="article-time"
+                            >Atualizado há 2 horas</span
+                        >
                     </div>
                 </div>
 
                 <!-- Article Content Layout -->
                 <div class="article-content-layout">
                     <!-- Article Body -->
-                    <article class="article-body">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat.
-                        </p>
-
-                        <p>
-                            Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur.
-                            <strong
-                                >Excepteur sint occaecat cupidatat non
-                                proident</strong
-                            >, sunt in culpa qui officia deserunt mollit anim id
-                            est laborum.
-                        </p>
-
-                        <blockquote>
-                            "Es una de las grandes transformaciones
-                            estructurales de este país y vamos a asegurarnos de
-                            que sea un bien común para todos los ciudadanos."
-                        </blockquote>
-
-                        <p>
-                            Sed ut perspiciatis unde omnis iste natus error sit
-                            voluptatem accusantium doloremque laudantium, totam
-                            rem aperiam, eaque ipsa quae ab illo inventore
-                            veritatis et quasi architecto beatae vitae dicta
-                            sunt explicabo.
-                        </p>
-
-                        <figure class="article-inline-media">
-                            <img
-                                src="https://placehold.co/800x450/e5e5e5/333333?text=Imagem+Secundária"
-                                alt="Imagem secundária"
-                            />
-                            <figcaption>
-                                Legenda da imagem secundária que ilustra o
-                                conteúdo abordado no texto.
-                            </figcaption>
-                        </figure>
-
-                        <p>
-                            Nemo enim ipsam voluptatem quia voluptas sit
-                            aspernatur aut odit aut fugit, sed quia consequuntur
-                            magni dolores eos qui ratione voluptatem sequi
-                            nesciunt. Neque porro quisquam est, qui dolorem
-                            ipsum quia dolor sit amet.
-                        </p>
-
-                        <p>
-                            Ut enim ad minima veniam, quis nostrum
-                            exercitationem ullam corporis suscipit laboriosam,
-                            nisi ut aliquid ex ea commodi consequatur? Quis
-                            autem vel eum iure reprehenderit qui in ea voluptate
-                            velit esse quam nihil molestiae consequatur.
-                        </p>
-
-                        <p>
-                            At vero eos et accusamus et iusto odio dignissimos
-                            ducimus qui blanditiis praesentium voluptatum
-                            deleniti atque corrupti quos dolores et quas
-                            molestias excepturi sint occaecati cupiditate non
-                            provident.
-                        </p>
-
-                        <!-- Article Tags -->
-                        <div class="article-tags">
-                            <div class="article-tags-title">Tags</div>
-                            <div class="article-tags-list">
-                                <a href="#" class="article-tag">política</a>
-                                <a href="#" class="article-tag">governo</a>
-                                <a href="#" class="article-tag">legislação</a>
-                                <a href="#" class="article-tag">congresso</a>
-                                <a href="#" class="article-tag">nacional</a>
-                            </div>
-                        </div>
+                    <article class="article-body" id="article-body">
+                        <p id="article-lead">Carregando conteúdo...</p>
                     </article>
 
                     <!-- Sidebar -->
@@ -1072,7 +1005,7 @@
                         <!-- Newsletter Widget -->
                         <div class="sidebar-widget newsletter-widget">
                             <div class="sidebar-widget-title">Newsletter</div>
-                            <div class="newsletter-widget-content">
+                            <div class="sidebar-widget-content">
                                 <p class="newsletter-widget-text">
                                     Receba as principais notícias do dia no seu
                                     e-mail.
@@ -1095,14 +1028,15 @@
                                 <article class="sidebar-article">
                                     <div class="sidebar-article-image">
                                         <img
-                                            src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia"
+                                            src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1__d6a0062__1_-496992.jpg"
                                             alt="Notícia"
                                         />
                                     </div>
                                     <div class="sidebar-article-content">
                                         <h4 class="sidebar-article-title">
-                                            [Placeholder] Título da matéria mais
-                                            lida
+                                            Castro e Lewandowski criam
+                                            escritório de combate ao crime
+                                            organizado
                                         </h4>
                                         <span class="sidebar-article-time"
                                             >Há 2 horas</span
@@ -1112,34 +1046,34 @@
                                 <article class="sidebar-article">
                                     <div class="sidebar-article-image">
                                         <img
-                                            src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia"
+                                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Nunes-rejeita-alianca-entre-MDB-e-PT-em-2026.jpg"
                                             alt="Notícia"
                                         />
                                     </div>
                                     <div class="sidebar-article-content">
                                         <h4 class="sidebar-article-title">
-                                            [Placeholder] Segunda matéria mais
-                                            acessada
+                                            Nunes rejeita aliança entre MDB e PT
+                                            em 2026
                                         </h4>
                                         <span class="sidebar-article-time"
-                                            >Há 4 horas</span
+                                            >Há 5 horas</span
                                         >
                                     </div>
                                 </article>
                                 <article class="sidebar-article">
                                     <div class="sidebar-article-image">
                                         <img
-                                            src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia"
+                                            src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_megaoperacao-497151.jpg"
                                             alt="Notícia"
                                         />
                                     </div>
                                     <div class="sidebar-article-content">
                                         <h4 class="sidebar-article-title">
-                                            [Placeholder] Terceira matéria em
-                                            destaque
+                                            O estado do Rio resolveu agir
+                                            sozinho contra o crime organizado
                                         </h4>
                                         <span class="sidebar-article-time"
-                                            >Há 6 horas</span
+                                            >Há 10 horas</span
                                         >
                                     </div>
                                 </article>
@@ -1161,11 +1095,14 @@
                     <h2 class="related-articles-title">
                         Matérias Relacionadas
                     </h2>
-                    <div class="related-articles-grid">
+                    <div
+                        class="related-articles-grid"
+                        id="related-articles-grid"
+                    >
                         <a href="noticia.html" class="related-article-card">
                             <div class="related-article-image">
                                 <img
-                                    src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+1"
+                                    src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_cartuhcos-496992.jpg"
                                     alt="Notícia relacionada"
                                 />
                             </div>
@@ -1174,14 +1111,14 @@
                                     >Política</span
                                 >
                                 <h4 class="related-article-title">
-                                    [Placeholder] Título da matéria relacionada
+                                    O Governo perdeu. O crime venceu
                                 </h4>
                             </div>
                         </a>
                         <a href="noticia.html" class="related-article-card">
                             <div class="related-article-image">
                                 <img
-                                    src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+2"
+                                    src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-exonera-aliados-de-Derrite.jpg"
                                     alt="Notícia relacionada"
                                 />
                             </div>
@@ -1190,25 +1127,25 @@
                                     >Economia</span
                                 >
                                 <h4 class="related-article-title">
-                                    [Placeholder] Outra matéria relacionada ao
-                                    tema
+                                    Tarcísio exonera aliados de Derrite e
+                                    redesenha cúpulas
                                 </h4>
                             </div>
                         </a>
                         <a href="noticia.html" class="related-article-card">
                             <div class="related-article-image">
                                 <img
-                                    src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+3"
+                                    src="https://correiosulfluminense.com.br/wp-content/uploads/2025/01/73093.jpg"
                                     alt="Notícia relacionada"
                                 />
                             </div>
                             <div class="related-article-content">
-                                <span class="related-article-category justice"
-                                    >Justiça</span
+                                <span class="related-article-category brasil"
+                                    >Brasil</span
                                 >
                                 <h4 class="related-article-title">
-                                    [Placeholder] Terceira matéria sobre o
-                                    assunto
+                                    Volta Redonda investe em educação no
+                                    trânsito
                                 </h4>
                             </div>
                         </a>
@@ -1297,18 +1234,154 @@
                         <h4 class="footer-title">Contato</h4>
                         <ul class="footer-links">
                             <li><a href="#contato">Fale conosco</a></li>
-                            <li><a href="#trabalhe">Trabalhe conosco</a></li>
+                            <li><a href="#trabalho">Trabalhe conosco</a></li>
                             <li><a href="#anuncie">Anuncie</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="footer-bottom">
                     <div class="footer-logo">PORTAL CM</div>
-                    <p>&copy; 2026 Portal CM. Todos os direitos reservados.</p>
+                    <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
                 </div>
             </div>
         </footer>
 
         <script src="js/main.js"></script>
+        <script>
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get("category") || "Política";
+            const title = urlParams.get("title") || "Título da Notícia";
+            const subtitle = urlParams.get("subtitle") || "";
+            const image = urlParams.get("image") || "";
+            const author = urlParams.get("author") || "Correio da Manhã";
+            const authorRole = urlParams.get("authorRole") || "Jornalista";
+            const authorAvatar = urlParams.get("authorAvatar") || "";
+            const dateStr = urlParams.get("date") || "";
+            const time = urlParams.get("time") || "Há 2 horas";
+            const body = urlParams.get("body") || "";
+            const link = urlParams.get("link") || "";
+
+            // Category colors mapping
+            const categoryColors = {
+                Política: "politics",
+                Economia: "economy",
+                Esportes: "sports",
+                Cultura: "culture",
+                Justiça: "justice",
+                Brasil: "brasil",
+            };
+
+            // Update page elements
+            document.title = `${title} | portal CM`;
+
+            const categoryElement = document.getElementById("article-category");
+            categoryElement.textContent = category;
+            categoryElement.className = `article-category ${categoryColors[category] || "politics"}`;
+
+            document.getElementById("section-category").textContent = category;
+            document.getElementById("article-title").textContent = title;
+
+            const subtitleElement = document.getElementById("article-subtitle");
+            if (subtitle) {
+                subtitleElement.textContent = subtitle;
+                subtitleElement.style.display = "block";
+            } else {
+                subtitleElement.style.display = "none";
+            }
+
+            if (image) {
+                document.getElementById("article-image").src = image;
+            }
+
+            if (authorAvatar) {
+                document.getElementById("article-author-avatar").src =
+                    authorAvatar;
+            }
+
+            document.getElementById("article-author-name").textContent =
+                `Por ${author}`;
+            document.getElementById("article-author-role").textContent =
+                authorRole;
+
+            if (dateStr) {
+                const date = new Date(dateStr);
+                const options = {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                };
+                const formattedDate = date.toLocaleDateString("pt-BR", options);
+                document.getElementById("article-date").textContent =
+                    formattedDate;
+                document.getElementById("article-date-full").textContent =
+                    formattedDate;
+            }
+
+            document.getElementById("article-time").textContent = time;
+
+            // Article body
+            const articleBody = document.getElementById("article-body");
+            if (body) {
+                const paragraphs = body.split("\\n\\n");
+                articleBody.innerHTML = paragraphs
+                    .map((p) => `<p>${p}</p>`)
+                    .join("");
+            }
+
+            // Hide loading state and show content
+            document.getElementById("loading-state").style.display = "none";
+            document.getElementById("article-content").style.display = "block";
+
+            // Update share buttons
+            const currentUrl = window.location.href;
+            const encodedTitle = encodeURIComponent(title);
+
+            window.shareFacebook = function () {
+                window.open(
+                    `https://www.facebook.com/sharer/sharer.php?u=${encodedTitle}`,
+                    "_blank",
+                );
+            };
+
+            window.shareTwitter = function () {
+                window.open(
+                    `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodeURIComponent(currentUrl)}`,
+                    "_blank",
+                );
+            };
+
+            window.shareWhatsApp = function () {
+                const text = `${title} - ${currentUrl}`;
+                window.open(
+                    `https://wa.me/?text=${encodeURIComponent(text)}`,
+                    "_blank",
+                );
+            };
+
+            // Add link back to original article if external link provided
+            if (link && link !== "noticia.html") {
+                const sourceLink = document.createElement("a");
+                sourceLink.href = link;
+                sourceLink.target = "_blank";
+                sourceLink.className = "source-link";
+                sourceLink.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l-3-3a5 5 0 0 0-7.07 7.07l1.71-1.71"></path><line x1="15" y1="9" x2="20" y2="9"></line><line x1="4" y1="9" x2="9" y2="9"></line></svg> Ler matéria original`;
+                sourceLink.style.css =
+                    "display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; color: var(--color-primary); text-decoration: none; font-weight: 600;";
+                articleBody.appendChild(sourceLink);
+            }
+
+            // Initialize date
+            if (!dateStr) {
+                document.getElementById("article-date").textContent =
+                    new Date().toLocaleDateString("pt-BR", {
+                        weekday: "long",
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    });
+            }
+        </script>
     </body>
 </html>

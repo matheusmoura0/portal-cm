@@ -15,6 +15,175 @@
             href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
             rel="stylesheet"
         />
+        <style>
+            /* Newspaper Grid Styles */
+            .newspaper-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                margin-top: 30px;
+            }
+
+            .newspaper-grid .news-card {
+                background: #fff;
+                border: 1px solid #e0e0e0;
+                overflow: hidden;
+                transition:
+                    transform 0.2s,
+                    box-shadow 0.2s;
+            }
+
+            .newspaper-grid .news-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .newspaper-grid .news-image {
+                width: 100%;
+                height: 200px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .newspaper-grid .news-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .newspaper-grid .news-content {
+                padding: 15px;
+            }
+
+            .newspaper-grid .news-content h3 {
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-bottom: 10px;
+                line-height: 1.4;
+            }
+
+            .newspaper-grid .news-content h3 a {
+                color: #333;
+                text-decoration: none;
+            }
+
+            .newspaper-grid .news-content h3 a:hover {
+                color: #d0021b;
+            }
+
+            .newspaper-grid .news-excerpt {
+                font-size: 0.9rem;
+                color: #666;
+                line-height: 1.5;
+                margin-bottom: 10px;
+            }
+
+            .newspaper-grid .article-meta {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.85rem;
+                color: #999;
+            }
+
+            .newspaper-grid .category-tag {
+                display: inline-block;
+                padding: 3px 8px;
+                background: #d0021b;
+                color: white;
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin-bottom: 8px;
+            }
+
+            /* Featured Article (spans 2 columns) */
+            .newspaper-grid .news-card.featured {
+                grid-column: span 2;
+            }
+
+            .newspaper-grid .news-card.featured .news-image {
+                height: 280px;
+            }
+
+            .newspaper-grid .news-card.featured .news-content h3 {
+                font-size: 1.4rem;
+            }
+
+            /* Load More Button */
+            .load-more-container {
+                text-align: center;
+                margin: 40px 0;
+            }
+
+            .load-more-btn {
+                background: #d0021b;
+                color: white;
+                border: none;
+                padding: 15px 40px;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background 0.3s;
+                border-radius: 4px;
+            }
+
+            .load-more-btn:hover {
+                background: #a00115;
+            }
+
+            .load-more-btn:disabled {
+                background: #ccc;
+                cursor: not-allowed;
+            }
+
+            /* Loading Spinner */
+            .loading-spinner {
+                display: none;
+                width: 40px;
+                height: 40px;
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid #d0021b;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                margin: 20px auto;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            /* Hidden news items */
+            .news-card.hidden {
+                display: none;
+            }
+
+            /* Responsive */
+            @media (max-width: 1024px) {
+                .newspaper-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                .newspaper-grid .news-card.featured {
+                    grid-column: span 2;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .newspaper-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .newspaper-grid .news-card.featured {
+                    grid-column: span 1;
+                }
+            }
+        </style>
     </head>
     <body>
         <!-- Top Bar -->
@@ -239,6 +408,29 @@
             </div>
         </nav>
 
+        <!-- Breaking News Ticker -->
+        <div class="breaking-news">
+            <div class="container">
+                <span class="breaking-label">AO VIVO</span>
+                <div class="ticker-wrapper">
+                    <div class="ticker-content" id="breaking-news-ticker">
+                        <span
+                            >🔴 Custo de vida sobe 0,38% em dezembro e fecha
+                            2025 em alta</span
+                        >
+                        <span
+                            >🔴 São Paulo inicia 2026 com 1,7 mil obras em
+                            execução simultânea</span
+                        >
+                        <span
+                            >🔴 Governo paulista anuncia R$ 6,4 bilhões para
+                            habitação no estado</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Main Content -->
         <main class="main-content">
             <div class="container">
@@ -262,122 +454,325 @@
                     </div>
                 </div>
 
-                <!-- Main News -->
-                <section class="section">
-                    <div class="news-grid">
-                        <article class="news-card large">
-                            <div class="news-image">
-                                <img
-                                    src="https://placehold.co/800x500/e5e5e5/333333?text=Notícia+Economia"
-                                    alt="Notícia economia"
-                                />
-                                <span class="category-tag economy"
-                                    >DESTAQUE</span
+                <!-- Newspaper Grid -->
+                <div class="newspaper-grid" id="news-grid">
+                    <!-- Featured Article -->
+                    <article class="news-card featured">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Custo-de-vida-sobe-038-em-dezembro-e-fecha-2025-em-alta.jpg"
+                                alt="Custo de vida sobe 0,38%"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">ECONOMIA</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Custo de vida sobe 0,38% em dezembro e
+                                    fecha 2025 em alta</a
                                 >
+                            </h3>
+                            <p class="news-excerpt">
+                                Índice de preços mostra variação positiva no
+                                último mês do ano, impactando o bolso dos
+                                consumidores.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 5 horas</span>
                             </div>
-                            <div class="news-content">
-                                <h3>
-                                    [Placeholder] Título da notícia de economia
-                                    em destaque
-                                </h3>
-                                <p>
-                                    [Placeholder] Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit. Sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna
-                                    aliqua.
-                                </p>
-                                <div class="article-meta">
-                                    <span class="author"
-                                        >Por [Nome do Autor]</span
-                                    >
-                                    <span class="time">Há [X] horas</span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="news-card">
-                            <div class="news-image">
-                                <img
-                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Economia"
-                                    alt="Notícia economia"
-                                />
-                            </div>
-                            <div class="news-content">
-                                <h4>
-                                    [Placeholder] Título da notícia de economia
-                                </h4>
-                                <span class="time">Há [X] horas</span>
-                            </div>
-                        </article>
-                        <article class="news-card">
-                            <div class="news-image">
-                                <img
-                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Economia"
-                                    alt="Notícia economia"
-                                />
-                            </div>
-                            <div class="news-content">
-                                <h4>
-                                    [Placeholder] Título da notícia de economia
-                                </h4>
-                                <span class="time">Há [X] horas</span>
-                            </div>
-                        </article>
-                        <article class="news-card">
-                            <div class="news-image">
-                                <img
-                                    src="https://placehold.co/400x250/e5e5e5/333333?text=Economia"
-                                    alt="Notícia economia"
-                                />
-                            </div>
-                            <div class="news-content">
-                                <h4>
-                                    [Placeholder] Título da notícia de economia
-                                </h4>
-                                <span class="time">Há [X] horas</span>
-                            </div>
-                        </article>
-                        <article class="news-card compact">
-                            <h4>[Placeholder] Título da notícia compacta</h4>
-                            <span class="time">Há [X] horas</span>
-                        </article>
-                    </div>
-                </section>
+                        </div>
+                    </article>
 
-                <!-- More News -->
-                <section class="section">
-                    <h2 class="section-title">Mais notícias</h2>
-                    <div class="news-list">
-                        <article class="news-list-item">
-                            <span class="list-tag economy">MERCADOS</span>
-                            <h4>
-                                [Placeholder] Título da notícia sobre mercados
-                            </h4>
-                            <span class="time">Há [X] horas</span>
-                        </article>
-                        <article class="news-list-item">
-                            <span class="list-tag economy">BANCO CENTRAL</span>
-                            <h4>
-                                [Placeholder] Título da notícia sobre o Banco
-                                Central
-                            </h4>
-                            <span class="time">Há [X] horas</span>
-                        </article>
-                        <article class="news-list-item">
-                            <span class="list-tag economy">EMPREGO</span>
-                            <h4>
-                                [Placeholder] Título da notícia sobre emprego
-                            </h4>
-                            <span class="time">Há [X] horas</span>
-                        </article>
-                        <article class="news-list-item">
-                            <span class="list-tag economy">NEGÓCIOS</span>
-                            <h4>
-                                [Placeholder] Título da notícia sobre negócios
-                            </h4>
-                            <span class="time">Há [X] horas</span>
-                        </article>
-                    </div>
-                </section>
+                    <!-- Article 2 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Sao-Paulo-inicia-2026-com-17-mil-obras-em-execucao-simultanea.jpg"
+                                alt="Obras em São Paulo"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">INFRAESTRUTURA</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >São Paulo inicia 2026 com 1,7 mil obras em
+                                    execução simultânea</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Estado paulista tem recorde de investimentos em
+                                infraestrutura neste início de ano.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 6 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.jornaldabarra.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/pexels-max-fischer-5868272_1.jpg"
+                                alt="Black Friday"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">VAREJO</span>
+                            <h3>
+                                <a
+                                    href="https://www.jornaldabarra.com.br/"
+                                    target="_blank"
+                                    >Aproveite as melhores ofertas de Black
+                                    Friday na região até o fim de semana</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Descontos de até 90% em diversos
+                                estabelecimentos da Barra da Tijuca e região.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Jornal da Barra</span>
+                                <span class="time">Há 8 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-anuncia-plano-bilionario-de-moradias.jpg"
+                                alt="Plano de moradias"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">HABITAÇÃO</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Tarcísio anuncia plano bilionário de
+                                    moradias no eixo do trem entre São Paulo e
+                                    Campinas</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Governo de SP investe R$ 6,4 bilhões em programa
+                                de habitação popular.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 10 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 5 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.jornaldabarra.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Grace_Kelly_1.jpeg"
+                                alt="Empreendedores"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">EMPREENDEDORISMO</span>
+                            <h3>
+                                <a
+                                    href="https://www.jornaldabarra.com.br/"
+                                    target="_blank"
+                                    >1ª Edição de encontro de empreendedores
+                                    acontece na Barra com networking e
+                                    palestras</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Evento "O Networking: Hub do Empreendedorismo"
+                                reúne empresários e profissionais da região.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Jornal da Barra</span>
+                                <span class="time">Há 12 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 6 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.correiodamanha.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_megaoperacao-497151.jpg"
+                                alt="Economia"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">MERCADOS</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanha.com.br/"
+                                    target="_blank"
+                                    >Mercado brasileiro apresenta estabilidade
+                                    em início de 2026</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Analistas projetam crescimento moderado para a
+                                economia nos próximos meses.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Correio da Manhã</span>
+                                <span class="time">Há 1 dia</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Hidden Articles (to be loaded) -->
+                    <article class="news-card hidden">
+                        <a
+                            href="https://www.jornaldabarra.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/0_3.jpg"
+                                alt="Feira de Varejo"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">COMÉRCIO</span>
+                            <h3>
+                                <a
+                                    href="https://www.jornaldabarra.com.br/"
+                                    target="_blank"
+                                    >Feira de Varejo com descontos de até 90%
+                                    acontece no Riocentro no início de
+                                    dezembro</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Evento gratuito terá marcas como Nike, Adidas,
+                                Vans e muitas outras.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Jornal da Barra</span>
+                                <span class="time">Há 2 dias</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card hidden">
+                        <a
+                            href="https://correiosulfluminense.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/varejao-corrupcao.jpg"
+                                alt="Economia regional"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">REGIONAL</span>
+                            <h3>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >Câmara Municipal devolve R$ 1,2 milhão aos
+                                    cofres da prefeitura de Barra do Piraí</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Verba será aplicada em obras e serviços
+                                essenciais para a população.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio Sul Fluminense</span
+                                >
+                                <span class="time">Há 3 dias</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card hidden">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Guarulhos-entra-em-pacote-bilionario-de-mobilidade.jpg"
+                                alt="Mobilidade urbana"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">MOBILIDADE</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Guarulhos entra em pacote bilionário de
+                                    mobilidade</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Governo de SP anuncia grandes investimentos em
+                                transporte para a cidade.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 4 dias</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <div class="loading-spinner" id="loading-spinner"></div>
+                    <button class="load-more-btn" id="load-more-btn">
+                        Carregar mais notícias
+                    </button>
+                </div>
             </div>
         </main>
 
@@ -462,5 +857,128 @@
         </footer>
 
         <script src="js/main.js"></script>
+        <script>
+            // News link click handler - redirects to noticia.html with URL parameters
+            document.addEventListener("DOMContentLoaded", function () {
+                const newsCards = document.querySelectorAll(".news-card");
+
+                newsCards.forEach(function (card) {
+                    const links = card.querySelectorAll(
+                        'a[href]:not([href^="javascript"]):not([href*="noticia.html"])',
+                    );
+
+                    // Extract data from card
+                    const category =
+                        card.querySelector(".category-tag")?.textContent ||
+                        "Economia";
+                    const title =
+                        card.querySelector("h3 a, h3")?.textContent?.trim() ||
+                        "";
+                    const subtitle =
+                        card
+                            .querySelector(".news-excerpt")
+                            ?.textContent?.trim() || "";
+                    const image = card.querySelector("img")?.src || "";
+                    const authorText =
+                        card.querySelector(".author")?.textContent?.trim() ||
+                        "";
+                    const author = authorText.replace("Por ", "").trim();
+                    const timeText =
+                        card.querySelector(".time")?.textContent?.trim() || "";
+
+                    // Set data attributes
+                    card.dataset.category = category;
+                    card.dataset.title = title;
+                    card.dataset.subtitle = subtitle;
+                    card.dataset.image = image;
+                    card.dataset.author = author;
+                    card.dataset.authorRole = "Jornalista";
+                    card.dataset.date = "06/02/2026";
+                    card.dataset.time =
+                        timeText
+                            .replace("Há ", "")
+                            .replace(" horas", "")
+                            .replace(" dia", "1 dia") || "14:00";
+
+                    // Find original link
+                    let originalLink = "";
+                    links.forEach(function (link) {
+                        if (link.href && !link.href.includes("javascript:")) {
+                            originalLink = link.href;
+                        }
+                    });
+                    card.dataset.link = originalLink;
+
+                    // Update all links to redirect to noticia.html
+                    links.forEach(function (link) {
+                        link.href = "javascript:void(0)";
+                        link.classList.add("news-link");
+
+                        link.addEventListener("click", function (e) {
+                            e.preventDefault();
+
+                            const params = new URLSearchParams();
+                            params.set("category", card.dataset.category);
+                            params.set("title", card.dataset.title);
+                            params.set("subtitle", card.dataset.subtitle);
+                            params.set("image", card.dataset.image);
+                            params.set("author", card.dataset.author);
+                            params.set("authorRole", card.dataset.authorRole);
+                            params.set("date", card.dataset.date);
+                            params.set("time", card.dataset.time);
+                            if (card.dataset.link) {
+                                params.set("link", card.dataset.link);
+                            }
+
+                            window.location.href =
+                                "noticia.html?" + params.toString();
+                        });
+                    });
+                });
+            });
+
+            // Load More functionality
+            const loadMoreBtn = document.getElementById("load-more-btn");
+            const loadingSpinner = document.getElementById("loading-spinner");
+            const hiddenCards = document.querySelectorAll(".news-card.hidden");
+            let visibleCount = 0;
+            const cardsPerLoad = 3;
+
+            loadMoreBtn.addEventListener("click", function () {
+                // Show loading spinner
+                loadingSpinner.style.display = "block";
+                loadMoreBtn.disabled = true;
+
+                // Simulate loading delay
+                setTimeout(() => {
+                    // Show next batch of hidden cards
+                    let shown = 0;
+                    for (
+                        let i = 0;
+                        i < hiddenCards.length && shown < cardsPerLoad;
+                        i++
+                    ) {
+                        if (hiddenCards[i].classList.contains("hidden")) {
+                            hiddenCards[i].classList.remove("hidden");
+                            shown++;
+                        }
+                    }
+
+                    visibleCount += shown;
+
+                    // Hide loading spinner
+                    loadingSpinner.style.display = "none";
+                    loadMoreBtn.disabled = false;
+
+                    // Check if all cards are shown
+                    const remainingHidden =
+                        document.querySelectorAll(".news-card.hidden");
+                    if (remainingHidden.length === 0) {
+                        loadMoreBtn.textContent = "Não há mais notícias";
+                        loadMoreBtn.disabled = true;
+                    }
+                }, 500);
+            });
+        </script>
     </body>
 </html>

@@ -477,6 +477,49 @@ const ScrollNav = {
 };
 
 // ========================================
+// Back to Top Button
+// ========================================
+
+const BackToTop = {
+  init() {
+    this.button = document.getElementById("back-to-top");
+    if (!this.button) return;
+
+    this.showThreshold = 300; // Mostrar após scrollar 300px
+    this.bindEvents();
+  },
+
+  bindEvents() {
+    // Monitorar scroll para mostrar/esconder botão
+    window.addEventListener("scroll", () => {
+      this.toggleVisibility();
+    });
+
+    // Scroll ao topo ao clicar
+    this.button.addEventListener("click", () => {
+      this.scrollToTop();
+    });
+  },
+
+  toggleVisibility() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > this.showThreshold) {
+      this.button.classList.add("visible");
+    } else {
+      this.button.classList.remove("visible");
+    }
+  },
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  },
+};
+
+// ========================================
 // Animações ao Scroll
 // ========================================
 
@@ -622,6 +665,7 @@ document.addEventListener("DOMContentLoaded", () => {
   Newsletter.init();
   BreakingNews.init();
   ScrollNav.init();
+  BackToTop.init();
   ScrollAnimations.init();
   SocialShare.init();
   NewsNavigation.init();
@@ -646,6 +690,7 @@ window.CM = {
   Newsletter,
   BreakingNews,
   ScrollNav,
+  BackToTop,
   ScrollAnimations,
   SocialShare,
   NewsNavigation,

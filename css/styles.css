@@ -647,7 +647,7 @@ button {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: var(--spacing-xl);
-    align-items: stretch;
+    align-items: start;
 }
 
 /* Main Article (Left Side - Full Height) */
@@ -658,7 +658,6 @@ button {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
 .news-card.main .news-image {
@@ -719,7 +718,6 @@ button {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
-    height: 100%;
 }
 
 .news-card.small {
@@ -731,7 +729,6 @@ button {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xs);
-    flex: 1;
 }
 
 .news-card.small:last-child {

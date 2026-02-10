@@ -1208,9 +1208,9 @@ button {
 }
 
 .region-tab.active {
-    background-color: var(--color-text);
+    background-color: var(--color-primary);
     color: #ffffff;
-    border-color: var(--color-text);
+    border-color: var(--color-primary);
 }
 
 .region-content {

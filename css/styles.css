@@ -128,7 +128,7 @@ button {
 
 /* Top Bar - Vermelho */
 .top-bar {
-    background-color: var(--color-primary);
+    background-color: #1a3a5c;
     color: #ffffff;
     font-size: 0.75rem;
     padding: var(--spacing-sm) 0;
@@ -201,9 +201,28 @@ button {
 
 /* Header */
 .main-header {
-    background-color: var(--color-bg);
+    background-color: #1a3a5c;
     border-bottom: 1px solid var(--color-border);
     padding: var(--spacing-xl) 0 var(--spacing-lg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: padding 0.3s ease;
+}
+
+.main-header.scrolled {
+    padding: var(--spacing-md) 0 var(--spacing-sm);
+}
+
+.main-header .logo {
+    color: #ffffff;
+    transition: font-size 0.3s ease;
+}
+
+.main-header .logo-portal {
+    transition:
+        font-size 0.3s ease,
+        letter-spacing 0.3s ease;
 }
 
 .header-content {
@@ -213,6 +232,10 @@ button {
     gap: var(--spacing-xl);
 }
 
+.header-content {
+    flex-direction: row-reverse;
+}
+
 .logo-section a {
     display: flex;
     flex-direction: column;
@@ -220,18 +243,20 @@ button {
 
 .logo {
     font-family: var(--font-display);
-    font-size: 2.5rem;
+    font-size: 4rem;
     font-weight: 900;
     color: var(--color-text);
     letter-spacing: -1px;
     line-height: 1;
 }
 
-.logo-tagline {
+.logo-portal {
     font-size: 0.8125rem;
-    color: var(--color-text-gray);
-    font-weight: 400;
+    color: #ffffff;
+    font-weight: 700;
     margin-top: var(--spacing-xs);
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .search-section {
@@ -242,8 +267,8 @@ button {
 .search-box {
     display: flex;
     align-items: center;
-    background-color: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
+    background-color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--radius-sm);
     overflow: hidden;
 }
@@ -1606,7 +1631,7 @@ button {
         font-size: 1.625rem;
     }
 
-    .logo-tagline {
+    .logo-portal {
         font-size: 0.75rem;
     }
 

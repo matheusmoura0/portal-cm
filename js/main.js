@@ -450,6 +450,9 @@ const ScrollNav = {
   init() {
     this.lastScroll = 0;
     this.nav = document.querySelector(".main-nav");
+    this.header = document.querySelector(".main-header");
+    this.logo = document.querySelector(".logo");
+    this.portal = document.querySelector(".logo-portal");
     this.bindEvents();
   },
 
@@ -470,6 +473,21 @@ const ScrollNav = {
       this.nav.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
     } else if (this.nav) {
       this.nav.style.boxShadow = "0 1px 2px rgba(0,0,0,0.08)";
+    }
+
+    // Header shrink effect
+    if (this.header && this.logo && this.portal) {
+      if (currentScroll > 100) {
+        this.header.classList.add("scrolled");
+        this.logo.style.fontSize = "2.5rem";
+        this.portal.style.fontSize = "0.65rem";
+        this.portal.style.letterSpacing = "1px";
+      } else {
+        this.header.classList.remove("scrolled");
+        this.logo.style.fontSize = "4rem";
+        this.portal.style.fontSize = "0.8125rem";
+        this.portal.style.letterSpacing = "2px";
+      }
     }
 
     this.lastScroll = currentScroll;

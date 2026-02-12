@@ -75,27 +75,7 @@
     --bp-2xl: 1440px;
 }
 
-/* Cores Regionais */
-.region-rio {
-    --color-header-bg: #1a3a5c;
-    --color-primary: #d0021b;
-}
-.region-sp {
-    --color-header-bg: #c41230;
-    --color-primary: #c41230;
-}
-.region-sul-fluminense {
-    --color-header-bg: #006633;
-    --color-primary: #006633;
-}
-.region-petropolis {
-    --color-header-bg: #4a6741;
-    --color-primary: #4a6741;
-}
-.region-df {
-    --color-header-bg: #006633;
-    --color-primary: #009c3b;
-}
+/* Cores Regionais - Todas as regies usam o mesmo azul do Correio da Manh */
 
 /* Reset and Base Styles */
 *,

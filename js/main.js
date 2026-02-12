@@ -670,21 +670,10 @@ const NewsNavigation = {
 };
 
 // ========================================
-// Geolocalização e Cores Regionais
+// Geolocalização e Localização
 // ========================================
 
 const RegionalColors = {
-  // Cores por região
-  colors: {
-    default: { header: "#1a3a5c", primary: "#d0021b" },
-    "Rio de Janeiro": { header: "#1a3a5c", primary: "#d0021b" },
-    "São Paulo": { header: "#c41230", primary: "#c41230" },
-    "Sul Fluminense": { header: "#006633", primary: "#006633" },
-    Petrópolis: { header: "#4a6741", primary: "#4a6741" },
-    "Distrito Federal": { header: "#006633", primary: "#006633" },
-    Brasília: { header: "#006633", primary: "#006633" },
-  },
-
   init() {
     this.detectRegion();
   },
@@ -693,7 +682,7 @@ const RegionalColors = {
     // Tenta obter região do localStorage primeiro (cache)
     const cachedRegion = localStorage.getItem("cm_region");
     if (cachedRegion) {
-      this.applyRegionalColors(cachedRegion);
+      this.updateRegionInfo(cachedRegion);
       return;
     }
 
@@ -705,17 +694,17 @@ const RegionalColors = {
             position.coords.latitude,
             position.coords.longitude,
           );
-          this.applyRegionalColors(region);
           localStorage.setItem("cm_region", region);
+          this.updateRegionInfo(region);
         },
         (error) => {
-          console.log("Geolocalização não permitida, usando cores padrão");
-          this.applyRegionalColors("default");
+          console.log("Geolocalização não permitida");
+          this.updateRegionInfo("default");
         },
       );
     } else {
-      // Sem geolocalização, usa cores padrão
-      this.applyRegionalColors("default");
+      // Sem geolocalização
+      this.updateRegionInfo("default");
     }
   },
 
@@ -791,36 +780,6 @@ const RegionalColors = {
     return degrees * (Math.PI / 180);
   },
 
-  applyRegionalColors(region) {
-    const colors = this.colors[region] || this.colors["default"];
-
-    // Atualiza CSS variables
-    document.documentElement.style.setProperty(
-      "--color-header-bg",
-      colors.header,
-    );
-    document.documentElement.style.setProperty(
-      "--color-primary",
-      colors.primary,
-    );
-
-    // Atualiza o header e top bar diretamente
-    const header = document.querySelector(".main-header");
-    const topBar = document.querySelector(".top-bar");
-
-    if (header) {
-      header.style.backgroundColor = colors.header;
-    }
-    if (topBar) {
-      topBar.style.backgroundColor = colors.header;
-    }
-
-    // Atualiza informações da região na UI
-    this.updateRegionInfo(region);
-
-    console.log("Cores regionais aplicadas:", region, colors);
-  },
-
   updateRegionInfo(region) {
     // Atualiza o texto de localização se existir
     const weatherInfo = document.getElementById("weather-info");
@@ -836,6 +795,9 @@ const RegionalColors = {
       const tempMatch = currentText.match(/:\s*\d+°C/);
       const temp = tempMatch ? tempMatch[0] : ": 22°C";
       weatherInfo.textContent = `${cityNames[region] || region}${temp}`;
+
+      console.log("Região detectada:", region);
+      console.log("Usando cores padrão do Correio da Manhã (#1a3a5c)");
     }
   },
 };

@@ -670,6 +670,177 @@ const NewsNavigation = {
 };
 
 // ========================================
+// Geolocalização e Cores Regionais
+// ========================================
+
+const RegionalColors = {
+  // Cores por região
+  colors: {
+    default: { header: "#1a3a5c", primary: "#d0021b" },
+    "Rio de Janeiro": { header: "#1a3a5c", primary: "#d0021b" },
+    "São Paulo": { header: "#c41230", primary: "#c41230" },
+    "Sul Fluminense": { header: "#006633", primary: "#006633" },
+    Petrópolis: { header: "#4a6741", primary: "#4a6741" },
+    "Distrito Federal": { header: "#006633", primary: "#006633" },
+    Brasília: { header: "#006633", primary: "#006633" },
+  },
+
+  init() {
+    this.detectRegion();
+  },
+
+  detectRegion() {
+    // Tenta obter região do localStorage primeiro (cache)
+    const cachedRegion = localStorage.getItem("cm_region");
+    if (cachedRegion) {
+      this.applyRegionalColors(cachedRegion);
+      return;
+    }
+
+    // Se não há cache, tenta usar geolocalização
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const region = this.getRegionFromCoords(
+            position.coords.latitude,
+            position.coords.longitude,
+          );
+          this.applyRegionalColors(region);
+          localStorage.setItem("cm_region", region);
+        },
+        (error) => {
+          console.log("Geolocalização não permitida, usando cores padrão");
+          this.applyRegionalColors("default");
+        },
+      );
+    } else {
+      // Sem geolocalização, usa cores padrão
+      this.applyRegionalColors("default");
+    }
+  },
+
+  getRegionFromCoords(lat, lon) {
+    // Mapeamento aproximado de coordenadas para regiões
+    // Rio de Janeiro: aproximadamente -22.9, -43.2
+    // São Paulo: aproximadamente -23.5, -46.6
+    // Brasília: aproximadamente -15.8, -47.9
+
+    // Distância aproximada de cada centro regional
+    const regions = [
+      {
+        name: "Rio de Janeiro",
+        lat: -22.9068,
+        lon: -43.1729,
+        threshold: 150, // km
+      },
+      {
+        name: "São Paulo",
+        lat: -23.5505,
+        lon: -46.6333,
+        threshold: 150, // km
+      },
+      {
+        name: "Distrito Federal",
+        lat: -15.8267,
+        lon: -47.9218,
+        threshold: 100, // km
+      },
+      {
+        name: "Sul Fluminense",
+        lat: -22.5,
+        lon: -44.1,
+        threshold: 80, // km
+      },
+      {
+        name: "Petrópolis",
+        lat: -22.5113,
+        lon: -43.1779,
+        threshold: 30, // km
+      },
+    ];
+
+    let closestRegion = "default";
+    let minDistance = Infinity;
+
+    regions.forEach((region) => {
+      const distance = this.calculateDistance(lat, lon, region.lat, region.lon);
+      if (distance < region.threshold && distance < minDistance) {
+        closestRegion = region.name;
+        minDistance = distance;
+      }
+    });
+
+    return closestRegion;
+  },
+
+  calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Raio da Terra em km
+    const dLat = this.toRad(lat2 - lat1);
+    const dLon = this.toRad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(this.toRad(lat1)) *
+        Math.cos(this.toRad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+  },
+
+  toRad(degrees) {
+    return degrees * (Math.PI / 180);
+  },
+
+  applyRegionalColors(region) {
+    const colors = this.colors[region] || this.colors["default"];
+
+    // Atualiza CSS variables
+    document.documentElement.style.setProperty(
+      "--color-header-bg",
+      colors.header,
+    );
+    document.documentElement.style.setProperty(
+      "--color-primary",
+      colors.primary,
+    );
+
+    // Atualiza o header e top bar diretamente
+    const header = document.querySelector(".main-header");
+    const topBar = document.querySelector(".top-bar");
+
+    if (header) {
+      header.style.backgroundColor = colors.header;
+    }
+    if (topBar) {
+      topBar.style.backgroundColor = colors.header;
+    }
+
+    // Atualiza informações da região na UI
+    this.updateRegionInfo(region);
+
+    console.log("Cores regionais aplicadas:", region, colors);
+  },
+
+  updateRegionInfo(region) {
+    // Atualiza o texto de localização se existir
+    const weatherInfo = document.getElementById("weather-info");
+    if (weatherInfo && region !== "default") {
+      const cityNames = {
+        "Rio de Janeiro": "Rio de Janeiro",
+        "São Paulo": "São Paulo",
+        "Sul Fluminense": "Sul Fluminense",
+        Petrópolis: "Petrópolis",
+        "Distrito Federal": "Brasília",
+      };
+      const currentText = weatherInfo.textContent;
+      const tempMatch = currentText.match(/:\s*\d+°C/);
+      const temp = tempMatch ? tempMatch[0] : ": 22°C";
+      weatherInfo.textContent = `${cityNames[region] || region}${temp}`;
+    }
+  },
+};
+
+// ========================================
 // Inicialização
 // ========================================
 
@@ -687,6 +858,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ScrollAnimations.init();
   SocialShare.init();
   NewsNavigation.init();
+  RegionalColors.init();
 
   // Adiciona classe ao body para indicar que JS está carregado
   document.body.classList.add("js-loaded");
@@ -712,4 +884,5 @@ window.CM = {
   ScrollAnimations,
   SocialShare,
   NewsNavigation,
+  RegionalColors,
 };

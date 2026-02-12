@@ -257,6 +257,15 @@ button {
     line-height: 1;
 }
 
+.logo-tagline {
+    font-size: 0.625rem;
+    color: #ffffff;
+    font-weight: 400;
+    margin-top: var(--spacing-xs);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 .logo-portal {
     font-size: 0.8125rem;
     color: #ffffff;

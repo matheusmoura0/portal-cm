@@ -1880,7 +1880,7 @@ input:focus {
     right: 2rem;
     width: 3.5rem;
     height: 3.5rem;
-    background-color: var(--color-primary);
+    background-color: var(--color-header-bg, #1a3a5c);
     color: #ffffff;
     border: none;
     border-radius: 50%;
@@ -1903,9 +1903,9 @@ input:focus {
 }
 
 .back-to-top:hover {
-    background-color: var(--color-primary-dark);
+    filter: brightness(1.2);
     transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(208, 2, 27, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .back-to-top:active {

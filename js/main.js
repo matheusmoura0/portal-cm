@@ -781,6 +781,24 @@ const RegionalColors = {
   },
 
   updateRegionInfo(region) {
+    // Cores de cada portal regional (baseado nos sites reais)
+    const regionColors = {
+      "Rio de Janeiro": "#cc0000", // Vermelho do Correio da Manhã
+      "São Paulo": "#1a365d", // Azul escuro do Correio da Manhã SP
+      "Sul Fluminense": "#1e6ba8", // Azul médio do Correio Sul Fluminense
+      Petrópolis: "#d60000", // Vermelho do Correio Petropolitano
+      "Distrito Federal": "#1a3a5c", // Azul padrão (DF usa template padrão)
+      default: "#1a3a5c", // Azul padrão do portal
+    };
+
+    const headerColor = regionColors[region] || regionColors.default;
+
+    // Atualiza a variável CSS --color-header-bg
+    document.documentElement.style.setProperty(
+      "--color-header-bg",
+      headerColor,
+    );
+
     // Atualiza o texto de localização se existir
     const weatherInfo = document.getElementById("weather-info");
     if (weatherInfo && region !== "default") {
@@ -795,10 +813,10 @@ const RegionalColors = {
       const tempMatch = currentText.match(/:\s*\d+°C/);
       const temp = tempMatch ? tempMatch[0] : ": 22°C";
       weatherInfo.textContent = `${cityNames[region] || region}${temp}`;
-
-      console.log("Região detectada:", region);
-      console.log("Usando cores padrão do Correio da Manhã (#1a3a5c)");
     }
+
+    console.log("Região detectada:", region);
+    console.log("Cor do header definida:", headerColor);
   },
 };
 

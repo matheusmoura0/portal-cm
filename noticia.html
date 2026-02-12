@@ -3,23 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-
-            name="description"
-
-            content="Leia a matéria completa no portal CM"
-
-        />
-        <title>[Título da Notícia] | portal CM</title>
+        <meta name="description" content="[Placeholder] Descrição da notícia" />
+        <title>[Placeholder] Título da Notícia | portal CM</title>
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-
             href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
-
             rel="stylesheet"
-
         />
         <style>
             /* Article Page Styles */
@@ -29,7 +20,7 @@
 
             /* Section Bar */
             .section-bar {
-                background-color: #1a3a5c;
+                background-color: #d0021b;
                 padding: var(--spacing-sm) 0;
             }
 
@@ -57,13 +48,12 @@
             /* Article Header */
             .article-header {
                 padding: var(--spacing-xl) 0 var(--spacing-md);
-                border-bottom: 1px solid var(--color-border);
             }
 
             .article-category {
                 display: inline-block;
                 padding: var(--spacing-xs) var(--spacing-sm);
-                background-color: var(--color-primary);
+                background-color: var(--color-politics);
                 color: #ffffff;
                 font-size: 0.6875rem;
                 font-weight: 700;
@@ -72,50 +62,8 @@
                 margin-bottom: var(--spacing-md);
             }
 
-            .article-category.politics {
-                background-color: var(--color-politics);
-            }
-            .article-category.economy {
-                background-color: var(--color-economy);
-            }
-            .article-category.sports {
-                background-color: var(--color-sports);
-            }
-            .article-category.culture {
-                background-color: var(--color-culture);
-            }
-            .article-category.justice {
-                background-color: var(--color-justice);
-            }
-            .article-category.brasil {
-                background-color: var(--color-brasil);
-            }
-            .article-category.politics {
-                background-color: var(--color-politics);
-            }
-
-            .article-category.economy {
-                background-color: var(--color-economy);
-            }
-
-            .article-category.sports {
-                background-color: var(--color-sports);
-            }
-
-            .article-category.culture {
-                background-color: var(--color-culture);
-            }
-
-            .article-category.justice {
-                background-color: var(--color-justice);
-            }
-
-            .article-category.brasil {
-                background-color: var(--color-brasil);
-            }
-
             .article-title {
-                font-family: var(--font-display);
+                font-family: "Noto Serif", Georgia, serif;
                 font-size: 2.5rem;
                 font-weight: 700;
                 line-height: 1.2;
@@ -124,15 +72,13 @@
             }
 
             .article-subtitle {
-                font-family: var(--font-display);
+                font-family: "Noto Serif", Georgia, serif;
                 font-size: 1.25rem;
                 font-weight: 400;
                 font-style: italic;
                 line-height: 1.4;
                 color: var(--color-text-gray);
                 margin-bottom: var(--spacing-lg);
-                padding-bottom: var(--spacing-md);
-                border-bottom: 1px solid var(--color-border);
             }
 
             /* Article Main Image */
@@ -164,12 +110,6 @@
                 align-items: center;
             }
 
-            .article-media-credits {
-                display: flex;
-                align-items: center;
-                gap: var(--spacing-sm);
-            }
-
             .media-share-buttons {
                 display: flex;
                 gap: var(--spacing-xs);
@@ -194,9 +134,7 @@
             }
 
             .media-share-btn:hover svg {
-
                 stroke: #ffffff;
-
             }
 
             .media-share-btn svg {
@@ -253,21 +191,36 @@
                 color: var(--color-text-light);
             }
 
+            .author-social-links {
+                display: flex;
+                gap: var(--spacing-xs);
+                margin-top: var(--spacing-xs);
+            }
+
+            .author-social-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                background-color: var(--color-bg-alt);
+                border: 1px solid var(--color-border);
+                color: var(--color-text-gray);
+                transition: var(--transition);
+            }
+
+            .author-social-link:hover {
+                background-color: var(--color-primary);
+                border-color: var(--color-primary);
+                color: #ffffff;
+            }
+
             .article-publish-info {
                 margin-left: auto;
                 text-align: right;
             }
 
-            .article-date {
-                font-family: var(--font-body);
-                font-size: 0.8125rem;
-                color: var(--color-text-gray);
-            }
-            .article-time {
-                font-family: var(--font-body);
-                font-size: 0.75rem;
-                color: var(--color-text-light);
-            }
             .article-date {
                 font-family: var(--font-body);
                 font-size: 0.8125rem;
@@ -296,9 +249,7 @@
             }
 
             .article-body p {
-
                 margin-bottom: var(--spacing-lg);
-
             }
 
             .article-body p:first-of-type::first-letter {
@@ -313,20 +264,6 @@
             .article-body a {
                 color: var(--color-primary);
                 text-decoration: underline;
-            }
-            .article-body a:hover {
-                color: var(--color-primary-dark);
-            }
-            .article-body strong {
-                font-weight: 700;
-            }
-            .article-body em {
-                font-style: italic;
-            }
-            .article-body a {
-                color: var(--color-primary);
-                text-decoration: underline;
-                transition: var(--transition);
             }
 
             .article-body a:hover {
@@ -346,35 +283,10 @@
                 margin: var(--spacing-xl) 0;
                 padding: var(--spacing-lg) var(--spacing-xl);
                 background-color: var(--color-bg-alt);
-                border-left: 4px solid var(--color-primary);
+                border-left: 4px solid var(--color-politics);
                 font-style: italic;
                 font-size: 1.25rem;
                 line-height: 1.6;
-            }
-
-            .article-body blockquote politics {
-
-                border-left-color: var(--color-politics);
-
-            }
-
-            /* Article Inline Elements */
-            .article-inline-media {
-                margin: var(--spacing-xl) 0;
-            }
-
-            .article-inline-media img {
-                width: 100%;
-                height: auto;
-                border-radius: var(--radius-sm);
-            }
-
-            .article-inline-media figcaption {
-                font-family: var(--font-body);
-                font-size: 0.8125rem;
-                color: var(--color-text-light);
-                text-align: center;
-                margin-top: var(--spacing-sm);
             }
 
             /* Article Tags */
@@ -432,7 +344,7 @@
             .sidebar-widget-title {
                 font-family: var(--font-body);
                 font-size: 0.875rem;
-                font-weight:  700;
+                font-weight: 700;
                 text-transform: uppercase;
                 color: var(--color-text);
                 padding: var(--spacing-md);
@@ -440,9 +352,7 @@
             }
 
             .sidebar-widget-content {
-
                 padding: var(--spacing-md);
-
             }
 
             /* Sidebar Articles */
@@ -454,9 +364,7 @@
             }
 
             .sidebar-article:last-child {
-
                 border-bottom: none;
-
             }
 
             .sidebar-article-image {
@@ -511,64 +419,6 @@
                 object-fit: cover;
             }
 
-            /* Newsletter Widget */
-            .newsletter-widget {
-                background: linear-gradient(
-
-                    135deg,
-
-                    var(--color-primary) 0%,
-
-                    var(--color-primary-dark) 100%
-
-                );
-                color: #ffffff;
-            }
-
-            .newsletter-widget .sidebar-widget-title {
-                color: #ffffff;
-                border-bottom-color: rgba(255, 255, 255, 0.2);
-            }
-
-            .newsletter-widget-content {
-                padding: var(--spacing-md);
-                text-align: center;
-            }
-
-            .newsletter-widget-text {
-                font-size: 0.8125rem;
-                margin-bottom: var(--spacing-md);
-                opacity: 0.9;
-            }
-
-            .newsletter-widget-input {
-                width: 100%;
-                padding: var(--spacing-sm);
-                border: none;
-                border-radius: var(--radius-sm);
-                font-family: var(--font-body);
-                font-size: 0.8125rem;
-                margin-bottom: var(--spacing-sm);
-            }
-
-            .newsletter-widget-button {
-                width: 100%;
-                padding: var(--spacing-sm);
-                background-color: var(--color-text);
-                color: #ffffff;
-                border: none;
-                border-radius: var(--radius-sm);
-                font-family: var(--font-body);
-                font-size: 0.8125rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: var(--transition);
-            }
-
-            .newsletter-widget-button:hover {
-                background-color: #000000;
-            }
-
             /* Related Articles */
             .related-articles {
                 margin-top: var(--spacing-2xl);
@@ -577,7 +427,7 @@
             }
 
             .related-articles-title {
-                font-family: var(--font-display);
+                font-family: "Noto Serif", Georgia, serif;
                 font-size: 1.5rem;
                 font-weight: 700;
                 color: var(--color-text);
@@ -621,7 +471,7 @@
             .related-article-category {
                 display: inline-block;
                 padding: var(--spacing-xs) var(--spacing-sm);
-                background-color: var(--color-primary);
+                background-color: var(--color-politics);
                 color: #ffffff;
                 font-size: 0.6875rem;
                 font-weight: 700;
@@ -637,41 +487,10 @@
                 color: var(--color-text);
             }
 
-            /* Comments Section */
-            .comments-section {
-                margin-top: var(--spacing-2xl);
-                padding-top: var(--spacing-xl);
-                border-top: 2px solid var(--color-border);
-            }
-
-            .comments-section-title {
-                font-family: var(--font-display);
-                font-size: 1.25rem;
-                font-weight: 700;
-                color: var(--color-text);
-                margin-bottom: var(--spacing-lg);
-            }
-
-            .loading-state {
-                display: none;
-            }
-            .loading-state.active {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 40px 0;
-            }
-
-
-
-
-
-                            /* Responsive */
+            /* Responsive */
             @media (max-width: 1024px) {
                 .article-content-layout {
-
                     grid-template-columns: 1fr 280px;
-
                 }
             }
 
@@ -694,29 +513,6 @@
                 .article-body p:first-of-type::first-letter {
                     font-size: 3rem;
                 }
-                .article-title {
-                    font-size: 1.75rem;
-                }
-
-                .article-subtitle {
-                    font-size: 1rem;
-                }
-
-                .article-content-layout {
-                    grid-template-columns: 1fr;
-                }
-
-                .article-sidebar {
-                    order: 2;
-                }
-
-                .related-articles-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                .article-body p:first-of-type::first-letter {
-                    font-size: 3rem;
-                }
             }
         </style>
     </head>
@@ -728,9 +524,7 @@
                     <span id="current-date"></span>
                     <span class="top-bar-separator">|</span>
                     <span id="weather-info"
-
                         >Rio de Janeiro: 22°C Parcialmente nublado</span
-
                     >
                     <span class="top-bar-separator">|</span>
                     <span id="usd-rate">USD: R$ 5.07</span>
@@ -748,125 +542,48 @@
                             width="18"
                             height="18"
                             viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <rect
-                                x="2"
-                                y="2"
-                                width="20"
-                                height="20"
-                                rx="5"
-                                ry="5"
-                            ></rect>
-                            <path
-                                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="2"
-                            ></path>
-                            <line
-                                x1="17.5"
-                                y1="6.5"
-                                x2="17.51"
-                                y2="6.5"
-                                stroke="white"
-                                stroke-width="2"
-                            ></line>
-                    <a
-                        href="https://instagram.com"
-                        target="_blank"
-                        class="social-icon"
-                        aria-label="Instagram"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <rect
-                                x="2"
-                                y="2"
-                                width="20"
-                                height="20"
-                                rx="5"
-                                ry="5"
-                            ></rect>
-                            <path
-                                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="2"
-                            ></path>
-                            <line
-                                x1="17.5"
-                                y1="6.5"
-                                x2="17.51"
-                                y2="6.5"
-                                stroke="white"
-                                stroke-width="2"
-                            ></line>
-                        </svg>
-                    </a>
-                    <a
-                        href="https://youtube.com"
-                        target="_blank"
-                        class="social-icon"
-                        aria-label="YouTube"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path
-                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="2"
-                            ></path>
-                            <polygon
-                                points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
-                                fill="white"
-                            ></polygon>
-                    <a
-                        href="https://youtube.com"
-                        target="_blank"
-                        class="social-icon"
-                        aria-label="YouTube"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path
-                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="2"
-                            ></path>
-                            <polygon
-                                points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
-                                fill="white"
-                            ></polygon>
-                        </svg>
-                    </a>
-                    <a
-                        href="#share"
-                        class="social-icon"
-                        aria-label="Compartilhar"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
                             stroke-width="2"
                         >
+                            <rect
+                                x="2"
+                                y="2"
+                                width="20"
+                                height="20"
+                                rx="5"
+                                ry="5"
+                            ></rect>
+                            <path
+                                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                            ></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a
+                        href="https://youtube.com"
+                        target="_blank"
+                        class="social-icon"
+                        aria-label="YouTube"
+                    >
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
+                                fill="none"
+                                stroke="white"
+                                stroke-width="2"
+                            ></path>
+                            <polygon
+                                points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+                                fill="white"
+                            ></polygon>
+                        </svg>
+                    </a>
                     <a
                         href="#share"
                         class="social-icon"
@@ -883,18 +600,6 @@
                             <circle cx="18" cy="5" r="3"></circle>
                             <circle cx="6" cy="12" r="3"></circle>
                             <circle cx="18" cy="19" r="3"></circle>
-                            <line
-                                x1="8.59"
-                                y1="13.51"
-                                x2="15.42"
-                                y2="17.49"
-                            ></line>
-                            <line
-                                x1="15.41"
-                                y1="6.51"
-                                x2="8.59"
-                                y2="10.49"
-                            ></line>
                             <line
                                 x1="8.59"
                                 y1="13.51"
@@ -931,39 +636,24 @@
                     <div class="logo-section">
                         <a href="index.html">
                             <h1 class="logo">CM</h1>
-                            <span class="logo-tagline"
-
-                                >Há 125 anos Direito e Direito</span
-
-                            >
+                            <span class="logo-portal">portal</span>
                         </a>
                     </div>
                     <div class="search-section">
                         <div class="search-box">
                             <input
-
                                 type="text"
-
                                 placeholder="Buscar notícias..."
-
                                 id="search-input"
-
                             />
                             <button class="search-btn" aria-label="Buscar">
                                 <svg
-
                                     width="18"
-
                                     height="18"
-
                                     viewBox="0 0 24 24"
-
                                     fill="none"
-
                                     stroke="currentColor"
-
                                     stroke-width="2"
-
                                 >
                                     <circle cx="11" cy="11" r="8"></circle>
                                     <path d="m21 21-4.35-4.35"></path>
@@ -979,13 +669,9 @@
         <nav class="main-nav">
             <div class="container">
                 <button
-
                     class="mobile-menu-toggle"
-
                     id="mobile-menu-toggle"
-
                     aria-label="Menu"
-
                 >
                     <span></span>
                     <span></span>
@@ -994,60 +680,19 @@
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="opiniao.html" class="nav-link">Opinião</a></li>
                     <li>
-
                         <a href="politica.html" class="nav-link">Política</a>
-
                     </li>
                     <li>
-
                         <a href="economia.html" class="nav-link">Economia</a>
-
                     </li>
                     <li><a href="justica.html" class="nav-link">Justiça</a></li>
                     <li><a href="brasil.html" class="nav-link">Brasil</a></li>
                     <li class="nav-dropdown">
                         <a href="#regioes" class="nav-link dropdown-toggle"
-
                             >Regiões ▾</a
-
                         >
                         <ul class="dropdown-menu">
                             <li><a href="brasil.html">Brasil</a></li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanha.com.br/"
-                                    target="_blank"
-                                    >Rio de Janeiro</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhasp.com.br/"
-                                    target="_blank"
-                                    >São Paulo</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiosulfluminense.com.br/"
-                                    target="_blank"
-                                    >Sul Fluminense</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiopetropolitano.com.br/"
-                                    target="_blank"
-                                    >Petrópolis</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhadf.com.br/"
-                                    target="_blank"
-                                    >Distrito Federal</a
-                                >
-                            </li>
                             <li>
                                 <a
                                     href="https://www.correiodamanha.com.br/"
@@ -1087,54 +732,25 @@
                     </li>
                     <li><a href="cultura.html" class="nav-link">Cultura</a></li>
                     <li>
-
                         <a href="esportes.html" class="nav-link">Esportes</a>
-
                     </li>
                 </ul>
             </div>
         </nav>
 
-        <!-- Section Bar -->
-        <div class="section-bar">
-            <div class="container">
-                <span class="section-bar-title"
-                    >Política</span
-                >
-                <span class="section-bar-date" id="article-date"
-
-                    >Terça-feira, 3 de fevereiro de 2026</span
-
-                >
-            </div>
-        </div>
-
         <!-- Article Content -->
-        <main
-            class="main-content article-page"
-
-
-        >
+        <main class="main-content article-page">
             <div class="container">
                 <!-- Article Header -->
                 <div class="article-header">
-                    <span class="article-category" id="article-category"
-                        >Política</span
-                    >
-                    <h1 class="article-title" id="article-title">
-                        [Título Principal da Matéria]
-                    </h1>
-                    <p class="article-subtitle" id="article-subtitle">
-                        [Subtítulo da matéria]
-                    </p>
-                    <span class="article-category politics">Política</span>
+                    <span class="article-category">[Categoria]</span>
                     <h1 class="article-title">
-                        [Placeholder] Título Principal da Matéria Aqui
+                        [Placeholder] Título principal da notícia aparece aqui
                     </h1>
                     <p class="article-subtitle">
-                        [Placeholder] Subtítulo da matéria que fornece contexto
-                        adicional sobre o assunto abordado nesta importante
-                        notícia.
+                        [Placeholder] Subtítulo ou linha fina da notícia que
+                        fornece contexto adicional sobre o assunto principal
+                        abordado
                     </p>
                 </div>
 
@@ -1142,38 +758,16 @@
                 <div class="article-media">
                     <div class="article-media-wrapper">
                         <img
-
-
-                            src=
-                            "https://placehold.co/1200x675/e5e5e5/333333?text=Imagem+Principal+da+Notícia"
+                            src="https://placehold.co/1200x675/f0f0f0/999999?text=Imagem+Principal+da+Notícia"
                             alt="Imagem da notícia"
-
                         />
                     </div>
                     <div class="article-media-caption">
-                        <div class="article-media-credits">
-                            <span
-                                >Foto: Nome do Fotógrafo</span
-                            >
-                        </div>
+                        <span>[Placeholder] Legenda da imagem</span>
                         <div class="media-share-buttons">
                             <button
                                 class="media-share-btn"
                                 aria-label="Facebook"
-                                onclick="shareFacebook()"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <path
-                                        d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-                                    ></path>
-                            <button
-                                class="media-share-btn"
-                                aria-label="Facebook"
                             >
                                 <svg
                                     viewBox="0 0 24 24"
@@ -1189,20 +783,6 @@
                             <button
                                 class="media-share-btn"
                                 aria-label="Twitter"
-                                onclick="shareTwitter()"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <path
-                                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
-                                    ></path>
-                            <button
-                                class="media-share-btn"
-                                aria-label="Twitter"
                             >
                                 <svg
                                     viewBox="0 0 24 24"
@@ -1215,20 +795,6 @@
                                     ></path>
                                 </svg>
                             </button>
-                            <button
-                                class="media-share-btn"
-                                aria-label="WhatsApp"
-                                onclick="shareWhatsApp()"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <path
-                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1 3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-                                    ></path>
                             <button
                                 class="media-share-btn"
                                 aria-label="WhatsApp"
@@ -1280,35 +846,100 @@
                     <div class="article-author">
                         <div class="article-author-avatar">
                             <img
-
-
-                                src=
-                                "https://placehold.co/100x100/e5e5e5/333333?text=Foto"
-                                alt="Autor"
-
+                                src="https://placehold.co/80x80/f0f0f0/999999?text=AU"
+                                alt="[Autor]"
                             />
                         </div>
                         <div class="article-author-info">
-                            <span
-                                class="article-author-name"
-                                id="article-author-name"
+                            <span class="article-author-name"
                                 >Por [Nome do Autor]</span
                             >
-                            <span
-                                class="article-author-role"
-                                id="article-author-role"
-                                >Jornalista</span
+                            <span class="article-author-role"
+                                >[Cargo/Função do Autor]</span
                             >
-
-
-                                                    </div>
+                            <div class="author-social-links">
+                                <a
+                                    href="#"
+                                    target="_blank"
+                                    aria-label="Twitter"
+                                    class="author-social-link"
+                                >
+                                    <svg
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+                                        ></path>
+                                    </svg>
+                                </a>
+                                <a
+                                    href="#"
+                                    target="_blank"
+                                    aria-label="LinkedIn"
+                                    class="author-social-link"
+                                >
+                                    <svg
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.017-2.571-.052-3.708 2.408 0 4.315 1.684 4.315 4.206v5.569h-3.554v-5.569c0-1.328-.017-2.571-.052-3.708 2.408 0 4.315 1.684 4.315 4.206v5.569h-3.554v-5.569c0-1.328-.017-2.571-.052-3.708 2.408 0 4.315 1.684 4.315 4.206v5.569h-3.554z"
+                                        ></path>
+                                        <circle
+                                            cx="4.998"
+                                            cy="4.998"
+                                            r="2.553"
+                                        ></circle>
+                                        <path
+                                            d="M3.554 8.749h-3.554v-5.569c0-1.328-.017-2.571-.052-3.708 2.408 0 4.315 1.684 4.315 4.206v5.569h-3.554z"
+                                        ></path>
+                                    </svg>
+                                </a>
+                                <a
+                                    href="#"
+                                    target="_blank"
+                                    aria-label="Instagram"
+                                    class="author-social-link"
+                                >
+                                    <svg
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <rect
+                                            x="2"
+                                            y="2"
+                                            width="20"
+                                            height="20"
+                                            rx="5"
+                                            ry="5"
+                                        ></rect>
+                                        <path
+                                            d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                                        ></path>
+                                        <line
+                                            x1="17.5"
+                                            y1="6.5"
+                                            x2="17.51"
+                                            y2="6.5"
+                                        ></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="article-publish-info">
-                        <span class="article-date"
-                            >03/02/2026</span
-                        >
+                        <span class="article-date">[DD/MM/AAAA]</span>
                         <span class="article-time"
-                            >Atualizado há 2 horas</span
+                            >Atualizado há [X] horas</span
                         >
                     </div>
                 </div>
@@ -1328,18 +959,10 @@
                         <p>
                             Duis aute irure dolor in reprehenderit in voluptate
                             velit esse cillum dolore eu fugiat nulla pariatur.
-                            <strong
-                                >Excepteur sint occaecat cupidatat non
-                                proident</strong
-                            >, sunt in culpa qui officia deserunt mollit anim id
-                            est laborum.
+                            Excepteur sint occaecat cupidatat non proident, sunt
+                            in culpa qui officia deserunt mollit anim id est
+                            laborum.
                         </p>
-
-                        <blockquote>
-                            "Es una de las grandes transformaciones
-                            estructurales de este país y vamos a asegurarnos de
-                            que sea un bien común para todos los ciudadanos."
-                        </blockquote>
 
                         <p>
                             Sed ut perspiciatis unde omnis iste natus error sit
@@ -1349,16 +972,11 @@
                             sunt explicabo.
                         </p>
 
-                        <figure class="article-inline-media">
-                            <img
-                                src="https://placehold.co/800x450/e5e5e5/333333?text=Imagem+Secundária"
-                                alt="Imagem secundária"
-                            />
-                            <figcaption>
-                                Legenda da imagem secundária que ilustra o
-                                conteúdo abordado no texto.
-                            </figcaption>
-                        </figure>
+                        <blockquote>
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua."
+                        </blockquote>
 
                         <p>
                             Nemo enim ipsam voluptatem quia voluptas sit
@@ -1369,11 +987,10 @@
                         </p>
 
                         <p>
-                            Ut enim ad minima veniam, quis nostrum
-                            exercitationem ullam corporis suscipit laboriosam,
-                            nisi ut aliquid ex ea commodi consequatur? Quis
-                            autem vel eum iure reprehenderit qui in ea voluptate
-                            velit esse quam nihil molestiae consequatur.
+                            Quis autem vel eum iure reprehenderit qui in ea
+                            voluptate velit esse quam nihil molestiae
+                            consequatur, vel illum qui dolorem eum fugiat quo
+                            voluptas nulla pariatur?
                         </p>
 
                         <p>
@@ -1384,52 +1001,17 @@
                             provident.
                         </p>
 
-                        <!-- Article Tags -->
-                        <div class="article-tags">
-                            <div class="article-tags-title">Tags</div>
-                            <div class="article-tags-list">
-                                <a href="#" class="article-tag">política</a>
-                                <a href="#" class="article-tag">governo</a>
-                                <a href="#" class="article-tag">legislação</a>
-                                <a href="#" class="article-tag">congresso</a>
-                                <a href="#" class="article-tag">nacional</a>
-                            </div>
-                        </div>
+                        <p>
+                            Similique sunt in culpa qui officia deserunt
+                            mollitia animi, id est laborum et dolorum fuga. Et
+                            harum quidem rerum facilis est et expedita
+                            distinctio. Nam libero tempore, cum soluta nobis est
+                            eligendi optio cumque nihil impedit.
+                        </p>
                     </article>
 
                     <!-- Sidebar -->
                     <aside class="article-sidebar">
-                        <!-- Newsletter Widget -->
-                        <div class="sidebar-widget newsletter-widget">
-                            <div class="sidebar-widget-title">Newsletter</div>
-                                <p class="newsletter-widget-text">
-                                    Receba as principais notícias do dia no seu
-                                    e-mail.
-                                </p>
-                                <input
-                                    type="email"
-                                    class="newsletter-widget-input"
-                                    placeholder="Seu e-mail"
-                                />
-                                <button class="newsletter-widget-button">
-                                    Inscrever-se
-                                </button>
-                            <div class="newsletter-widget-content">
-                                <p class="newsletter-widget-text">
-                                    Receba as principais notícias do dia no seu
-                                    e-mail.
-                                </p>
-                                <input
-                                    type="email"
-                                    class="newsletter-widget-input"
-                                    placeholder="Seu e-mail"
-                                />
-                                <button class="newsletter-widget-button">
-                                    Inscrever-se
-                                </button>
-                            </div>
-                        </div>
-
                         <!-- Most Read -->
                         <div class="sidebar-widget">
                             <div class="sidebar-widget-title">Mais Lidas</div>
@@ -1437,76 +1019,51 @@
                                 <article class="sidebar-article">
                                     <div class="sidebar-article-image">
                                         <img
-
-                                            src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia"
-
+                                            src="https://placehold.co/80x60/f0f0f0/999999?text=1"
                                             alt="Notícia"
-
                                         />
                                     </div>
                                     <div class="sidebar-article-content">
                                         <h4 class="sidebar-article-title">
-
-                                            [Placeholder] Título da matéria
-
-
-                                        mais
+                                            [Placeholder] Título da notícia mais
                                             lida
                                         </h4>
                                         <span class="sidebar-article-time"
-
-                                            >Há 2 horas</span
-
+                                            >Há [X] horas</span
                                         >
                                     </div>
                                 </article>
                                 <article class="sidebar-article">
                                     <div class="sidebar-article-image">
                                         <img
-
-                                            src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia"
-
+                                            src="https://placehold.co/80x60/f0f0f0/999999?text=2"
                                             alt="Notícia"
-
                                         />
                                     </div>
                                     <div class="sidebar-article-content">
                                         <h4 class="sidebar-article-title">
-
-                                            [Placeholder] Segunda matéria
-
-                                        mais
-                                            acessada
+                                            [Placeholder] Título da notícia
+                                            relevante
                                         </h4>
                                         <span class="sidebar-article-time"
-
-                                            >Há 4 horas</span
-
+                                            >Há [X] horas</span
                                         >
                                     </div>
                                 </article>
                                 <article class="sidebar-article">
                                     <div class="sidebar-article-image">
                                         <img
-
-                                            src="https://placehold.co/160x120/e5e5e5/333333?text=Notícia"
-
+                                            src="https://placehold.co/80x60/f0f0f0/999999?text=3"
                                             alt="Notícia"
-
                                         />
                                     </div>
                                     <div class="sidebar-article-content">
                                         <h4 class="sidebar-article-title">
-
-                                            [Placeholder] Terceira matéria
-
-                                        em
+                                            [Placeholder] Título da notícia em
                                             destaque
                                         </h4>
                                         <span class="sidebar-article-time"
-
-                                            >Há 6 horas</span
-
+                                            >Há [X] horas</span
                                         >
                                     </div>
                                 </article>
@@ -1516,111 +1073,79 @@
                         <!-- Sidebar Ad -->
                         <div class="sidebar-ad">
                             <img
-
                                 src="https://placehold.co/300x500/f0f0f0/999999?text=Anúncio"
-
                                 alt="Espaço publicitário"
-
                             />
                         </div>
                     </aside>
                 </div>
 
+                <!-- Article Tags -->
+                <div class="article-tags">
+                    <div class="article-tags-title">Tags</div>
+                    <div class="article-tags-list">
+                        <a href="#" class="article-tag">tag1</a>
+                        <a href="#" class="article-tag">tag2</a>
+                        <a href="#" class="article-tag">tag3</a>
+                        <a href="#" class="article-tag">tag4</a>
+                    </div>
+                </div>
+
                 <!-- Related Articles -->
                 <section class="related-articles">
                     <h2 class="related-articles-title">
-
                         Matérias Relacionadas
-
                     </h2>
-                    <div
-                        class
-                        ="related-articles-grid"
-                    >
+                    <div class="related-articles-grid">
                         <a href="noticia.html" class="related-article-card">
                             <div class="related-article-image">
                                 <img
-
-                                    src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+1"
-
+                                    src="https://placehold.co/400x225/f0f0f0/999999?text=Relacionada+1"
                                     alt="Notícia relacionada"
-
                                 />
                             </div>
                             <div class="related-article-content">
-                                <span class="related-article-category politics"
-
-                                    >Política</span
-
+                                <span class="related-article-category"
+                                    >[Categoria]</span
                                 >
                                 <h4 class="related-article-title">
-
                                     [Placeholder] Título da matéria relacionada
-
                                 </h4>
                             </div>
                         </a>
                         <a href="noticia.html" class="related-article-card">
                             <div class="related-article-image">
                                 <img
-
-                                    src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+2"
-
+                                    src="https://placehold.co/400x225/f0f0f0/999999?text=Relacionada+2"
                                     alt="Notícia relacionada"
-
                                 />
                             </div>
                             <div class="related-article-content">
-                                <span class="related-article-category economy"
-
-                                    >Economia</span
-
+                                <span class="related-article-category"
+                                    >[Categoria]</span
                                 >
                                 <h4 class="related-article-title">
-
-                                    [Placeholder] Outra matéria relacionada
-
-                                ao
-                                    tema
+                                    [Placeholder] Título da matéria relacionada
                                 </h4>
                             </div>
                         </a>
                         <a href="noticia.html" class="related-article-card">
                             <div class="related-article-image">
                                 <img
-
-                                    src="https://placehold.co/400x225/e5e5e5/333333?text=Relacionada+3"
-
+                                    src="https://placehold.co/400x225/f0f0f0/999999?text=Relacionada+3"
                                     alt="Notícia relacionada"
-
                                 />
                             </div>
                             <div class="related-article-content">
-                                <span class="related-article-category justice"
-
-                                    >Justiça</span
-
+                                <span class="related-article-category"
+                                    >[Categoria]</span
                                 >
                                 <h4 class="related-article-title">
-
-                                    [Placeholder] Terceira matéria sobre
-
-                                o
-                                    assunto
+                                    [Placeholder] Título da matéria relacionada
                                 </h4>
                             </div>
                         </a>
                     </div>
-                </section>
-
-                <!-- Comments Section -->
-                <section class="comments-section">
-                    <h2 class="comments-section-title">Comentários</h2>
-                    <p style="color: var(--color-text-gray)">
-
-                        Os comentários estão desabilitados nesta matéria.
-
-                    </p>
                 </section>
             </div>
         </main>
@@ -1632,18 +1157,10 @@
                     <div class="footer-section">
                         <h4 class="footer-title">Sobre</h4>
                         <ul class="footer-links">
-                            <li><a href="#sobre">Quem somos</a></li>
-                            <li><a href="#expediente">Expediente</a></li>
-                            <li>
-
-                                <a href="#privacidade"
-
-                                    >Política de Privacidade</a
-
-                                >
-
-                            </li>
-                            <li><a href="#termos">Termos de Uso</a></li>
+                            <li><a href="#">Quem somos</a></li>
+                            <li><a href="#">Expediente</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                            <li><a href="#">Termos de Uso</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
@@ -1695,102 +1212,42 @@
                                     >Correio da Manhã DF</a
                                 >
                             </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanha.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhasp.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã SP</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiosulfluminense.com.br/"
-                                    target="_blank"
-                                    >Correio Sul Fluminense</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiopetropolitano.com.br/"
-                                    target="_blank"
-                                    >Correio Petropolitano</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhadf.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã DF</a
-                                >
-                            </li>
                         </ul>
                     </div>
                     <div class="footer-section">
                         <h4 class="footer-title">Contato</h4>
                         <ul class="footer-links">
-                            <li><a href="#contato">Fale conosco</a></li>
-                            <li><a href="#trabalhe">Trabalhe conosco</a></li>
-                            <li><a href="#anuncie">Anuncie</a></li>
+                            <li><a href="#">Fale conosco</a></li>
+                            <li><a href="#">Trabalhe conosco</a></li>
+                            <li><a href="#">Anuncie</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="footer-bottom">
                     <div class="footer-logo">PORTAL CM</div>
-                    <p>&copy; 2026 Portal CM. Todos os direitos reservados.</p>
+                    <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
                 </div>
             </div>
         </footer>
 
+        <!-- Back to Top Button -->
+        <button
+            id="back-to-top"
+            class="back-to-top"
+            aria-label="Voltar ao topo"
+        >
+            <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </button>
+
         <script src="js/main.js"></script>
-            const category = urlParams.get("category") || "Política";
-            const title = urlParams.get("title") || "Título da Notícia";
-            const subtitle = urlParams.get("subtitle") || "";
-            const image = urlParams.get("image") || "";
-            const author = urlParams.get("author") || "Correio da Manhã";
-            const authorRole = urlParams.get("authorRole") || "Jornalista";
-            const authorAvatar = urlParams.get("authorAvatar") || "";
-            const dateStr = urlParams.get("date") || "";
-            const time = urlParams.get("time") || "Há 2 horas";
-            const body = urlParams.get("body") || "";
-            const link = urlParams.get("link") || "";
-"""""""""""",""""""""""""""""""
-                    ""
-                ""
-                                const options = {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                };
-                const formattedDate = date.toLocaleDateString("pt-BR", options);
-                document.getElementById("article-date").textContent =
-                    formattedDate;
-                document.getElementById("article-date-full").textContent =
-                    formattedDate;
-""""""
-                    (()
-                    """"""""""
-
-                    "",
-
-
-                    "",
-
-
-                    "",
-                """"""""
-                    """"
-                    ""
-                        ""
-                        ""
-                        ""
-                        "",
-                        </body>
+    </body>
 </html>

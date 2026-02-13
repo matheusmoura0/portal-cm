@@ -1,934 +1,647 @@
 <!doctype html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="description"
-            content="Opinião - portal CM. Artigos, colunas e análises de nossos colunistas."
-        />
-        <title>Opinião | portal CM</title>
-        <link rel="stylesheet" href="css/styles.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
-            rel="stylesheet"
-        />
-        <style>
-            /* Opinion Page Styles */
-            .opinion-section {
-                margin-top: 40px;
-            }
 
-            /* Featured Opinion Article */
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Opinião - portal CM. Artigos, colunas e análises de nossos colunistas." />
+    <title>Opinião | portal CM</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+        rel="stylesheet" />
+    <script src="js/components/Header.js"></script>
+    <style>
+        /* Opinion Page Styles */
+        .opinion-section {
+            margin-top: 40px;
+        }
+
+        /* Featured Opinion Article */
+        .featured-opinion {
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 12px;
+            color: white;
+        }
+
+        .opinion-article-large {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .opinion-author-large {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .opinion-author-large img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+        }
+
+        .author-info-large {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-info-large .author-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .author-info-large .author-role {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 4px;
+        }
+
+        .opinion-title-large {
+            font-family: "Noto Serif", Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .opinion-excerpt-large {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+        }
+
+        .read-more-large {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #d0021b;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .read-more-large:hover {
+            background: #a00115;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            margin: 50px 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #d0021b;
+            color: #1a1a2e;
+        }
+
+        /* Opinion Grid */
+        .opinion-grid-full {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .opinion-article {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .opinion-article:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+            border-color: #d0021b;
+        }
+
+        .opinion-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .opinion-author img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f0f0f0;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1a1a2e;
+        }
+
+        .author-role {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .opinion-article h3 {
+            font-family: "Noto Serif", Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+            flex-grow: 1;
+        }
+
+        .opinion-excerpt {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .opinion-time {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* Editorials List */
+        .editorials-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .editorial-item {
+            background: #f8f8f8;
+            border-left: 4px solid #d0021b;
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s;
+        }
+
+        .editorial-item:hover {
+            background: #f0f0f0;
+            padding-left: 30px;
+        }
+
+        .editorial-label {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #1a1a2e;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .editorial-item h3 {
+            font-family: "Noto Serif", Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a2e;
+        }
+
+        .editorial-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .editorial-item .opinion-time {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            margin: 60px 0;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .newsletter-content h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: #2a2a4e;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .opinion-grid-full {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
             .featured-opinion {
-                margin: 40px 0;
-                padding: 30px;
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-                border-radius: 12px;
-                color: white;
-            }
-
-            .opinion-article-large {
-                max-width: 900px;
-                margin: 0 auto;
-            }
-
-            .opinion-author-large {
-                display: flex;
-                align-items: center;
-                gap: 20px;
-                margin-bottom: 25px;
-            }
-
-            .opinion-author-large img {
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                border: 4px solid rgba(255, 255, 255, 0.3);
-                object-fit: cover;
-            }
-
-            .author-info-large {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .author-info-large .author-name {
-                font-size: 1.4rem;
-                font-weight: 700;
-                color: #fff;
-            }
-
-            .author-info-large .author-role {
-                font-size: 0.95rem;
-                color: rgba(255, 255, 255, 0.7);
-                margin-top: 4px;
+                padding: 20px;
             }
 
             .opinion-title-large {
-                font-family: "Noto Serif", Georgia, serif;
-                font-size: 2rem;
-                font-weight: 700;
-                line-height: 1.3;
-                margin-bottom: 20px;
-                color: #fff;
+                font-size: 1.5rem;
             }
 
             .opinion-excerpt-large {
-                font-size: 1.1rem;
-                line-height: 1.7;
-                color: rgba(255, 255, 255, 0.9);
-                margin-bottom: 25px;
+                font-size: 1rem;
             }
 
-            .read-more-large {
-                display: inline-block;
-                padding: 12px 30px;
-                background: #d0021b;
-                color: white;
-                text-decoration: none;
-                border-radius: 6px;
-                font-weight: 600;
-                transition: all 0.3s;
-            }
-
-            .read-more-large:hover {
-                background: #a00115;
-                transform: translateY(-2px);
-            }
-
-            /* Section Styles */
-            .section {
-                margin: 50px 0;
+            .opinion-grid-full {
+                grid-template-columns: 1fr;
             }
 
             .section-title {
-                font-size: 1.8rem;
-                font-weight: 700;
-                margin-bottom: 30px;
-                padding-bottom: 15px;
-                border-bottom: 3px solid #d0021b;
-                color: #1a1a2e;
+                font-size: 1.5rem;
             }
 
-            /* Opinion Grid */
-            .opinion-grid-full {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 25px;
-            }
-
-            .opinion-article {
-                background: #fff;
-                border: 1px solid #e0e0e0;
-                border-radius: 10px;
-                padding: 25px;
-                transition: all 0.3s;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .opinion-article:hover {
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-                transform: translateY(-4px);
-                border-color: #d0021b;
-            }
-
-            .opinion-author {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                margin-bottom: 20px;
-            }
-
-            .opinion-author img {
-                width: 70px;
-                height: 70px;
-                border-radius: 50%;
-                object-fit: cover;
-                border: 3px solid #f0f0f0;
-            }
-
-            .author-info {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .author-name {
-                font-weight: 700;
-                font-size: 1rem;
-                color: #1a1a2e;
-            }
-
-            .author-role {
-                font-size: 0.85rem;
-                color: #666;
-            }
-
-            .opinion-article h3 {
-                font-family: "Noto Serif", Georgia, serif;
-                font-size: 1.15rem;
-                font-weight: 700;
-                line-height: 1.4;
-                margin-bottom: 15px;
-                color: #1a1a2e;
-                flex-grow: 1;
-            }
-
-            .opinion-excerpt {
-                font-size: 0.95rem;
-                line-height: 1.6;
-                color: #555;
-                margin-bottom: 15px;
-            }
-
-            .opinion-time {
-                font-size: 0.85rem;
-                color: #999;
-            }
-
-            /* Editorials List */
-            .editorials-list {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .editorial-item {
-                background: #f8f8f8;
-                border-left: 4px solid #d0021b;
-                padding: 25px;
-                border-radius: 0 8px 8px 0;
-                transition: all 0.3s;
-            }
-
-            .editorial-item:hover {
-                background: #f0f0f0;
-                padding-left: 30px;
-            }
-
-            .editorial-label {
-                display: inline-block;
-                padding: 4px 12px;
-                background: #1a1a2e;
-                color: white;
-                font-size: 0.75rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                margin-bottom: 12px;
-            }
-
-            .editorial-item h3 {
-                font-family: "Noto Serif", Georgia, serif;
-                font-size: 1.3rem;
-                font-weight: 700;
-                margin-bottom: 12px;
-                color: #1a1a2e;
-            }
-
-            .editorial-item p {
-                font-size: 1rem;
-                line-height: 1.6;
-                color: #555;
-                margin-bottom: 10px;
-            }
-
-            .editorial-item .opinion-time {
-                font-size: 0.85rem;
-                color: #999;
-            }
-
-            /* Newsletter Section */
             .newsletter-section {
-                margin: 60px 0;
-                padding: 50px;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                border-radius: 12px;
-                text-align: center;
+                padding: 30px 20px;
             }
 
             .newsletter-content h3 {
-                font-size: 1.8rem;
-                font-weight: 700;
-                color: white;
-                margin-bottom: 15px;
-            }
-
-            .newsletter-content p {
-                font-size: 1.1rem;
-                color: rgba(255, 255, 255, 0.9);
-                margin-bottom: 30px;
+                font-size: 1.4rem;
             }
 
             .newsletter-form {
-                display: flex;
-                gap: 15px;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .newsletter-form input {
-                flex: 1;
-                padding: 15px 20px;
-                border: none;
-                border-radius: 8px;
-                font-size: 1rem;
+                flex-direction: column;
             }
 
             .newsletter-form button {
-                padding: 15px 30px;
-                background: #1a1a2e;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                font-size: 1rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.3s;
+                width: 100%;
             }
+        }
+    </style>
+</head>
 
-            .newsletter-form button:hover {
-                background: #2a2a4e;
-                transform: translateY(-2px);
-            }
+<body>
+    <!-- Global Header Placeholder -->
+    <div id="global-header"></div>
 
-            /* Responsive */
-            @media (max-width: 1024px) {
-                .opinion-grid-full {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-            }
-
-            @media (max-width: 768px) {
-                .featured-opinion {
-                    padding: 20px;
-                }
-
-                .opinion-title-large {
-                    font-size: 1.5rem;
-                }
-
-                .opinion-excerpt-large {
-                    font-size: 1rem;
-                }
-
-                .opinion-grid-full {
-                    grid-template-columns: 1fr;
-                }
-
-                .section-title {
-                    font-size: 1.5rem;
-                }
-
-                .newsletter-section {
-                    padding: 30px 20px;
-                }
-
-                .newsletter-content h3 {
-                    font-size: 1.4rem;
-                }
-
-                .newsletter-form {
-                    flex-direction: column;
-                }
-
-                .newsletter-form button {
-                    width: 100%;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-left">
-                    <span id="current-date"></span>
-                    <span class="top-bar-separator">|</span>
-                    <span id="weather-info"
-                        >Rio de Janeiro: 22°C Parcialmente nublado</span
-                    >
-                    <span class="top-bar-separator">|</span>
-                    <span id="usd-rate">USD: R$ 5.07</span>
-                    <span class="top-bar-separator">|</span>
-                    <span id="ibov-rate">IBOV: 135.152</span>
-                </div>
-                <div class="top-bar-right">
-                    <a
-                        href="https://instagram.com"
-                        target="_blank"
-                        class="social-icon"
-                        aria-label="Instagram"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                        >
-                            <rect
-                                x="2"
-                                y="2"
-                                width="20"
-                                height="20"
-                                rx="5"
-                                ry="5"
-                            ></rect>
-                            <path
-                                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                            ></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a
-                        href="https://youtube.com"
-                        target="_blank"
-                        class="social-icon"
-                        aria-label="YouTube"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path
-                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="2"
-                            ></path>
-                            <polygon
-                                points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
-                                fill="white"
-                            ></polygon>
-                        </svg>
-                    </a>
-                    <a
-                        href="#share"
-                        class="social-icon"
-                        aria-label="Compartilhar"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                        >
-                            <circle cx="18" cy="5" r="3"></circle>
-                            <circle cx="6" cy="12" r="3"></circle>
-                            <circle cx="18" cy="19" r="3"></circle>
-                            <line
-                                x1="8.59"
-                                y1="13.51"
-                                x2="15.42"
-                                y2="17.49"
-                            ></line>
-                            <line
-                                x1="15.41"
-                                y1="6.51"
-                                x2="8.59"
-                                y2="10.49"
-                            ></line>
-                        </svg>
-                    </a>
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="container">
+            <span class="breaking-label">AO VIVO</span>
+            <div class="ticker-wrapper">
+                <div class="ticker-content" id="breaking-news-ticker">
+                    <span>🔴 VR: Prefeito Neto garante reajuste para
+                        servidores</span>
+                    <span>🔴 Nunes rejeita aliança entre MDB e PT em
+                        2026</span>
+                    <span>🔴 Início do sistema aquaviário deve acontecer no
+                        final de 2026</span>
+                    <span>🔴 Flamengo e Portuguesa empatam no Raulino</span>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Ad Placeholder -->
-        <div class="ad-placeholder">
-            <div class="ad-label">PUBLICIDADE</div>
-            <div class="ad-space">
-                <img
-                    src="https://placehold.co/970x250/f0f0f0/999999?text=Espaço+Publicitário+-+970x250"
-                    alt="Espaço publicitário"
-                />
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Opinião</h1>
+                <p>
+                    Análises, colunas e editoriais de nossos colaboradores
+                </p>
             </div>
-        </div>
 
-        <!-- Header -->
-        <header class="main-header">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo-section">
-                        <a href="/">
-                            <h1 class="logo">CM</h1>
-                            <span class="logo-portal">portal</span>
-                        </a>
-                    </div>
-                    <div class="search-section">
-                        <div class="search-box">
-                            <input
-                                type="text"
-                                placeholder="Buscar notícias..."
-                                id="search-input"
-                            />
-                            <button class="search-btn" aria-label="Buscar">
-                                <svg
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
-                            </button>
+            <!-- Advertisement -->
+            <div class="ad-placeholder">
+                <div class="ad-label">PUBLICIDADE</div>
+                <div class="ad-space">
+                    <img src="https://placehold.co/728x90/f0f0f0/999999?text=Espaço+Publicitário"
+                        alt="Espaço publicitário" />
+                </div>
+            </div>
+
+            <!-- Featured Opinion -->
+            <section class="featured-opinion">
+                <article class="opinion-article-large">
+                    <div class="opinion-author-large">
+                        <img src="images/colunistas/img_colunistas_magnavita-87116.jpg" alt="Reinaldo Azevedo" />
+                        <div class="author-info-large">
+                            <span class="author-name">MAGNAVITA</span>
+                            <span class="author-role">Colunista</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Main Navigation -->
-        <nav class="main-nav">
-            <div class="container">
-                <button
-                    class="mobile-menu-toggle"
-                    id="mobile-menu-toggle"
-                    aria-label="Menu"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-menu" id="nav-menu">
-                    <li>
-                        <a href="opiniao.html" class="nav-link active"
-                            >Opinião</a
-                        >
-                    </li>
-                    <li>
-                        <a href="politica.html" class="nav-link">Política</a>
-                    </li>
-                    <li>
-                        <a href="economia.html" class="nav-link">Economia</a>
-                    </li>
-                    <li><a href="justica.html" class="nav-link">Justiça</a></li>
-                    <li><a href="brasil.html" class="nav-link">Brasil</a></li>
-                    <li class="nav-dropdown">
-                        <a href="#regioes" class="nav-link dropdown-toggle"
-                            >Regiões ▾</a
-                        >
-                        <ul class="dropdown-menu">
-                            <li><a href="brasil.html">Brasil</a></li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanha.com.br/"
-                                    target="_blank"
-                                    >Rio de Janeiro</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhasp.com.br/"
-                                    target="_blank"
-                                    >São Paulo</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiosulfluminense.com.br/"
-                                    target="_blank"
-                                    >Sul Fluminense</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiopetropolitano.com.br/"
-                                    target="_blank"
-                                    >Petrópolis</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhadf.com.br/"
-                                    target="_blank"
-                                    >Distrito Federal</a
-                                >
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="cultura.html" class="nav-link">Cultura</a></li>
-                    <li>
-                        <a href="esportes.html" class="nav-link">Esportes</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Breaking News Ticker -->
-        <div class="breaking-news">
-            <div class="container">
-                <span class="breaking-label">AO VIVO</span>
-                <div class="ticker-wrapper">
-                    <div class="ticker-content" id="breaking-news-ticker">
-                        <span
-                            >🔴 VR: Prefeito Neto garante reajuste para
-                            servidores</span
-                        >
-                        <span
-                            >🔴 Nunes rejeita aliança entre MDB e PT em
-                            2026</span
-                        >
-                        <span
-                            >🔴 Início do sistema aquaviário deve acontecer no
-                            final de 2026</span
-                        >
-                        <span>🔴 Flamengo e Portuguesa empatam no Raulino</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="container">
-                <!-- Page Header -->
-                <div class="page-header">
-                    <h1>Opinião</h1>
-                    <p>
-                        Análises, colunas e editoriais de nossos colaboradores
+                    <h2 class="opinion-title-large">
+                        [Placeholder] Título do artigo de opinião em
+                        destaque
+                    </h2>
+                    <p class="opinion-excerpt-large">
+                        [Placeholder] Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.
                     </p>
-                </div>
+                    <a href="#" class="read-more-large">Ler artigo completo →</a>
+                </article>
+            </section>
 
-                <!-- Advertisement -->
-                <div class="ad-placeholder">
-                    <div class="ad-label">PUBLICIDADE</div>
-                    <div class="ad-space">
-                        <img
-                            src="https://placehold.co/728x90/f0f0f0/999999?text=Espaço+Publicitário"
-                            alt="Espaço publicitário"
-                        />
-                    </div>
-                </div>
-
-                <!-- Featured Opinion -->
-                <section class="featured-opinion">
-                    <article class="opinion-article-large">
-                        <div class="opinion-author-large">
-                            <img
-                                src="images/colunistas/img_colunistas_magnavita-87116.jpg"
-                                alt="Reinaldo Azevedo"
-                            />
-                            <div class="author-info-large">
-                                <span class="author-name">MAGNAVITA</span>
-                                <span class="author-role">Colunista</span>
+            <!-- Columnists Grid -->
+            <section class="section">
+                <h2 class="section-title">Colunas</h2>
+                <div class="opinion-grid-full">
+                    <article class="opinion-article">
+                        <div class="opinion-author">
+                            <img src="images/colunistas/tales_faria_foto__colunista_300px-445320.jpg"
+                                alt="Tales Faria" />
+                            <div class="author-info">
+                                <span class="author-name">Tales Faria</span>
+                                <span class="author-role">Política</span>
                             </div>
                         </div>
-                        <h2 class="opinion-title-large">
-                            [Placeholder] Título do artigo de opinião em
-                            destaque
-                        </h2>
-                        <p class="opinion-excerpt-large">
-                            [Placeholder] Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua.
+                        <h3>[Placeholder] Título da coluna</h3>
+                        <p class="opinion-excerpt">
+                            [Placeholder] Trecho da coluna
                         </p>
-                        <a href="#" class="read-more-large"
-                            >Ler artigo completo →</a
-                        >
+                        <span class="opinion-time">Há 2 horas</span>
                     </article>
-                </section>
-
-                <!-- Columnists Grid -->
-                <section class="section">
-                    <h2 class="section-title">Colunas</h2>
-                    <div class="opinion-grid-full">
-                        <article class="opinion-article">
-                            <div class="opinion-author">
-                                <img
-                                    src="images/colunistas/tales_faria_foto__colunista_300px-445320.jpg"
-                                    alt="Tales Faria"
-                                />
-                                <div class="author-info">
-                                    <span class="author-name">Tales Faria</span>
-                                    <span class="author-role">Política</span>
-                                </div>
+                    <article class="opinion-article">
+                        <div class="opinion-author">
+                            <img src="images/colunistas/alexandre_garcia___300px-161864.jpg" alt="Alexandre Garcia" />
+                            <div class="author-info">
+                                <span class="author-name">Alexandre Garcia</span>
+                                <span class="author-role">Jornalismo</span>
                             </div>
-                            <h3>[Placeholder] Título da coluna</h3>
-                            <p class="opinion-excerpt">
-                                [Placeholder] Trecho da coluna
-                            </p>
-                            <span class="opinion-time">Há 2 horas</span>
-                        </article>
-                        <article class="opinion-article">
-                            <div class="opinion-author">
-                                <img
-                                    src="images/colunistas/alexandre_garcia___300px-161864.jpg"
-                                    alt="Alexandre Garcia"
-                                />
-                                <div class="author-info">
-                                    <span class="author-name"
-                                        >Alexandre Garcia</span
-                                    >
-                                    <span class="author-role">Jornalismo</span>
-                                </div>
+                        </div>
+                        <h3>[Placeholder] Título da coluna</h3>
+                        <p class="opinion-excerpt">
+                            [Placeholder] Trecho da coluna
+                        </p>
+                        <span class="opinion-time">Há 4 horas</span>
+                    </article>
+                    <article class="opinion-article">
+                        <div class="opinion-author">
+                            <img src="images/colunistas/sonia-paes-02.jpg" alt="Sonia Paes" />
+                            <div class="author-info">
+                                <span class="author-name">Sonia Paes</span>
+                                <span class="author-role">Economia</span>
                             </div>
-                            <h3>[Placeholder] Título da coluna</h3>
-                            <p class="opinion-excerpt">
-                                [Placeholder] Trecho da coluna
-                            </p>
-                            <span class="opinion-time">Há 4 horas</span>
-                        </article>
-                        <article class="opinion-article">
-                            <div class="opinion-author">
-                                <img
-                                    src="images/colunistas/sonia-paes-02.jpg"
-                                    alt="Sonia Paes"
-                                />
-                                <div class="author-info">
-                                    <span class="author-name">Sonia Paes</span>
-                                    <span class="author-role">Economia</span>
-                                </div>
+                        </div>
+                        <h3>[Placeholder] Título da coluna</h3>
+                        <p class="opinion-excerpt">
+                            [Placeholder] Trecho da coluna
+                        </p>
+                        <span class="opinion-time">Há 6 horas</span>
+                    </article>
+                    <article class="opinion-article">
+                        <div class="opinion-author">
+                            <img src="images/colunistas/aristoteles_drummond___300px___foto_colunistas-161912.jpg"
+                                alt="Aristoteles Drummond" />
+                            <div class="author-info">
+                                <span class="author-name">Aristoteles Drummond</span>
+                                <span class="author-role">Justiça</span>
                             </div>
-                            <h3>[Placeholder] Título da coluna</h3>
-                            <p class="opinion-excerpt">
-                                [Placeholder] Trecho da coluna
-                            </p>
-                            <span class="opinion-time">Há 6 horas</span>
-                        </article>
-                        <article class="opinion-article">
-                            <div class="opinion-author">
-                                <img
-                                    src="images/colunistas/aristoteles_drummond___300px___foto_colunistas-161912.jpg"
-                                    alt="Aristoteles Drummond"
-                                />
-                                <div class="author-info">
-                                    <span class="author-name"
-                                        >Aristoteles Drummond</span
-                                    >
-                                    <span class="author-role">Justiça</span>
-                                </div>
+                        </div>
+                        <h3>[Placeholder] Título da coluna</h3>
+                        <p class="opinion-excerpt">
+                            [Placeholder] Trecho da coluna
+                        </p>
+                        <span class="opinion-time">Há 8 horas</span>
+                    </article>
+                    <article class="opinion-article">
+                        <div class="opinion-author">
+                            <img src="images/colunistas/ruy_castro-87101.jpg" alt="Ruy Castro" />
+                            <div class="author-info">
+                                <span class="author-name">Ruy Castro</span>
+                                <span class="author-role">Cultura</span>
                             </div>
-                            <h3>[Placeholder] Título da coluna</h3>
-                            <p class="opinion-excerpt">
-                                [Placeholder] Trecho da coluna
-                            </p>
-                            <span class="opinion-time">Há 8 horas</span>
-                        </article>
-                        <article class="opinion-article">
-                            <div class="opinion-author">
-                                <img
-                                    src="images/colunistas/ruy_castro-87101.jpg"
-                                    alt="Ruy Castro"
-                                />
-                                <div class="author-info">
-                                    <span class="author-name">Ruy Castro</span>
-                                    <span class="author-role">Cultura</span>
-                                </div>
+                        </div>
+                        <h3>[Placeholder] Título da coluna</h3>
+                        <p class="opinion-excerpt">
+                            [Placeholder] Trecho da coluna
+                        </p>
+                        <span class="opinion-time">Há 12 horas</span>
+                    </article>
+                    <article class="opinion-article">
+                        <div class="opinion-author">
+                            <img src="images/colunistas/ricardo_cravo_albin___foto1-161843.jpg"
+                                alt="Ricardo Cravo Albin" />
+                            <div class="author-info">
+                                <span class="author-name">Ricardo Cravo Albin</span>
+                                <span class="author-role">Música</span>
                             </div>
-                            <h3>[Placeholder] Título da coluna</h3>
-                            <p class="opinion-excerpt">
-                                [Placeholder] Trecho da coluna
-                            </p>
-                            <span class="opinion-time">Há 12 horas</span>
-                        </article>
-                        <article class="opinion-article">
-                            <div class="opinion-author">
-                                <img
-                                    src="images/colunistas/ricardo_cravo_albin___foto1-161843.jpg"
-                                    alt="Ricardo Cravo Albin"
-                                />
-                                <div class="author-info">
-                                    <span class="author-name"
-                                        >Ricardo Cravo Albin</span
-                                    >
-                                    <span class="author-role">Música</span>
-                                </div>
-                            </div>
-                            <h3>[Placeholder] Título da coluna</h3>
-                            <p class="opinion-excerpt">
-                                [Placeholder] Trecho da coluna
-                            </p>
-                            <span class="opinion-time">Há 1 dia</span>
-                        </article>
-                    </div>
-                </section>
-
-                <!-- Editorials -->
-                <section class="section">
-                    <h2 class="section-title">Editoriais</h2>
-                    <div class="editorials-list">
-                        <article class="editorial-item">
-                            <span class="editorial-label">EDITORIAL</span>
-                            <h3>[Título do editorial sobre tema importante]</h3>
-                            <p>
-                                [Trecho do editorial - Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Sed do
-                                eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua.]
-                            </p>
-                            <span class="opinion-time">Há [X] horas</span>
-                        </article>
-                        <article class="editorial-item">
-                            <span class="editorial-label">EDITORIAL</span>
-                            <h3>[Título do editorial sobre tema importante]</h3>
-                            <p>
-                                [Trecho do editorial - Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Sed do
-                                eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua.]
-                            </p>
-                            <span class="opinion-time">Há [X] dias</span>
-                        </article>
-                        <article class="editorial-item">
-                            <span class="editorial-label">EDITORIAL</span>
-                            <h3>[Título do editorial sobre tema importante]</h3>
-                            <p>
-                                [Trecho do editorial - Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Sed do
-                                eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua.]
-                            </p>
-                            <span class="opinion-time">Há [X] dias</span>
-                        </article>
-                    </div>
-                </section>
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="main-footer">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-section">
-                        <h4 class="footer-title">Sobre</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Quem somos</a></li>
-                            <li><a href="#">Expediente</a></li>
-                            <li><a href="#">Política de Privacidade</a></li>
-                            <li><a href="#">Termos de Uso</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4 class="footer-title">Editorias</h4>
-                        <ul class="footer-links">
-                            <li><a href="opiniao.html">Opinião</a></li>
-                            <li><a href="politica.html">Política</a></li>
-                            <li><a href="economia.html">Economia</a></li>
-                            <li><a href="justica.html">Justiça</a></li>
-                            <li><a href="esportes.html">Esportes</a></li>
-                            <li><a href="cultura.html">Cultura</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4 class="footer-title">Portais Regionais</h4>
-                        <ul class="footer-links">
-                            <li>
-                                <a
-                                    href="https://www.correiodamanha.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhasp.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã SP</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiosulfluminense.com.br/"
-                                    target="_blank"
-                                    >Correio Sul Fluminense</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiopetropolitano.com.br/"
-                                    target="_blank"
-                                    >Correio Petropolitano</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhadf.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã DF</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4 class="footer-title">Contato</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Fale conosco</a></li>
-                            <li><a href="#">Trabalhe conosco</a></li>
-                            <li><a href="#">Anuncie</a></li>
-                        </ul>
-                    </div>
+                        </div>
+                        <h3>[Placeholder] Título da coluna</h3>
+                        <p class="opinion-excerpt">
+                            [Placeholder] Trecho da coluna
+                        </p>
+                        <span class="opinion-time">Há 1 dia</span>
+                    </article>
                 </div>
-                <div class="footer-bottom">
-                    <div class="footer-logo">PORTAL CM</div>
-                    <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
+            </section>
+
+            <!-- Editorials -->
+            <section class="section">
+                <h2 class="section-title">Editoriais</h2>
+                <div class="editorials-list">
+                    <article class="editorial-item">
+                        <span class="editorial-label">EDITORIAL</span>
+                        <h3>[Título do editorial sobre tema importante]</h3>
+                        <p>
+                            [Trecho do editorial - Lorem ipsum dolor sit
+                            amet, consectetur adipiscing elit. Sed do
+                            eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua.]
+                        </p>
+                        <span class="opinion-time">Há [X] horas</span>
+                    </article>
+                    <article class="editorial-item">
+                        <span class="editorial-label">EDITORIAL</span>
+                        <h3>[Título do editorial sobre tema importante]</h3>
+                        <p>
+                            [Trecho do editorial - Lorem ipsum dolor sit
+                            amet, consectetur adipiscing elit. Sed do
+                            eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua.]
+                        </p>
+                        <span class="opinion-time">Há [X] dias</span>
+                    </article>
+                    <article class="editorial-item">
+                        <span class="editorial-label">EDITORIAL</span>
+                        <h3>[Título do editorial sobre tema importante]</h3>
+                        <p>
+                            [Trecho do editorial - Lorem ipsum dolor sit
+                            amet, consectetur adipiscing elit. Sed do
+                            eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua.]
+                        </p>
+                        <span class="opinion-time">Há [X] dias</span>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4 class="footer-title">Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Expediente</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Editorias</h4>
+                    <ul class="footer-links">
+                        <li><a href="opiniao.html">Opinião</a></li>
+                        <li><a href="politica.html">Política</a></li>
+                        <li><a href="economia.html">Economia</a></li>
+                        <li><a href="justica.html">Justiça</a></li>
+                        <li><a href="esportes.html">Esportes</a></li>
+                        <li><a href="cultura.html">Cultura</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Portais Regionais</h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="https://www.correiodamanha.com.br/" target="_blank">Correio da Manhã</a>
+                        </li>
+                        <li>
+                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Correio da Manhã SP</a>
+                        </li>
+                        <li>
+                            <a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul Fluminense</a>
+                        </li>
+                        <li>
+                            <a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a>
+                        </li>
+                        <li>
+                            <a href="https://www.correiodamanhadf.com.br/" target="_blank">Correio da Manhã DF</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Contato</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Fale conosco</a></li>
+                        <li><a href="#">Trabalhe conosco</a></li>
+                        <li><a href="#">Anuncie</a></li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+            <div class="footer-bottom">
+                <div class="footer-logo">PORTAL CM</div>
+                <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
 
-        <!-- Back to Top Button -->
-        <button
-            id="back-to-top"
-            class="back-to-top"
-            aria-label="Voltar ao topo"
-        >
-            <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-            >
-                <polyline points="18 15 12 9 6 15"></polyline>
-            </svg>
-        </button>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
 
-        <script src="js/main.js"></script>
-        <script>
-            // Newsletter form submission
-            document.addEventListener("DOMContentLoaded", function () {
-                const newsletterForm =
-                    document.getElementById("newsletter-form");
-                const newsletterEmail =
-                    document.getElementById("newsletter-email");
+    <script src="js/main.js"></script>
+    <script>
+        // Newsletter form submission
+        document.addEventListener("DOMContentLoaded", function () {
+            const newsletterForm =
+                document.getElementById("newsletter-form");
+            const newsletterEmail =
+                document.getElementById("newsletter-email");
 
-                newsletterForm.addEventListener("submit", function (e) {
-                    e.preventDefault();
+            newsletterForm.addEventListener("submit", function (e) {
+                e.preventDefault();
 
-                    const email = newsletterEmail.value;
+                const email = newsletterEmail.value;
 
-                    if (email) {
-                        // Show success message
-                        const button = newsletterForm.querySelector("button");
-                        const originalText = button.textContent;
+                if (email) {
+                    // Show success message
+                    const button = newsletterForm.querySelector("button");
+                    const originalText = button.textContent;
 
-                        button.textContent = "Inscrito com sucesso!";
-                        button.style.background = "#009c3b";
+                    button.textContent = "Inscrito com sucesso!";
+                    button.style.background = "#009c3b";
 
-                        // Store email (in a real app, this would be sent to a server)
-                        console.log("Newsletter subscription for:", email);
+                    // Store email (in a real app, this would be sent to a server)
+                    console.log("Newsletter subscription for:", email);
 
-                        // Reset form after 3 seconds
-                        setTimeout(() => {
-                            newsletterForm.reset();
-                            button.textContent = originalText;
-                            button.style.background = "#1a1a2e";
-                        }, 3000);
-                    }
-                });
+                    // Reset form after 3 seconds
+                    setTimeout(() => {
+                        newsletterForm.reset();
+                        button.textContent = originalText;
+                        button.style.background = "#1a1a2e";
+                    }, 3000);
+                }
             });
-        </script>
-    </body>
+        });
+    </script>
+</body>
+
 </html>

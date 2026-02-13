@@ -1,1485 +1,1096 @@
 <!doctype html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="description"
-            content="Notícias - portal CM. Visualize todas as notícias por categoria, data e popularidade."
-        />
-        <title>Todas as Notícias | portal CM</title>
-        <link rel="stylesheet" href="css/styles.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
-            rel="stylesheet"
-        />
-        <style>
-            /* News Page Specific Styles */
-            .news-page-header {
-                background-color: var(--color-bg-alt);
-                padding: var(--spacing-xl) 0;
-                margin-bottom: var(--spacing-xl);
-                border-bottom: 1px solid var(--color-border);
-            }
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Notícias - portal CM. Visualize todas as notícias por categoria, data e popularidade." />
+    <title>Todas as Notícias | portal CM</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+        rel="stylesheet" />
+    <script src="js/components/Header.js"></script>
+    <style>
+        /* News Page Specific Styles */
+        .news-page-header {
+            background-color: var(--color-bg-alt);
+            padding: var(--spacing-xl) 0;
+            margin-bottom: var(--spacing-xl);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .news-page-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-lg);
+        }
+
+        .news-page-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 0;
+        }
+
+        .news-page-subtitle {
+            color: var(--color-text-gray);
+            font-size: 1rem;
+            margin-top: var(--spacing-sm);
+        }
+
+        .news-filters {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .filter-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-text-gray);
+        }
+
+        .filter-select {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-select:hover,
+        .filter-select:focus {
+            border-color: var(--color-primary);
+            outline: none;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 2px;
+            background-color: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .view-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--color-text-gray);
+        }
+
+        .view-btn:hover {
+            background-color: var(--color-border);
+        }
+
+        .view-btn.active {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .view-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Category Pills */
+        .category-pills {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .category-pill {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-pill:hover {
+            background-color: var(--color-border);
+        }
+
+        .category-pill.active {
+            background-color: var(--color-text);
+            color: #ffffff;
+            border-color: var(--color-text);
+        }
+
+        .category-pill.politics.active {
+            background-color: var(--color-politics);
+            border-color: var(--color-politics);
+        }
+
+        .category-pill.economy.active {
+            background-color: var(--color-economy);
+            border-color: var(--color-economy);
+        }
+
+        .category-pill.sports.active {
+            background-color: var(--color-sports);
+            border-color: var(--color-sports);
+        }
+
+        .category-pill.culture.active {
+            background-color: var(--color-culture);
+            border-color: var(--color-culture);
+        }
+
+        .category-pill.justice.active {
+            background-color: var(--color-justice);
+            border-color: var(--color-justice);
+        }
+
+        .category-pill.brasil.active {
+            background-color: var(--color-brasil);
+            border-color: var(--color-brasil);
+        }
+
+        /* News Results Info */
+        .news-results-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background-color: var(--color-bg-alt);
+            border-radius: var(--radius-sm);
+        }
+
+        .results-count {
+            font-size: 0.875rem;
+            color: var(--color-text-gray);
+        }
+
+        .results-count strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .sort-select {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            font-size: 0.8125rem;
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        /* News Grid Layout */
+        .news-grid-view {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .news-list-view {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        /* News Card for Grid View */
+        .news-card {
+            background-color: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .news-card-image {
+            position: relative;
+            display: block;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background-color: var(--color-bg-alt);
+        }
+
+        .news-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .news-card-image img {
+            transform: scale(1.05);
+        }
+
+        .news-card-category {
+            position: absolute;
+            top: var(--spacing-sm);
+            left: var(--spacing-sm);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background-color: var(--color-primary);
+            color: #ffffff;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .news-card-category.politics {
+            background-color: var(--color-politics);
+        }
+
+        .news-card-category.economy {
+            background-color: var(--color-economy);
+        }
+
+        .news-card-category.sports {
+            background-color: var(--color-sports);
+        }
+
+        .news-card-category.culture {
+            background-color: var(--color-culture);
+        }
+
+        .news-card-category.justice {
+            background-color: var(--color-justice);
+        }
+
+        .news-card-category.brasil {
+            background-color: var(--color-brasil);
+        }
+
+        .news-card-content {
+            padding: var(--spacing-md);
+        }
+
+        .news-card-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+
+        .news-card-excerpt {
+            color: var(--color-text-gray);
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-md);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+        }
+
+        .news-card-author {
+            font-weight: 500;
+            color: var(--color-text-gray);
+        }
+
+        /* News List Item for List View */
+        .news-list-item {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background-color: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .news-list-item:hover {
+            box-shadow: var(--shadow-sm);
+            background-color: var(--color-bg-alt);
+        }
+
+        .news-list-item-image {
+            flex-shrink: 0;
+            width: 200px;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background-color: var(--color-bg-alt);
+            border-radius: var(--radius-sm);
+        }
+
+        .news-list-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-list-item:hover .news-list-item-image img {
+            transform: scale(1.05);
+        }
+
+        .news-list-item-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .news-list-item-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .news-list-item-category {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background-color: var(--color-primary);
+            color: #ffffff;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .news-list-item-category.politics {
+            background-color: var(--color-politics);
+        }
+
+        .news-list-item-category.economy {
+            background-color: var(--color-economy);
+        }
+
+        .news-list-item-category.sports {
+            background-color: var(--color-sports);
+        }
+
+        .news-list-item-category.culture {
+            background-color: var(--color-culture);
+        }
+
+        .news-list-item-category.justice {
+            background-color: var(--color-justice);
+        }
+
+        .news-list-item-category.brasil {
+            background-color: var(--color-brasil);
+        }
+
+        .news-list-item-title {
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+
+        .news-list-item-excerpt {
+            color: var(--color-text-gray);
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .news-list-item-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            font-size: 0.8125rem;
+            color: var(--color-text-light);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .no-results-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--spacing-lg);
+            color: var(--color-text-light);
+        }
+
+        .no-results-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .no-results-text {
+            color: var(--color-text-gray);
+        }
+
+        /* Load More Button */
+        .load-more-container {
+            text-align: center;
+            margin-top: var(--spacing-xl);
+        }
+
+        .load-more-btn {
+            padding: var(--spacing-md) var(--spacing-xl);
+            background-color: var(--color-primary);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .load-more-btn:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        .load-more-btn:disabled {
+            background-color: var(--color-text-light);
+            cursor: not-allowed;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .news-grid-view {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
             .news-page-header .container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-                gap: var(--spacing-lg);
-            }
-
-            .news-page-title {
-                font-family: var(--font-display);
-                font-size: 2rem;
-                font-weight: 700;
-                color: var(--color-text);
-                margin: 0;
-            }
-
-            .news-page-subtitle {
-                color: var(--color-text-gray);
-                font-size: 1rem;
-                margin-top: var(--spacing-sm);
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .news-filters {
-                display: flex;
-                align-items: center;
-                gap: var(--spacing-md);
-                flex-wrap: wrap;
+                width: 100%;
             }
 
             .filter-group {
-                display: flex;
-                align-items: center;
-                gap: var(--spacing-sm);
-            }
-
-            .filter-label {
-                font-size: 0.875rem;
-                font-weight: 600;
-                color: var(--color-text-gray);
+                flex: 1;
             }
 
             .filter-select {
-                padding: var(--spacing-sm) var(--spacing-md);
-                border: 1px solid var(--color-border);
-                border-radius: var(--radius-sm);
-                font-size: 0.875rem;
-                font-family: var(--font-body);
-                background-color: var(--color-bg);
-                color: var(--color-text);
-                cursor: pointer;
-                transition: var(--transition);
+                flex: 1;
             }
 
-            .filter-select:hover,
-            .filter-select:focus {
-                border-color: var(--color-primary);
-                outline: none;
-            }
-
-            .view-toggle {
-                display: flex;
-                gap: 2px;
-                background-color: var(--color-bg-alt);
-                border: 1px solid var(--color-border);
-                border-radius: var(--radius-sm);
-                overflow: hidden;
-            }
-
-            .view-btn {
-                padding: var(--spacing-sm) var(--spacing-md);
-                border: none;
-                background: transparent;
-                cursor: pointer;
-                transition: var(--transition);
-                color: var(--color-text-gray);
-            }
-
-            .view-btn:hover {
-                background-color: var(--color-border);
-            }
-
-            .view-btn.active {
-                background-color: var(--color-bg);
-                color: var(--color-text);
-                font-weight: 600;
-            }
-
-            .view-btn svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            /* Category Pills */
-            .category-pills {
-                display: flex;
-                gap: var(--spacing-sm);
-                flex-wrap: wrap;
-                margin-bottom: var(--spacing-xl);
-                padding-bottom: var(--spacing-lg);
-                border-bottom: 1px solid var(--color-border);
-            }
-
-            .category-pill {
-                padding: var(--spacing-sm) var(--spacing-md);
-                background-color: var(--color-bg-alt);
-                border: 1px solid var(--color-border);
-                border-radius: 20px;
-                font-size: 0.8125rem;
-                font-weight: 500;
-                cursor: pointer;
-                transition: var(--transition);
-            }
-
-            .category-pill:hover {
-                background-color: var(--color-border);
-            }
-
-            .category-pill.active {
-                background-color: var(--color-text);
-                color: #ffffff;
-                border-color: var(--color-text);
-            }
-
-            .category-pill.politics.active {
-                background-color: var(--color-politics);
-                border-color: var(--color-politics);
-            }
-
-            .category-pill.economy.active {
-                background-color: var(--color-economy);
-                border-color: var(--color-economy);
-            }
-
-            .category-pill.sports.active {
-                background-color: var(--color-sports);
-                border-color: var(--color-sports);
-            }
-
-            .category-pill.culture.active {
-                background-color: var(--color-culture);
-                border-color: var(--color-culture);
-            }
-
-            .category-pill.justice.active {
-                background-color: var(--color-justice);
-                border-color: var(--color-justice);
-            }
-
-            .category-pill.brasil.active {
-                background-color: var(--color-brasil);
-                border-color: var(--color-brasil);
-            }
-
-            /* News Results Info */
-            .news-results-info {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: var(--spacing-lg);
-                padding: var(--spacing-md);
-                background-color: var(--color-bg-alt);
-                border-radius: var(--radius-sm);
-            }
-
-            .results-count {
-                font-size: 0.875rem;
-                color: var(--color-text-gray);
-            }
-
-            .results-count strong {
-                color: var(--color-text);
-                font-weight: 600;
-            }
-
-            .sort-select {
-                padding: var(--spacing-xs) var(--spacing-sm);
-                border: 1px solid var(--color-border);
-                border-radius: var(--radius-sm);
-                font-size: 0.8125rem;
-                font-family: var(--font-body);
-                background-color: var(--color-bg);
-                color: var(--color-text);
-            }
-
-            /* News Grid Layout */
             .news-grid-view {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: var(--spacing-lg);
+                grid-template-columns: 1fr;
             }
 
-            .news-list-view {
-                display: flex;
-                flex-direction: column;
-                gap: var(--spacing-md);
-            }
-
-            /* News Card for Grid View */
-            .news-card {
-                background-color: var(--color-bg);
-                border: 1px solid var(--color-border);
-                border-radius: var(--radius-sm);
-                overflow: hidden;
-                transition: var(--transition);
-            }
-
-            .news-card:hover {
-                box-shadow: var(--shadow-md);
-                transform: translateY(-2px);
-            }
-
-            .news-card-image {
-                position: relative;
-                display: block;
-                aspect-ratio: 16 / 9;
-                overflow: hidden;
-                background-color: var(--color-bg-alt);
-            }
-
-            .news-card-image img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: var(--transition);
-            }
-
-            .news-card:hover .news-card-image img {
-                transform: scale(1.05);
-            }
-
-            .news-card-category {
-                position: absolute;
-                top: var(--spacing-sm);
-                left: var(--spacing-sm);
-                padding: var(--spacing-xs) var(--spacing-sm);
-                background-color: var(--color-primary);
-                color: #ffffff;
-                font-size: 0.6875rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
-
-            .news-card-category.politics {
-                background-color: var(--color-politics);
-            }
-
-            .news-card-category.economy {
-                background-color: var(--color-economy);
-            }
-
-            .news-card-category.sports {
-                background-color: var(--color-sports);
-            }
-
-            .news-card-category.culture {
-                background-color: var(--color-culture);
-            }
-
-            .news-card-category.justice {
-                background-color: var(--color-justice);
-            }
-
-            .news-card-category.brasil {
-                background-color: var(--color-brasil);
-            }
-
-            .news-card-content {
-                padding: var(--spacing-md);
-            }
-
-            .news-card-title {
-                font-family: var(--font-display);
-                font-size: 1rem;
-                font-weight: 600;
-                line-height: 1.4;
-                margin-bottom: var(--spacing-sm);
-                color: var(--color-text);
-            }
-
-            .news-card-excerpt {
-                color: var(--color-text-gray);
-                font-size: 0.875rem;
-                margin-bottom: var(--spacing-md);
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-
-            .news-card-meta {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                font-size: 0.75rem;
-                color: var(--color-text-light);
-            }
-
-            .news-card-author {
-                font-weight: 500;
-                color: var(--color-text-gray);
-            }
-
-            /* News List Item for List View */
             .news-list-item {
-                display: flex;
-                gap: var(--spacing-md);
-                padding: var(--spacing-md);
-                background-color: var(--color-bg);
-                border: 1px solid var(--color-border);
-                border-radius: var(--radius-sm);
-                transition: var(--transition);
-            }
-
-            .news-list-item:hover {
-                box-shadow: var(--shadow-sm);
-                background-color: var(--color-bg-alt);
+                flex-direction: column;
             }
 
             .news-list-item-image {
-                flex-shrink: 0;
-                width: 200px;
-                aspect-ratio: 16 / 9;
-                overflow: hidden;
-                background-color: var(--color-bg-alt);
-                border-radius: var(--radius-sm);
-            }
-
-            .news-list-item-image img {
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: var(--transition);
             }
 
-            .news-list-item:hover .news-list-item-image img {
-                transform: scale(1.05);
-            }
-
-            .news-list-item-content {
-                flex: 1;
-                display: flex;
+            .news-results-info {
                 flex-direction: column;
-                justify-content: space-between;
-            }
-
-            .news-list-item-header {
-                display: flex;
+                gap: var(--spacing-sm);
                 align-items: flex-start;
-                justify-content: space-between;
-                gap: var(--spacing-md);
-                margin-bottom: var(--spacing-xs);
             }
+        }
+    </style>
+</head>
 
-            .news-list-item-category {
-                display: inline-block;
-                padding: var(--spacing-xs) var(--spacing-sm);
-                background-color: var(--color-primary);
-                color: #ffffff;
-                font-size: 0.6875rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
+<body>
+    <!-- Global Header Placeholder -->
+    <div id="global-header"></div>
 
-            .news-list-item-category.politics {
-                background-color: var(--color-politics);
-            }
-
-            .news-list-item-category.economy {
-                background-color: var(--color-economy);
-            }
-
-            .news-list-item-category.sports {
-                background-color: var(--color-sports);
-            }
-
-            .news-list-item-category.culture {
-                background-color: var(--color-culture);
-            }
-
-            .news-list-item-category.justice {
-                background-color: var(--color-justice);
-            }
-
-            .news-list-item-category.brasil {
-                background-color: var(--color-brasil);
-            }
-
-            .news-list-item-title {
-                font-family: var(--font-display);
-                font-size: 1.125rem;
-                font-weight: 600;
-                line-height: 1.4;
-                margin-bottom: var(--spacing-sm);
-                color: var(--color-text);
-            }
-
-            .news-list-item-excerpt {
-                color: var(--color-text-gray);
-                font-size: 0.875rem;
-                margin-bottom: var(--spacing-sm);
-            }
-
-            .news-list-item-meta {
-                display: flex;
-                gap: var(--spacing-md);
-                font-size: 0.8125rem;
-                color: var(--color-text-light);
-            }
-
-            /* No Results */
-            .no-results {
-                text-align: center;
-                padding: var(--spacing-2xl) 0;
-            }
-
-            .no-results-icon {
-                width: 80px;
-                height: 80px;
-                margin: 0 auto var(--spacing-lg);
-                color: var(--color-text-light);
-            }
-
-            .no-results-title {
-                font-family: var(--font-display);
-                font-size: 1.25rem;
-                font-weight: 600;
-                margin-bottom: var(--spacing-sm);
-            }
-
-            .no-results-text {
-                color: var(--color-text-gray);
-            }
-
-            /* Load More Button */
-            .load-more-container {
-                text-align: center;
-                margin-top: var(--spacing-xl);
-            }
-
-            .load-more-btn {
-                padding: var(--spacing-md) var(--spacing-xl);
-                background-color: var(--color-primary);
-                color: #ffffff;
-                font-weight: 600;
-                font-size: 0.875rem;
-                border-radius: var(--radius-sm);
-                cursor: pointer;
-                transition: var(--transition);
-            }
-
-            .load-more-btn:hover {
-                background-color: var(--color-primary-dark);
-            }
-
-            .load-more-btn:disabled {
-                background-color: var(--color-text-light);
-                cursor: not-allowed;
-            }
-
-            /* Responsive */
-            @media (max-width: 1024px) {
-                .news-grid-view {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-            }
-
-            @media (max-width: 768px) {
-                .news-page-header .container {
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
-
-                .news-filters {
-                    width: 100%;
-                }
-
-                .filter-group {
-                    flex: 1;
-                }
-
-                .filter-select {
-                    flex: 1;
-                }
-
-                .news-grid-view {
-                    grid-template-columns: 1fr;
-                }
-
-                .news-list-item {
-                    flex-direction: column;
-                }
-
-                .news-list-item-image {
-                    width: 100%;
-                }
-
-                .news-results-info {
-                    flex-direction: column;
-                    gap: var(--spacing-sm);
-                    align-items: flex-start;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-left">
-                    <span id="current-date"></span>
-                    <span class="top-bar-separator">|</span>
-                    <span id="weather-info"
-                        >Rio de Janeiro: 22°C Parcialmente nublado</span
-                    >
-                    <span class="top-bar-separator">|</span>
-                    <span id="usd-rate">USD: R$ 5.07</span>
-                    <span class="top-bar-separator">|</span>
-                    <span id="ibov-rate">IBOV: 135.152</span>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="news-page-header">
+                <div>
+                    <h1 class="news-page-title">Todas as Notícias</h1>
+                    <p class="news-page-subtitle">
+                        Explore todas as notícias do portal CM
+                    </p>
                 </div>
-                <div class="top-bar-right">
-                    <a
-                        href="https://instagram.com"
-                        target="_blank"
-                        class="social-icon"
-                        aria-label="Instagram"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <rect
-                                x="2"
-                                y="2"
-                                width="20"
-                                height="20"
-                                rx="5"
-                                ry="5"
-                            ></rect>
-                            <path
-                                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="2"
-                            ></path>
-                            <line
-                                x1="17.5"
-                                y1="6.5"
-                                x2="17.51"
-                                y2="6.5"
-                                stroke="white"
-                                stroke-width="2"
-                            ></line>
-                        </svg>
-                    </a>
-                    <a
-                        href="https://youtube.com"
-                        target="_blank"
-                        class="social-icon"
-                        aria-label="YouTube"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path
-                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="2"
-                            ></path>
-                            <polygon
-                                points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
-                                fill="white"
-                            ></polygon>
-                        </svg>
-                    </a>
-                    <a
-                        href="#share"
-                        class="social-icon"
-                        aria-label="Compartilhar"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                        >
-                            <circle cx="18" cy="5" r="3"></circle>
-                            <circle cx="6" cy="12" r="3"></circle>
-                            <circle cx="18" cy="19" r="3"></circle>
-                            <line
-                                x1="8.59"
-                                y1="13.51"
-                                x2="15.42"
-                                y2="17.49"
-                            ></line>
-                            <line
-                                x1="15.41"
-                                y1="6.51"
-                                x2="8.59"
-                                y2="10.49"
-                            ></line>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Ad Placeholder -->
-        <div class="ad-placeholder">
-            <div class="ad-label">PUBLICIDADE</div>
-            <div class="ad-space">
-                <img
-                    src="https://placehold.co/970x250/f0f0f0/999999?text=Espaço+Publicitário+-+970x250"
-                    alt="Espaço publicitário"
-                />
-            </div>
-        </div>
-
-        <!-- Header -->
-        <header class="main-header">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo-section">
-                        <a href="/">
-                            <h1 class="logo">CM</h1>
-                            <span class="logo-portal">portal</span>
-                        </a>
-                    </div>
-                    <div class="search-section">
-                        <div class="search-box">
-                            <input
-                                type="text"
-                                placeholder="Buscar notícias..."
-                                id="search-input"
-                            />
-                            <button class="search-btn" aria-label="Buscar">
-                                <svg
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Main Navigation -->
-        <nav class="main-nav">
-            <div class="container">
-                <button
-                    class="mobile-menu-toggle"
-                    id="mobile-menu-toggle"
-                    aria-label="Menu"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-menu" id="nav-menu">
-                    <li><a href="opiniao.html" class="nav-link">Opinião</a></li>
-                    <li>
-                        <a href="politica.html" class="nav-link">Política</a>
-                    </li>
-                    <li>
-                        <a href="economia.html" class="nav-link">Economia</a>
-                    </li>
-                    <li><a href="justica.html" class="nav-link">Justiça</a></li>
-                    <li><a href="brasil.html" class="nav-link">Brasil</a></li>
-                    <li class="nav-dropdown">
-                        <a href="#regioes" class="nav-link dropdown-toggle"
-                            >Regiões ▾</a
-                        >
-                        <ul class="dropdown-menu">
-                            <li><a href="brasil.html">Brasil</a></li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanha.com.br/"
-                                    target="_blank"
-                                    >Rio de Janeiro</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhasp.com.br/"
-                                    target="_blank"
-                                    >São Paulo</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiosulfluminense.com.br/"
-                                    target="_blank"
-                                    >Sul Fluminense</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiopetropolitano.com.br/"
-                                    target="_blank"
-                                    >Petrópolis</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhadf.com.br/"
-                                    target="_blank"
-                                    >Distrito Federal</a
-                                >
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="cultura.html" class="nav-link">Cultura</a></li>
-                    <li>
-                        <a href="esportes.html" class="nav-link">Esportes</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="container">
-                <!-- Page Header -->
-                <div class="news-page-header">
-                    <div>
-                        <h1 class="news-page-title">Todas as Notícias</h1>
-                        <p class="news-page-subtitle">
-                            Explore todas as notícias do portal CM
-                        </p>
-                    </div>
-                    <div class="news-filters">
-                        <div class="filter-group">
-                            <span class="filter-label">Ordenar por:</span>
-                            <select class="filter-select" id="sort-select">
-                                <option value="recent">Mais recentes</option>
-                                <option value="popular">Mais populares</option>
-                                <option value="oldest">Mais antigas</option>
-                            </select>
-                        </div>
-                        <div class="view-toggle">
-                            <button
-                                class="view-btn active"
-                                id="grid-view-btn"
-                                aria-label="Visualização em grade"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <rect
-                                        x="3"
-                                        y="3"
-                                        width="7"
-                                        height="7"
-                                    ></rect>
-                                    <rect
-                                        x="14"
-                                        y="3"
-                                        width="7"
-                                        height="7"
-                                    ></rect>
-                                    <rect
-                                        x="14"
-                                        y="14"
-                                        width="7"
-                                        height="7"
-                                    ></rect>
-                                    <rect
-                                        x="3"
-                                        y="14"
-                                        width="7"
-                                        height="7"
-                                    ></rect>
-                                </svg>
-                            </button>
-                            <button
-                                class="view-btn"
-                                id="list-view-btn"
-                                aria-label="Visualização em lista"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <line x1="8" y1="6" x2="21" y2="6"></line>
-                                    <line x1="8" y1="12" x2="21" y2="12"></line>
-                                    <line x1="8" y1="18" x2="21" y2="18"></line>
-                                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                                    <line
-                                        x1="3"
-                                        y1="12"
-                                        x2="3.01"
-                                        y2="12"
-                                    ></line>
-                                    <line
-                                        x1="3"
-                                        y1="18"
-                                        x2="3.01"
-                                        y2="18"
-                                    ></line>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Category Pills -->
-                <div class="category-pills">
-                    <button class="category-pill active" data-category="all">
-                        Todas
-                    </button>
-                    <button class="category-pill" data-category="politics">
-                        Política
-                    </button>
-                    <button class="category-pill" data-category="economy">
-                        Economia
-                    </button>
-                    <button class="category-pill" data-category="sports">
-                        Esportes
-                    </button>
-                    <button class="category-pill" data-category="culture">
-                        Cultura
-                    </button>
-                    <button class="category-pill" data-category="justice">
-                        Justiça
-                    </button>
-                    <button class="category-pill" data-category="brasil">
-                        Brasil
-                    </button>
-                </div>
-
-                <!-- Results Info -->
-                <div class="news-results-info">
-                    <span class="results-count">
-                        Mostrando <strong id="results-count">12</strong> de
-                        <strong id="total-count">48</strong> notícias
-                    </span>
+                <div class="news-filters">
                     <div class="filter-group">
-                        <select class="sort-select" id="sort-select-inline">
+                        <span class="filter-label">Ordenar por:</span>
+                        <select class="filter-select" id="sort-select">
                             <option value="recent">Mais recentes</option>
                             <option value="popular">Mais populares</option>
                             <option value="oldest">Mais antigas</option>
                         </select>
                     </div>
-                </div>
-
-                <!-- News Container -->
-                <div id="news-container" class="news-grid-view">
-                    <!-- Grid View Cards -->
-                    <article class="news-card" data-category="politics">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Política"
-                                alt="Notícia política"
-                            />
-                            <span class="news-card-category politics"
-                                >Política</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] Congresso aprova nova legislação
-                                econômica em sessão histórica
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] Os deputados aprovaram hoje o
-                                projeto de lei que promete reformar o sistema
-                                tributário nacional...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por João Silva</span
-                                >
-                                <span class="time">Há 2 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="economy">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Economia"
-                                alt="Notícia economia"
-                            />
-                            <span class="news-card-category economy"
-                                >Economia</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] Dólar recua e Ibovespa fecha em
-                                alta nesta terça-feira
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] O mercado financeiro reagiu
-                                positivamente aos novos dados econômicos
-                                divulgados hoje...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Maria Santos</span
-                                >
-                                <span class="time">Há 3 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="sports">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Esportes"
-                                alt="Notícia esportes"
-                            />
-                            <span class="news-card-category sports"
-                                >Esportes</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] Seleção brasileira convocada para
-                                amistosos internacionais
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] O técnico da seleção anunciou a
-                                lista de 23 jogadores para os próximos jogos...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Carlos Costa</span
-                                >
-                                <span class="time">Há 4 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="justice">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Justiça"
-                                alt="Notícia Justiça"
-                            />
-                            <span class="news-card-category justice"
-                                >Justiça</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] STF marca julgamento para ações
-                                sobre previdência
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] O Supremo Tribunal Federal definiu
-                                a data para o julgamento de ações que podem
-                                impactar servidores...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Ana Paula</span
-                                >
-                                <span class="time">Há 5 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="brasil">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Brasil"
-                                alt="Notícia Brasil"
-                            />
-                            <span class="news-card-category brasil"
-                                >Brasil</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] Governo anuncia novo programa de
-                                infraestrutura nacional
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] O programa prevê investimentos de
-                                bilhões de reais em rodovias e ferrovias em todo
-                                o país...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Pedro Lima</span
-                                >
-                                <span class="time">Há 6 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="culture">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Cultura"
-                                alt="Notícia Cultura"
-                            />
-                            <span class="news-card-category culture"
-                                >Cultura</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] Carnaval 2026: escolas de samba
-                                revelam enredos para a desfile
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] As agremiações do Rio e de São
-                                Paulo apresentaram os temas que vão animar a
-                                avenida neste ano...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Juliana Moraes</span
-                                >
-                                <span class="time">Há 7 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="politics">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Política"
-                                alt="Notícia política"
-                            />
-                            <span class="news-card-category politics"
-                                >Política</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] Senado aprova projeto de lei em
-                                primeira votação
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] O projeto segue agora para a
-                                Câmara dos Deputados para ser analisado pelos
-                                deputados federais...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Roberto Alves</span
-                                >
-                                <span class="time">Há 8 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="economy">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Economia"
-                                alt="Notícia economia"
-                            />
-                            <span class="news-card-category economy"
-                                >Economia</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] BC mantém taxa Selic estável em
-                                decisão de hoje
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] Em reunião unânime, o Comitê de
-                                Política Monetária decidiu manter a taxa básica
-                                de juros...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Lucas Fernandes</span
-                                >
-                                <span class="time">Há 9 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="sports">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Esportes"
-                                alt="Notícia esportes"
-                            />
-                            <span class="news-card-category sports"
-                                >Esportes</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] Futebol: grandes clubes fecham
-                                contratações para a temporada
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] Os principais clubes brasileiros
-                                anunciaram novas contratações para o campeonato
-                                nacional...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Marcio Dias</span
-                                >
-                                <span class="time">Há 10 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="justice">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Justiça"
-                                alt="Notícia Justiça"
-                            />
-                            <span class="news-card-category justice"
-                                >Justiça</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] TST decide sobre direitos
-                                trabalhistas em caso inédito
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] A decisão do Tribunal Superior do
-                                Trabalho cria precedente para casos
-                                semelhantes...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Carla Mendes</span
-                                >
-                                <span class="time">Há 11 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="brasil">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Brasil"
-                                alt="Notícia Brasil"
-                            />
-                            <span class="news-card-category brasil"
-                                >Brasil</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] Brasil registra recorde de
-                                exportações agrícolas em janeiro
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] Os dados do Ministério da
-                                Agricultura mostram aumento significativo nas
-                                vendas externas...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Fernando Oliveira</span
-                                >
-                                <span class="time">Há 12 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-card" data-category="culture">
-                        <a href="#" class="news-card-image">
-                            <img
-                                src="https://placehold.co/400x250/e5e5e5/333333?text=Cultura"
-                                alt="Notícia Cultura"
-                            />
-                            <span class="news-card-category culture"
-                                >Cultura</span
-                            >
-                        </a>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">
-                                [Placeholder] Novo museu é inaugurado em São
-                                Paulo com exposição inédita
-                            </h3>
-                            <p class="news-card-excerpt">
-                                [Placeholder] O espaço cultural promete se
-                                tornar um importante polo de turismo cultural na
-                                cidade...
-                            </p>
-                            <div class="news-card-meta">
-                                <span class="news-card-author"
-                                    >Por Beatriz Ramos</span
-                                >
-                                <span class="time">Há 13 horas</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Load More -->
-                <div class="load-more-container">
-                    <button class="load-more-btn" id="load-more-btn">
-                        Carregar mais notícias
-                    </button>
+                    <div class="view-toggle">
+                        <button class="view-btn active" id="grid-view-btn" aria-label="Visualização em grade">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </button>
+                        <button class="view-btn" id="list-view-btn" aria-label="Visualização em lista">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </main>
 
-        <!-- Footer -->
-        <footer class="main-footer">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-section">
-                        <h4 class="footer-title">Sobre</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Quem somos</a></li>
-                            <li><a href="#">Expediente</a></li>
-                            <li><a href="#">Política de Privacidade</a></li>
-                            <li><a href="#">Termos de Uso</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4 class="footer-title">Editorias</h4>
-                        <ul class="footer-links">
-                            <li><a href="opiniao.html">Opinião</a></li>
-                            <li><a href="politica.html">Política</a></li>
-                            <li><a href="economia.html">Economia</a></li>
-                            <li><a href="justica.html">Justiça</a></li>
-                            <li><a href="esportes.html">Esportes</a></li>
-                            <li><a href="cultura.html">Cultura</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4 class="footer-title">Portais Regionais</h4>
-                        <ul class="footer-links">
-                            <li>
-                                <a
-                                    href="https://www.correiodamanha.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhasp.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã SP</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiosulfluminense.com.br/"
-                                    target="_blank"
-                                    >Correio Sul Fluminense</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiopetropolitano.com.br/"
-                                    target="_blank"
-                                    >Correio Petropolitano</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhadf.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã DF</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4 class="footer-title">Contato</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Fale conosco</a></li>
-                            <li><a href="#">Trabalhe conosco</a></li>
-                            <li><a href="#">Anuncie</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div class="footer-logo">PORTAL CM</div>
-                    <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
+            <!-- Category Pills -->
+            <div class="category-pills">
+                <button class="category-pill active" data-category="all">
+                    Todas
+                </button>
+                <button class="category-pill" data-category="politics">
+                    Política
+                </button>
+                <button class="category-pill" data-category="economy">
+                    Economia
+                </button>
+                <button class="category-pill" data-category="sports">
+                    Esportes
+                </button>
+                <button class="category-pill" data-category="culture">
+                    Cultura
+                </button>
+                <button class="category-pill" data-category="justice">
+                    Justiça
+                </button>
+                <button class="category-pill" data-category="brasil">
+                    Brasil
+                </button>
+            </div>
+
+            <!-- Results Info -->
+            <div class="news-results-info">
+                <span class="results-count">
+                    Mostrando <strong id="results-count">12</strong> de
+                    <strong id="total-count">48</strong> notícias
+                </span>
+                <div class="filter-group">
+                    <select class="sort-select" id="sort-select-inline">
+                        <option value="recent">Mais recentes</option>
+                        <option value="popular">Mais populares</option>
+                        <option value="oldest">Mais antigas</option>
+                    </select>
                 </div>
             </div>
-        </footer>
 
-        <!-- Back to Top Button -->
-        <button
-            id="back-to-top"
-            class="back-to-top"
-            aria-label="Voltar ao topo"
-        >
-            <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-            >
-                <polyline points="18 15 12 9 6 15"></polyline>
-            </svg>
-        </button>
+            <!-- News Container -->
+            <div id="news-container" class="news-grid-view">
+                <!-- Grid View Cards -->
+                <article class="news-card" data-category="politics">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Política" alt="Notícia política" />
+                        <span class="news-card-category politics">Política</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] Congresso aprova nova legislação
+                            econômica em sessão histórica
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] Os deputados aprovaram hoje o
+                            projeto de lei que promete reformar o sistema
+                            tributário nacional...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por João Silva</span>
+                            <span class="time">Há 2 horas</span>
+                        </div>
+                    </div>
+                </article>
 
-        <script src="js/main.js"></script>
-        <script>
-            // News Page Functionality
-            (function () {
-                const newsContainer = document.getElementById("news-container");
-                const categoryPills =
-                    document.querySelectorAll(".category-pill");
-                const sortSelects = document.querySelectorAll(".sort-select");
-                const gridViewBtn = document.getElementById("grid-view-btn");
-                const listViewBtn = document.getElementById("list-view-btn");
-                const loadMoreBtn = document.getElementById("load-more-btn");
-                const resultsCount = document.getElementById("results-count");
-                const totalCount = document.getElementById("total-count");
+                <article class="news-card" data-category="economy">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Economia" alt="Notícia economia" />
+                        <span class="news-card-category economy">Economia</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] Dólar recua e Ibovespa fecha em
+                            alta nesta terça-feira
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] O mercado financeiro reagiu
+                            positivamente aos novos dados econômicos
+                            divulgados hoje...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Maria Santos</span>
+                            <span class="time">Há 3 horas</span>
+                        </div>
+                    </div>
+                </article>
 
-                let currentCategory = "all";
-                let currentSort = "recent";
-                let currentView = "grid";
-                let displayedCount = 12;
+                <article class="news-card" data-category="sports">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Esportes" alt="Notícia esportes" />
+                        <span class="news-card-category sports">Esportes</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] Seleção brasileira convocada para
+                            amistosos internacionais
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] O técnico da seleção anunciou a
+                            lista de 23 jogadores para os próximos jogos...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Carlos Costa</span>
+                            <span class="time">Há 4 horas</span>
+                        </div>
+                    </div>
+                </article>
 
-                // Sample data structure for list view conversion
-                const newsData = Array.from(
-                    document.querySelectorAll(".news-card"),
-                );
+                <article class="news-card" data-category="justice">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Justiça" alt="Notícia Justiça" />
+                        <span class="news-card-category justice">Justiça</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] STF marca julgamento para ações
+                            sobre previdência
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] O Supremo Tribunal Federal definiu
+                            a data para o julgamento de ações que podem
+                            impactar servidores...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Ana Paula</span>
+                            <span class="time">Há 5 horas</span>
+                        </div>
+                    </div>
+                </article>
 
-                // Category filter
-                categoryPills.forEach((pill) => {
-                    pill.addEventListener("click", () => {
-                        categoryPills.forEach((p) =>
-                            p.classList.remove("active"),
-                        );
-                        pill.classList.add("active");
-                        currentCategory = pill.dataset.category;
-                        filterAndRenderNews();
-                    });
-                });
+                <article class="news-card" data-category="brasil">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Brasil" alt="Notícia Brasil" />
+                        <span class="news-card-category brasil">Brasil</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] Governo anuncia novo programa de
+                            infraestrutura nacional
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] O programa prevê investimentos de
+                            bilhões de reais em rodovias e ferrovias em todo
+                            o país...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Pedro Lima</span>
+                            <span class="time">Há 6 horas</span>
+                        </div>
+                    </div>
+                </article>
 
-                // Sort functionality
-                sortSelects.forEach((select) => {
-                    select.addEventListener("change", (e) => {
-                        currentSort = e.target.value;
-                        // Sync other select
-                        sortSelects.forEach((s) => {
-                            s.value = currentSort;
-                        });
-                        sortNews();
-                    });
-                });
+                <article class="news-card" data-category="culture">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Cultura" alt="Notícia Cultura" />
+                        <span class="news-card-category culture">Cultura</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] Carnaval 2026: escolas de samba
+                            revelam enredos para a desfile
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] As agremiações do Rio e de São
+                            Paulo apresentaram os temas que vão animar a
+                            avenida neste ano...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Juliana Moraes</span>
+                            <span class="time">Há 7 horas</span>
+                        </div>
+                    </div>
+                </article>
 
-                // View toggle
-                gridViewBtn.addEventListener("click", () => {
-                    currentView = "grid";
-                    gridViewBtn.classList.add("active");
-                    listViewBtn.classList.remove("active");
-                    renderNews();
-                });
+                <article class="news-card" data-category="politics">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Política" alt="Notícia política" />
+                        <span class="news-card-category politics">Política</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] Senado aprova projeto de lei em
+                            primeira votação
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] O projeto segue agora para a
+                            Câmara dos Deputados para ser analisado pelos
+                            deputados federais...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Roberto Alves</span>
+                            <span class="time">Há 8 horas</span>
+                        </div>
+                    </div>
+                </article>
 
-                listViewBtn.addEventListener("click", () => {
-                    currentView = "list";
-                    listViewBtn.classList.add("active");
-                    gridViewBtn.classList.remove("active");
-                    renderNews();
-                });
+                <article class="news-card" data-category="economy">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Economia" alt="Notícia economia" />
+                        <span class="news-card-category economy">Economia</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] BC mantém taxa Selic estável em
+                            decisão de hoje
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] Em reunião unânime, o Comitê de
+                            Política Monetária decidiu manter a taxa básica
+                            de juros...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Lucas Fernandes</span>
+                            <span class="time">Há 9 horas</span>
+                        </div>
+                    </div>
+                </article>
 
-                // Load more
-                loadMoreBtn.addEventListener("click", () => {
-                    displayedCount += 12;
-                    filterAndRenderNews();
-                });
+                <article class="news-card" data-category="sports">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Esportes" alt="Notícia esportes" />
+                        <span class="news-card-category sports">Esportes</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] Futebol: grandes clubes fecham
+                            contratações para a temporada
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] Os principais clubes brasileiros
+                            anunciaram novas contratações para o campeonato
+                            nacional...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Marcio Dias</span>
+                            <span class="time">Há 10 horas</span>
+                        </div>
+                    </div>
+                </article>
 
-                function filterAndRenderNews() {
-                    const filteredNews =
-                        currentCategory === "all"
-                            ? newsData
-                            : newsData.filter(
-                                  (news) =>
-                                      news.dataset.category === currentCategory,
-                              );
+                <article class="news-card" data-category="justice">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Justiça" alt="Notícia Justiça" />
+                        <span class="news-card-category justice">Justiça</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] TST decide sobre direitos
+                            trabalhistas em caso inédito
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] A decisão do Tribunal Superior do
+                            Trabalho cria precedente para casos
+                            semelhantes...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Carla Mendes</span>
+                            <span class="time">Há 11 horas</span>
+                        </div>
+                    </div>
+                </article>
 
-                    displayedCount = Math.min(
-                        displayedCount,
-                        filteredNews.length,
+                <article class="news-card" data-category="brasil">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Brasil" alt="Notícia Brasil" />
+                        <span class="news-card-category brasil">Brasil</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] Brasil registra recorde de
+                            exportações agrícolas em janeiro
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] Os dados do Ministério da
+                            Agricultura mostram aumento significativo nas
+                            vendas externas...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Fernando Oliveira</span>
+                            <span class="time">Há 12 horas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card" data-category="culture">
+                    <a href="#" class="news-card-image">
+                        <img src="https://placehold.co/400x250/e5e5e5/333333?text=Cultura" alt="Notícia Cultura" />
+                        <span class="news-card-category culture">Cultura</span>
+                    </a>
+                    <div class="news-card-content">
+                        <h3 class="news-card-title">
+                            [Placeholder] Novo museu é inaugurado em São
+                            Paulo com exposição inédita
+                        </h3>
+                        <p class="news-card-excerpt">
+                            [Placeholder] O espaço cultural promete se
+                            tornar um importante polo de turismo cultural na
+                            cidade...
+                        </p>
+                        <div class="news-card-meta">
+                            <span class="news-card-author">Por Beatriz Ramos</span>
+                            <span class="time">Há 13 horas</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more-container">
+                <button class="load-more-btn" id="load-more-btn">
+                    Carregar mais notícias
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4 class="footer-title">Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Expediente</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Editorias</h4>
+                    <ul class="footer-links">
+                        <li><a href="opiniao.html">Opinião</a></li>
+                        <li><a href="politica.html">Política</a></li>
+                        <li><a href="economia.html">Economia</a></li>
+                        <li><a href="justica.html">Justiça</a></li>
+                        <li><a href="esportes.html">Esportes</a></li>
+                        <li><a href="cultura.html">Cultura</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Portais Regionais</h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="https://www.correiodamanha.com.br/" target="_blank">Correio da Manhã</a>
+                        </li>
+                        <li>
+                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Correio da Manhã SP</a>
+                        </li>
+                        <li>
+                            <a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul Fluminense</a>
+                        </li>
+                        <li>
+                            <a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a>
+                        </li>
+                        <li>
+                            <a href="https://www.correiodamanhadf.com.br/" target="_blank">Correio da Manhã DF</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Contato</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Fale conosco</a></li>
+                        <li><a href="#">Trabalhe conosco</a></li>
+                        <li><a href="#">Anuncie</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">PORTAL CM</div>
+                <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script src="js/main.js"></script>
+    <script>
+        // News Page Functionality
+        (function () {
+            const newsContainer = document.getElementById("news-container");
+            const categoryPills =
+                document.querySelectorAll(".category-pill");
+            const sortSelects = document.querySelectorAll(".sort-select");
+            const gridViewBtn = document.getElementById("grid-view-btn");
+            const listViewBtn = document.getElementById("list-view-btn");
+            const loadMoreBtn = document.getElementById("load-more-btn");
+            const resultsCount = document.getElementById("results-count");
+            const totalCount = document.getElementById("total-count");
+
+            let currentCategory = "all";
+            let currentSort = "recent";
+            let currentView = "grid";
+            let displayedCount = 12;
+
+            // Sample data structure for list view conversion
+            const newsData = Array.from(
+                document.querySelectorAll(".news-card"),
+            );
+
+            // Category filter
+            categoryPills.forEach((pill) => {
+                pill.addEventListener("click", () => {
+                    categoryPills.forEach((p) =>
+                        p.classList.remove("active"),
                     );
-                    resultsCount.textContent = displayedCount;
-                    totalCount.textContent = filteredNews.length;
-
-                    // Show/hide load more button
-                    loadMoreBtn.style.display =
-                        displayedCount < filteredNews.length
-                            ? "inline-block"
-                            : "none";
-
-                    // Sort
-                    const sortedNews = sortArray([...filteredNews]);
-
-                    // Render
-                    renderNews(sortedNews.slice(0, displayedCount));
-                }
-
-                function sortArray(arr) {
-                    // In a real implementation, this would use actual timestamps
-                    // For now, just keep the DOM order as "recent"
-                    switch (currentSort) {
-                        case "oldest":
-                            return arr.reverse();
-                        case "popular":
-                            // In production, this would use view counts
-                            return arr;
-                        default:
-                            return arr;
-                    }
-                }
-
-                function sortNews() {
+                    pill.classList.add("active");
+                    currentCategory = pill.dataset.category;
                     filterAndRenderNews();
+                });
+            });
+
+            // Sort functionality
+            sortSelects.forEach((select) => {
+                select.addEventListener("change", (e) => {
+                    currentSort = e.target.value;
+                    // Sync other select
+                    sortSelects.forEach((s) => {
+                        s.value = currentSort;
+                    });
+                    sortNews();
+                });
+            });
+
+            // View toggle
+            gridViewBtn.addEventListener("click", () => {
+                currentView = "grid";
+                gridViewBtn.classList.add("active");
+                listViewBtn.classList.remove("active");
+                renderNews();
+            });
+
+            listViewBtn.addEventListener("click", () => {
+                currentView = "list";
+                listViewBtn.classList.add("active");
+                gridViewBtn.classList.remove("active");
+                renderNews();
+            });
+
+            // Load more
+            loadMoreBtn.addEventListener("click", () => {
+                displayedCount += 12;
+                filterAndRenderNews();
+            });
+
+            function filterAndRenderNews() {
+                const filteredNews =
+                    currentCategory === "all"
+                        ? newsData
+                        : newsData.filter(
+                            (news) =>
+                                news.dataset.category === currentCategory,
+                        );
+
+                displayedCount = Math.min(
+                    displayedCount,
+                    filteredNews.length,
+                );
+                resultsCount.textContent = displayedCount;
+                totalCount.textContent = filteredNews.length;
+
+                // Show/hide load more button
+                loadMoreBtn.style.display =
+                    displayedCount < filteredNews.length
+                        ? "inline-block"
+                        : "none";
+
+                // Sort
+                const sortedNews = sortArray([...filteredNews]);
+
+                // Render
+                renderNews(sortedNews.slice(0, displayedCount));
+            }
+
+            function sortArray(arr) {
+                // In a real implementation, this would use actual timestamps
+                // For now, just keep the DOM order as "recent"
+                switch (currentSort) {
+                    case "oldest":
+                        return arr.reverse();
+                    case "popular":
+                        // In production, this would use view counts
+                        return arr;
+                    default:
+                        return arr;
                 }
+            }
 
-                function renderNews(news = null) {
-                    const itemsToRender = news || getVisibleNews();
+            function sortNews() {
+                filterAndRenderNews();
+            }
 
-                    // Clear container
-                    newsContainer.innerHTML = "";
+            function renderNews(news = null) {
+                const itemsToRender = news || getVisibleNews();
 
-                    // Update container class based on view
-                    newsContainer.className =
-                        currentView === "grid"
-                            ? "news-grid-view"
-                            : "news-list-view";
+                // Clear container
+                newsContainer.innerHTML = "";
 
-                    // Render items
-                    if (itemsToRender.length === 0) {
-                        newsContainer.innerHTML = `
+                // Update container class based on view
+                newsContainer.className =
+                    currentView === "grid"
+                        ? "news-grid-view"
+                        : "news-list-view";
+
+                // Render items
+                if (itemsToRender.length === 0) {
+                    newsContainer.innerHTML = `
                             <div class="no-results" style="grid-column: 1/-1;">
                                 <svg class="no-results-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="11" cy="11" r="8"></circle>
@@ -1489,48 +1100,48 @@
                                 <p class="no-results-text">Tente selecionar outra categoria ou alterar os filtros.</p>
                             </div>
                         `;
-                        return;
+                    return;
+                }
+
+                itemsToRender.forEach((newsCard) => {
+                    if (currentView === "list") {
+                        newsContainer.appendChild(
+                            convertToListItem(newsCard),
+                        );
+                    } else {
+                        newsContainer.appendChild(newsCard.cloneNode(true));
                     }
+                });
+            }
 
-                    itemsToRender.forEach((newsCard) => {
-                        if (currentView === "list") {
-                            newsContainer.appendChild(
-                                convertToListItem(newsCard),
-                            );
-                        } else {
-                            newsContainer.appendChild(newsCard.cloneNode(true));
-                        }
-                    });
-                }
+            function getVisibleNews() {
+                const filtered =
+                    currentCategory === "all"
+                        ? newsData
+                        : newsData.filter(
+                            (news) =>
+                                news.dataset.category === currentCategory,
+                        );
+                const sorted = sortArray([...filtered]);
+                return sorted.slice(0, displayedCount);
+            }
 
-                function getVisibleNews() {
-                    const filtered =
-                        currentCategory === "all"
-                            ? newsData
-                            : newsData.filter(
-                                  (news) =>
-                                      news.dataset.category === currentCategory,
-                              );
-                    const sorted = sortArray([...filtered]);
-                    return sorted.slice(0, displayedCount);
-                }
+            function convertToListItem(newsCard) {
+                const image = newsCard.querySelector("img");
+                const category = newsCard.querySelector(
+                    ".news-card-category",
+                );
+                const title = newsCard.querySelector(".news-card-title");
+                const excerpt =
+                    newsCard.querySelector(".news-card-excerpt");
+                const author = newsCard.querySelector(".news-card-author");
+                const time = newsCard.querySelector(".time");
 
-                function convertToListItem(newsCard) {
-                    const image = newsCard.querySelector("img");
-                    const category = newsCard.querySelector(
-                        ".news-card-category",
-                    );
-                    const title = newsCard.querySelector(".news-card-title");
-                    const excerpt =
-                        newsCard.querySelector(".news-card-excerpt");
-                    const author = newsCard.querySelector(".news-card-author");
-                    const time = newsCard.querySelector(".time");
+                const item = document.createElement("article");
+                item.className = "news-list-item";
+                item.dataset.category = newsCard.dataset.category;
 
-                    const item = document.createElement("article");
-                    item.className = "news-list-item";
-                    item.dataset.category = newsCard.dataset.category;
-
-                    item.innerHTML = `
+                item.innerHTML = `
                         <div class="news-list-item-image">
                             <img src="${image.src}" alt="${image.alt}">
                         </div>
@@ -1549,12 +1160,13 @@
                         </div>
                     `;
 
-                    return item;
-                }
+                return item;
+            }
 
-                // Initial render
-                filterAndRenderNews();
-            })();
-        </script>
-    </body>
+            // Initial render
+            filterAndRenderNews();
+        })();
+    </script>
+</body>
+
 </html>

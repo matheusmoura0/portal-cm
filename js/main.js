@@ -1409,6 +1409,11 @@ const RegionalColors = {
 // ========================================
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Inicializa o Header Global primeiro para que os elementos existam no DOM
+  if (window.CMHeader) {
+    window.CMHeader.render();
+  }
+
   // Inicializa todos os módulos estáticos e de UI
   DateTime.init();
   HeaderInfo.init();

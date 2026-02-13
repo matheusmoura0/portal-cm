@@ -1,1038 +1,646 @@
 <!doctype html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="description"
-            content="Política - portal CM. Notícias, análises e cobertura política do Brasil e do mundo."
-        />
-        <title>Política | portal CM</title>
-        <link rel="stylesheet" href="css/styles.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
-            rel="stylesheet"
-        />
-        <style>
-            /* Newspaper Grid Styles */
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Política - portal CM. Notícias, análises e cobertura política do Brasil e do mundo." />
+    <title>Política | portal CM</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+        rel="stylesheet" />
+    <script src="js/components/Header.js"></script>
+    <style>
+        /* Newspaper Grid Styles */
+        .newspaper-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .newspaper-grid .news-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .newspaper-grid .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .newspaper-grid .news-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .newspaper-grid .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .newspaper-grid .news-content {
+            padding: 15px;
+        }
+
+        .newspaper-grid .news-content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .newspaper-grid .news-content h3 a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .newspaper-grid .news-content h3 a:hover {
+            color: #1a237e;
+        }
+
+        .newspaper-grid .news-excerpt {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .newspaper-grid .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .newspaper-grid .category-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #d0021b;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        /* Featured Article (spans 2 columns) */
+        .newspaper-grid .news-card.featured {
+            grid-column: span 2;
+        }
+
+        .newspaper-grid .news-card.featured .news-image {
+            height: 280px;
+        }
+
+        .newspaper-grid .news-card.featured .news-content h3 {
+            font-size: 1.4rem;
+        }
+
+        /* Load More Button */
+        .load-more-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .load-more-btn {
+            background: #d0021b;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 4px;
+        }
+
+        .load-more-btn:hover {
+            background: #a00015;
+        }
+
+        .load-more-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #d0021b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Hidden news items */
+        .news-card.hidden {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
             .newspaper-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-                margin-top: 30px;
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .newspaper-grid .news-card {
-                background: #fff;
-                border: 1px solid #e0e0e0;
-                overflow: hidden;
-                transition:
-                    transform 0.2s,
-                    box-shadow 0.2s;
-            }
-
-            .newspaper-grid .news-card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            }
-
-            .newspaper-grid .news-image {
-                width: 100%;
-                height: 200px;
-                overflow: hidden;
-                position: relative;
-            }
-
-            .newspaper-grid .news-image img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            .newspaper-grid .news-content {
-                padding: 15px;
-            }
-
-            .newspaper-grid .news-content h3 {
-                font-size: 1.1rem;
-                font-weight: 600;
-                margin-bottom: 10px;
-                line-height: 1.4;
-            }
-
-            .newspaper-grid .news-content h3 a {
-                color: #333;
-                text-decoration: none;
-            }
-
-            .newspaper-grid .news-content h3 a:hover {
-                color: #1a237e;
-            }
-
-            .newspaper-grid .news-excerpt {
-                font-size: 0.9rem;
-                color: #666;
-                line-height: 1.5;
-                margin-bottom: 10px;
-            }
-
-            .newspaper-grid .article-meta {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                font-size: 0.85rem;
-                color: #999;
-            }
-
-            .newspaper-grid .category-tag {
-                display: inline-block;
-                padding: 3px 8px;
-                background: #d0021b;
-                color: white;
-                font-size: 0.75rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                margin-bottom: 8px;
-            }
-
-            /* Featured Article (spans 2 columns) */
             .newspaper-grid .news-card.featured {
                 grid-column: span 2;
             }
+        }
 
-            .newspaper-grid .news-card.featured .news-image {
-                height: 280px;
+        @media (max-width: 768px) {
+            .newspaper-grid {
+                grid-template-columns: 1fr;
             }
 
-            .newspaper-grid .news-card.featured .news-content h3 {
-                font-size: 1.4rem;
+            .newspaper-grid .news-card.featured {
+                grid-column: span 1;
             }
+        }
+    </style>
+</head>
 
-            /* Load More Button */
-            .load-more-container {
-                text-align: center;
-                margin: 40px 0;
-            }
+<body>
+    <!-- Global Header Placeholder -->
+    <div id="global-header"></div>
 
-            .load-more-btn {
-                background: #d0021b;
-                color: white;
-                border: none;
-                padding: 15px 40px;
-                font-size: 1rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: background 0.3s;
-                border-radius: 4px;
-            }
-
-            .load-more-btn:hover {
-                background: #a00015;
-            }
-
-            .load-more-btn:disabled {
-                background: #ccc;
-                cursor: not-allowed;
-            }
-
-            /* Loading Spinner */
-            .loading-spinner {
-                display: none;
-                width: 40px;
-                height: 40px;
-                border: 4px solid #f3f3f3;
-                border-top: 4px solid #d0021b;
-                border-radius: 50%;
-                animation: spin 1s linear infinite;
-                margin: 20px auto;
-            }
-
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-
-            /* Hidden news items */
-            .news-card.hidden {
-                display: none;
-            }
-
-            /* Responsive */
-            @media (max-width: 1024px) {
-                .newspaper-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-
-                .newspaper-grid .news-card.featured {
-                    grid-column: span 2;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .newspaper-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                .newspaper-grid .news-card.featured {
-                    grid-column: span 1;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-left">
-                    <span id="current-date"></span>
-                    <span class="top-bar-separator">|</span>
-                    <span id="weather-info"
-                        >Rio de Janeiro: 22°C Parcialmente nublado</span
-                    >
-                    <span class="top-bar-separator">|</span>
-                    <span id="usd-rate">USD: R$ 5.07</span>
-                    <span class="top-bar-separator">|</span>
-                    <span id="ibov-rate">IBOV: 135.152</span>
-                </div>
-                <div class="top-bar-right">
-                    <a
-                        href="https://instagram.com"
-                        target="_blank"
-                        class="social-icon"
-                        aria-label="Instagram"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <rect
-                                x="2"
-                                y="2"
-                                width="20"
-                                height="20"
-                                rx="5"
-                                ry="5"
-                            ></rect>
-                            <path
-                                d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="2"
-                            ></path>
-                            <line
-                                x1="17.5"
-                                y1="6.5"
-                                x2="17.51"
-                                y2="6.5"
-                                stroke="white"
-                                stroke-width="2"
-                            ></line>
-                        </svg>
-                    </a>
-                    <a
-                        href="https://youtube.com"
-                        target="_blank"
-                        class="social-icon"
-                        aria-label="YouTube"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path
-                                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
-                                fill="none"
-                                stroke="white"
-                                stroke-width="2"
-                            ></path>
-                            <polygon
-                                points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
-                                fill="white"
-                            ></polygon>
-                        </svg>
-                    </a>
-                    <a
-                        href="#share"
-                        class="social-icon"
-                        aria-label="Compartilhar"
-                    >
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                        >
-                            <circle cx="18" cy="5" r="3"></circle>
-                            <circle cx="6" cy="12" r="3"></circle>
-                            <circle cx="18" cy="19" r="3"></circle>
-                            <line
-                                x1="8.59"
-                                y1="13.51"
-                                x2="15.42"
-                                y2="17.49"
-                            ></line>
-                            <line
-                                x1="15.41"
-                                y1="6.51"
-                                x2="8.59"
-                                y2="10.49"
-                            ></line>
-                        </svg>
-                    </a>
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="container">
+            <span class="breaking-label">AO VIVO</span>
+            <div class="ticker-wrapper">
+                <div class="ticker-content" id="breaking-news-ticker">
+                    <span>🔴 Castro e Lewandowski criam escritório de combate
+                        ao crime organizado</span>
+                    <span>🔴 Nunes rejeita aliança entre MDB e PT em
+                        2026</span>
+                    <span>🔴 Tarcísio exonera aliados de Derrite e redesenha
+                        cúpulas</span>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Ad Placeholder -->
-        <div class="ad-placeholder">
-            <div class="ad-label">PUBLICIDADE</div>
-            <div class="ad-space">
-                <img
-                    src="https://placehold.co/970x250/f0f0f0/999999?text=Espaço+Publicitário+-+970x250"
-                    alt="Espaço publicitário"
-                />
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Política</h1>
+                <p>
+                    Notícias, análises e cobertura política do Brasil e do
+                    mundo
+                </p>
             </div>
-        </div>
 
-        <!-- Header -->
-        <header class="main-header">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo-section">
-                        <a href="/">
-                            <h1 class="logo">CM</h1>
-                            <span class="logo-portal">portal</span>
-                        </a>
-                    </div>
-                    <div class="search-section">
-                        <div class="search-box">
-                            <input
-                                type="text"
-                                placeholder="Buscar notícias..."
-                                id="search-input"
-                            />
-                            <button class="search-btn" aria-label="Buscar">
-                                <svg
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                >
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
-                            </button>
+            <!-- Advertisement -->
+            <div class="ad-placeholder">
+                <div class="ad-label">PUBLICIDADE</div>
+                <div class="ad-space">
+                    <img src="https://placehold.co/728x90/f0f0f0/999999?text=Espaço+Publicitário"
+                        alt="Espaço publicitário" />
+                </div>
+            </div>
+
+            <!-- Newspaper Grid -->
+            <div class="newspaper-grid" id="news-grid">
+                <!-- Featured Article -->
+                <article class="news-card featured" data-category="GOVERNO"
+                    data-title="Castro e Lewandowski criam escritório de combate ao crime organizado"
+                    data-subtitle="Gabinete servirá para acabar com as burocracias e unir as forças estaduais e federais contra o narcotráfico no Rio."
+                    data-image="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1__d6a0062__1_-496992.jpg"
+                    data-author="Correio da Manhã" data-author-role="Jornalista" data-date="06/02/2026"
+                    data-time="14:30" data-link="https://www.correiodamanha.com.br/">
+                    <a href="javascript:void(0)" class="news-image news-link">
+                        <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1__d6a0062__1_-496992.jpg"
+                            alt="Castro e Lewandowski criam escritório" />
+                    </a>
+                    <div class="news-content">
+                        <span class="category-tag">GOVERNO</span>
+                        <h3>
+                            <a href="javascript:void(0)" class="news-link">Castro e Lewandowski criam escritório de
+                                combate ao crime organizado</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Gabinete servirá para acabar com as burocracias
+                            e unir as forças estaduais e federais contra o
+                            narcotráfico no Rio.
+                        </p>
+                        <div class="article-meta">
+                            <span class="author">Por Correio da Manhã</span>
+                            <span class="time">Há 2 horas</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </header>
+                </article>
 
-        <!-- Main Navigation -->
-        <nav class="main-nav">
-            <div class="container">
-                <button
-                    class="mobile-menu-toggle"
-                    id="mobile-menu-toggle"
-                    aria-label="Menu"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <!-- Article 2 -->
+                <article class="news-card" data-category="ELEIÇÕES"
+                    data-title="Nunes rejeita aliança entre MDB e PT em 2026"
+                    data-subtitle="Prefeito de São Paulo descarta possibilidade de coligação com o PT nas eleições municipais."
+                    data-image="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Nunes-rejeita-alianca-entre-MDB-e-PT-em-2026.jpg"
+                    data-author="Correio da Manhã SP" data-author-role="Jornalista" data-date="06/02/2026"
+                    data-time="11:00" data-link="https://www.correiodamanhasp.com.br/">
+                    <a href="javascript:void(0)" class="news-image news-link">
+                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Nunes-rejeita-alianca-entre-MDB-e-PT-em-2026.jpg"
+                            alt="Nunes rejeita aliança" />
+                    </a>
+                    <div class="news-content">
+                        <span class="category-tag">ELEIÇÕES</span>
+                        <h3>
+                            <a href="javascript:void(0)" class="news-link">Nunes rejeita aliança entre MDB e PT em
+                                2026</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Prefeito de São Paulo descarta possibilidade de
+                            coligação com o PT nas eleições municipais.
+                        </p>
+                        <div class="article-meta">
+                            <span class="author">Por Correio da Manhã SP</span>
+                            <span class="time">Há 5 horas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="news-card" data-category="GOVERNO"
+                    data-title="Tarcísio exonera aliados de Derrite e redesenha cúpulas do governo"
+                    data-subtitle="Governador de São Paulo faz mudanças em sua secretaria e afasta aliados do deputado Derrite."
+                    data-image="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-exonera-aliados-de-Derrite.jpg"
+                    data-author="Correio da Manhã SP" data-author-role="Jornalista" data-date="06/02/2026"
+                    data-time="08:00" data-link="https://www.correiodamanhasp.com.br/">
+                    <a href="javascript:void(0)" class="news-image news-link">
+                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-exonera-aliados-de-Derrite.jpg"
+                            alt="Tarcísio exonera aliados" />
+                    </a>
+                    <div class="news-content">
+                        <span class="category-tag">GOVERNO</span>
+                        <h3>
+                            <a href="javascript:void(0)" class="news-link">Tarcísio exonera aliados de Derrite e
+                                redesenha cúpulas do governo</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Governador de São Paulo faz mudanças em sua
+                            secretaria e afasta aliados do deputado Derrite.
+                        </p>
+                        <div class="article-meta">
+                            <span class="author">Por Correio da Manhã SP</span>
+                            <span class="time">Há 8 horas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="news-card" data-category="SEGURANÇA"
+                    data-title="O estado do Rio resolveu agir sozinho, abandonado pelo Governo Lula que ficou nas cordas"
+                    data-subtitle="Coluna Magnavita critica falta de apoio federal para operações de segurança no estado do Rio."
+                    data-image="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_megaoperacao-497151.jpg"
+                    data-author="Fernando Molica" data-author-role="Colunista" data-date="05/02/2026" data-time="18:00"
+                    data-link="https://www.correiodamanha.com.br/">
+                    <a href="javascript:void(0)" class="news-image news-link">
+                        <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_megaoperacao-497151.jpg"
+                            alt="Megaoperação" />
+                    </a>
+                    <div class="news-content">
+                        <span class="category-tag">SEGURANÇA</span>
+                        <h3>
+                            <a href="javascript:void(0)" class="news-link">O estado do Rio resolveu agir sozinho,
+                                abandonado pelo Governo Lula que ficou nas
+                                cordas</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Coluna Magnavita critica falta de apoio federal
+                            para operações de segurança no estado do Rio.
+                        </p>
+                        <div class="article-meta">
+                            <span class="author">Por Fernando Molica</span>
+                            <span class="time">Há 10 horas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="news-card" data-category="OPINIÃO"
+                    data-title="'O Estado perdeu. O crime venceu' diz colunista sobre segurança pública"
+                    data-subtitle="Coluna Correio Político analisa resultados das operações de segurança no Rio de Janeiro."
+                    data-image="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_cartuhcos-496992.jpg"
+                    data-author="Correio da Manhã" data-author-role="Jornalista" data-date="05/02/2026"
+                    data-time="16:00" data-link="https://www.correiodamanha.com.br/">
+                    <a href="javascript:void(0)" class="news-image news-link">
+                        <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_cartuhcos-496992.jpg"
+                            alt="Guerra do crime" />
+                    </a>
+                    <div class="news-content">
+                        <span class="category-tag">OPINIÃO</span>
+                        <h3>
+                            <a href="javascript:void(0)" class="news-link">"O Estado perdeu. O crime venceu" diz
+                                colunista sobre segurança pública</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Coluna Correio Político analisa resultados das
+                            operações de segurança no Rio de Janeiro.
+                        </p>
+                        <div class="article-meta">
+                            <span class="author">Por Correio da Manhã</span>
+                            <span class="time">Há 12 horas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="news-card" data-category="MUNICÍPIO"
+                    data-title="Câmara Municipal devolve R$ 1,2 milhão aos cofres da prefeitura de Barra do Piraí"
+                    data-subtitle="Verba não utilizada será aplicada em obras e serviços essenciais para a população."
+                    data-image="https://correiosulfluminense.com.br/wp-content/uploads/2025/01/varejao-corrupcao.jpg"
+                    data-author="Correio Sul Fluminense" data-author-role="Jornalista" data-date="05/02/2026"
+                    data-time="14:00" data-link="https://correiosulfluminense.com.br/">
+                    <a href="javascript:void(0)" class="news-image news-link">
+                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/01/varejao-corrupcao.jpg"
+                            alt="Câmara Municipal" />
+                    </a>
+                    <div class="news-content">
+                        <span class="category-tag">MUNICÍPIO</span>
+                        <h3>
+                            <a href="javascript:void(0)" class="news-link">Câmara Municipal devolve R$ 1,2 milhão aos
+                                cofres da prefeitura de Barra do Piraí</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Verba não utilizada será aplicada em obras e
+                            serviços essenciais para a população.
+                        </p>
+                        <div class="article-meta">
+                            <span class="author">Por Correio Sul Fluminense</span>
+                            <span class="time">Há 1 dia</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Hidden Articles (to be loaded) -->
+                <article class="news-card hidden" data-category="MUNICÍPIO"
+                    data-title="Santo André confirma Corte do Carnaval 2026 e programação completa"
+                    data-subtitle="Cidade de São Paulo anuncia programação completa para o carnaval deste ano."
+                    data-image="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Santo-Andre-confirma-Corte-do-Carnaval-2026.jpg"
+                    data-author="Correio da Manhã SP" data-author-role="Jornalista" data-date="04/02/2026"
+                    data-time="12:00" data-link="https://www.correiodamanhasp.com.br/">
+                    <a href="javascript:void(0)" class="news-image news-link">
+                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Santo-Andre-confirma-Corte-do-Carnaval-2026.jpg"
+                            alt="Carnaval" />
+                    </a>
+                    <div class="news-content">
+                        <span class="category-tag">MUNICÍPIO</span>
+                        <h3>
+                            <a href="javascript:void(0)" class="news-link">Santo André confirma Corte do Carnaval 2026
+                                e programação completa</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Cidade de São Paulo anuncia programação completa
+                            para o carnaval deste ano.
+                        </p>
+                        <div class="article-meta">
+                            <span class="author">Por Correio da Manhã SP</span>
+                            <span class="time">Há 2 dias</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card hidden" data-category="CONGRESSO"
+                    data-title="Votação do PPA e LOA é suspensa por violência na Câmara de Vereadores"
+                    data-subtitle="Sessão foi interrompida após confronto entre vereadores durante votação do Plano Plurianual."
+                    data-image="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_2a7c5a55d24475c5674a6cabf9d5e3d4_l-497070.jpg"
+                    data-author="Correio da Manhã" data-author-role="Jornalista" data-date="03/02/2026"
+                    data.time="10:00" data-link="https://www.correiodamanha.com.br/">
+                    <a href="javascript:void(0)" class="news-image news-link">
+                        <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_2a7c5a55d24475c5674a6cabf9d5e3d4_l-497070.jpg"
+                            alt="Votação suspensa" />
+                    </a>
+                    <div class="news-content">
+                        <span class="category-tag">CONGRESSO</span>
+                        <h3>
+                            <a href="javascript:void(0)" class="news-link">Votação do PPA e LOA é suspensa por
+                                violência na Câmara de Vereadores</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Sessão foi interrompida após confronto entre
+                            vereadores durante votação do Plano Plurianual.
+                        </p>
+                        <div class="article-meta">
+                            <span class="author">Por Correio da Manhã</span>
+                            <span class="time">Há 3 dias</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card hidden" data-category="JUSTIÇA"
+                    data-title="MPF pede anulação de licença para etapa 4 do pré-sal na Costa Verde"
+                    data-subtitle="Ministério Público Federal questiona licenciamento ambiental de novas instalações da Petrobras."
+                    data-image="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/mpf-pede-anulacao.jpg"
+                    data-author="Correio Sul Fluminense" data-author-role="Jornalista" data-date="02/02/2026"
+                    data-time="08:00" data-link="https://correiosulfluminense.com.br/">
+                    <a href="javascript:void(0)" class="news-image news-link">
+                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/mpf-pede-anulacao.jpg"
+                            alt="MPF e pré-sal" />
+                    </a>
+                    <div class="news-content">
+                        <span class="category-tag">JUSTIÇA</span>
+                        <h3>
+                            <a href="javascript:void(0)" class="news-link">MPF pede anulação de licença para etapa 4
+                                do pré-sal na Costa Verde</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Ministério Público Federal questiona
+                            licenciamento ambiental de novas instalações da
+                            Petrobras.
+                        </p>
+                        <div class="article-meta">
+                            <span class="author">Por Correio Sul Fluminense</span>
+                            <span class="time">Há 4 dias</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <div class="loading-spinner" id="loading-spinner"></div>
+                <button class="load-more-btn" id="load-more-btn">
+                    Carregar mais notícias
                 </button>
-                <ul class="nav-menu" id="nav-menu">
-                    <li><a href="opiniao.html" class="nav-link">Opinião</a></li>
-                    <li>
-                        <a href="politica.html" class="nav-link active"
-                            >Política</a
-                        >
-                    </li>
-                    <li>
-                        <a href="economia.html" class="nav-link">Economia</a>
-                    </li>
-                    <li><a href="justica.html" class="nav-link">Justiça</a></li>
-                    <li><a href="brasil.html" class="nav-link">Brasil</a></li>
-                    <li class="nav-dropdown">
-                        <a href="#regioes" class="nav-link dropdown-toggle"
-                            >Regiões ▾</a
-                        >
-                        <ul class="dropdown-menu">
-                            <li><a href="brasil.html">Brasil</a></li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanha.com.br/"
-                                    target="_blank"
-                                    >Rio de Janeiro</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhasp.com.br/"
-                                    target="_blank"
-                                    >São Paulo</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiosulfluminense.com.br/"
-                                    target="_blank"
-                                    >Sul Fluminense</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiopetropolitano.com.br/"
-                                    target="_blank"
-                                    >Petrópolis</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhadf.com.br/"
-                                    target="_blank"
-                                    >Distrito Federal</a
-                                >
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="cultura.html" class="nav-link">Cultura</a></li>
-                    <li>
-                        <a href="esportes.html" class="nav-link">Esportes</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Breaking News Ticker -->
-        <div class="breaking-news">
-            <div class="container">
-                <span class="breaking-label">AO VIVO</span>
-                <div class="ticker-wrapper">
-                    <div class="ticker-content" id="breaking-news-ticker">
-                        <span
-                            >🔴 Castro e Lewandowski criam escritório de combate
-                            ao crime organizado</span
-                        >
-                        <span
-                            >🔴 Nunes rejeita aliança entre MDB e PT em
-                            2026</span
-                        >
-                        <span
-                            >🔴 Tarcísio exonera aliados de Derrite e redesenha
-                            cúpulas</span
-                        >
-                    </div>
-                </div>
             </div>
         </div>
+    </main>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="container">
-                <!-- Page Header -->
-                <div class="page-header">
-                    <h1>Política</h1>
-                    <p>
-                        Notícias, análises e cobertura política do Brasil e do
-                        mundo
-                    </p>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4 class="footer-title">Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Expediente</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
                 </div>
-
-                <!-- Advertisement -->
-                <div class="ad-placeholder">
-                    <div class="ad-label">PUBLICIDADE</div>
-                    <div class="ad-space">
-                        <img
-                            src="https://placehold.co/728x90/f0f0f0/999999?text=Espaço+Publicitário"
-                            alt="Espaço publicitário"
-                        />
-                    </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Editorias</h4>
+                    <ul class="footer-links">
+                        <li><a href="opiniao.html">Opinião</a></li>
+                        <li><a href="politica.html">Política</a></li>
+                        <li><a href="economia.html">Economia</a></li>
+                        <li><a href="justica.html">Justiça</a></li>
+                        <li><a href="esportes.html">Esportes</a></li>
+                        <li><a href="cultura.html">Cultura</a></li>
+                    </ul>
                 </div>
-
-                <!-- Newspaper Grid -->
-                <div class="newspaper-grid" id="news-grid">
-                    <!-- Featured Article -->
-                    <article
-                        class="news-card featured"
-                        data-category="GOVERNO"
-                        data-title="Castro e Lewandowski criam escritório de combate ao crime organizado"
-                        data-subtitle="Gabinete servirá para acabar com as burocracias e unir as forças estaduais e federais contra o narcotráfico no Rio."
-                        data-image="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1__d6a0062__1_-496992.jpg"
-                        data-author="Correio da Manhã"
-                        data-author-role="Jornalista"
-                        data-date="06/02/2026"
-                        data-time="14:30"
-                        data-link="https://www.correiodamanha.com.br/"
-                    >
-                        <a
-                            href="javascript:void(0)"
-                            class="news-image news-link"
-                        >
-                            <img
-                                src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1__d6a0062__1_-496992.jpg"
-                                alt="Castro e Lewandowski criam escritório"
-                            />
-                        </a>
-                        <div class="news-content">
-                            <span class="category-tag">GOVERNO</span>
-                            <h3>
-                                <a href="javascript:void(0)" class="news-link"
-                                    >Castro e Lewandowski criam escritório de
-                                    combate ao crime organizado</a
-                                >
-                            </h3>
-                            <p class="news-excerpt">
-                                Gabinete servirá para acabar com as burocracias
-                                e unir as forças estaduais e federais contra o
-                                narcotráfico no Rio.
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Correio da Manhã</span>
-                                <span class="time">Há 2 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Article 2 -->
-                    <article
-                        class="news-card"
-                        data-category="ELEIÇÕES"
-                        data-title="Nunes rejeita aliança entre MDB e PT em 2026"
-                        data-subtitle="Prefeito de São Paulo descarta possibilidade de coligação com o PT nas eleições municipais."
-                        data-image="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Nunes-rejeita-alianca-entre-MDB-e-PT-em-2026.jpg"
-                        data-author="Correio da Manhã SP"
-                        data-author-role="Jornalista"
-                        data-date="06/02/2026"
-                        data-time="11:00"
-                        data-link="https://www.correiodamanhasp.com.br/"
-                    >
-                        <a
-                            href="javascript:void(0)"
-                            class="news-image news-link"
-                        >
-                            <img
-                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Nunes-rejeita-alianca-entre-MDB-e-PT-em-2026.jpg"
-                                alt="Nunes rejeita aliança"
-                            />
-                        </a>
-                        <div class="news-content">
-                            <span class="category-tag">ELEIÇÕES</span>
-                            <h3>
-                                <a href="javascript:void(0)" class="news-link"
-                                    >Nunes rejeita aliança entre MDB e PT em
-                                    2026</a
-                                >
-                            </h3>
-                            <p class="news-excerpt">
-                                Prefeito de São Paulo descarta possibilidade de
-                                coligação com o PT nas eleições municipais.
-                            </p>
-                            <div class="article-meta">
-                                <span class="author"
-                                    >Por Correio da Manhã SP</span
-                                >
-                                <span class="time">Há 5 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Article 3 -->
-                    <article
-                        class="news-card"
-                        data-category="GOVERNO"
-                        data-title="Tarcísio exonera aliados de Derrite e redesenha cúpulas do governo"
-                        data-subtitle="Governador de São Paulo faz mudanças em sua secretaria e afasta aliados do deputado Derrite."
-                        data-image="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-exonera-aliados-de-Derrite.jpg"
-                        data-author="Correio da Manhã SP"
-                        data-author-role="Jornalista"
-                        data-date="06/02/2026"
-                        data-time="08:00"
-                        data-link="https://www.correiodamanhasp.com.br/"
-                    >
-                        <a
-                            href="javascript:void(0)"
-                            class="news-image news-link"
-                        >
-                            <img
-                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-exonera-aliados-de-Derrite.jpg"
-                                alt="Tarcísio exonera aliados"
-                            />
-                        </a>
-                        <div class="news-content">
-                            <span class="category-tag">GOVERNO</span>
-                            <h3>
-                                <a href="javascript:void(0)" class="news-link"
-                                    >Tarcísio exonera aliados de Derrite e
-                                    redesenha cúpulas do governo</a
-                                >
-                            </h3>
-                            <p class="news-excerpt">
-                                Governador de São Paulo faz mudanças em sua
-                                secretaria e afasta aliados do deputado Derrite.
-                            </p>
-                            <div class="article-meta">
-                                <span class="author"
-                                    >Por Correio da Manhã SP</span
-                                >
-                                <span class="time">Há 8 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Article 4 -->
-                    <article
-                        class="news-card"
-                        data-category="SEGURANÇA"
-                        data-title="O estado do Rio resolveu agir sozinho, abandonado pelo Governo Lula que ficou nas cordas"
-                        data-subtitle="Coluna Magnavita critica falta de apoio federal para operações de segurança no estado do Rio."
-                        data-image="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_megaoperacao-497151.jpg"
-                        data-author="Fernando Molica"
-                        data-author-role="Colunista"
-                        data-date="05/02/2026"
-                        data-time="18:00"
-                        data-link="https://www.correiodamanha.com.br/"
-                    >
-                        <a
-                            href="javascript:void(0)"
-                            class="news-image news-link"
-                        >
-                            <img
-                                src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_megaoperacao-497151.jpg"
-                                alt="Megaoperação"
-                            />
-                        </a>
-                        <div class="news-content">
-                            <span class="category-tag">SEGURANÇA</span>
-                            <h3>
-                                <a href="javascript:void(0)" class="news-link"
-                                    >O estado do Rio resolveu agir sozinho,
-                                    abandonado pelo Governo Lula que ficou nas
-                                    cordas</a
-                                >
-                            </h3>
-                            <p class="news-excerpt">
-                                Coluna Magnavita critica falta de apoio federal
-                                para operações de segurança no estado do Rio.
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Fernando Molica</span>
-                                <span class="time">Há 10 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Article 5 -->
-                    <article
-                        class="news-card"
-                        data-category="OPINIÃO"
-                        data-title="'O Estado perdeu. O crime venceu' diz colunista sobre segurança pública"
-                        data-subtitle="Coluna Correio Político analisa resultados das operações de segurança no Rio de Janeiro."
-                        data-image="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_cartuhcos-496992.jpg"
-                        data-author="Correio da Manhã"
-                        data-author-role="Jornalista"
-                        data-date="05/02/2026"
-                        data-time="16:00"
-                        data-link="https://www.correiodamanha.com.br/"
-                    >
-                        <a
-                            href="javascript:void(0)"
-                            class="news-image news-link"
-                        >
-                            <img
-                                src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_cartuhcos-496992.jpg"
-                                alt="Guerra do crime"
-                            />
-                        </a>
-                        <div class="news-content">
-                            <span class="category-tag">OPINIÃO</span>
-                            <h3>
-                                <a href="javascript:void(0)" class="news-link"
-                                    >"O Estado perdeu. O crime venceu" diz
-                                    colunista sobre segurança pública</a
-                                >
-                            </h3>
-                            <p class="news-excerpt">
-                                Coluna Correio Político analisa resultados das
-                                operações de segurança no Rio de Janeiro.
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Correio da Manhã</span>
-                                <span class="time">Há 12 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Article 6 -->
-                    <article
-                        class="news-card"
-                        data-category="MUNICÍPIO"
-                        data-title="Câmara Municipal devolve R$ 1,2 milhão aos cofres da prefeitura de Barra do Piraí"
-                        data-subtitle="Verba não utilizada será aplicada em obras e serviços essenciais para a população."
-                        data-image="https://correiosulfluminense.com.br/wp-content/uploads/2025/01/varejao-corrupcao.jpg"
-                        data-author="Correio Sul Fluminense"
-                        data-author-role="Jornalista"
-                        data-date="05/02/2026"
-                        data-time="14:00"
-                        data-link="https://correiosulfluminense.com.br/"
-                    >
-                        <a
-                            href="javascript:void(0)"
-                            class="news-image news-link"
-                        >
-                            <img
-                                src="https://correiosulfluminense.com.br/wp-content/uploads/2025/01/varejao-corrupcao.jpg"
-                                alt="Câmara Municipal"
-                            />
-                        </a>
-                        <div class="news-content">
-                            <span class="category-tag">MUNICÍPIO</span>
-                            <h3>
-                                <a href="javascript:void(0)" class="news-link"
-                                    >Câmara Municipal devolve R$ 1,2 milhão aos
-                                    cofres da prefeitura de Barra do Piraí</a
-                                >
-                            </h3>
-                            <p class="news-excerpt">
-                                Verba não utilizada será aplicada em obras e
-                                serviços essenciais para a população.
-                            </p>
-                            <div class="article-meta">
-                                <span class="author"
-                                    >Por Correio Sul Fluminense</span
-                                >
-                                <span class="time">Há 1 dia</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Hidden Articles (to be loaded) -->
-                    <article
-                        class="news-card hidden"
-                        data-category="MUNICÍPIO"
-                        data-title="Santo André confirma Corte do Carnaval 2026 e programação completa"
-                        data-subtitle="Cidade de São Paulo anuncia programação completa para o carnaval deste ano."
-                        data-image="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Santo-Andre-confirma-Corte-do-Carnaval-2026.jpg"
-                        data-author="Correio da Manhã SP"
-                        data-author-role="Jornalista"
-                        data-date="04/02/2026"
-                        data-time="12:00"
-                        data-link="https://www.correiodamanhasp.com.br/"
-                    >
-                        <a
-                            href="javascript:void(0)"
-                            class="news-image news-link"
-                        >
-                            <img
-                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Santo-Andre-confirma-Corte-do-Carnaval-2026.jpg"
-                                alt="Carnaval"
-                            />
-                        </a>
-                        <div class="news-content">
-                            <span class="category-tag">MUNICÍPIO</span>
-                            <h3>
-                                <a href="javascript:void(0)" class="news-link"
-                                    >Santo André confirma Corte do Carnaval 2026
-                                    e programação completa</a
-                                >
-                            </h3>
-                            <p class="news-excerpt">
-                                Cidade de São Paulo anuncia programação completa
-                                para o carnaval deste ano.
-                            </p>
-                            <div class="article-meta">
-                                <span class="author"
-                                    >Por Correio da Manhã SP</span
-                                >
-                                <span class="time">Há 2 dias</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article
-                        class="news-card hidden"
-                        data-category="CONGRESSO"
-                        data-title="Votação do PPA e LOA é suspensa por violência na Câmara de Vereadores"
-                        data-subtitle="Sessão foi interrompida após confronto entre vereadores durante votação do Plano Plurianual."
-                        data-image="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_2a7c5a55d24475c5674a6cabf9d5e3d4_l-497070.jpg"
-                        data-author="Correio da Manhã"
-                        data-author-role="Jornalista"
-                        data-date="03/02/2026"
-                        data.time="10:00"
-                        data-link="https://www.correiodamanha.com.br/"
-                    >
-                        <a
-                            href="javascript:void(0)"
-                            class="news-image news-link"
-                        >
-                            <img
-                                src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_2a7c5a55d24475c5674a6cabf9d5e3d4_l-497070.jpg"
-                                alt="Votação suspensa"
-                            />
-                        </a>
-                        <div class="news-content">
-                            <span class="category-tag">CONGRESSO</span>
-                            <h3>
-                                <a href="javascript:void(0)" class="news-link"
-                                    >Votação do PPA e LOA é suspensa por
-                                    violência na Câmara de Vereadores</a
-                                >
-                            </h3>
-                            <p class="news-excerpt">
-                                Sessão foi interrompida após confronto entre
-                                vereadores durante votação do Plano Plurianual.
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Correio da Manhã</span>
-                                <span class="time">Há 3 dias</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article
-                        class="news-card hidden"
-                        data-category="JUSTIÇA"
-                        data-title="MPF pede anulação de licença para etapa 4 do pré-sal na Costa Verde"
-                        data-subtitle="Ministério Público Federal questiona licenciamento ambiental de novas instalações da Petrobras."
-                        data-image="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/mpf-pede-anulacao.jpg"
-                        data-author="Correio Sul Fluminense"
-                        data-author-role="Jornalista"
-                        data-date="02/02/2026"
-                        data-time="08:00"
-                        data-link="https://correiosulfluminense.com.br/"
-                    >
-                        <a
-                            href="javascript:void(0)"
-                            class="news-image news-link"
-                        >
-                            <img
-                                src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/mpf-pede-anulacao.jpg"
-                                alt="MPF e pré-sal"
-                            />
-                        </a>
-                        <div class="news-content">
-                            <span class="category-tag">JUSTIÇA</span>
-                            <h3>
-                                <a href="javascript:void(0)" class="news-link"
-                                    >MPF pede anulação de licença para etapa 4
-                                    do pré-sal na Costa Verde</a
-                                >
-                            </h3>
-                            <p class="news-excerpt">
-                                Ministério Público Federal questiona
-                                licenciamento ambiental de novas instalações da
-                                Petrobras.
-                            </p>
-                            <div class="article-meta">
-                                <span class="author"
-                                    >Por Correio Sul Fluminense</span
-                                >
-                                <span class="time">Há 4 dias</span>
-                            </div>
-                        </div>
-                    </article>
+                <div class="footer-section">
+                    <h4 class="footer-title">Portais Regionais</h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="https://www.correiodamanha.com.br/" target="_blank">Correio da Manhã</a>
+                        </li>
+                        <li>
+                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Correio da Manhã SP</a>
+                        </li>
+                        <li>
+                            <a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul Fluminense</a>
+                        </li>
+                        <li>
+                            <a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a>
+                        </li>
+                        <li>
+                            <a href="https://www.correiodamanhadf.com.br/" target="_blank">Correio da Manhã DF</a>
+                        </li>
+                    </ul>
                 </div>
-
-                <!-- Load More Button -->
-                <div class="load-more-container">
-                    <div class="loading-spinner" id="loading-spinner"></div>
-                    <button class="load-more-btn" id="load-more-btn">
-                        Carregar mais notícias
-                    </button>
+                <div class="footer-section">
+                    <h4 class="footer-title">Contato</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Fale conosco</a></li>
+                        <li><a href="#">Trabalhe conosco</a></li>
+                        <li><a href="#">Anuncie</a></li>
+                    </ul>
                 </div>
             </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="main-footer">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-section">
-                        <h4 class="footer-title">Sobre</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Quem somos</a></li>
-                            <li><a href="#">Expediente</a></li>
-                            <li><a href="#">Política de Privacidade</a></li>
-                            <li><a href="#">Termos de Uso</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4 class="footer-title">Editorias</h4>
-                        <ul class="footer-links">
-                            <li><a href="opiniao.html">Opinião</a></li>
-                            <li><a href="politica.html">Política</a></li>
-                            <li><a href="economia.html">Economia</a></li>
-                            <li><a href="justica.html">Justiça</a></li>
-                            <li><a href="esportes.html">Esportes</a></li>
-                            <li><a href="cultura.html">Cultura</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4 class="footer-title">Portais Regionais</h4>
-                        <ul class="footer-links">
-                            <li>
-                                <a
-                                    href="https://www.correiodamanha.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhasp.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã SP</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiosulfluminense.com.br/"
-                                    target="_blank"
-                                    >Correio Sul Fluminense</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://correiopetropolitano.com.br/"
-                                    target="_blank"
-                                    >Correio Petropolitano</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.correiodamanhadf.com.br/"
-                                    target="_blank"
-                                    >Correio da Manhã DF</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4 class="footer-title">Contato</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Fale conosco</a></li>
-                            <li><a href="#">Trabalhe conosco</a></li>
-                            <li><a href="#">Anuncie</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div class="footer-logo">PORTAL CM</div>
-                    <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
-                </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">PORTAL CM</div>
+                <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
             </div>
-        </footer>
+        </div>
+    </footer>
 
-        <!-- Back to Top Button -->
-        <button
-            id="back-to-top"
-            class="back-to-top"
-            aria-label="Voltar ao topo"
-        >
-            <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-            >
-                <polyline points="18 15 12 9 6 15"></polyline>
-            </svg>
-        </button>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
 
-        <script src="js/main.js"></script>
-        <script>
-            // News link click handler
-            document.addEventListener("DOMContentLoaded", function () {
-                const newsLinks = document.querySelectorAll(".news-link");
+    <script src="js/main.js"></script>
+    <script>
+        // News link click handler
+        document.addEventListener("DOMContentLoaded", function () {
+            const newsLinks = document.querySelectorAll(".news-link");
 
-                newsLinks.forEach(function (link) {
-                    link.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        const card = this.closest(".news-card");
+            newsLinks.forEach(function (link) {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const card = this.closest(".news-card");
 
-                        const category = card.dataset.category || "Política";
-                        const title = card.dataset.title || "Título da Notícia";
-                        const subtitle = card.dataset.subtitle || "";
-                        const image = card.dataset.image || "";
-                        const author = card.dataset.author || "Portal CM";
-                        const authorRole =
-                            card.dataset.authorRole || "Jornalista";
-                        const date = card.dataset.date || "06/02/2026";
-                        const time = card.dataset.time || "14:00";
-                        const externalLink = card.dataset.link || "";
+                    const category = card.dataset.category || "Política";
+                    const title = card.dataset.title || "Título da Notícia";
+                    const subtitle = card.dataset.subtitle || "";
+                    const image = card.dataset.image || "";
+                    const author = card.dataset.author || "Portal CM";
+                    const authorRole =
+                        card.dataset.authorRole || "Jornalista";
+                    const date = card.dataset.date || "06/02/2026";
+                    const time = card.dataset.time || "14:00";
+                    const externalLink = card.dataset.link || "";
 
-                        // Build URL with parameters
-                        const params = new URLSearchParams();
-                        params.set("category", category);
-                        params.set("title", title);
-                        params.set("subtitle", subtitle);
-                        params.set("image", image);
-                        params.set("author", author);
-                        params.set("authorRole", authorRole);
-                        params.set("date", date);
-                        params.set("time", time);
-                        if (externalLink) {
-                            params.set("link", externalLink);
-                        }
+                    // Build URL with parameters
+                    const params = new URLSearchParams();
+                    params.set("category", category);
+                    params.set("title", title);
+                    params.set("subtitle", subtitle);
+                    params.set("image", image);
+                    params.set("author", author);
+                    params.set("authorRole", authorRole);
+                    params.set("date", date);
+                    params.set("time", time);
+                    if (externalLink) {
+                        params.set("link", externalLink);
+                    }
 
-                        // Navigate to noticia.html
-                        window.location.href =
-                            "noticia.html?" + params.toString();
-                    });
+                    // Navigate to noticia.html
+                    window.location.href =
+                        "noticia.html?" + params.toString();
                 });
             });
+        });
 
-            // Load More functionality
-            const loadMoreBtn = document.getElementById("load-more-btn");
-            const loadingSpinner = document.getElementById("loading-spinner");
-            const hiddenCards = document.querySelectorAll(".news-card.hidden");
-            let visibleCount = 0;
-            const cardsPerLoad = 3;
+        // Load More functionality
+        const loadMoreBtn = document.getElementById("load-more-btn");
+        const loadingSpinner = document.getElementById("loading-spinner");
+        const hiddenCards = document.querySelectorAll(".news-card.hidden");
+        let visibleCount = 0;
+        const cardsPerLoad = 3;
 
-            loadMoreBtn.addEventListener("click", function () {
-                loadingSpinner.style.display = "block";
-                loadMoreBtn.disabled = true;
+        loadMoreBtn.addEventListener("click", function () {
+            loadingSpinner.style.display = "block";
+            loadMoreBtn.disabled = true;
 
-                setTimeout(() => {
-                    let shown = 0;
-                    for (
-                        let i = 0;
-                        i < hiddenCards.length && shown < cardsPerLoad;
-                        i++
-                    ) {
-                        if (hiddenCards[i].classList.contains("hidden")) {
-                            hiddenCards[i].classList.remove("hidden");
-                            shown++;
-                        }
+            setTimeout(() => {
+                let shown = 0;
+                for (
+                    let i = 0;
+                    i < hiddenCards.length && shown < cardsPerLoad;
+                    i++
+                ) {
+                    if (hiddenCards[i].classList.contains("hidden")) {
+                        hiddenCards[i].classList.remove("hidden");
+                        shown++;
                     }
+                }
 
-                    visibleCount += shown;
-                    loadingSpinner.style.display = "none";
-                    loadMoreBtn.disabled = false;
+                visibleCount += shown;
+                loadingSpinner.style.display = "none";
+                loadMoreBtn.disabled = false;
 
-                    const remainingHidden =
-                        document.querySelectorAll(".news-card.hidden");
-                    if (remainingHidden.length === 0) {
-                        loadMoreBtn.textContent = "Não há mais notícias";
-                        loadMoreBtn.disabled = true;
-                    }
-                }, 500);
-            });
-        </script>
-    </body>
+                const remainingHidden =
+                    document.querySelectorAll(".news-card.hidden");
+                if (remainingHidden.length === 0) {
+                    loadMoreBtn.textContent = "Não há mais notícias";
+                    loadMoreBtn.disabled = true;
+                }
+            }, 500);
+        });
+    </script>
+</body>
+
 </html>

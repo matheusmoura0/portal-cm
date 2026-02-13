@@ -1,0 +1,277 @@
+/* ========================================
+   Modern Portal Section Layout
+   Based on research of top news portals:
+   - G1 (Brazil): Clean grid with hero + sidebar
+   - Folha de S.Paulo: Balanced 12-column grid
+   - BBC News: Modular bento-style sections
+   - NYT: Editorial hierarchy with clear visual hierarchy
+   - Guardian: Card-based layouts with consistent spacing
+   ======================================== */
+
+/* Modern 12-column grid system for sections */
+.modern-section-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+/* Main featured article - spans 7 columns (58% width) */
+.modern-section-main {
+    grid-column: 1 / 8;
+    display: flex;
+    flex-direction: column;
+}
+
+.modern-section-main>a {
+    display: block;
+    text-decoration: none;
+}
+
+.modern-section-main .news-image {
+    aspect-ratio: 16 / 9;
+    margin-bottom: 16px;
+    overflow: hidden;
+    border-radius: 8px;
+    display: block;
+}
+
+.modern-section-main .news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.modern-section-main:hover .news-image img {
+    transform: scale(1.03);
+}
+
+/* Hide category tags inside image links for main articles */
+.modern-section-main .news-image .category-tag {
+    display: none;
+}
+
+.modern-section-main h3 {
+    font-family: "Noto Serif", Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    color: var(--color-text, #1a1a1a);
+}
+
+.modern-section-main p {
+    color: var(--color-text-gray, #666666);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.modern-section-main .article-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 0.8125rem;
+    color: var(--color-text-light, #999999);
+    margin-top: auto;
+}
+
+.modern-section-main .article-meta .author {
+    font-weight: 500;
+    color: var(--color-text-gray, #666666);
+}
+
+/* Secondary articles sidebar - spans 5 columns (42% width) */
+.modern-section-sidebar {
+    grid-column: 8 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modern-section-item {
+    display: flex;
+    gap: 12px;
+    align-items: start;
+}
+
+.modern-section-item .news-image {
+    width: 130px;
+    flex-shrink: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 6px;
+    display: block;
+}
+
+.modern-section-item .news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.modern-section-item:hover .news-image img {
+    transform: scale(1.05);
+}
+
+.modern-section-item .news-content {
+    flex: 1;
+}
+
+/* Move category tags outside of image links for sidebar items */
+.modern-section-item .news-image .category-tag {
+    position: static;
+    display: inline-block;
+    background-color: var(--color-primary, #d0021b);
+    color: #ffffff !important;
+    padding: 3px 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    border-radius: 2px;
+}
+
+.modern-section-item h4 {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    color: var(--color-text, #1a1a1a);
+}
+
+.modern-section-item .time,
+.modern-section-item .author {
+    font-size: 0.8125rem;
+    color: var(--color-text-light, #999999);
+}
+
+.modern-section-item .category-tag {
+    display: inline-block;
+    background-color: var(--color-primary, #d0021b);
+    color: #ffffff !important;
+    padding: 3px 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+}
+
+/* Compact list items for third article in sidebar */
+.modern-section-item.compact {
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 0;
+    border-top: 1px solid var(--color-border, #e5e5e5);
+}
+
+.modern-section-item.compact .news-image {
+    display: none;
+}
+
+.modern-section-item.compact h4 {
+    font-size: 0.9375rem;
+    line-height: 1.4;
+}
+
+.modern-section-item.compact:hover h4 {
+    color: var(--color-header-bg, #cc0000);
+}
+
+/* Section header improvements */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-text, #1a1a1a);
+}
+
+.section-title {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text, #1a1a1a);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.section-link {
+    color: var(--color-primary, #1a3a5c);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.section-link:hover {
+    color: var(--color-header-bg, #cc0000);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .modern-section-grid {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 20px;
+    }
+
+    .modern-section-main {
+        grid-column: 1 / 6;
+    }
+
+    .modern-section-sidebar {
+        grid-column: 6 / 9;
+    }
+
+    .modern-section-item .news-image {
+        width: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modern-section-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modern-section-main,
+    .modern-section-sidebar {
+        grid-column: 1 / -1;
+    }
+
+    .modern-section-item .news-image {
+        width: 110px;
+    }
+
+    .modern-section-main h3 {
+        font-size: 1.15rem;
+    }
+
+    .modern-section-main p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 480px) {
+    .modern-section-item {
+        flex-direction: column;
+    }
+
+    .modern-section-item .news-image {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+    .modern-section-item.compact {
+        padding: 10px 0;
+    }
+}

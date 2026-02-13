@@ -423,6 +423,215 @@ const Newsletter = {
 // Breaking News Ticker
 // ========================================
 
+// ========================================
+// AO VIVO Live Coverage
+// ========================================
+
+const LiveCoverage = {
+  init() {
+    this.ticker = document.getElementById("live-ticker");
+    this.panel = document.getElementById("live-panel");
+    this.expandBtn = document.getElementById("live-expand-btn");
+    this.closeBtn = document.getElementById("live-close-btn");
+    this.bindEvents();
+    this.pauseOnHover();
+  },
+
+  bindEvents() {
+    // Expand panel on button click
+    if (this.expandBtn) {
+      this.expandBtn.addEventListener("click", () => this.expandPanel());
+    }
+
+    // Close panel on button click
+    if (this.closeBtn) {
+      this.closeBtn.addEventListener("click", () => this.closePanel());
+    }
+
+    // Close panel on escape key
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        this.panel &&
+        this.panel.classList.contains("active")
+      ) {
+        this.closePanel();
+      }
+    });
+  },
+
+  expandPanel() {
+    if (this.panel) {
+      this.panel.classList.add("active");
+      this.panel.style.display = "block";
+      // Scroll to panel
+      setTimeout(() => {
+        this.panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  },
+
+  closePanel() {
+    if (this.panel) {
+      this.panel.classList.remove("active");
+      setTimeout(() => {
+        this.panel.style.display = "none";
+      }, 300);
+    }
+  },
+
+  pauseOnHover() {
+    if (this.ticker) {
+      this.ticker.parentElement.addEventListener("mouseenter", () => {
+        this.ticker.style.animationPlayState = "paused";
+      });
+
+      this.ticker.parentElement.addEventListener("mouseleave", () => {
+        this.ticker.style.animationPlayState = "running";
+      });
+    }
+  },
+
+  // Add new live update dynamically
+  addUpdate(time, title, content, tags = []) {
+    const updatesContainer = document.getElementById("live-updates");
+    if (!updatesContainer) return;
+
+    const updateElement = document.createElement("article");
+    updateElement.className = "live-update";
+
+    const tagsHtml = tags
+      .map((tag) => `<span class="tag">${tag}</span>`)
+      .join("");
+
+    updateElement.innerHTML = `
+      <div class="update-time">
+        <span class="time-badge">${time}</span>
+      </div>
+      <div class="update-content">
+        <h4>${title}</h4>
+        <p>${content}</p>
+        <div class="update-tags">${tagsHtml}</div>
+      </div>
+    `;
+
+    // Insert after the featured update or at the top
+    const featuredUpdate = updatesContainer.querySelector(
+      ".live-update.featured",
+    );
+    if (featuredUpdate) {
+      featuredUpdate.after(updateElement);
+    } else {
+      updatesContainer.prepend(updateElement);
+    }
+
+    // Animate the new update
+    updateElement.style.animation = "slideDown 0.3s ease-out";
+  },
+};
+
+// ========================================
+// Section Layout Enhancer
+// ========================================
+
+const SectionLayout = {
+  init() {
+    this.applyCompactClass();
+    this.fixRegionSections();
+  },
+
+  applyCompactClass() {
+    // Find all modern-section-sidebars
+    const sidebars = document.querySelectorAll(".modern-section-sidebar");
+
+    sidebars.forEach((sidebar) => {
+      const items = sidebar.querySelectorAll(".modern-section-item");
+      // Apply compact class to the third item (index 2)
+      if (items.length >= 3) {
+        items[2].classList.add("compact");
+      }
+    });
+  },
+
+  fixRegionSections() {
+    // Convert old news-card layout to modern layout in region sections
+    const regionGrids = document.querySelectorAll(
+      ".region-content .modern-section-grid",
+    );
+
+    regionGrids.forEach((grid) => {
+      const articles = grid.querySelectorAll(".news-card");
+      if (articles.length === 0) return;
+
+      // First article becomes the main featured
+      const mainArticle = articles[0];
+      mainArticle.classList.remove("news-card");
+      mainArticle.classList.add("modern-section-main");
+
+      // Move image outside of content div if needed
+      const image = mainArticle.querySelector(".news-image");
+      const content = mainArticle.querySelector(".news-content");
+
+      if (image && content && mainArticle.contains(content)) {
+        // Fix structure - move image before content
+        mainArticle.insertBefore(image, content);
+
+        const h4 = content.querySelector("h4");
+        const time = content.querySelector(".time");
+        const author = content.querySelector(".author");
+
+        if (h4) {
+          const h3 = document.createElement("h3");
+          h3.textContent = h4.textContent;
+          h4.replaceWith(h3);
+        }
+
+        // Add article-meta if not present
+        if (!mainArticle.querySelector(".article-meta")) {
+          const meta = document.createElement("div");
+          meta.className = "article-meta";
+          if (author) {
+            const authorSpan = document.createElement("span");
+            authorSpan.className = "author";
+            authorSpan.textContent = author.textContent;
+            meta.appendChild(authorSpan);
+          }
+          if (time) {
+            meta.appendChild(time.cloneNode(true));
+          }
+          content.appendChild(meta);
+        }
+      }
+
+      // Remaining articles go to sidebar
+      if (articles.length > 1) {
+        // Create sidebar container if it doesn't exist
+        let sidebar = grid.querySelector(".modern-section-sidebar");
+        if (!sidebar) {
+          sidebar = document.createElement("div");
+          sidebar.className = "modern-section-sidebar";
+          grid.appendChild(sidebar);
+        }
+
+        // Move articles 2+ to sidebar
+        for (let i = 1; i < articles.length; i++) {
+          const article = articles[i];
+          article.classList.remove("news-card");
+          article.classList.add("modern-section-item");
+
+          // Add compact class to items 3+
+          if (i >= 2) {
+            article.classList.add("compact");
+          }
+
+          sidebar.appendChild(article);
+        }
+      }
+    });
+  },
+};
+
+// Legacy BreakingNews module - kept for backwards compatibility
 const BreakingNews = {
   init() {
     this.ticker = document.getElementById("breaking-news-ticker");
@@ -832,6 +1041,8 @@ document.addEventListener("DOMContentLoaded", () => {
   RegionTabs.init();
   Search.init();
   Newsletter.init();
+  LiveCoverage.init();
+  SectionLayout.init();
   BreakingNews.init();
   ScrollNav.init();
   BackToTop.init();
@@ -858,6 +1069,8 @@ window.CM = {
   RegionTabs,
   Search,
   Newsletter,
+  LiveCoverage,
+  SectionLayout,
   BreakingNews,
   ScrollNav,
   BackToTop,

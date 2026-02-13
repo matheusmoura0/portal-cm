@@ -1,0 +1,37 @@
+
+/* ========================================
+   Dark Footer Bar for Destaques Section
+   ======================================== */
+
+@media (min-width: 769px) {
+    .featured-section {
+        padding-bottom: 20px;
+        background: linear-gradient(to bottom, #1a1a1a 0%, #0d0d0d 100%);
+    }
+
+    .featured-section .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0 0 0 0 0;
+        border-bottom: none;
+    }
+
+    .featured-section .section-title {
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-section {
+        padding-bottom: 20px;
+        background: linear-gradient(to bottom, #1a1a1a 0%, #0d0d0d 100%);
+    }
+}
+

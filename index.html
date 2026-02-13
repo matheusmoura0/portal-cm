@@ -9,15 +9,15 @@
     <meta name="keywords" content="notícias, política, economia, esportes, cultura, brasil, rio, são paulo" />
     <title>CM</title>
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/regions.css" />
     <link rel="stylesheet" href="css/dark-mode.css" />
     <link rel="stylesheet" href="css/mobile-bottom-nav.css" />
     <link rel="stylesheet" href="css/modern-sections.css" />
+    <link rel="stylesheet" href="css/regions-hub.css" />
     <link rel="stylesheet" href="css/sections-grid.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap"
         rel="stylesheet" />
 </head>
 
@@ -72,80 +72,72 @@
         </div>
     </div>
 
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <a href="/">
-                        <h1 class="logo">CM</h1>
-                        <span class="logo-portal">portal</span>
-                    </a>
-                </div>
-                <div class="search-section">
-                    <div class="search-box">
-                        <input type="text" placeholder="Buscar notícias..." id="search-input" />
-                        <button class="search-btn" aria-label="Buscar">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <path d="m21 21-4.35-4.35"></path>
-                            </svg>
-                        </button>
+    <!-- Unified Sticky Header -->
+    <div class="sticky-nav-unified">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <a href="/">
+                            <h1 class="logo">CM</h1>
+                            <span class="logo-portal">portal</span>
+                        </a>
+                    </div>
+                    <div class="search-section">
+                        <div class="search-box">
+                            <input type="text" placeholder="Buscar notícias..." id="search-input" />
+                            <button class="search-btn" aria-label="Buscar">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Main Navigation -->
-    <nav class="main-nav">
-        <div class="container">
-            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="opiniao.html" class="nav-link">Opinião</a></li>
-                <li>
-                    <a href="politica.html" class="nav-link">Política</a>
-                </li>
-                <li>
-                    <a href="economia.html" class="nav-link">Economia</a>
-                </li>
-                <li><a href="justica.html" class="nav-link">Justiça</a></li>
-                <li><a href="brasil.html" class="nav-link">Brasil</a></li>
-                <li class="nav-dropdown">
-                    <a href="#regioes" class="nav-link dropdown-toggle">Regiões ▾</a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="brasil.html">Brasil</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanha.com.br/" target="_blank">Rio de Janeiro</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">São Paulo</a>
-                        </li>
-                        <li>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Sul Fluminense</a>
-                        </li>
-                        <li>
-                            <a href="https://correiopetropolitano.com.br/" target="_blank">Petrópolis</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhadf.com.br/" target="_blank">Distrito Federal</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="cultura.html" class="nav-link">Cultura</a></li>
-                <li>
-                    <a href="esportes.html" class="nav-link">Esportes</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        <!-- Main Navigation -->
+        <nav class="main-nav">
+            <div class="container">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="opiniao.html" class="nav-link">Opinião</a></li>
+                    <li>
+                        <a href="politica.html" class="nav-link">Política</a>
+                    </li>
+                    <li>
+                        <a href="economia.html" class="nav-link">Economia</a>
+                    </li>
+                    <li><a href="justica.html" class="nav-link">Justiça</a></li>
+                    <li><a href="brasil.html" class="nav-link">Brasil</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#regioes" class="nav-link dropdown-toggle">Regiões ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://www.correiodamanha.com.br/" target="_blank">Correio Rio</a></li>
+                            <li><a href="https://correiodamanhasp.com.br/" target="_blank">Correio SP</a></li>
+                            <li><a href="https://correiodamanhadf.com.br/" target="_blank">Correio DF</a></li>
+                            <li><a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul
+                                    Fluminense</a></li>
+                            <li><a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="cultura.html" class="nav-link">Cultura</a></li>
+                    <li>
+                        <a href="esportes.html" class="nav-link">Esportes</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
     <!-- AO VIVO Live Coverage Section -->
     <section class="live-coverage" id="ao-vivo">
@@ -305,7 +297,7 @@
             <section class="hero-section">
                 <div class="hero-main">
                     <article class="hero-article">
-                        <span class="article-tag">DESTAQUE</span>
+                        <span class="source-badge badge-red">Correio da Manhã</span>
                         <a href="https://www.correiodamanha.com.br/estado-do-rio/2026/02/258979-pedido-de-vista-de-fux-interrompe-julgamento-do-stf-sobre-inelegibilidade-de-washington-reis.html"
                             target="_blank" class="hero-image-wrapper">
                             <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/11/600x378/1_tmazs_070220_6466_860x515-548705.jpeg"
@@ -321,44 +313,48 @@
                             <p>
                                 Ministro Luiz Fux pediu vistas do processo,
                                 paralisando o julgamento sobre a
-                                inelegibilidade do prefeito do Rio de
-                                Janeiro
+                                inelegibilidade do ex-prefeito.
                             </p>
                             <div class="article-meta">
-                                <span class="author">Por Correio da Manhã</span>
-                                <span class="time">11 fev 2026</span>
+                                <span class="time">há 15 minutos</span>
                             </div>
                         </div>
                     </article>
                 </div>
                 <div class="hero-side">
                     <article class="side-article">
-                        <span class="article-tag">EM DESTAQUE</span>
+                        <span class="source-badge">São Paulo</span>
                         <a href="https://correiodamanhasp.com.br/comissao-do-senado-aprova-requerimentos-para-ouvir-vorcaro-e-autoridades-sobre-caso-master/"
                             target="_blank" class="side-image-wrapper">
                             <img src="https://correiodamanhasp.com.br/wp-content/uploads/2026/02/1_imagem_materia__1_-547603.jpg"
-                                alt="Comissão do Senado aprova requerimentos para ouvir Vorcaro e autoridades sobre caso Master" />
+                                alt="Comissão do Senado aprova requerimentos para ouvir Vorcaro" />
                         </a>
-                        <span class="category-tag politics">[NACIONAL]</span>
                         <h3>
-                            Comissão do Senado aprova requerimentos para
-                            ouvir Vorcaro e autoridades sobre caso Master
+                            Senado aprova requerimentos para ouvir Vorcaro e autoridades sobre caso Master
                         </h3>
-                        <span class="time">11 fev 2026</span>
+                        <span class="time">há 1 hora</span>
                     </article>
                     <article class="side-article">
-                        <span class="article-tag">EM DESTAQUE</span>
-                        <a href="https://correiodamanhasp.com.br/prefeitura-multa-iguatemi-em-em-r-125-mil-por-corte-de-78-arvores/"
-                            target="_blank" class="side-image-wrapper">
-                            <img src="https://correiodamanhasp.com.br/wp-content/uploads/2026/02/1_whatsapp_image_2025_07_03_at_17_15_05_e1751647072984_800x480-547956.jpg"
-                                alt="Prefeitura multa Iguatemi em em R$ 125 mil por corte de 78 árvores" />
+                        <span class="source-badge">Barra da Tijuca</span>
+                        <a href="https://www.jornaldabarra.com.br/" target="_blank" class="side-image-wrapper">
+                            <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
+                                alt="Festival de chocolate na Barra" />
                         </a>
-                        <span class="category-tag brasil">[SÃO PAULO]</span>
                         <h3>
-                            Prefeitura multa Iguatemi em R$ 125 mil por
-                            corte de 78 árvores
+                            A Barra da Tijuca garante sua diversão neste final de semana com festival
                         </h3>
-                        <span class="time">10 fev 2026</span>
+                        <span class="time">há 2 horas</span>
+                    </article>
+                    <article class="side-article">
+                        <span class="source-badge">Petrópolis</span>
+                        <a href="https://correiopetropolitano.com.br/" target="_blank" class="side-image-wrapper">
+                            <img src="https://correiodamanhasp.com.br/wp-content/uploads/2025/12/Custo-de-vida-sobe-038-em-dezembro-e-fecha-2025-em-alta.jpg"
+                                alt="Petrópolis em alta" />
+                        </a>
+                        <h3>
+                            Petrópolis registra alta no turismo para a temporada de inverno
+                        </h3>
+                        <span class="time">há 4 horas</span>
                     </article>
                 </div>
             </section>
@@ -380,23 +376,32 @@
                 <div class="most-read-grid">
                     <article class="most-read-item">
                         <span class="most-read-number">1</span>
-                        <h3 class="most-read-title">
-                            VR: Prefeito Neto garante reajuste para
-                            servidores
-                        </h3>
+                        <div class="most-read-content">
+                            <span class="source-badge">Correio da Manhã</span>
+                            <h3 class="most-read-title">
+                                VR: Prefeito Neto garante reajuste para
+                                servidores
+                            </h3>
+                        </div>
                     </article>
                     <article class="most-read-item">
                         <span class="most-read-number">2</span>
-                        <h3 class="most-read-title">
-                            Nunes rejeita aliança entre MDB e PT em 2026
-                        </h3>
+                        <div class="most-read-content">
+                            <span class="source-badge">São Paulo</span>
+                            <h3 class="most-read-title">
+                                Nunes rejeita aliança entre MDB e PT em 2026
+                            </h3>
+                        </div>
                     </article>
                     <article class="most-read-item">
                         <span class="most-read-number">3</span>
-                        <h3 class="most-read-title">
-                            Início do sistema aquaviário deve acontecer no
-                            final de 2026
-                        </h3>
+                        <div class="most-read-content">
+                            <span class="source-badge">Correio DF</span>
+                            <h3 class="most-read-title">
+                                Início do sistema aquaviário deve acontecer no
+                                final de 2026
+                            </h3>
+                        </div>
                     </article>
                     <article class="most-read-item">
                         <span class="most-read-number">4</span>
@@ -1188,76 +1193,114 @@
 
                 <!-- Region: Brasil -->
                 <div class="region-content active" id="region-brasil">
+                    <div class="region-skeleton">
+                        <div class="regions-grid">
+                            <div class="region-main-item">
+                                <div class="skeleton skeleton-img"></div>
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-text"></div>
+                                <div class="skeleton skeleton-text short"></div>
+                            </div>
+                            <div class="region-sidebar-list">
+                                <div class="region-sidebar-item">
+                                    <div class="thumb skeleton"></div>
+                                    <div style="flex:1">
+                                        <div class="skeleton skeleton-text"></div>
+                                        <div class="skeleton skeleton-text short"></div>
+                                    </div>
+                                </div>
+                                <div class="region-sidebar-item">
+                                    <div class="skeleton skeleton-text"></div>
+                                    <div class="skeleton skeleton-text short"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="region-header">
                         <h3>Notícias do Brasil</h3>
                         <a href="https://cm-portal-one.vercel.app/" class="region-link">Ver todas as notícias →</a>
                     </div>
-                    <div class="modern-section-grid">
-                        <article class="modern-section-main">
+
+                    <div class="regions-grid">
+                        <article class="region-main-item">
                             <a href="https://www.correiodamanha.com.br/estado-do-rio/2026/02/258979-pedido-de-vista-de-fux-interrompe-julgamento-do-stf-sobre-inelegibilidade-de-washington-reis.html"
-                                target="_blank" class="news-image">
+                                target="_blank" class="img-wrapper">
                                 <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/11/600x378/1_tmazs_070220_6466_860x515-548705.jpeg"
                                     alt="Pedido de vista de Fux interrompe julgamento do STF" />
                             </a>
-                            <h3>
-                                Pedido de vista de Fux interrompe julgamento
-                                do STF sobre inelegibilidade de Washington
-                                Reis
-                            </h3>
-                            <p>
-                                Ministro Luiz Fux pediu vistas do processo,
-                                paralisando o julgamento sobre a
-                                inelegibilidade do prefeito do Rio de
-                                Janeiro
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Correio da Manhã</span>
-                                <span class="time">11 fev 2026</span>
+                            <div class="news-content">
+                                <h3>
+                                    Pedido de vista de Fux interrompe julgamento
+                                    do STF sobre inelegibilidade de Washington Reis
+                                </h3>
+                                <p>
+                                    Ministro Luiz Fux pediu vistas do processo, paralisando o julgamento sobre a
+                                    inelegibilidade do prefeito do Rio de Janeiro.
+                                </p>
+                                <div class="article-meta">
+                                    <span class="author">Por Correio da Manhã</span>
+                                    <span class="time">11 fev 2026</span>
+                                </div>
                             </div>
                         </article>
 
-                        <div class="modern-section-sidebar">
-                            <article class="modern-section-item">
+                        <div class="region-sidebar-list">
+                            <article class="region-sidebar-item">
                                 <a href="https://www.correiodamanha.com.br/colunistas/rudolfo-lago/2026/02/258499-correio-politico-lula-pode-ir-com-o-mdb-de-vice.html"
-                                    target="_blank" class="news-image">
+                                    target="_blank" class="thumb">
                                     <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_renanlula-547728.jpg"
-                                        alt="CORREIO POLÍTICO | Lula pode ir com o MDB de vice?" />
+                                        alt="Lula e MDB" />
                                 </a>
                                 <div class="news-content">
-                                    <h4>
-                                        CORREIO POLÍTICO | Lula pode ir com
-                                        o MDB de vice?
-                                    </h4>
+                                    <h4>CORREIO POLÍTICO | Lula pode ir com o MDB de vice?</h4>
                                     <span class="time">Há 4 horas</span>
                                 </div>
                             </article>
 
-                            <article class="modern-section-item compact">
+                            <article class="region-sidebar-item">
                                 <div class="news-content">
-                                    <h4>
-                                        STF forma maioria favorável à
-                                        retirada de direitos políticos de
-                                        condenados
-                                    </h4>
+                                    <h4>STF forma maioria favorável à retirada de direitos políticos de condenados</h4>
                                     <span class="time">Há 8 horas</span>
                                 </div>
                             </article>
 
-                            <article class="modern-section-item compact">
+                            <article class="region-sidebar-item">
                                 <div class="news-content">
-                                    <h4>
-                                        Senado aprova projeto que muda
-                                        regras do seguro-desemprego
-                                    </h4>
+                                    <h4>Senado aprova projeto que muda regras do seguro-desemprego</h4>
                                     <span class="time">Há 10 horas</span>
                                 </div>
                             </article>
                         </div>
                     </div>
+
+                    <div class="region-empty-state">
+                        <p>Ainda não há atualizações para esta região hoje.</p>
+                    </div>
                 </div>
 
                 <!-- Region: SP -->
                 <div class="region-content" id="region-sp">
+                    <div class="region-skeleton">
+                        <div class="regions-grid">
+                            <div class="region-main-item">
+                                <div class="skeleton skeleton-img"></div>
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-text"></div>
+                                <div class="skeleton skeleton-text short"></div>
+                            </div>
+                            <div class="region-sidebar-list">
+                                <div class="region-sidebar-item">
+                                    <div class="thumb skeleton"></div>
+                                    <div style="flex:1">
+                                        <div class="skeleton skeleton-text"></div>
+                                        <div class="skeleton skeleton-text short"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="region-header">
                         <h3>Notícias de São Paulo</h3>
                         <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="region-site-button">
@@ -1270,30 +1313,48 @@
                             Visitar Correio da Manhã SP
                         </a>
                     </div>
-                    <div class="modern-section-grid">
-                        <article class="modern-section-item">
-                            <div class="news-image">
+                    <div class="regions-grid">
+                        <article class="region-main-item">
+                            <div class="img-wrapper">
                                 <img src="https://placehold.co/400x250/e5e5e5/333333?text=São+Paulo" alt="São Paulo" />
                             </div>
                             <div class="news-content">
-                                <h4>[Placeholder] Notícia de São Paulo</h4>
-                                <span class="time">Há [X] horas</span>
+                                <h4>Tarcísio anuncia novos investimentos em infraestrutura para 2026</h4>
+                                <span class="time">Há 2 horas</span>
                             </div>
                         </article>
-                        <article class="modern-section-item">
-                            <div class="news-image">
-                                <img src="https://placehold.co/400x250/e5e5e5/333333?text=São+Paulo" alt="São Paulo" />
-                            </div>
-                            <div class="news-content">
-                                <h4>[Placeholder] Notícia de São Paulo</h4>
-                                <span class="time">Há [X] horas</span>
-                            </div>
-                        </article>
+                    </div>
+                    <div class="region-empty-state">
+                        <p>Ainda não há atualizações para esta região hoje.</p>
                     </div>
                 </div>
 
                 <!-- Region: Rio -->
                 <div class="region-content" id="region-rio">
+                    <div class="region-skeleton">
+                        <div class="regions-grid">
+                            <div class="region-main-item">
+                                <div class="skeleton skeleton-img"></div>
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-text"></div>
+                                <div class="skeleton skeleton-text short"></div>
+                            </div>
+                            <div class="region-sidebar-list">
+                                <div class="region-sidebar-item">
+                                    <div class="thumb skeleton"></div>
+                                    <div style="flex:1">
+                                        <div class="skeleton skeleton-text"></div>
+                                        <div class="skeleton skeleton-text short"></div>
+                                    </div>
+                                </div>
+                                <div class="region-sidebar-item">
+                                    <div class="skeleton skeleton-text"></div>
+                                    <div class="skeleton skeleton-text short"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="region-header">
                         <h3>Notícias do Rio de Janeiro</h3>
                         <a href="https://www.correiodamanha.com.br/" target="_blank" class="region-site-button">
@@ -1306,58 +1367,57 @@
                             Visitar Correio da Manhã RJ
                         </a>
                     </div>
-                    <div class="modern-section-grid">
-                        <article class="modern-section-item">
+                    <div class="regions-grid">
+                        <article class="region-main-item">
                             <a href="https://www.correiodamanha.com.br/rio-de-janeiro/2026/02/258957-shakira-e-a-grande-estrela-do-todo-mundo-no-rio-de-2026.html"
-                                target="_blank" class="news-image">
+                                target="_blank" class="img-wrapper">
                                 <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/11/280x175/1_shakira_performance_-548768.jpg"
-                                    alt="Shakira é a grande estrela do Todo Mundo no Rio de 2026" />
+                                    alt="Shakira" />
                             </a>
                             <div class="news-content">
-                                <h4>
-                                    Shakira é a grande estrela do 'Todo
-                                    Mundo no Rio' de 2026
-                                </h4>
-                                <span class="time">11 fev 2026</span>
+                                <h3>Shakira é a grande estrela do 'Todo Mundo no Rio' de 2026</h3>
+                                <p>Cantora colombiana confirmada para o megaevento na Praia de Copacabana.</p>
+                                <div class="article-meta">
+                                    <span class="author">Por Correio da Manhã</span>
+                                    <span class="time">11 fev 2026</span>
+                                </div>
                             </div>
                         </article>
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanha.com.br/estado-do-rio/2026/02/258009-governo-envia-suporte-para-cidades-afetadas-pelas-chuvas.html"
-                                target="_blank" class="news-image">
-                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_enchentes_petrlopolis-547598.jpg"
-                                    alt="Governo envia suporte para cidades afetadas pelas chuvas" />
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Governo envia suporte para cidades
-                                    afetadas pelas chuvas
-                                </h4>
-                                <span class="time">10 fev 2026</span>
-                            </div>
-                        </article>
-                        <article class="news-card compact">
-                            <a href="https://www.correiodamanha.com.br/rio-de-janeiro/" target="_blank">
-                                <h4>
-                                    Castro e Lewandowski criam escritório de
-                                    combate ao crime organizado
-                                </h4>
-                            </a>
-                            <span class="time">29 out 2025</span>
-                        </article>
-                        <article class="news-card compact">
-                            <a href="https://www.correiodamanha.com.br/rio-de-janeiro/" target="_blank">
-                                <h4>
-                                    Cláudio Castro destaca megaoperação como
-                                    'um sucesso'
-                                </h4>
-                            </a>
-                            <span class="time">29 out 2025</span>
-                        </article>
+                        <div class="region-sidebar-list">
+                            <article class="region-sidebar-item">
+                                <a href="#" class="thumb">
+                                    <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_enchentes_petrlopolis-547598.jpg"
+                                        alt="Enchentes" />
+                                </a>
+                                <div class="news-content">
+                                    <h4>Governo envia suporte para cidades afetadas pelas chuvas</h4>
+                                    <span class="time">10 fev 2026</span>
+                                </div>
+                            </article>
+                            <article class="region-sidebar-item">
+                                <div class="news-content">
+                                    <h4>Castro e Lewandowski criam escritório de combate ao crime organizado</h4>
+                                    <span class="time">29 out 2025</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="region-empty-state">
+                        <p>Ainda não há atualizações para esta região hoje.</p>
                     </div>
                 </div>
 
                 <!-- Region: Sul Fluminense -->
                 <div class="region-content" id="region-sul-fluminense">
+                    <div class="region-skeleton">
+                        <div class="regions-grid">
+                            <div class="region-main-item">
+                                <div class="skeleton skeleton-img"></div>
+                                <div class="skeleton skeleton-title"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="region-header">
                         <h3>Notícias do Sul Fluminense</h3>
                         <a href="https://correiosulfluminense.com.br/" target="_blank" class="region-site-button">
@@ -1370,36 +1430,34 @@
                             Visitar Correio Sul Fluminense
                         </a>
                     </div>
-                    <div class="modern-section-grid">
-                        <article class="modern-section-item">
-                            <div class="news-image">
+                    <div class="regions-grid">
+                        <article class="region-main-item">
+                            <div class="img-wrapper">
                                 <img src="https://placehold.co/400x250/e5e5e5/333333?text=Sul+Fluminense"
                                     alt="Sul Fluminense" />
                             </div>
                             <div class="news-content">
-                                <h4>
-                                    [Placeholder] Notícia do Sul Fluminense
-                                </h4>
-                                <span class="time">Há [X] horas</span>
+                                <h4>Prefeito de Volta Redonda garante reajuste para servidores em 2026</h4>
+                                <span class="time">Há 3 horas</span>
                             </div>
                         </article>
-                        <article class="modern-section-item">
-                            <div class="news-image">
-                                <img src="https://placehold.co/400x250/e5e5e5/333333?text=Sul+Fluminense"
-                                    alt="Sul Fluminense" />
-                            </div>
-                            <div class="news-content">
-                                <h4>
-                                    [Placeholder] Notícia do Sul Fluminense
-                                </h4>
-                                <span class="time">Há [X] horas</span>
-                            </div>
-                        </article>
+                    </div>
+                    <div class="region-empty-state">
+                        <p>Ainda não há atualizações para esta região hoje.</p>
                     </div>
                 </div>
 
                 <!-- Region: Petrópolis -->
                 <div class="region-content" id="region-petropolitano">
+                    <div class="region-skeleton">
+                        <div class="regions-grid">
+                            <div class="region-main-item">
+                                <div class="skeleton skeleton-img"></div>
+                                <div class="skeleton skeleton-title"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="region-header">
                         <h3>Notícias de Petrópolis</h3>
                         <a href="https://correiopetropolitano.com.br/" target="_blank" class="region-site-button">
@@ -1412,35 +1470,37 @@
                             Visitar Correio Petropolitano
                         </a>
                     </div>
-                    <div class="modern-section-grid">
-                        <article class="modern-section-item">
-                            <div class="news-image">
+                    <div class="regions-grid">
+                        <article class="region-main-item">
+                            <div class="img-wrapper">
                                 <img src="https://placehold.co/400x250/e5e5e5/333333?text=Petrópolis"
                                     alt="Petrópolis" />
                             </div>
                             <div class="news-content">
-                                <h4>[Placeholder] Notícia de Petrópolis</h4>
-                                <span class="time">Há [X] horas</span>
+                                <h4>Defesa Civil alerta para novas chuvas na Região Serrana</h4>
+                                <span class="time">Há 5 horas</span>
                             </div>
                         </article>
-                        <article class="modern-section-item">
-                            <div class="news-image">
-                                <img src="https://placehold.co/400x250/e5e5e5/333333?text=Petrópolis"
-                                    alt="Petrópolis" />
-                            </div>
-                            <div class="news-content">
-                                <h4>[Placeholder] Notícia de Petrópolis</h4>
-                                <span class="time">Há [X] horas</span>
-                            </div>
-                        </article>
+                    </div>
+                    <div class="region-empty-state">
+                        <p>Ainda não há atualizações para esta região hoje.</p>
                     </div>
                 </div>
 
                 <!-- Region: DF -->
                 <div class="region-content" id="region-df">
+                    <div class="region-skeleton">
+                        <div class="regions-grid">
+                            <div class="region-main-item">
+                                <div class="skeleton skeleton-img"></div>
+                                <div class="skeleton skeleton-title"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="region-header">
                         <h3>Notícias do Distrito Federal</h3>
-                        <a href="https://www.correiodamanhadf.com.br/" target="_blank" class="region-site-button">
+                        <a href="https://correiodamanhadf.com.br/" target="_blank" class="region-site-button">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -1450,33 +1510,19 @@
                             Visitar Correio da Manhã DF
                         </a>
                     </div>
-                    <div class="modern-section-grid">
-                        <article class="modern-section-item">
-                            <div class="news-image">
-                                <img src="https://placehold.co/400x250/e5e5e5/333333?text=Distrito+Federal"
-                                    alt="Distrito Federal" />
+                    <div class="regions-grid">
+                        <article class="region-main-item">
+                            <div class="img-wrapper">
+                                <img src="https://placehold.co/400x250/e5e5e5/333333?text=Distrito+Federal" alt="DF" />
                             </div>
                             <div class="news-content">
-                                <h4>
-                                    [Placeholder] Notícia do Distrito
-                                    Federal
-                                </h4>
-                                <span class="time">Há [X] horas</span>
+                                <h4>Congresso Nacional retoma atividades com pauta econômica</h4>
+                                <span class="time">Há 1 hora</span>
                             </div>
                         </article>
-                        <article class="modern-section-item">
-                            <div class="news-image">
-                                <img src="https://placehold.co/400x250/e5e5e5/333333?text=Distrito+Federal"
-                                    alt="Distrito Federal" />
-                            </div>
-                            <div class="news-content">
-                                <h4>
-                                    [Placeholder] Notícia do Distrito
-                                    Federal
-                                </h4>
-                                <span class="time">Há [X] horas</span>
-                            </div>
-                        </article>
+                    </div>
+                    <div class="region-empty-state">
+                        <p>Ainda não há atualizações para esta região hoje.</p>
                     </div>
                 </div>
             </section>

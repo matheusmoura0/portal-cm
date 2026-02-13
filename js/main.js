@@ -58,6 +58,27 @@ const Utils = {
 
     requestAnimationFrame(animation);
   },
+
+  // Formata data relativa para notícias
+  formatRelativeDate(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diff = now - date;
+    const minutes = Math.floor(diff / (1000 * 60));
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (minutes < 5) return "Agora";
+    if (minutes < 60) return `Há ${minutes} min`;
+    if (hours < 24) return `Há ${hours} h`;
+    if (days === 1) return "Ontem";
+    if (days < 7) return `Há ${days} dias`;
+
+    return date.toLocaleDateString("pt-BR", {
+      day: "numeric",
+      month: "short",
+    });
+  },
 };
 
 // ========================================
@@ -251,14 +272,140 @@ const MobileMenu = {
 };
 
 // ========================================
+// Serviço de Notícias (API WordPress)
+// ========================================
+
+const NewsService = {
+  endpoints: {
+    rio: "https://www.correiodamanha.com.br/wp-json/wp/v2/posts",
+    sp: "https://correiodamanhasp.com.br/wp-json/wp/v2/posts",
+    df: "https://correiodamanhadf.com.br/wp-json/wp/v2/posts",
+    "sul-fluminense": "https://correiosulfluminense.com.br/wp-json/wp/v2/posts",
+    petropolis: "https://correiopetropolitano.com.br/wp-json/wp/v2/posts",
+  },
+
+  fallbacks: {
+    rio: "https://placehold.co/600x400/cc0000/ffffff?text=Correio+Rio",
+    sp: "https://placehold.co/600x400/1a365d/ffffff?text=Correio+SP",
+    df: "https://placehold.co/600x400/1a3a5c/ffffff?text=Correio+DF",
+    "sul-fluminense": "https://placehold.co/600x400/1e6ba8/ffffff?text=Sul+Fluminense",
+    petropolis: "https://placehold.co/600x400/d60000/ffffff?text=Petropolitano",
+    default: "https://placehold.co/600x400/1a3a5c/ffffff?text=Correio+da+Manha",
+  },
+
+  async fetchRegionPosts(region, count = 15) {
+    const baseUrl = this.endpoints[region];
+    if (!baseUrl) return [];
+
+    try {
+      const response = await fetch(`${baseUrl}?_embed&per_page=${count}`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const posts = await response.json();
+      return this.mapPosts(posts, region);
+    } catch (error) {
+      console.error(`Erro ao buscar notícias de ${region}:`, error);
+      return [];
+    }
+  },
+
+  async getGlobalFeed() {
+    const regions = Object.keys(this.endpoints);
+    const promises = regions.map((region) => this.fetchRegionPosts(region, 20));
+
+    const results = await Promise.allSettled(promises);
+    
+    let allPosts = [];
+    results.forEach((result) => {
+      if (result.status === "fulfilled") {
+        allPosts = allPosts.concat(result.value);
+      }
+    });
+
+    // Global Sort by Date (Descending)
+    return allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  },
+
+  async fetchAllRegions() {
+    // Legacy method for regions-only fetch, but now we prefer getGlobalFeed
+    return this.getGlobalFeed();
+  },
+
+  mapPosts(posts, region) {
+    return posts.map((post) => {
+      // Mapeamento Defensivo (Optional Chaining)
+      const imageUrl =
+        post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+        this.fallbacks[region] ||
+        this.fallbacks.default;
+
+      // Extract Categories & Tags from _embedded['wp:term']
+      const terms = post._embedded?.["wp:term"] || [];
+      const categories = terms[0]?.map((t) => t.name) || [];
+      const tags = terms[1]?.map((t) => t.name) || [];
+
+      return {
+        id: post.id,
+        title: post.title?.rendered || "Sem título",
+        link: post.link || "#",
+        excerpt: post.excerpt?.rendered || "",
+        date: post.date,
+        image: imageUrl,
+        region: region,
+        categories,
+        tags,
+      };
+    });
+  },
+
+  renderArticleCard(article, isMain = false) {
+    const fallback = this.fallbacks[article.region] || this.fallbacks.default;
+    const cardClass = isMain ? "region-main-item" : "region-sidebar-item";
+
+    return `
+      <article class="${cardClass}">
+        <a href="${article.link}" class="article-link">
+          <div class="img-wrapper">
+            <img 
+              src="${article.image}" 
+              alt="${article.title}"
+              loading="lazy"
+              onerror="this.onerror=null; this.src='${fallback}';"
+            >
+          </div>
+          <div class="item-content">
+            <h4 class="item-title">${article.title}</h4>
+            ${isMain ? `<p class="item-excerpt">${this.stripHtml(article.excerpt).substring(0, 120)}...</p>` : ""}
+          </div>
+        </a>
+      </article>
+    `;
+  },
+
+  stripHtml(html) {
+    const tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  },
+};
+
+// ========================================
 // Abas de Regiões
 // ========================================
 
 const RegionTabs = {
-  init() {
+  news: [],
+
+  init(news = []) {
+    this.news = news;
     this.tabs = document.querySelectorAll(".region-tab");
     this.contents = document.querySelectorAll(".region-content");
     this.bindEvents();
+
+    // Render initial active tab using global data
+    const activeTab = document.querySelector(".region-tab.active");
+    if (activeTab) {
+      this.switchTab(activeTab.dataset.region);
+    }
   },
 
   bindEvents() {
@@ -271,24 +418,255 @@ const RegionTabs = {
   },
 
   switchTab(region) {
-    // Remove active de todos
-    this.tabs.forEach((t) => t.classList.remove("active"));
-    this.contents.forEach((c) => c.classList.remove("active"));
-
-    // Adiciona active no selecionado
     const selectedTab = document.querySelector(`[data-region="${region}"]`);
     const selectedContent = document.getElementById(`region-${region}`);
 
-    if (selectedTab && selectedContent) {
-      selectedTab.classList.add("active");
-      selectedContent.classList.add("active");
+    if (!selectedTab || !selectedContent) return;
 
-      // Animação de fade in
-      selectedContent.classList.add("fade-in");
-      setTimeout(() => {
-        selectedContent.classList.remove("fade-in");
-      }, 500);
+    // Remove active from all
+    this.tabs.forEach((t) => t.classList.remove("active"));
+    this.contents.forEach((c) => c.classList.remove("active"));
+
+    // Set active
+    selectedContent.classList.add("active");
+    selectedTab.classList.add("active");
+
+    // Filter global news for this region
+    let posts = this.news.filter((n) => n.region === region);
+
+    // If no data in global pool yet, we could trigger a fallback fetch here,
+    // but the global hub should already have it.
+    this.renderRegionContent(selectedContent, posts, region);
+    this.checkDefensiveLayout(selectedContent);
+  },
+
+  renderRegionContent(container, posts, region) {
+    const grid = container.querySelector(".regions-grid");
+    if (!grid) return;
+
+    if (posts.length === 0) {
+      grid.innerHTML = '<div class="region-empty-state">Nenhuma notícia recente nesta região.</div>';
+      return;
     }
+
+    const mainArticle = posts[0];
+    const sideArticles = posts.slice(1, 5); // Total 5
+
+    let html = `
+      <div class="region-main-column">
+        ${NewsService.renderArticleCard(mainArticle, true)}
+      </div>
+      <div class="region-sidebar-column">
+        ${sideArticles.map((post) => NewsService.renderArticleCard(post, false)).join("")}
+      </div>
+    `;
+
+    grid.innerHTML = html;
+  },
+
+  checkDefensiveLayout(container) {
+    const grid = container.querySelector(".regions-grid");
+    if (!grid) return;
+
+    const mainItems = grid.querySelectorAll(".region-main-item");
+    const sideItems = grid.querySelectorAll(".region-sidebar-item");
+    const totalArticles = mainItems.length + sideItems.length;
+
+    // Reset classes
+    container.classList.remove("is-empty");
+    grid.classList.remove("has-one");
+
+    if (totalArticles === 0) {
+      container.classList.add("is-empty");
+    } else if (totalArticles === 1) {
+      grid.classList.add("has-one");
+    }
+  },
+};
+
+// ========================================
+// Gestor da Página Inicial (Global Hub)
+// ========================================
+
+const HomeManager = {
+  news: [],
+
+  async init() {
+    console.log("HomeManager: Iniciando hub global...");
+
+    // 1. Busca Feed Global (Simultâneo e Cronológico)
+    this.news = await NewsService.getGlobalFeed();
+
+    if (this.news.length === 0) {
+      console.warn("HomeManager: Nenhum dado recebido do hub global.");
+      return;
+    }
+
+    // 2. Distribui dados para as seções
+    this.renderHero();
+    RegionTabs.init(this.news);
+    this.renderEditorialSections();
+
+    document.body.classList.add("data-loaded");
+  },
+
+  renderHero() {
+    const heroGrid = document.querySelector(".hero-grid");
+    const mobileGrid = document.querySelector(".featured-grid-mobile");
+
+    const main = this.news[0];
+    const secondary = this.news.slice(1, 5);
+
+    if (heroGrid) {
+      const mainHtml = `
+        <article class="featured-main">
+          <a href="${main.link}" class="featured-main-image">
+            <img src="${main.image}" alt="${main.title}" onerror="this.onerror=null; this.src='${NewsService.fallbacks[main.region] || NewsService.fallbacks.default}';">
+          </a>
+          <div class="featured-content">
+            <h3>${main.title}</h3>
+            <p>${NewsService.stripHtml(main.excerpt).substring(0, 150)}...</p>
+            <span class="article-time">${Utils.formatRelativeDate(main.date)}</span>
+          </div>
+        </article>
+      `;
+
+      const secondaryHtml = `
+        <div class="featured-secondary">
+          ${secondary
+            .map(
+              (item) => `
+            <article class="featured-item">
+              <a href="${item.link}" class="featured-item-image">
+                <span class="category-tag">${item.categories[0] ? `[${item.categories[0].toUpperCase()}]` : ""}</span>
+                <img src="${item.image}" alt="${item.title}" onerror="this.onerror=null; this.src='${NewsService.fallbacks[item.region] || NewsService.fallbacks.default}';">
+              </a>
+              <h4>${item.title}</h4>
+              <span class="article-time">${Utils.formatRelativeDate(item.date)}</span>
+            </article>
+          `,
+            )
+            .join("")}
+        </div>
+      `;
+
+      heroGrid.innerHTML = mainHtml + secondaryHtml;
+    }
+
+    if (mobileGrid) {
+      const mobileMain = this.news[0];
+      const mobileSecondary = this.news.slice(1, 5);
+
+      const mainHtml = `
+        <article class="mobile-grid-main">
+          <a href="${mobileMain.link}" class="carousel-image">
+            <span class="category-tag">${mobileMain.categories[0] ? `[${mobileMain.categories[0].toUpperCase()}]` : ""}</span>
+            <img src="${mobileMain.image}" alt="${mobileMain.title}" onerror="this.onerror=null; this.src='${NewsService.fallbacks[mobileMain.region] || NewsService.fallbacks.default}';">
+          </a>
+          <div class="mobile-grid-content">
+            <h4>${mobileMain.title}</h4>
+          </div>
+        </article>
+      `;
+
+      const secondaryHtml = `
+        <div class="mobile-grid-secondary">
+          ${mobileSecondary
+            .map(
+              (item) => `
+            <article class="mobile-grid-item">
+              <a href="${item.link}" class="carousel-image">
+                <span class="category-tag">${item.categories[0] ? `[${item.categories[0].toUpperCase()}]` : ""}</span>
+                <img src="${item.image}" alt="${item.title}" onerror="this.onerror=null; this.src='${NewsService.fallbacks[item.region] || NewsService.fallbacks.default}';">
+              </a>
+              <div class="mobile-grid-content">
+                <h4>${item.title}</h4>
+                <span class="article-time">${Utils.formatRelativeDate(item.date)}</span>
+              </div>
+            </article>
+          `,
+            )
+            .join("")}
+        </div>
+      `;
+
+      mobileGrid.innerHTML = mainHtml + secondaryHtml;
+    }
+  },
+
+  renderEditorialSections() {
+    const sections = [
+      { id: "politica", identifier: "politica" },
+      { id: "economia", identifier: "economia" },
+      { id: "esportes", identifier: "esportes" },
+      { id: "cultura", identifier: "cultura" },
+    ];
+
+    sections.forEach((sec) => {
+      const container = document.getElementById(sec.id);
+      if (!container) return;
+
+      const grid = container.querySelector(".modern-section-grid");
+      if (!grid) return;
+
+      const filtered = this.news.filter(
+        (n) =>
+          n.categories.some((c) => c.toLowerCase().includes(sec.identifier)) ||
+          n.tags.some((t) => t.toLowerCase().includes(sec.identifier)),
+      );
+
+      if (filtered.length === 0) return;
+
+      const main = filtered[0];
+      const side = filtered.slice(1, 4);
+
+      const html = `
+        <article class="modern-section-main">
+            <a href="${main.link}" class="news-image">
+                <img src="${main.image}" alt="${main.title}" onerror="this.onerror=null; this.src='${NewsService.fallbacks[main.region] || NewsService.fallbacks.default}';">
+                <span class="category-tag">${main.categories[0] ? `[${main.categories[0].toUpperCase()}]` : ""}</span>
+            </a>
+            <div class="news-content">
+                <h3>${main.title}</h3>
+                <p>${NewsService.stripHtml(main.excerpt).substring(0, 150)}...</p>
+                <div class="article-meta">
+                    <span class="author">Por ${this.getRegionName(main.region)}</span>
+                    <span class="time">${Utils.formatRelativeDate(main.date)}</span>
+                </div>
+            </div>
+        </article>
+        <div class="modern-section-sidebar">
+            ${side
+              .map(
+                (item) => `
+                <article class="modern-section-item">
+                    <a href="${item.link}" class="news-image">
+                        <img src="${item.image}" alt="${item.title}" onerror="this.onerror=null; this.src='${NewsService.fallbacks[item.region] || NewsService.fallbacks.default}';">
+                        <span class="category-tag">${item.categories[0] ? `[${item.categories[0].toUpperCase()}]` : ""}</span>
+                    </a>
+                    <div class="news-content">
+                        <h4>${item.title}</h4>
+                        <span class="author">Por ${this.getRegionName(item.region)}</span>
+                    </div>
+                </article>
+            `,
+              )
+              .join("")}
+        </div>
+      `;
+      grid.innerHTML = html;
+    });
+  },
+
+  getRegionName(slug) {
+    const names = {
+      rio: "Correio da Manhã",
+      sp: "Correio da Manhã SP",
+      df: "Correio da Manhã DF",
+      "sul-fluminense": "Correio Sul Fluminense",
+      petropolis: "Correio Petropolitano",
+    };
+    return names[slug] || "Correio da Manhã";
   },
 };
 
@@ -658,7 +1036,7 @@ const BreakingNews = {
 const ScrollNav = {
   init() {
     this.lastScroll = 0;
-    this.nav = document.querySelector(".main-nav");
+    this.container = document.querySelector(".sticky-nav-unified");
     this.header = document.querySelector(".main-header");
     this.logo = document.querySelector(".logo");
     this.portal = document.querySelector(".logo-portal");
@@ -677,25 +1055,22 @@ const ScrollNav = {
   handleScroll() {
     const currentScroll = window.pageYOffset;
 
-    // Adiciona sombra ao menu quando scrolled
-    if (this.nav && currentScroll > 50) {
-      this.nav.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
-    } else if (this.nav) {
-      this.nav.style.boxShadow = "0 1px 2px rgba(0,0,0,0.08)";
+    if (this.container) {
+      if (currentScroll > 80) {
+        this.container.classList.add("scrolled");
+      } else {
+        this.container.classList.remove("scrolled");
+      }
     }
 
-    // Header shrink effect
-    if (this.header && this.logo && this.portal) {
+    // Logo shrink effect for premium feel
+    if (this.logo && this.portal) {
       if (currentScroll > 100) {
-        this.header.classList.add("scrolled");
-        this.logo.style.fontSize = "2.5rem";
-        this.portal.style.fontSize = "0.65rem";
-        this.portal.style.letterSpacing = "1px";
+        this.logo.style.fontSize = "2.8rem";
+        this.portal.style.fontSize = "0.7rem";
       } else {
-        this.header.classList.remove("scrolled");
         this.logo.style.fontSize = "4rem";
         this.portal.style.fontSize = "0.8125rem";
-        this.portal.style.letterSpacing = "2px";
       }
     }
 
@@ -1034,11 +1409,10 @@ const RegionalColors = {
 // ========================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Inicializa todos os módulos
+  // Inicializa todos os módulos estáticos e de UI
   DateTime.init();
   HeaderInfo.init();
   MobileMenu.init();
-  RegionTabs.init();
   Search.init();
   Newsletter.init();
   LiveCoverage.init();
@@ -1050,6 +1424,9 @@ document.addEventListener("DOMContentLoaded", () => {
   SocialShare.init();
   NewsNavigation.init();
   RegionalColors.init();
+
+  // Hub Global de Notícias (Provedor de Dados Dinâmicos)
+  HomeManager.init();
 
   // Adiciona classe ao body para indicar que JS está carregado
   document.body.classList.add("js-loaded");
@@ -1078,4 +1455,6 @@ window.CM = {
   SocialShare,
   NewsNavigation,
   RegionalColors,
+  NewsService,
+  HomeManager,
 };

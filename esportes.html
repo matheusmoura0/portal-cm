@@ -9,91 +9,113 @@
     <title>Esportes | portal CM</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="css/hard-news-layout.css" />
+
+
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
         rel="stylesheet" />
     <script src="js/components/Header.js"></script>
+    <script src="js/components/Footer.js"></script>
+    <script src="js/components/MainLayout.js"></script>
     <style>
-        /* Newspaper Grid Styles */
+        /* List View Styles */
         .newspaper-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            display: block !important;
             margin-top: 30px;
         }
 
         .newspaper-grid .news-card {
+            display: grid !important;
+            grid-template-columns: 300px 1fr !important;
+            gap: 24px !important;
+            margin-bottom: 32px !important;
             background: #fff;
-            border: 1px solid #e0e0e0;
+            border: none !important;
+            border-bottom: 1px solid #e5e5e5 !important;
+            padding-bottom: 32px !important;
             overflow: hidden;
-            transition:
-                transform 0.2s,
-                box-shadow 0.2s;
+            transition: transform 0.2s;
         }
 
         .newspaper-grid .news-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
         }
 
         .newspaper-grid .news-image {
-            width: 100%;
-            height: 200px;
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 16/9 !important;
             overflow: hidden;
-            position: relative;
         }
 
         .newspaper-grid .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
         }
 
         .newspaper-grid .news-content {
-            padding: 15px;
+            padding: 0 !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .newspaper-grid .news-content h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            line-height: 1.4;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 12px !important;
+            line-height: 1.2 !important;
         }
 
         .newspaper-grid .news-content h3 a {
-            color: #333;
+            color: #1a1a1a;
             text-decoration: none;
         }
 
         .newspaper-grid .news-content h3 a:hover {
-            color: #ff6b00;
+            color: #d0021b;
         }
 
         .newspaper-grid .news-excerpt {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 10px;
+            font-size: 1rem !important;
+            color: #4b5563 !important;
+            line-height: 1.5 !important;
+            margin-bottom: 16px !important;
         }
 
         .newspaper-grid .article-meta {
+            margin-top: auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 16px;
             font-size: 0.85rem;
-            color: #999;
+            color: #6b7280;
         }
 
         .newspaper-grid .category-tag {
             display: inline-block;
-            padding: 3px 8px;
+            padding: 4px 8px;
             background: #d0021b;
             color: white;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        @media (max-width: 768px) {
+            .newspaper-grid .news-card {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            .newspaper-grid .news-content h3 {
+                font-size: 1.25rem !important;
+            }
         }
 
         /* Featured Article (spans 2 columns) */
@@ -190,21 +212,14 @@
     <!-- Global Header Placeholder -->
     <div id="global-header"></div>
 
-    <!-- Breaking News Ticker -->
-    <div class="breaking-news">
-        <div class="container">
-            <span class="breaking-label">AO VIVO</span>
-            <div class="ticker-wrapper">
-                <div class="ticker-content" id="breaking-news-ticker">
-                    <span>🔴 Flamengo e Portuguesa empatam no Raulino</span>
-                    <span>🔴 Estádio Raulino de Oliveira terá gramado
-                        renovado para jogo entre Portuguesa e Flamengo</span>
-                    <span>🔴 Sub-20 do Voltaço perde partida por 3 a 2 na
-                        Copinha</span>
-                </div>
-            </div>
+    <!-- Top Ad Banner (970x250) -->
+    <div class="container">
+        <div class="top-ad-banner">
+            <img src="https://placehold.co/970x250/e2e8f0/64748b?text=Anuncio+Horizontal+Topo" alt="Publicidade Topo">
         </div>
     </div>
+
+
 
     <!-- Main Content -->
     <main class="main-content">
@@ -219,27 +234,20 @@
             </div>
 
             <!-- Advertisement -->
-            <div class="ad-placeholder">
-                <div class="ad-label">PUBLICIDADE</div>
-                <div class="ad-space">
-                    <img src="https://placehold.co/728x90/f0f0f0/999999?text=Espaço+Publicitário"
-                        alt="Espaço publicitário" />
-                </div>
-            </div>
 
             <!-- Newspaper Grid -->
             <div class="newspaper-grid" id="news-grid">
                 <!-- Featured Article -->
                 <article class="news-card featured">
-                    <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/flamengo-portuguesa-raulino.jpg"
+                    <a href="noticia.html?id=noticia-008" class="news-image">
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/flamengo-portuguesa-raulino.jpg"
                             alt="Flamengo e Portuguesa" />
                     </a>
                     <div class="news-content">
-                        <span class="category-tag">FUTEBOL</span>
+                        <span class="category-tag">ESPORTES</span>
                         <h3>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Flamengo e Portuguesa empatam
-                                no Raulino</a>
+                            <a href="noticia.html?id=noticia-008">Flamengo e Portuguesa empatam no Raulino</a>
                         </h3>
                         <p class="news-excerpt">
                             Partida amistosa realizada no estádio Raulino de
@@ -255,7 +263,8 @@
                 <!-- Article 2 -->
                 <article class="news-card">
                     <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/estadio-raulino-gramado.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/estadio-raulino-gramado.jpg"
                             alt="Estádio Raulino" />
                     </a>
                     <div class="news-content">
@@ -280,7 +289,8 @@
                 <!-- Article 3 -->
                 <article class="news-card">
                     <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/volta-redonda-copinha.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/volta-redonda-copinha.jpg"
                             alt="Voltaço na Copinha" />
                     </a>
                     <div class="news-content">
@@ -301,10 +311,12 @@
                     </div>
                 </article>
 
+
                 <!-- Article 4 -->
                 <article class="news-card">
                     <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Fachada-Afya-Unigranrio-Barra-da-Tijuca-_3_.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Fachada-Afya-Unigranrio-Barra-da-Tijuca-_3_.jpg"
                             alt="Evento esporte e turismo" />
                     </a>
                     <div class="news-content">
@@ -328,7 +340,8 @@
                 <!-- Article 5 -->
                 <article class="news-card">
                     <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/esportes-regionais.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/esportes-regionais.jpg"
                             alt="Esportes regionais" />
                     </a>
                     <div class="news-content">
@@ -352,7 +365,8 @@
                 <!-- Article 6 -->
                 <article class="news-card">
                     <a href="https://www.correiodamanha.com.br/" target="_blank" class="news-image">
-                        <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_cartuhcos-496992.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_cartuhcos-496992.jpg"
                             alt="Guerra do crime" />
                     </a>
                     <div class="news-content">
@@ -377,7 +391,8 @@
                 <!-- Hidden Articles (to be loaded) -->
                 <article class="news-card hidden">
                     <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/tenis-regional.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/tenis-regional.jpg"
                             alt="Tênis" />
                     </a>
                     <div class="news-content">
@@ -400,7 +415,8 @@
 
                 <article class="news-card hidden">
                     <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/rio-recebe-ivete-clareou.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/rio-recebe-ivete-clareou.jpg"
                             alt="Show na Barra" />
                     </a>
                     <div class="news-content">
@@ -423,7 +439,8 @@
 
                 <article class="news-card hidden">
                     <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/natacao-piscina.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/natacao-piscina.jpg"
                             alt="Natação" />
                     </a>
                     <div class="news-content">
@@ -456,190 +473,43 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4 class="footer-title">Sobre</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Quem somos</a></li>
-                        <li><a href="#">Expediente</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Editorias</h4>
-                    <ul class="footer-links">
-                        <li><a href="opiniao.html">Opinião</a></li>
-                        <li><a href="politica.html">Política</a></li>
-                        <li><a href="economia.html">Economia</a></li>
-                        <li><a href="justica.html">Justiça</a></li>
-                        <li><a href="esportes.html">Esportes</a></li>
-                        <li><a href="cultura.html">Cultura</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Portais Regionais</h4>
-                    <ul class="footer-links">
-                        <li>
-                            <a href="https://www.correiodamanha.com.br/" target="_blank">Correio da Manhã</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Correio da Manhã SP</a>
-                        </li>
-                        <li>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul Fluminense</a>
-                        </li>
-                        <li>
-                            <a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhadf.com.br/" target="_blank">Correio da Manhã DF</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Contato</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Fale conosco</a></li>
-                        <li><a href="#">Trabalhe conosco</a></li>
-                        <li><a href="#">Anuncie</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-logo">PORTAL CM</div>
-                <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Global Footer Placeholder -->
+    <div id="global-footer"></div>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-    </button>
+    <div id="global-footer"></div>
 
     <script src="js/main.js"></script>
     <script>
-        // News link click handler - redirects to noticia.html with URL parameters
-        document.addEventListener("DOMContentLoaded", function () {
-            const newsCards = document.querySelectorAll(".news-card");
-
-            newsCards.forEach(function (card) {
-                const links = card.querySelectorAll(
-                    'a[href]:not([href^="javascript"]):not([href*="noticia.html"])',
-                );
-
-                // Extract data from card
-                const category =
-                    card.querySelector(".category-tag")?.textContent ||
-                    "Esportes";
-                const title =
-                    card.querySelector("h3 a, h3")?.textContent?.trim() ||
-                    "";
-                const subtitle =
-                    card
-                        .querySelector(".news-excerpt")
-                        ?.textContent?.trim() || "";
-                const image = card.querySelector("img")?.src || "";
-                const authorText =
-                    card.querySelector(".author")?.textContent?.trim() ||
-                    "";
-                const author = authorText.replace("Por ", "").trim();
-                const timeText =
-                    card.querySelector(".time")?.textContent?.trim() || "";
-
-                // Set data attributes
-                card.dataset.category = category;
-                card.dataset.title = title;
-                card.dataset.subtitle = subtitle;
-                card.dataset.image = image;
-                card.dataset.author = author;
-                card.dataset.authorRole = "Jornalista";
-                card.dataset.date = "06/02/2026";
-                card.dataset.time =
-                    timeText
-                        .replace("Há ", "")
-                        .replace(" horas", "")
-                        .replace(" dia", "1 dia") || "14:00";
-
-                // Find original link
-                let originalLink = "";
-                links.forEach(function (link) {
-                    if (link.href && !link.href.includes("javascript:")) {
-                        originalLink = link.href;
-                    }
-                });
-                card.dataset.link = originalLink;
-
-                // Update all links to redirect to noticia.html
-                links.forEach(function (link) {
-                    link.href = "javascript:void(0)";
-                    link.classList.add("news-link");
-
-                    link.addEventListener("click", function (e) {
-                        e.preventDefault();
-
-                        const params = new URLSearchParams();
-                        params.set("category", card.dataset.category);
-                        params.set("title", card.dataset.title);
-                        params.set("subtitle", card.dataset.subtitle);
-                        params.set("image", card.dataset.image);
-                        params.set("author", card.dataset.author);
-                        params.set("authorRole", card.dataset.authorRole);
-                        params.set("date", card.dataset.date);
-                        params.set("time", card.dataset.time);
-                        if (card.dataset.link) {
-                            params.set("link", card.dataset.link);
-                        }
-
-                        window.location.href =
-                            "noticia.html?" + params.toString();
-                    });
-                });
-            });
-        });
-
         // Load More functionality
         const loadMoreBtn = document.getElementById("load-more-btn");
         const loadingSpinner = document.getElementById("loading-spinner");
         const hiddenCards = document.querySelectorAll(".news-card.hidden");
-        let visibleCount = 0;
-        const cardsPerLoad = 3;
 
-        loadMoreBtn.addEventListener("click", function () {
-            loadingSpinner.style.display = "block";
-            loadMoreBtn.disabled = true;
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener("click", function () {
+                loadingSpinner.style.display = "block";
+                loadMoreBtn.disabled = true;
 
-            setTimeout(() => {
-                let shown = 0;
-                for (
-                    let i = 0;
-                    i < hiddenCards.length && shown < cardsPerLoad;
-                    i++
-                ) {
-                    if (hiddenCards[i].classList.contains("hidden")) {
-                        hiddenCards[i].classList.remove("hidden");
-                        shown++;
+                setTimeout(() => {
+                    let shown = 0;
+                    hiddenCards.forEach(card => {
+                        if (card.classList.contains("hidden") && shown < 3) {
+                            card.classList.remove("hidden");
+                            shown++;
+                        }
+                    });
+
+                    loadingSpinner.style.display = "none";
+                    loadMoreBtn.disabled = false;
+
+                    const remainingHidden = document.querySelectorAll(".news-card.hidden");
+                    if (remainingHidden.length === 0) {
+                        loadMoreBtn.textContent = "Não há mais notícias";
+                        loadMoreBtn.disabled = true;
                     }
-                }
-
-                visibleCount += shown;
-                loadingSpinner.style.display = "none";
-                loadMoreBtn.disabled = false;
-
-                const remainingHidden =
-                    document.querySelectorAll(".news-card.hidden");
-                if (remainingHidden.length === 0) {
-                    loadMoreBtn.textContent = "Não há mais notícias";
-                    loadMoreBtn.disabled = true;
-                }
-            }, 500);
-        });
+                }, 500);
+            });
+        }
     </script>
 </body>
 

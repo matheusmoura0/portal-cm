@@ -8,92 +8,112 @@
         content="Cultura - portal CM. Notícias sobre artes, espetáculos, música, cinema e cultura brasileira." />
     <title>Cultura | portal CM</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/hard-news-layout.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
         rel="stylesheet" />
+    <script src="js/components/Footer.js"></script>
+    <script src="js/components/MainLayout.js"></script>
     <script src="js/components/Header.js"></script>
     <style>
-        /* Newspaper Grid Styles */
+        /* List View Styles */
         .newspaper-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            display: block !important;
             margin-top: 30px;
         }
 
         .newspaper-grid .news-card {
+            display: grid !important;
+            grid-template-columns: 300px 1fr !important;
+            gap: 24px !important;
+            margin-bottom: 32px !important;
             background: #fff;
-            border: 1px solid #e0e0e0;
+            border: none !important;
+            border-bottom: 1px solid #e5e5e5 !important;
+            padding-bottom: 32px !important;
             overflow: hidden;
-            transition:
-                transform 0.2s,
-                box-shadow 0.2s;
+            transition: transform 0.2s;
         }
 
         .newspaper-grid .news-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
         }
 
         .newspaper-grid .news-image {
-            width: 100%;
-            height: 200px;
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 16/9 !important;
             overflow: hidden;
-            position: relative;
         }
 
         .newspaper-grid .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
         }
 
         .newspaper-grid .news-content {
-            padding: 15px;
+            padding: 0 !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .newspaper-grid .news-content h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            line-height: 1.4;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 12px !important;
+            line-height: 1.2 !important;
         }
 
         .newspaper-grid .news-content h3 a {
-            color: #333;
+            color: #1a1a1a;
             text-decoration: none;
         }
 
         .newspaper-grid .news-content h3 a:hover {
-            color: #e91e63;
+            color: #d97706;
         }
 
         .newspaper-grid .news-excerpt {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 10px;
+            font-size: 1rem !important;
+            color: #4b5563 !important;
+            line-height: 1.5 !important;
+            margin-bottom: 16px !important;
         }
 
         .newspaper-grid .article-meta {
+            margin-top: auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 16px;
             font-size: 0.85rem;
-            color: #999;
+            color: #6b7280;
         }
 
         .newspaper-grid .category-tag {
             display: inline-block;
-            padding: 3px 8px;
-            background: #d0021b;
+            padding: 4px 8px;
+            background: #d97706;
             color: white;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        @media (max-width: 768px) {
+            .newspaper-grid .news-card {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            .newspaper-grid .news-content h3 {
+                font-size: 1.25rem !important;
+            }
         }
 
         /* Featured Article (spans 2 columns) */
@@ -190,23 +210,13 @@
     <!-- Global Header Placeholder -->
     <div id="global-header"></div>
 
-    <!-- Breaking News Ticker -->
-    <div class="breaking-news">
-        <div class="container">
-            <span class="breaking-label">AO VIVO</span>
-            <div class="ticker-wrapper">
-                <div class="ticker-content" id="breaking-news-ticker">
-                    <span>🔴 Do festival de chocolate ao show de pagode: A
-                        Barra da Tijuca garante sua diversão neste final de
-                        semana</span>
-                    <span>🔴 Inês Pandeló comemora vitória do filme 'O Agente
-                        Secreto'</span>
-                    <span>🔴 Festival Tupiniquim une música, arte e meio
-                        ambiente em Vargem Pequena</span>
-                </div>
-            </div>
+    <!-- Top Ad Banner (970x250) -->
+    <div class="container">
+        <div class="top-ad-banner">
+            <img src="https://placehold.co/970x250/e2e8f0/64748b?text=Anuncio+Horizontal+Topo" alt="Publicidade Topo">
         </div>
     </div>
+
 
     <!-- Main Content -->
     <main class="main-content">
@@ -221,20 +231,14 @@
             </div>
 
             <!-- Advertisement -->
-            <div class="ad-placeholder">
-                <div class="ad-label">PUBLICIDADE</div>
-                <div class="ad-space">
-                    <img src="https://placehold.co/728x90/f0f0f0/999999?text=Espaço+Publicitário"
-                        alt="Espaço publicitário" />
-                </div>
-            </div>
 
             <!-- Newspaper Grid -->
             <div class="newspaper-grid" id="news-grid">
                 <!-- Featured Article -->
                 <article class="news-card featured">
                     <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
                             alt="Festival de chocolate e pagode" />
                     </a>
                     <div class="news-content">
@@ -259,7 +263,8 @@
                 <!-- Article 2 -->
                 <article class="news-card">
                     <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/11/ines-pandelo-filme-agente-secreto.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/11/ines-pandelo-filme-agente-secreto.jpg"
                             alt="Inês Pandeló" />
                     </a>
                     <div class="news-content">
@@ -283,7 +288,8 @@
                 <!-- Article 3 -->
                 <article class="news-card">
                     <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Design_sem_nome_1.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Design_sem_nome_1.jpg"
                             alt="Festival Tupiniquim" />
                     </a>
                     <div class="news-content">
@@ -304,10 +310,18 @@
                     </div>
                 </article>
 
+                <!-- Placeholder 300x250 (In-feed) -->
+                <div class="ad-wrapper grid-span-full">
+                    <span class="ad-label-small">Publicidade</span>
+                    <img src="https://placehold.co/300x250/e2e8f0/64748b?text=Anúncio+300x250\nIn-Feed"
+                        alt="Placeholder 300x250" class="ad-placeholder-img">
+                </div>
+
                 <!-- Article 4 -->
                 <article class="news-card">
                     <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/CULTSP-PRO-oferece-programacao-cultural-gratuita-em-fevereiro-no-Bom-Retiro.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/CULTSP-PRO-oferece-programacao-cultural-gratuita-em-fevereiro-no-Bom-Retiro.jpg"
                             alt="Programação cultural" />
                     </a>
                     <div class="news-content">
@@ -331,7 +345,8 @@
                 <!-- Article 5 -->
                 <article class="news-card">
                     <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Captura_de_tela_2025-12-09_154306_1.png"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Captura_de_tela_2025-12-09_154306_1.png"
                             alt="Gala Brusco" />
                     </a>
                     <div class="news-content">
@@ -355,7 +370,8 @@
                 <!-- Article 6 -->
                 <article class="news-card">
                     <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/programacao-aniversario-angra.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/programacao-aniversario-angra.jpg"
                             alt="Aniversário de Angra" />
                     </a>
                     <div class="news-content">
@@ -379,7 +395,8 @@
                 <!-- Hidden Articles (to be loaded) -->
                 <article class="news-card hidden">
                     <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/musica-2026-lancamentos.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/musica-2026-lancamentos.jpg"
                             alt="Música 2026" />
                     </a>
                     <div class="news-content">
@@ -402,7 +419,8 @@
 
                 <article class="news-card hidden">
                     <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Mostra-gratuita-no-CCSP-mixa-cinema.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Mostra-gratuita-no-CCSP-mixa-cinema.jpg"
                             alt="Mostra de cinema" />
                     </a>
                     <div class="news-content">
@@ -425,7 +443,8 @@
 
                 <article class="news-card hidden">
                     <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/pexels-pixabay-106148_1.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/pexels-pixabay-106148_1.jpg"
                             alt="Festa do Morango" />
                     </a>
                     <div class="news-content">
@@ -448,6 +467,13 @@
                 </article>
             </div>
 
+            <!-- Placeholder 300x600 -->
+            <div class="ad-wrapper">
+                <span class="ad-label-small">Publicidade</span>
+                <img src="https://placehold.co/300x600/e2e8f0/64748b?text=Anúncio+300x600" alt="Placeholder 300x600"
+                    class="ad-placeholder-img">
+            </div>
+
             <!-- Load More Button -->
             <div class="load-more-container">
                 <div class="loading-spinner" id="loading-spinner"></div>
@@ -458,72 +484,7 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4 class="footer-title">Sobre</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Quem somos</a></li>
-                        <li><a href="#">Expediente</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Editorias</h4>
-                    <ul class="footer-links">
-                        <li><a href="opiniao.html">Opinião</a></li>
-                        <li><a href="politica.html">Política</a></li>
-                        <li><a href="economia.html">Economia</a></li>
-                        <li><a href="justica.html">Justiça</a></li>
-                        <li><a href="esportes.html">Esportes</a></li>
-                        <li><a href="cultura.html">Cultura</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Portais Regionais</h4>
-                    <ul class="footer-links">
-                        <li>
-                            <a href="https://www.correiodamanha.com.br/" target="_blank">Correio da Manhã</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Correio da Manhã SP</a>
-                        </li>
-                        <li>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul Fluminense</a>
-                        </li>
-                        <li>
-                            <a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhadf.com.br/" target="_blank">Correio da Manhã DF</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Contato</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Fale conosco</a></li>
-                        <li><a href="#">Trabalhe conosco</a></li>
-                        <li><a href="#">Anuncie</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-logo">PORTAL CM</div>
-                <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-    </button>
+    <div id="global-footer"></div>
 
     <script src="js/main.js"></script>
     <script>

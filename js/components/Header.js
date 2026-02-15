@@ -52,15 +52,6 @@ const Header = {
         </div>
     </div>
 
-    <!-- Ad Placeholder -->
-    <div class="ad-placeholder">
-        <div class="ad-label">PUBLICIDADE</div>
-        <div class="ad-space">
-            <img src="https://placehold.co/970x250/f0f0f0/999999?text=Espaço+Publicitário+-+970x250"
-                alt="Espaço publicitário" />
-        </div>
-    </div>
-
     <!-- Unified Sticky Header -->
     <div class="sticky-nav-unified">
         <!-- Header -->

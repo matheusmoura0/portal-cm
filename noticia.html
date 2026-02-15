@@ -4,520 +4,86 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="[Placeholder] Descrição da notícia" />
-    <title>[Placeholder] Título da Notícia | portal CM</title>
+    <title id="page-title">Notícia | portal CM</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/hard-news-layout.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
         rel="stylesheet" />
-    <script src="js/components/Header.js"></script>
     <style>
-        /* Article Page Styles */
-        .article-page {
-            background-color: var(--color-bg);
+        .article-page-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        /* Section Bar */
-        .section-bar {
-            background-color: #d0021b;
-            padding: var(--spacing-sm) 0;
-        }
-
-        .section-bar .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .section-bar-title {
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-bar-date {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Article Header */
-        .article-header {
-            padding: var(--spacing-xl) 0 var(--spacing-md);
-        }
-
-        .article-category {
-            display: inline-block;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            background-color: var(--color-politics);
-            color: #ffffff;
-            font-size: 0.6875rem;
-            font-weight: 700;
+        .breadcrumb {
+            margin-bottom: 24px;
+            font-size: 0.8125rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: var(--spacing-md);
+            color: #6B7280;
         }
 
-        .article-title {
-            font-family: "Noto Serif", Georgia, serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--color-text);
-            margin-bottom: var(--spacing-md);
+        .breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
         }
 
-        .article-subtitle {
-            font-family: "Noto Serif", Georgia, serif;
-            font-size: 1.25rem;
-            font-weight: 400;
-            font-style: italic;
-            line-height: 1.4;
-            color: var(--color-text-gray);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        /* Article Main Image */
-        .article-media {
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .article-media-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            background-color: var(--color-bg-alt);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .article-media-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .article-media-caption {
-            font-family: var(--font-body);
-            font-size: 0.8125rem;
-            color: var(--color-text-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .media-share-buttons {
-            display: flex;
-            gap: var(--spacing-xs);
-        }
-
-        .media-share-btn {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--color-bg-alt);
-            border: 1px solid var(--color-border);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .media-share-btn:hover {
-            background-color: var(--color-primary);
-            border-color: var(--color-primary);
-        }
-
-        .media-share-btn:hover svg {
-            stroke: #ffffff;
-        }
-
-        .media-share-btn svg {
-            width: 14px;
-            height: 14px;
-            stroke: var(--color-text-gray);
-        }
-
-        /* Article Meta */
         .article-meta {
             display: flex;
             align-items: center;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-xl);
-            padding-bottom: var(--spacing-lg);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .article-author {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .article-author-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-color: var(--color-bg-alt);
-        }
-
-        .article-author-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .article-author-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .article-author-name {
-            font-family: var(--font-body);
+            gap: 12px;
+            margin-bottom: 30px;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
             font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--color-text);
+            color: #6B7280;
         }
 
-        .article-author-role {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            color: var(--color-text-light);
-        }
-
-        .author-social-links {
-            display: flex;
-            gap: var(--spacing-xs);
-            margin-top: var(--spacing-xs);
-        }
-
-        .author-social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background-color: var(--color-bg-alt);
-            border: 1px solid var(--color-border);
-            color: var(--color-text-gray);
-            transition: var(--transition);
-        }
-
-        .author-social-link:hover {
-            background-color: var(--color-primary);
-            border-color: var(--color-primary);
-            color: #ffffff;
-        }
-
-        .article-publish-info {
-            margin-left: auto;
-            text-align: right;
-        }
-
-        .article-date {
-            font-family: var(--font-body);
-            font-size: 0.8125rem;
-            color: var(--color-text-gray);
-        }
-
-        .article-time {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            color: var(--color-text-light);
-        }
-
-        /* Article Content Layout */
-        .article-content-layout {
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: var(--spacing-xl);
-        }
-
-        /* Article Body */
-        .article-body {
-            font-family: "Noto Serif", Georgia, serif;
-            font-size: 1.125rem;
-            line-height: 1.8;
-            color: var(--color-text);
-        }
-
-        .article-body p {
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .article-body p:first-of-type::first-letter {
-            font-size: 4rem;
-            float: left;
-            line-height: 1;
-            margin-right: var(--spacing-sm);
+        #article-author {
             font-weight: 700;
-            color: var(--color-text);
+            color: #1a1a2e;
         }
 
-        .article-body a {
+        .article-featured-image {
+            margin-bottom: 32px;
+        }
+
+        .article-featured-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        #article-image-caption {
+            font-size: 0.8125rem;
+            color: #6B7280;
+            margin-top: 10px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .not-found {
+            text-align: center;
+            padding: 100px 0;
+            display: none;
+        }
+
+        .not-found h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
             color: var(--color-primary);
-            text-decoration: underline;
-        }
-
-        .article-body a:hover {
-            color: var(--color-primary-dark);
-        }
-
-        .article-body strong {
-            font-weight: 700;
-        }
-
-        .article-body em {
-            font-style: italic;
-        }
-
-        /* Blockquote */
-        .article-body blockquote {
-            margin: var(--spacing-xl) 0;
-            padding: var(--spacing-lg) var(--spacing-xl);
-            background-color: var(--color-bg-alt);
-            border-left: 4px solid var(--color-politics);
-            font-style: italic;
-            font-size: 1.25rem;
-            line-height: 1.6;
-        }
-
-        /* Article Tags */
-        .article-tags {
-            margin-top: var(--spacing-xl);
-            padding-top: var(--spacing-lg);
-            border-top: 1px solid var(--color-border);
-        }
-
-        .article-tags-title {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: var(--color-text-light);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .article-tags-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-xs);
-        }
-
-        .article-tag {
-            padding: var(--spacing-xs) var(--spacing-sm);
-            background-color: var(--color-bg-alt);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            font-size: 0.75rem;
-            color: var(--color-text-gray);
-            transition: var(--transition);
-        }
-
-        .article-tag:hover {
-            background-color: var(--color-primary);
-            border-color: var(--color-primary);
-            color: #ffffff;
-        }
-
-        /* Sidebar */
-        .article-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xl);
-        }
-
-        .sidebar-widget {
-            background-color: var(--color-bg-alt);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-        }
-
-        .sidebar-widget-title {
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--color-text);
-            padding: var(--spacing-md);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .sidebar-widget-content {
-            padding: var(--spacing-md);
-        }
-
-        /* Sidebar Articles */
-        .sidebar-article {
-            display: flex;
-            gap: var(--spacing-sm);
-            padding: var(--spacing-sm) 0;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .sidebar-article:last-child {
-            border-bottom: none;
-        }
-
-        .sidebar-article-image {
-            width: 80px;
-            height: 60px;
-            flex-shrink: 0;
-            overflow: hidden;
-            background-color: var(--color-bg);
-            border-radius: var(--radius-sm);
-        }
-
-        .sidebar-article-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .sidebar-article-content {
-            flex: 1;
-        }
-
-        .sidebar-article-title {
-            font-family: var(--font-body);
-            font-size: 0.8125rem;
-            font-weight: 500;
-            line-height: 1.4;
-            color: var(--color-text);
-        }
-
-        .sidebar-article-time {
-            font-family: var(--font-body);
-            font-size: 0.6875rem;
-            color: var(--color-text-light);
-            margin-top: var(--spacing-xs);
-        }
-
-        /* Sidebar Ad */
-        .sidebar-ad {
-            width: 100%;
-            aspect-ratio: 3 / 5;
-            background-color: var(--color-bg-alt);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-        }
-
-        .sidebar-ad img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Related Articles */
-        .related-articles {
-            margin-top: var(--spacing-2xl);
-            padding-top: var(--spacing-xl);
-            border-top: 2px solid var(--color-border);
-        }
-
-        .related-articles-title {
-            font-family: "Noto Serif", Georgia, serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .related-articles-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-lg);
-        }
-
-        .related-article-card {
-            background-color: var(--color-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .related-article-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-
-        .related-article-image {
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-        }
-
-        .related-article-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .related-article-content {
-            padding: var(--spacing-md);
-        }
-
-        .related-article-category {
-            display: inline-block;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            background-color: var(--color-politics);
-            color: #ffffff;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .related-article-title {
-            font-family: var(--font-body);
-            font-size: 0.9375rem;
-            font-weight: 600;
-            line-height: 1.4;
-            color: var(--color-text);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .article-content-layout {
-                grid-template-columns: 1fr 280px;
-            }
         }
 
         @media (max-width: 768px) {
-            .article-title {
-                font-size: 1.75rem;
-            }
-
-            .article-subtitle {
-                font-size: 1rem;
-            }
-
-            .article-content-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .article-sidebar {
-                order: 2;
-            }
-
-            .related-articles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .article-body p:first-of-type::first-letter {
-                font-size: 3rem;
+            .article-page-container {
+                margin: 20px auto;
             }
         }
     </style>
@@ -527,352 +93,74 @@
     <!-- Global Header Placeholder -->
     <div id="global-header"></div>
 
-    <!-- Article Content -->
-    <main class="main-content article-page">
-        <div class="container">
-            <!-- Article Header -->
-            <div class="article-header">
-                <span class="article-category">[Categoria]</span>
-                <h1 class="article-title">
-                    [Placeholder] Título principal da notícia aparece aqui
-                </h1>
-                <p class="article-subtitle">
-                    [Placeholder] Subtítulo ou linha fina da notícia que
-                    fornece contexto adicional sobre o assunto principal
-                    abordado
-                </p>
+    <!-- Top Ad Banner (970x250) -->
+    <div class="container">
+        <div class="top-ad-banner">
+            <img src="https://placehold.co/970x250/e2e8f0/64748b?text=Anuncio+Horizontal+Topo" alt="Publicidade Topo">
+        </div>
+    </div>
+
+    <main>
+        <div id="article-loader-wrapper" class="article-page-container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> &gt; <span id="bread-category">Categoria</span>
             </div>
 
-            <!-- Article Media -->
-            <div class="article-media">
-                <div class="article-media-wrapper">
-                    <img src="https://placehold.co/1200x675/f0f0f0/999999?text=Imagem+Principal+da+Notícia"
-                        alt="Imagem da notícia" />
-                </div>
-                <div class="article-media-caption">
-                    <span>[Placeholder] Legenda da imagem</span>
-                    <div class="media-share-buttons">
-                        <button class="media-share-btn" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </button>
-                        <button class="media-share-btn" aria-label="Twitter">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path
-                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-                                </path>
-                            </svg>
-                        </button>
-                        <button class="media-share-btn" aria-label="WhatsApp">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path
-                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                                </path>
-                            </svg>
-                        </button>
-                        <button class="media-share-btn" aria-label="Compartilhar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="18" cy="5" r="3"></circle>
-                                <circle cx="6" cy="12" r="3"></circle>
-                                <circle cx="18" cy="19" r="3"></circle>
-                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                            </svg>
-                        </button>
+            <!-- Artigo Principal -->
+            <article id="article-content-wrapper" style="display: none;">
+                <header class="article-header">
+                    <span id="article-category" class="category-tag"></span>
+                    <h1 id="article-title"></h1>
+                    <p id="article-subtitle" class="article-subtitle"></p>
+
+                    <div class="article-meta">
+                        <span class="author">Por <span id="article-author"></span></span>
+                        <span class="date" id="article-date"></span>
                     </div>
+                </header>
+
+
+                <div class="article-featured-image">
+                    <img id="article-image" src="" alt=""
+                        onerror="this.src='https://placehold.co/800x450/f0f0f0/999999?text=Imagem+Indispon%C3%ADvel'">
+                    <figcaption id="article-image-caption"></figcaption>
                 </div>
+
+                <div id="article-body" class="article-content">
+                    <!-- Conteúdo via article-loader.js -->
+                </div>
+
+                <div class="ad-container"
+                    style="display: flex; flex-direction: column; align-items: center; margin: 60px 0; padding-top: 40px; border-top: 1px solid #eaeaea;">
+                    <span
+                        style="font-size:10px; color:#999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Publicidade</span>
+                    <img src="images/seguranca_300x600.gif" alt="Anúncio 300x600"
+                        style="max-width: 100%; border-radius: 4px;">
+                </div>
+
+            </article>
+
+            <!-- Mensagem de Erro (Oculta no Modo Demo) -->
+            <div id="error-message" class="not-found" style="display: none;">
+                <h1>404</h1>
+                <p>Notícia não encontrada.</p>
+                <br>
+                <a href="index.html" class="btn">Voltar para a Home</a>
             </div>
-
-            <!-- Article Meta -->
-            <div class="article-meta">
-                <div class="article-author">
-                    <div class="article-author-avatar">
-                        <img src="https://placehold.co/80x80/f0f0f0/999999?text=AU" alt="[Autor]" />
-                    </div>
-                    <div class="article-author-info">
-                        <span class="article-author-name">Por [Nome do Autor]</span>
-                        <span class="article-author-role">[Cargo/Função do Autor]</span>
-                        <div class="author-social-links">
-                            <a href="#" target="_blank" aria-label="Twitter" class="author-social-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-                                    </path>
-                                </svg>
-                            </a>
-                            <a href="#" target="_blank" aria-label="LinkedIn" class="author-social-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.017-2.571-.052-3.708 2.408 0 4.315 1.684 4.315 4.206v5.569h-3.554v-5.569c0-1.328-.017-2.571-.052-3.708 2.408 0 4.315 1.684 4.315 4.206v5.569h-3.554v-5.569c0-1.328-.017-2.571-.052-3.708 2.408 0 4.315 1.684 4.315 4.206v5.569h-3.554z">
-                                    </path>
-                                    <circle cx="4.998" cy="4.998" r="2.553"></circle>
-                                    <path
-                                        d="M3.554 8.749h-3.554v-5.569c0-1.328-.017-2.571-.052-3.708 2.408 0 4.315 1.684 4.315 4.206v5.569h-3.554z">
-                                    </path>
-                                </svg>
-                            </a>
-                            <a href="#" target="_blank" aria-label="Instagram" class="author-social-link">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="article-publish-info">
-                    <span class="article-date">[DD/MM/AAAA]</span>
-                    <span class="article-time">Atualizado há [X] horas</span>
-                </div>
-            </div>
-
-            <!-- Article Content Layout -->
-            <div class="article-content-layout">
-                <!-- Article Body -->
-                <article class="article-body">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat.
-                    </p>
-
-                    <p>
-                        Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt
-                        in culpa qui officia deserunt mollit anim id est
-                        laborum.
-                    </p>
-
-                    <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit
-                        voluptatem accusantium doloremque laudantium, totam
-                        rem aperiam, eaque ipsa quae ab illo inventore
-                        veritatis et quasi architecto beatae vitae dicta
-                        sunt explicabo.
-                    </p>
-
-                    <blockquote>
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua."
-                    </blockquote>
-
-                    <p>
-                        Nemo enim ipsam voluptatem quia voluptas sit
-                        aspernatur aut odit aut fugit, sed quia consequuntur
-                        magni dolores eos qui ratione voluptatem sequi
-                        nesciunt. Neque porro quisquam est, qui dolorem
-                        ipsum quia dolor sit amet.
-                    </p>
-
-                    <p>
-                        Quis autem vel eum iure reprehenderit qui in ea
-                        voluptate velit esse quam nihil molestiae
-                        consequatur, vel illum qui dolorem eum fugiat quo
-                        voluptas nulla pariatur?
-                    </p>
-
-                    <p>
-                        At vero eos et accusamus et iusto odio dignissimos
-                        ducimus qui blanditiis praesentium voluptatum
-                        deleniti atque corrupti quos dolores et quas
-                        molestias excepturi sint occaecati cupiditate non
-                        provident.
-                    </p>
-
-                    <p>
-                        Similique sunt in culpa qui officia deserunt
-                        mollitia animi, id est laborum et dolorum fuga. Et
-                        harum quidem rerum facilis est et expedita
-                        distinctio. Nam libero tempore, cum soluta nobis est
-                        eligendi optio cumque nihil impedit.
-                    </p>
-                </article>
-
-                <!-- Sidebar -->
-                <aside class="article-sidebar">
-                    <!-- Most Read -->
-                    <div class="sidebar-widget">
-                        <div class="sidebar-widget-title">Mais Lidas</div>
-                        <div class="sidebar-widget-content">
-                            <article class="sidebar-article">
-                                <div class="sidebar-article-image">
-                                    <img src="https://placehold.co/80x60/f0f0f0/999999?text=1" alt="Notícia" />
-                                </div>
-                                <div class="sidebar-article-content">
-                                    <h4 class="sidebar-article-title">
-                                        [Placeholder] Título da notícia mais
-                                        lida
-                                    </h4>
-                                    <span class="sidebar-article-time">Há [X] horas</span>
-                                </div>
-                            </article>
-                            <article class="sidebar-article">
-                                <div class="sidebar-article-image">
-                                    <img src="https://placehold.co/80x60/f0f0f0/999999?text=2" alt="Notícia" />
-                                </div>
-                                <div class="sidebar-article-content">
-                                    <h4 class="sidebar-article-title">
-                                        [Placeholder] Título da notícia
-                                        relevante
-                                    </h4>
-                                    <span class="sidebar-article-time">Há [X] horas</span>
-                                </div>
-                            </article>
-                            <article class="sidebar-article">
-                                <div class="sidebar-article-image">
-                                    <img src="https://placehold.co/80x60/f0f0f0/999999?text=3" alt="Notícia" />
-                                </div>
-                                <div class="sidebar-article-content">
-                                    <h4 class="sidebar-article-title">
-                                        [Placeholder] Título da notícia em
-                                        destaque
-                                    </h4>
-                                    <span class="sidebar-article-time">Há [X] horas</span>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar Ad -->
-                    <div class="sidebar-ad">
-                        <img src="https://placehold.co/300x500/f0f0f0/999999?text=Anúncio" alt="Espaço publicitário" />
-                    </div>
-                </aside>
-            </div>
-
-            <!-- Article Tags -->
-            <div class="article-tags">
-                <div class="article-tags-title">Tags</div>
-                <div class="article-tags-list">
-                    <a href="#" class="article-tag">tag1</a>
-                    <a href="#" class="article-tag">tag2</a>
-                    <a href="#" class="article-tag">tag3</a>
-                    <a href="#" class="article-tag">tag4</a>
-                </div>
-            </div>
-
-            <!-- Related Articles -->
-            <section class="related-articles">
-                <h2 class="related-articles-title">
-                    Matérias Relacionadas
-                </h2>
-                <div class="related-articles-grid">
-                    <a href="noticia.html" class="related-article-card">
-                        <div class="related-article-image">
-                            <img src="https://placehold.co/400x225/f0f0f0/999999?text=Relacionada+1"
-                                alt="Notícia relacionada" />
-                        </div>
-                        <div class="related-article-content">
-                            <span class="related-article-category">[Categoria]</span>
-                            <h4 class="related-article-title">
-                                [Placeholder] Título da matéria relacionada
-                            </h4>
-                        </div>
-                    </a>
-                    <a href="noticia.html" class="related-article-card">
-                        <div class="related-article-image">
-                            <img src="https://placehold.co/400x225/f0f0f0/999999?text=Relacionada+2"
-                                alt="Notícia relacionada" />
-                        </div>
-                        <div class="related-article-content">
-                            <span class="related-article-category">[Categoria]</span>
-                            <h4 class="related-article-title">
-                                [Placeholder] Título da matéria relacionada
-                            </h4>
-                        </div>
-                    </a>
-                    <a href="noticia.html" class="related-article-card">
-                        <div class="related-article-image">
-                            <img src="https://placehold.co/400x225/f0f0f0/999999?text=Relacionada+3"
-                                alt="Notícia relacionada" />
-                        </div>
-                        <div class="related-article-content">
-                            <span class="related-article-category">[Categoria]</span>
-                            <h4 class="related-article-title">
-                                [Placeholder] Título da matéria relacionada
-                            </h4>
-                        </div>
-                    </a>
-                </div>
-            </section>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4 class="footer-title">Sobre</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Quem somos</a></li>
-                        <li><a href="#">Expediente</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Editorias</h4>
-                    <ul class="footer-links">
-                        <li><a href="opiniao.html">Opinião</a></li>
-                        <li><a href="politica.html">Política</a></li>
-                        <li><a href="economia.html">Economia</a></li>
-                        <li><a href="justica.html">Justiça</a></li>
-                        <li><a href="esportes.html">Esportes</a></li>
-                        <li><a href="cultura.html">Cultura</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Portais Regionais</h4>
-                    <ul class="footer-links">
-                        <li>
-                            <a href="https://www.correiodamanha.com.br/" target="_blank">Correio da Manhã</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Correio da Manhã SP</a>
-                        </li>
-                        <li>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul Fluminense</a>
-                        </li>
-                        <li>
-                            <a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhadf.com.br/" target="_blank">Correio da Manhã DF</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Contato</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Fale conosco</a></li>
-                        <li><a href="#">Trabalhe conosco</a></li>
-                        <li><a href="#">Anuncie</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-logo">PORTAL CM</div>
-                <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Global Footer Placeholder -->
+    <div id="global-footer"></div>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-    </button>
-
+    <!-- Scripts do Sistema -->
+    <script src="js/mock-data.js"></script>
+    <script src="js/components/Header.js"></script>
+    <script src="js/components/Footer.js"></script>
+    <script src="js/components/MainLayout.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/article-loader.js"></script>
 </body>
 
 </html>

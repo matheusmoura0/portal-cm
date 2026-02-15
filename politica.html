@@ -14,95 +14,104 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
         rel="stylesheet" />
     <script src="js/components/Header.js"></script>
+    <script src="js/components/Footer.js"></script>
+    <script src="js/components/MainLayout.js"></script>
     <style>
-        /* Newspaper Grid Styles */
+        /* List View Styles */
         .newspaper-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            display: block !important;
             margin-top: 30px;
         }
 
         .newspaper-grid .news-card {
+            display: grid !important;
+            grid-template-columns: 300px 1fr !important;
+            gap: 24px !important;
+            margin-bottom: 32px !important;
             background: #fff;
-            border: 1px solid #e0e0e0;
+            border: none !important;
+            border-bottom: 1px solid #e5e5e5 !important;
+            padding-bottom: 32px !important;
             overflow: hidden;
-            transition:
-                transform 0.2s,
-                box-shadow 0.2s;
+            transition: transform 0.2s;
         }
 
         .newspaper-grid .news-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
         }
 
         .newspaper-grid .news-image {
-            width: 100%;
-            height: 200px;
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 16/9 !important;
             overflow: hidden;
-            position: relative;
         }
 
         .newspaper-grid .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
         }
 
         .newspaper-grid .news-content {
-            padding: 15px;
+            padding: 0 !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .newspaper-grid .news-content h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            line-height: 1.4;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 12px !important;
+            line-height: 1.2 !important;
         }
 
         .newspaper-grid .news-content h3 a {
-            color: #333;
+            color: #1a1a1a;
             text-decoration: none;
         }
 
         .newspaper-grid .news-content h3 a:hover {
-            color: #1a237e;
+            color: #b91c1c;
         }
 
         .newspaper-grid .news-excerpt {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 10px;
+            font-size: 1rem !important;
+            color: #4b5563 !important;
+            line-height: 1.5 !important;
+            margin-bottom: 16px !important;
         }
 
         .newspaper-grid .article-meta {
+            margin-top: auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 16px;
             font-size: 0.85rem;
-            color: #999;
+            color: #6b7280;
         }
 
         .newspaper-grid .category-tag {
             display: inline-block;
-            padding: 3px 8px;
-            background: #d0021b;
+            padding: 4px 8px;
+            background: #b91c1c;
             color: white;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            width: fit-content;
         }
 
-        /* Featured Article (spans 2 columns) */
-        .newspaper-grid .news-card.featured {
-            grid-column: span 2;
-        }
+        @media (max-width: 768px) {
+            .newspaper-grid .news-card {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
 
-        .newspaper-grid .news-card.featured .news-image {
-            height: 280px;
+            .newspaper-grid .news-content h3 {
+                font-size: 1.3rem !important;
+            }
         }
 
         .newspaper-grid .news-card.featured .news-content h3 {
@@ -190,22 +199,14 @@
     <!-- Global Header Placeholder -->
     <div id="global-header"></div>
 
-    <!-- Breaking News Ticker -->
-    <div class="breaking-news">
-        <div class="container">
-            <span class="breaking-label">AO VIVO</span>
-            <div class="ticker-wrapper">
-                <div class="ticker-content" id="breaking-news-ticker">
-                    <span>🔴 Castro e Lewandowski criam escritório de combate
-                        ao crime organizado</span>
-                    <span>🔴 Nunes rejeita aliança entre MDB e PT em
-                        2026</span>
-                    <span>🔴 Tarcísio exonera aliados de Derrite e redesenha
-                        cúpulas</span>
-                </div>
-            </div>
+    <!-- Top Ad Banner (970x250) -->
+    <div class="container">
+        <div class="top-ad-banner">
+            <img src="https://placehold.co/970x250/e2e8f0/64748b?text=Anuncio+Horizontal+Topo" alt="Publicidade Topo">
         </div>
     </div>
+
+
 
     <!-- Main Content -->
     <main class="main-content">
@@ -219,14 +220,6 @@
                 </p>
             </div>
 
-            <!-- Advertisement -->
-            <div class="ad-placeholder">
-                <div class="ad-label">PUBLICIDADE</div>
-                <div class="ad-space">
-                    <img src="https://placehold.co/728x90/f0f0f0/999999?text=Espaço+Publicitário"
-                        alt="Espaço publicitário" />
-                </div>
-            </div>
 
             <!-- Newspaper Grid -->
             <div class="newspaper-grid" id="news-grid">
@@ -237,15 +230,15 @@
                     data-image="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1__d6a0062__1_-496992.jpg"
                     data-author="Correio da Manhã" data-author-role="Jornalista" data-date="06/02/2026"
                     data-time="14:30" data-link="https://www.correiodamanha.com.br/">
-                    <a href="javascript:void(0)" class="news-image news-link">
+                    <a href="noticia.html?id=noticia-002" class="news-image">
                         <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1__d6a0062__1_-496992.jpg"
                             alt="Castro e Lewandowski criam escritório" />
                     </a>
                     <div class="news-content">
-                        <span class="category-tag">GOVERNO</span>
+                        <span class="category-tag">POLITICA</span>
                         <h3>
-                            <a href="javascript:void(0)" class="news-link">Castro e Lewandowski criam escritório de
-                                combate ao crime organizado</a>
+                            <a href="noticia.html?id=noticia-002">Castro e Lewandowski criam escritório de combate ao
+                                crime organizado</a>
                         </h3>
                         <p class="news-excerpt">
                             Gabinete servirá para acabar com as burocracias
@@ -295,7 +288,8 @@
                     data-author="Correio da Manhã SP" data-author-role="Jornalista" data-date="06/02/2026"
                     data-time="08:00" data-link="https://www.correiodamanhasp.com.br/">
                     <a href="javascript:void(0)" class="news-image news-link">
-                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-exonera-aliados-de-Derrite.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-exonera-aliados-de-Derrite.jpg"
                             alt="Tarcísio exonera aliados" />
                     </a>
                     <div class="news-content">
@@ -315,6 +309,14 @@
                     </div>
                 </article>
 
+                <!-- Placeholder 300x250 (In-feed) -->
+                <div class="ad-wrapper grid-span-full">
+                    <span class="ad-label-small">Publicidade</span>
+                    <img src="https://placehold.co/300x250/e2e8f0/64748b?text=Anúncio+300x250\nIn-Feed"
+                        alt="Placeholder 300x250" class="ad-placeholder-img">
+                </div>
+
+
                 <!-- Article 4 -->
                 <article class="news-card" data-category="SEGURANÇA"
                     data-title="O estado do Rio resolveu agir sozinho, abandonado pelo Governo Lula que ficou nas cordas"
@@ -323,7 +325,8 @@
                     data-author="Fernando Molica" data-author-role="Colunista" data-date="05/02/2026" data-time="18:00"
                     data-link="https://www.correiodamanha.com.br/">
                     <a href="javascript:void(0)" class="news-image news-link">
-                        <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_megaoperacao-497151.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_megaoperacao-497151.jpg"
                             alt="Megaoperação" />
                     </a>
                     <div class="news-content">
@@ -352,7 +355,8 @@
                     data-author="Correio da Manhã" data-author-role="Jornalista" data-date="05/02/2026"
                     data-time="16:00" data-link="https://www.correiodamanha.com.br/">
                     <a href="javascript:void(0)" class="news-image news-link">
-                        <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_cartuhcos-496992.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_cartuhcos-496992.jpg"
                             alt="Guerra do crime" />
                     </a>
                     <div class="news-content">
@@ -372,17 +376,12 @@
                     </div>
                 </article>
 
-                <!-- Article 6 -->
-                <article class="news-card" data-category="MUNICÍPIO"
+                <!-- Article 6 (Test Case: No Image) -->
+                <article class="news-card card-no-thumbnail" data-category="MUNICÍPIO"
                     data-title="Câmara Municipal devolve R$ 1,2 milhão aos cofres da prefeitura de Barra do Piraí"
                     data-subtitle="Verba não utilizada será aplicada em obras e serviços essenciais para a população."
-                    data-image="https://correiosulfluminense.com.br/wp-content/uploads/2025/01/varejao-corrupcao.jpg"
-                    data-author="Correio Sul Fluminense" data-author-role="Jornalista" data-date="05/02/2026"
-                    data-time="14:00" data-link="https://correiosulfluminense.com.br/">
-                    <a href="javascript:void(0)" class="news-image news-link">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/01/varejao-corrupcao.jpg"
-                            alt="Câmara Municipal" />
-                    </a>
+                    data-image="" data-author="Correio Sul Fluminense" data-author-role="Jornalista"
+                    data-date="05/02/2026" data-time="14:00" data-link="https://correiosulfluminense.com.br/">
                     <div class="news-content">
                         <span class="category-tag">MUNICÍPIO</span>
                         <h3>
@@ -408,7 +407,8 @@
                     data-author="Correio da Manhã SP" data-author-role="Jornalista" data-date="04/02/2026"
                     data-time="12:00" data-link="https://www.correiodamanhasp.com.br/">
                     <a href="javascript:void(0)" class="news-image news-link">
-                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Santo-Andre-confirma-Corte-do-Carnaval-2026.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Santo-Andre-confirma-Corte-do-Carnaval-2026.jpg"
                             alt="Carnaval" />
                     </a>
                     <div class="news-content">
@@ -435,7 +435,8 @@
                     data-author="Correio da Manhã" data-author-role="Jornalista" data-date="03/02/2026"
                     data.time="10:00" data-link="https://www.correiodamanha.com.br/">
                     <a href="javascript:void(0)" class="news-image news-link">
-                        <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_2a7c5a55d24475c5674a6cabf9d5e3d4_l-497070.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_2a7c5a55d24475c5674a6cabf9d5e3d4_l-497070.jpg"
                             alt="Votação suspensa" />
                     </a>
                     <div class="news-content">
@@ -462,7 +463,8 @@
                     data-author="Correio Sul Fluminense" data-author-role="Jornalista" data-date="02/02/2026"
                     data-time="08:00" data-link="https://correiosulfluminense.com.br/">
                     <a href="javascript:void(0)" class="news-image news-link">
-                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/mpf-pede-anulacao.jpg"
+                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/mpf-pede-anulacao.jpg"
                             alt="MPF e pré-sal" />
                     </a>
                     <div class="news-content">
@@ -484,6 +486,13 @@
                 </article>
             </div>
 
+            <!-- Placeholder 300x600 (Ancoragem inferior) -->
+            <div class="ad-wrapper">
+                <span class="ad-label-small">Publicidade</span>
+                <img src="https://placehold.co/300x600/e2e8f0/64748b?text=Anúncio+300x600" alt="Placeholder 300x600"
+                    class="ad-placeholder-img">
+            </div>
+
             <!-- Load More Button -->
             <div class="load-more-container">
                 <div class="loading-spinner" id="loading-spinner"></div>
@@ -494,153 +503,8 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4 class="footer-title">Sobre</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Quem somos</a></li>
-                        <li><a href="#">Expediente</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Editorias</h4>
-                    <ul class="footer-links">
-                        <li><a href="opiniao.html">Opinião</a></li>
-                        <li><a href="politica.html">Política</a></li>
-                        <li><a href="economia.html">Economia</a></li>
-                        <li><a href="justica.html">Justiça</a></li>
-                        <li><a href="esportes.html">Esportes</a></li>
-                        <li><a href="cultura.html">Cultura</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Portais Regionais</h4>
-                    <ul class="footer-links">
-                        <li>
-                            <a href="https://www.correiodamanha.com.br/" target="_blank">Correio da Manhã</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Correio da Manhã SP</a>
-                        </li>
-                        <li>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul Fluminense</a>
-                        </li>
-                        <li>
-                            <a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhadf.com.br/" target="_blank">Correio da Manhã DF</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Contato</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Fale conosco</a></li>
-                        <li><a href="#">Trabalhe conosco</a></li>
-                        <li><a href="#">Anuncie</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-logo">PORTAL CM</div>
-                <p>&copy; 2026 portal CM. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-    </button>
-
+    <div id="global-footer"></div>
     <script src="js/main.js"></script>
-    <script>
-        // News link click handler
-        document.addEventListener("DOMContentLoaded", function () {
-            const newsLinks = document.querySelectorAll(".news-link");
-
-            newsLinks.forEach(function (link) {
-                link.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    const card = this.closest(".news-card");
-
-                    const category = card.dataset.category || "Política";
-                    const title = card.dataset.title || "Título da Notícia";
-                    const subtitle = card.dataset.subtitle || "";
-                    const image = card.dataset.image || "";
-                    const author = card.dataset.author || "Portal CM";
-                    const authorRole =
-                        card.dataset.authorRole || "Jornalista";
-                    const date = card.dataset.date || "06/02/2026";
-                    const time = card.dataset.time || "14:00";
-                    const externalLink = card.dataset.link || "";
-
-                    // Build URL with parameters
-                    const params = new URLSearchParams();
-                    params.set("category", category);
-                    params.set("title", title);
-                    params.set("subtitle", subtitle);
-                    params.set("image", image);
-                    params.set("author", author);
-                    params.set("authorRole", authorRole);
-                    params.set("date", date);
-                    params.set("time", time);
-                    if (externalLink) {
-                        params.set("link", externalLink);
-                    }
-
-                    // Navigate to noticia.html
-                    window.location.href =
-                        "noticia.html?" + params.toString();
-                });
-            });
-        });
-
-        // Load More functionality
-        const loadMoreBtn = document.getElementById("load-more-btn");
-        const loadingSpinner = document.getElementById("loading-spinner");
-        const hiddenCards = document.querySelectorAll(".news-card.hidden");
-        let visibleCount = 0;
-        const cardsPerLoad = 3;
-
-        loadMoreBtn.addEventListener("click", function () {
-            loadingSpinner.style.display = "block";
-            loadMoreBtn.disabled = true;
-
-            setTimeout(() => {
-                let shown = 0;
-                for (
-                    let i = 0;
-                    i < hiddenCards.length && shown < cardsPerLoad;
-                    i++
-                ) {
-                    if (hiddenCards[i].classList.contains("hidden")) {
-                        hiddenCards[i].classList.remove("hidden");
-                        shown++;
-                    }
-                }
-
-                visibleCount += shown;
-                loadingSpinner.style.display = "none";
-                loadMoreBtn.disabled = false;
-
-                const remainingHidden =
-                    document.querySelectorAll(".news-card.hidden");
-                if (remainingHidden.length === 0) {
-                    loadMoreBtn.textContent = "Não há mais notícias";
-                    loadMoreBtn.disabled = true;
-                }
-            }, 500);
-        });
-    </script>
 </body>
 
 </html>

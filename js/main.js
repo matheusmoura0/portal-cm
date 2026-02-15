@@ -79,6 +79,93 @@ const Utils = {
       month: "short",
     });
   },
+
+  // Verifica se uma string de imagem é válida ou um placeholder
+  isValidImage(src) {
+    if (!src || src === "" || src === "undefined" || src.includes("javascript:void(0)")) return false;
+    // Padrões de placeholder comuns
+    const placeholderPatterns = [
+      "placehold.co",
+      "placeholder.com",
+      "via.placeholder",
+      "eeeeee/999999",
+      "Sem+Imagem",
+      "Espaço+Publicitário",
+      "f0f0f0",
+      "728x90"
+    ];
+    return !placeholderPatterns.some(pattern => src.includes(pattern));
+  }
+};
+
+// ========================================
+// Interface e UI
+// ========================================
+
+const UI = {
+  init() {
+    this.handleNoImageCards();
+    this.hideEmptyAds();
+    
+    // Observa mudanças no DOM para cards carregados via AJAX
+    this.observeDOM();
+  },
+
+  handleNoImageCards() {
+    const selectors = [
+      '.news-card', 
+      '.featured-item', 
+      '.modern-section-item', 
+      '.region-main-item', 
+      '.region-sidebar-item',
+      '.editorial-item',
+      '.servidor-main',
+      '.servidor-side',
+      '.mobile-grid-item',
+      '.mobile-grid-main'
+    ];
+    const cards = document.querySelectorAll(selectors.join(', '));
+    
+    cards.forEach(card => {
+      const img = card.querySelector('img');
+      const hasValidImage = img && Utils.isValidImage(img.src);
+      
+      if (!hasValidImage) {
+        card.classList.add('card-no-thumbnail');
+        // Se for um link de imagem de erro conhecido, removemos o container
+        const imgWrappers = [
+            '.news-image', 
+            '.img-wrapper', 
+            '.featured-image-wrapper', 
+            '.featured-item-image',
+            '.featured-main-image',
+            '.featured-item-image',
+            '.carousel-image'
+        ];
+        imgWrappers.forEach(selector => {
+            const wrapper = card.querySelector(selector) || (card.classList.contains(selector.replace('.', '')) ? card : null);
+            if (wrapper) {
+                wrapper.style.display = 'none';
+            }
+        });
+      }
+    });
+  },
+
+
+  observeDOM() {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          this.handleNoImageCards();
+          this.hideEmptyAds();
+        }
+      });
+    });
+
+    const target = document.querySelector('.main-content') || document.body;
+    observer.observe(target, { childList: true, subtree: true });
+  }
 };
 
 // ========================================
@@ -194,77 +281,87 @@ const HeaderInfo = {
 // ========================================
 
 const MobileMenu = {
+  initialized: false,
+
   init() {
-    this.toggle = document.getElementById("mobile-menu-toggle");
-    this.menu = document.getElementById("nav-menu");
+    if (this.initialized) return;
+    console.log("MobileMenu: Inicializando delegador de eventos...");
     this.bindEvents();
+    this.initialized = true;
   },
 
   bindEvents() {
-    if (this.toggle) {
-      this.toggle.addEventListener("click", () => this.toggleMenu());
-    }
-
-    // Fechar menu ao clicar em um link (exceto dropdown toggle)
-    const navLinks = this.menu?.querySelectorAll(".nav-link");
-    navLinks?.forEach((link) => {
-      // Se não for um dropdown toggle, fecha o menu ao clicar
-      if (!link.classList.contains("dropdown-toggle")) {
-        link.addEventListener("click", () => this.closeMenu());
-      }
-    });
-
-    // Dropdown toggle para mobile
-    const dropdownToggles = this.menu?.querySelectorAll(".dropdown-toggle");
-    dropdownToggles?.forEach((toggle) => {
-      toggle.addEventListener("click", (e) => {
-        // Em mobile, previne o comportamento padrão e toggle o dropdown
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          const dropdown = toggle.closest(".nav-dropdown");
-          dropdown?.classList.toggle("active");
-        }
-      });
-    });
-
-    // Fechar menu ao clicar fora
+    // Event delegation for mobile menu toggle
     document.addEventListener("click", (e) => {
+      // Toggle button click
+      const toggle = e.target.closest("#mobile-menu-toggle");
+      if (toggle) {
+        console.log("MobileMenu: Clique detectado no toggle");
+        this.toggleMenu(toggle);
+        return;
+      }
+
+      // Dropdown toggle click (mobile only)
+      const dropdownToggle = e.target.closest(".dropdown-toggle");
+      if (dropdownToggle && window.innerWidth <= 768) {
+        e.preventDefault();
+        const dropdown = dropdownToggle.closest(".nav-dropdown");
+        dropdown?.classList.toggle("active");
+        return;
+      }
+
+      // Close menu when clicking on a link (not a dropdown toggle)
+      const navLink = e.target.closest(".nav-link");
+      if (navLink && !navLink.classList.contains("dropdown-toggle")) {
+        this.closeMenu();
+        return;
+      }
+
+      // Close menu when clicking outside
       if (!e.target.closest(".main-nav")) {
         this.closeMenu();
       }
     });
   },
 
-  toggleMenu() {
-    this.menu.classList.toggle("active");
-    this.toggle.classList.toggle("active");
+  toggleMenu(toggleBtn) {
+    const menu = document.getElementById("nav-menu");
+    console.log("MobileMenu: Toggling menu...", { menuExists: !!menu });
+    if (!menu || !toggleBtn) return;
+
+    menu.classList.toggle("active");
+    toggleBtn.classList.toggle("active");
 
     // Animação do ícone hamburguer
-    const spans = this.toggle.querySelectorAll("span");
-    if (this.menu.classList.contains("active")) {
-      spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
-      spans[1].style.opacity = "0";
-      spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
+    const spans = toggleBtn.querySelectorAll("span");
+    if (menu.classList.contains("active")) {
+      if (spans[0]) spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+      if (spans[1]) spans[1].style.opacity = "0";
+      if (spans[2]) spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
     } else {
-      spans[0].style.transform = "";
-      spans[1].style.opacity = "";
-      spans[2].style.transform = "";
+      spans.forEach(span => {
+        span.style.transform = "";
+        span.style.opacity = "";
+      });
     }
   },
 
   closeMenu() {
-    this.menu.classList.remove("active");
-    this.toggle.classList.remove("active");
-
-    const spans = this.toggle.querySelectorAll("span");
-    if (spans.length) {
-      spans[0].style.transform = "";
-      spans[1].style.opacity = "";
-      spans[2].style.transform = "";
+    const menu = document.getElementById("nav-menu");
+    const toggle = document.getElementById("mobile-menu-toggle");
+    
+    if (menu) menu.classList.remove("active");
+    if (toggle) {
+      toggle.classList.remove("active");
+      const spans = toggle.querySelectorAll("span");
+      spans.forEach(span => {
+        span.style.transform = "";
+        span.style.opacity = "";
+      });
     }
 
     // Fecha todos os dropdowns
-    const dropdowns = this.menu?.querySelectorAll(".nav-dropdown");
+    const dropdowns = menu?.querySelectorAll(".nav-dropdown");
     dropdowns?.forEach((dropdown) => {
       dropdown.classList.remove("active");
     });
@@ -346,7 +443,7 @@ const NewsService = {
       return {
         id: post.id,
         title: post.title?.rendered || "Sem título",
-        link: post.link || "#",
+        link: `noticia.html?id=noticia-001`, // Fallback for external news in demo
         excerpt: post.excerpt?.rendered || "",
         date: post.date,
         image: imageUrl,
@@ -1217,40 +1314,8 @@ const SocialShare = {
 
 const NewsNavigation = {
   init() {
-    this.makeNewsClickable();
-  },
-
-  makeNewsClickable() {
-    // Seleciona todos os cards de notícia
-    const newsCards = document.querySelectorAll(
-      ".news-card, .opinion-article, .hero-article, .side-article, .most-read-item, .featured-item, .carousel-item",
-    );
-
-    newsCards.forEach((card) => {
-      // Se o card já tem um link direto, não precisa modificar
-      const existingLink = card.querySelector("a[href]");
-      if (existingLink && existingLink.getAttribute("href") !== "#") {
-        return;
-      }
-
-      // Adiciona evento de clique no card inteiro
-      card.addEventListener("click", (e) => {
-        // Se clicou em um link válido ou botão, não intercepta
-        if (
-          e.target.closest("a[href]:not([href='#'])") ||
-          e.target.closest("button")
-        ) {
-          return;
-        }
-
-        // Navega para a página de notícia singular
-        window.location.href = "noticia.html";
-      });
-
-      // Adiciona cursor pointer para indicar que é clicável
-      card.style.cursor = "pointer";
-    });
-  },
+    // Legacy navigation removed. Using native <a> links with IDs.
+  }
 };
 
 // ========================================
@@ -1414,12 +1479,18 @@ document.addEventListener("DOMContentLoaded", () => {
     window.CMHeader.render();
   }
 
+  // Inicializa o Footer Global
+  if (window.CMFooter) {
+    window.CMFooter.render();
+  }
+
   // Inicializa todos os módulos estáticos e de UI
   DateTime.init();
   HeaderInfo.init();
   MobileMenu.init();
   Search.init();
   Newsletter.init();
+  UI.init();
   LiveCoverage.init();
   SectionLayout.init();
   BreakingNews.init();

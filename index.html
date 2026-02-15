@@ -14,17 +14,21 @@
     <link rel="stylesheet" href="css/modern-sections.css" />
     <link rel="stylesheet" href="css/regions-hub.css" />
     <link rel="stylesheet" href="css/sections-grid.css" />
+    <link rel="stylesheet" href="css/hard-news-layout.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap"
         rel="stylesheet" />
     <script src="js/components/Header.js"></script>
+    <script src="js/components/Footer.js"></script>
+    <script src="js/components/MainLayout.js"></script>
 </head>
 
 <body>
     <!-- Global Header Placeholder -->
     <div id="global-header"></div>
+
 
     <!-- AO VIVO Live Coverage Section -->
     <section class="live-coverage" id="ao-vivo">
@@ -176,1499 +180,423 @@
             </div>
         </div>
     </section>
+    <!-- Top Ad Banner (970x250) -->
+    <div class="container">
+        <div class="top-ad-banner">
+            <img src="https://placehold.co/970x250/e2e8f0/64748b?text=Anuncio+Horizontal+Topo" alt="Publicidade Topo">
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- Hero Section -->
-            <section class="hero-section">
-                <div class="hero-main">
-                    <article class="hero-article">
-                        <span class="source-badge badge-red">Correio da Manhã</span>
-                        <a href="https://www.correiodamanha.com.br/estado-do-rio/2026/02/258979-pedido-de-vista-de-fux-interrompe-julgamento-do-stf-sobre-inelegibilidade-de-washington-reis.html"
-                            target="_blank" class="hero-image-wrapper">
-                            <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/11/600x378/1_tmazs_070220_6466_860x515-548705.jpeg"
-                                alt="Pedido de vista de Fux interrompe julgamento do STF sobre inelegibilidade de Washington Reis" />
+
+            <div class="news-container">
+                <div class="grid-12">
+                    <!-- Manchete Primária (8 colunas) -->
+                    <article class="main-headline">
+                        <a href="noticia.html?id=noticia-002" class="image-wrapper">
+                            <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                                src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_renanlula-547728.jpg"
+                                alt="Lula e MDB" />
                         </a>
-                        <div class="hero-content">
-                            <span class="category-tag politics">[POLÍTICA]</span>
-                            <h2>
-                                Pedido de vista de Fux interrompe julgamento
-                                do STF sobre inelegibilidade de Washington
-                                Reis
-                            </h2>
-                            <p>
-                                Ministro Luiz Fux pediu vistas do processo,
-                                paralisando o julgamento sobre a
-                                inelegibilidade do ex-prefeito.
+                        <div class="content">
+                            <a href="noticia.html?id=noticia-002">
+                                <h2>CORREIO POLÍTICO | Lula pode ir com o MDB de vice em 2026?</h2>
+                            </a>
+                            <p class="excerpt">
+                                MDB é cortejado por Lula e por Tarcísio para compor as chapas de 2026, sendo o fiel da
+                                balança no xadrez político nacional. O partido busca protagonismo nas próximas eleições.
                             </p>
-                            <div class="article-meta">
-                                <span class="time">há 15 minutos</span>
-                            </div>
                         </div>
                     </article>
-                </div>
-                <div class="hero-side">
-                    <article class="side-article">
-                        <span class="source-badge">São Paulo</span>
-                        <a href="https://correiodamanhasp.com.br/comissao-do-senado-aprova-requerimentos-para-ouvir-vorcaro-e-autoridades-sobre-caso-master/"
-                            target="_blank" class="side-image-wrapper">
-                            <img src="https://correiodamanhasp.com.br/wp-content/uploads/2026/02/1_imagem_materia__1_-547603.jpg"
-                                alt="Comissão do Senado aprova requerimentos para ouvir Vorcaro" />
-                        </a>
-                        <h3>
-                            Senado aprova requerimentos para ouvir Vorcaro e autoridades sobre caso Master
-                        </h3>
-                        <span class="time">há 1 hora</span>
-                    </article>
-                    <article class="side-article">
-                        <span class="source-badge">Barra da Tijuca</span>
-                        <a href="https://www.jornaldabarra.com.br/" target="_blank" class="side-image-wrapper">
-                            <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
-                                alt="Festival de chocolate na Barra" />
-                        </a>
-                        <h3>
-                            A Barra da Tijuca garante sua diversão neste final de semana com festival
-                        </h3>
-                        <span class="time">há 2 horas</span>
-                    </article>
-                    <article class="side-article">
-                        <span class="source-badge">Petrópolis</span>
-                        <a href="https://correiopetropolitano.com.br/" target="_blank" class="side-image-wrapper">
-                            <img src="https://correiodamanhasp.com.br/wp-content/uploads/2025/12/Custo-de-vida-sobe-038-em-dezembro-e-fecha-2025-em-alta.jpg"
-                                alt="Petrópolis em alta" />
-                        </a>
-                        <h3>
-                            Petrópolis registra alta no turismo para a temporada de inverno
-                        </h3>
-                        <span class="time">há 4 horas</span>
-                    </article>
-                </div>
-            </section>
 
-            <!-- Advertisement Placeholder -->
-            <div class="ad-placeholder">
-                <div class="ad-label">PUBLICIDADE</div>
-                <div class="ad-space">
-                    <img src="https://placehold.co/970x250/f0f0f0/999999?text=Espaço+Publicitário+-+970x250"
-                        alt="Espaço publicitário" />
+                    <!-- Manchetes Secundárias (4 colunas) -->
+                    <aside class="side-headlines">
+                        <article class="side-item">
+                            <span class="meta">Economia</span>
+                            <h3><a href="noticia.html?id=noticia-007">Custo de vida sobe 0,38% em dezembro e fecha 2025
+                                    em alta recorde</a></h3>
+                        </article>
+
+                        <article class="side-item">
+                            <span class="meta">Esportes</span>
+                            <h3><a href="noticia.html?id=noticia-008">Flamengo e Portuguesa empatam no Raulino de
+                                    Oliveira em jogo morno</a></h3>
+                        </article>
+
+                        <article class="side-item">
+                            <span class="meta">Justiça</span>
+                            <h3><a href="noticia.html?id=noticia-006">Dinheiro é jogado pela janela em SC durante
+                                    operação da PF sobre Rioprevidência</a></h3>
+                        </article>
+
+                        <article class="side-item">
+                            <span class="meta">Cultura</span>
+                            <h3><a href="noticia.html?id=noticia-004">Festival de chocolate agita a Barra da Tijuca com
+                                    recorde de público</a></h3>
+                        </article>
+                    </aside>
                 </div>
             </div>
 
-            <!-- Mais Lidos Section -->
-            <section id="mais-lidos" class="section most-read-section">
-                <div class="section-header">
-                    <h2 class="section-title">MAIS LIDOS</h2>
-                </div>
-                <div class="most-read-grid">
-                    <article class="most-read-item">
-                        <span class="most-read-number">1</span>
-                        <div class="most-read-content">
-                            <span class="source-badge">Correio da Manhã</span>
-                            <h3 class="most-read-title">
-                                VR: Prefeito Neto garante reajuste para
-                                servidores
-                            </h3>
-                        </div>
-                    </article>
-                    <article class="most-read-item">
-                        <span class="most-read-number">2</span>
-                        <div class="most-read-content">
-                            <span class="source-badge">São Paulo</span>
-                            <h3 class="most-read-title">
-                                Nunes rejeita aliança entre MDB e PT em 2026
-                            </h3>
-                        </div>
-                    </article>
-                    <article class="most-read-item">
-                        <span class="most-read-number">3</span>
-                        <div class="most-read-content">
-                            <span class="source-badge">Correio DF</span>
-                            <h3 class="most-read-title">
-                                Início do sistema aquaviário deve acontecer no
-                                final de 2026
-                            </h3>
-                        </div>
-                    </article>
-                    <article class="most-read-item">
-                        <span class="most-read-number">4</span>
-                        <h3 class="most-read-title">
-                            Campinas aplica 91 multas por bafômetro em dois
-                            meses
-                        </h3>
-                    </article>
-                    <article class="most-read-item">
-                        <span class="most-read-number">5</span>
-                        <h3 class="most-read-title">
-                            Flamengo e Portuguesa empatam no Raulino
-                        </h3>
-                    </article>
-                    <article class="most-read-item">
-                        <span class="most-read-number">6</span>
-                        <h3 class="most-read-title">
-                            Morre ex-prefeito de Volta Redonda William de
-                            Freitas aos 91 anos
-                        </h3>
-                    </article>
-                    <article class="most-read-item">
-                        <span class="most-read-number">7</span>
-                        <h3 class="most-read-title">
-                            Volta Redonda promove Colônia de Férias para
-                            crianças nos Cras
-                        </h3>
-                    </article>
-                    <article class="most-read-item">
-                        <span class="most-read-number">8</span>
-                        <h3 class="most-read-title">
-                            Pinheiral avança na implantação de unidade do
-                            Corpo de Bombeiros
-                        </h3>
-                    </article>
-                    <article class="most-read-item">
-                        <span class="most-read-number">9</span>
-                        <h3 class="most-read-title">
-                            Tarcísio exonera aliados de Derrite e redesenha
-                            cúpulas
-                        </h3>
-                    </article>
-                </div>
-            </section>
-
-            <!-- Featured Section (Estilo El País) -->
-            <section id="destaques" class="section featured-section">
-                <div class="section-header">
-                    <h2 class="section-title">DESTAQUES</h2>
-                </div>
-
-                <!-- Desktop: Grid Híbrido -->
-                <div class="featured-grid-desktop">
-                    <!-- Artigo Principal -->
-                    <article class="featured-main">
-                        <a href="https://www.correiodamanha.com.br/colunistas/rudolfo-lago/2026/02/258499-correio-politico-lula-pode-ir-com-o-mdb-de-vice.html"
-                            target="_blank" class="featured-image-wrapper">
-                            <span class="category-tag politics">[POLÍTICA]</span>
-                            <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_renanlula-547728.jpg"
-                                alt="CORREIO POLÍTICO | Lula pode ir com o MDB de vice?" />
+            <!-- Mais Lidos (Premium Horizontal) -->
+            <section class="most-read-horizontal">
+                <div class="container">
+                    <div class="most-read-horizontal-grid">
+                        <a href="noticia.html?id=noticia-002" class="most-read-horizontal-item">
+                            <span class="number">1</span>
+                            <h4>Lula e MDB: O novo xadrez para as eleições de 2026</h4>
                         </a>
-                        <div class="featured-content">
-                            <h3>
-                                CORREIO POLÍTICO | Lula pode ir com o MDB de
-                                vice?
-                            </h3>
-                            <p>
-                                MDB é cortejado por Lula e por Tarcísio para
-                                compor as chapas de 2026
-                            </p>
-                            <span class="article-time">10 fev 2026</span>
-                        </div>
-                    </article>
-
-                    <!-- Artigos Secundários -->
-                    <div class="featured-secondary">
-                        <article class="featured-item">
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="featured-item-image">
-                                <span class="category-tag economy">[ECONOMIA]</span>
-                                <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Custo-de-vida-sobe-038-em-dezembro-e-fecha-2025-em-alta.jpg"
-                                    alt="Custo de vida sobe 0,38% em dezembro" />
-                            </a>
-                            <h4>
-                                Custo de vida sobe 0,38% em dezembro e fecha
-                                2025 em alta
-                            </h4>
-                            <span class="article-time">Há 3 horas</span>
-                        </article>
-                        <article class="featured-item">
-                            <a href="https://correiosulfluminense.com.br/" target="_blank" class="featured-item-image">
-                                <span class="category-tag sports">[ESPORTES]</span>
-                                <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/flamengo-portuguesa-raulino.jpg"
-                                    alt="Flamengo e Portuguesa empatam no Raulino" />
-                            </a>
-                            <h4>
-                                Flamengo e Portuguesa empatam no Raulino
-                            </h4>
-                            <span class="article-time">Há 4 horas</span>
-                        </article>
-                        <article class="featured-item">
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank" class="featured-item-image">
-                                <span class="category-tag culture">[CULTURA]</span>
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
-                                    alt="Do festival de chocolate ao show de pagode" />
-                            </a>
-                            <h4>
-                                Do festival de chocolate ao show de pagode:
-                                A Barra da Tijuca garante sua diversão neste
-                                final de semana
-                            </h4>
-                            <span class="article-time">Há 5 horas</span>
-                        </article>
-                        <article class="featured-item">
-                            <a href="https://www.correiodamanha.com.br/" target="_blank" class="featured-item-image">
-                                <span class="category-tag justice">[JUSTIÇA]</span>
-                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/11/280x175/1_image_5__copy-548437.jpeg"
-                                    alt="Dinheiro é jogado pela janela em SC durante operação da PF" />
-                            </a>
-                            <h4>
-                                Dinheiro é jogado pela janela em SC durante
-                                operação da PF sobre Rioprevidência
-                            </h4>
-                            <span class="article-time">11 fev 2026</span>
-                        </article>
-                    </div>
-                </div>
-
-                <!-- Mobile: Carrossel Horizontal -->
-                <!-- Mobile: Grid de Destaques Redesenhado -->
-                <div class="featured-grid-mobile">
-                    <!-- Item Principal -->
-                    <article class="mobile-grid-main">
-                        <div class="carousel-image">
-                            <span class="category-tag politics">[POLÍTICA]</span>
-                            <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_renanlula-547728.jpg"
-                                alt="CORREIO POLÍTICO | Lula pode ir com o MDB de vice?" />
-                        </div>
-                        <div class="mobile-grid-content">
-                            <h4>CORREIO POLÍTICO | Lula pode ir com o MDB de vice?</h4>
-                        </div>
-                    </article>
-
-                    <!-- Grid Secundário 2x2 -->
-                    <div class="mobile-grid-secondary">
-                        <article class="mobile-grid-item">
-                            <div class="carousel-image">
-                                <span class="category-tag economy">[ECONOMIA]</span>
-                                <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Custo-de-vida-sobe-038-em-dezembro-e-fecha-2025-em-alta.jpg"
-                                    alt="Custo de vida sobe 0,38% em dezembro" />
-                            </div>
-                            <div class="mobile-grid-content">
-                                <h4>Custo de vida sobe 0,38% em dezembro e fecha 2025 em alta</h4>
-                                <span class="article-time">Há 3 horas</span>
-                            </div>
-                        </article>
-                        <article class="mobile-grid-item">
-                            <div class="carousel-image">
-                                <span class="category-tag sports">[ESPORTES]</span>
-                                <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/flamengo-portuguesa-raulino.jpg"
-                                    alt="Flamengo e Portuguesa empatam no Raulino" />
-                            </div>
-                            <div class="mobile-grid-content">
-                                <h4>Flamengo e Portuguesa empatam no Raulino</h4>
-                                <span class="article-time">Há 4 horas</span>
-                            </div>
-                        </article>
-                        <article class="mobile-grid-item">
-                            <div class="carousel-image">
-                                <span class="category-tag culture">[CULTURA]</span>
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
-                                    alt="Do festival de chocolate ao show de pagode" />
-                            </div>
-                            <div class="mobile-grid-content">
-                                <h4>Do festival de chocolate ao show de pagode</h4>
-                                <span class="article-time">Há 5 horas</span>
-                            </div>
-                        </article>
-                        <article class="mobile-grid-item">
-                            <div class="carousel-image">
-                                <span class="category-tag justice">[JUSTIÇA]</span>
-                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/11/280x175/1_image_5__copy-548437.jpeg"
-                                    alt="Dinheiro é jogado pela janela em SC" />
-                            </div>
-                            <div class="mobile-grid-content">
-                                <h4>Dinheiro é jogado pela janela em SC durante operação da PF</h4>
-                                <span class="article-time">11 fev 2026</span>
-                            </div>
-                        </article>
+                        <a href="noticia.html?id=noticia-007" class="most-read-horizontal-item">
+                            <span class="number">2</span>
+                            <h4>Custo de vida sobe e bate recorde em 2025</h4>
+                        </a>
+                        <a href="noticia.html?id=noticia-008" class="most-read-horizontal-item">
+                            <span class="number">3</span>
+                            <h4>Flamengo e Portuguesa empatam no Raulino de Oliveira</h4>
+                        </a>
+                        <a href="noticia.html?id=noticia-006" class="most-read-horizontal-item">
+                            <span class="number">4</span>
+                            <h4>Operação da PF encontra dinheiro jogado pela janela em SC</h4>
+                        </a>
+                        <a href="noticia.html?id=noticia-004" class="most-read-horizontal-item">
+                            <span class="number">5</span>
+                            <h4>Festival de chocolate registra público recorde na Barra</h4>
+                        </a>
                     </div>
                 </div>
             </section>
 
-            <!-- Opinion Section -->
-            <section id="opiniao" class="section opinion-section">
-                <div class="section-header">
-                    <h2 class="section-title">Opinião</h2>
-                    <a href="opiniao.html" class="section-link">Ver todos →</a>
-                </div>
-                <div class="opinion-grid">
-                    <article class="opinion-article featured">
-                        <div class="opinion-author">
-                            <img src="images/colunistas/img_colunistas_magnavita-87116.jpg" alt="Magnavita" />
-                            <div class="author-info">
-                                <span class="author-name">MAGNAVITA</span>
-                                <span class="author-role">Política</span>
+            <!-- Opinião Grid Redesign -->
+            <section class="section home-opinion-section">
+                <div class="container">
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">Opinião</h2>
+                        <a href="opiniao.html" class="section-link">Ver todos →</a>
+                    </div>
+                    <div class="home-opinion-grid">
+                        <article class="mini-opinion-card">
+                            <a href="noticia.html?id=noticia-003" class="opinion-avatar-link">
+                                <img src="images/colunistas/img_colunistas_magnavita-87116.jpg" alt="Magnavita"
+                                    class="opinion-avatar">
+                            </a>
+                            <div class="mini-opinion-content">
+                                <span class="author-name">Magnavita</span>
+                                <h3 class="opinion-headline">
+                                    <a href="noticia.html?id=noticia-003">PLACEHOLDER</a>
+                                </h3>
                             </div>
-                        </div>
-                        <h3 class="opinion-title">
-                            [Placeholder] Título do artigo de opinião
-                        </h3>
-                        <p class="opinion-excerpt">
-                            [Placeholder] Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Sed do eiusmod
-                            tempor.
-                        </p>
-                        <a href="opiniao.html" class="read-more">
-                            Ler artigo completo
-                        </a>
-                    </article>
-                    <article class="opinion-article">
-                        <div class="opinion-author">
-                            <img src="images/colunistas/tales_faria_foto__colunista_300px-445320.jpg"
-                                alt="Tales Faria" />
-                            <div class="author-info">
+                        </article>
+
+                        <article class="mini-opinion-card">
+                            <a href="noticia.html?id=noticia-003" class="opinion-avatar-link">
+                                <img src="images/colunistas/tales_faria_foto__colunista_300px-445320.jpg"
+                                    alt="Tales Faria" class="opinion-avatar">
+                            </a>
+                            <div class="mini-opinion-content">
                                 <span class="author-name">Tales Faria</span>
-                                <span class="author-role">Política</span>
+                                <h3 class="opinion-headline">
+                                    <a href="noticia.html?id=noticia-003">PLACEHOLDER</a>
+                                </h3>
                             </div>
-                        </div>
-                        <h4>[Placeholder] Título da opinião</h4>
-                    </article>
-                    <article class="opinion-article">
-                        <div class="opinion-author">
-                            <img src="images/colunistas/marcelo_alves_2-177975.jpg" alt="Marcelo Alves" />
-                            <div class="author-info">
-                                <span class="author-name">Marcelo Alves</span>
-                                <span class="author-role">Economia</span>
-                            </div>
-                        </div>
-                        <h4>[Placeholder] Título da opinião</h4>
-                    </article>
-                    <article class="opinion-article">
-                        <div class="opinion-author">
-                            <img src="images/colunistas/alexandre_garcia___300px-161864.jpg" alt="Alexandre Garcia" />
-                            <div class="author-info">
+                        </article>
+
+                        <article class="mini-opinion-card">
+                            <a href="noticia.html?id=noticia-003" class="opinion-avatar-link">
+                                <img src="images/colunistas/alexandre_garcia___300px-161864.jpg" alt="Alexandre Garcia"
+                                    class="opinion-avatar">
+                            </a>
+                            <div class="mini-opinion-content">
                                 <span class="author-name">Alexandre Garcia</span>
-                                <span class="author-role">Jornalismo</span>
-                            </div>
-                        </div>
-                        <h4>[Placeholder] Título da opinião</h4>
-                    </article>
-                    <article class="opinion-article">
-                        <div class="opinion-author">
-                            <img src="images/colunistas/ruy_castro-87101.jpg" alt="Ruy Castro" />
-                            <div class="author-info">
-                                <span class="author-name">Ruy Castro</span>
-                                <span class="author-role">Cultura</span>
-                            </div>
-                        </div>
-                        <h4>[Placeholder] Título da opinião</h4>
-                    </article>
-                </div>
-            </section>
-
-            <!-- Advertisement Placeholder -->
-            <div class="ad-placeholder">
-                <div class="ad-label">PUBLICIDADE</div>
-                <div class="ad-space">
-                    <img src="https://placehold.co/970x250/f0f0f0/999999?text=Espaço+Publicitário+-+970x250"
-                        alt="Espaço publicitário" />
-                </div>
-            </div>
-
-            <!-- Politics Section -->
-            <section id="politica" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Política</h2>
-                    <a href="politica.html" class="section-link">Ver todos →</a>
-                </div>
-                <div class="modern-section-grid">
-                    <!-- Main Article (Left) -->
-                    <article class="modern-section-main">
-                        <a href="https://www.correiodamanha.com.br/colunistas/fernando-molica/2026/02/258549-correio-bastidores-cortejado-por-lula-mdb-tenta-entrar-na-chapa-de-tarcisio.html"
-                            target="_blank" class="news-image">
-                            <img src="https://www.correiodamanha.com.br/_midias/jpg/2023/01/17/280x175/1_economia___nacional___baleia_rossi-119343.jpg"
-                                alt="CORREIO BASTIDORES | Cortejado por Lula, MDB tenta entrar na chapa de Tarcísio" />
-                            <span class="category-tag politics">Política</span>
-                        </a>
-                        <div class="news-content">
-                            <h3>
-                                CORREIO BASTIDORES | Cortejado por Lula, MDB
-                                tenta entrar na chapa de Tarcísio
-                            </h3>
-                            <p>
-                                Partido é disputado por ambos os lados para
-                                compor as alianças nas eleições de 2026
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Fernando Molica</span>
-                                <span class="time">10 fev 2026</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Small Articles (Right - Stack of 3) -->
-                    <div class="modern-section-sidebar">
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanha.com.br/colunistas/tales-faria/2026/02/258565-alckmin-diz-que-nao-e-empecilho-mas-psb-insiste-na-chapa.html"
-                                target="_blank" class="news-image">
-                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_alckmin_joao_campos_lula-547946.jpg"
-                                    alt="Alckmin diz que não é empecilho, mas PSB insiste na chapa" />
-                                <span class="category-tag politics">[ELEIÇÕES]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Alckmin diz que não é empecilho, mas PSB
-                                    insiste na chapa
-                                </h4>
-                                <span class="author">Por Tales Faria</span>
+                                <h3 class="opinion-headline">
+                                    <a href="noticia.html?id=noticia-003">PLACEHOLDER</a>
+                                </h3>
                             </div>
                         </article>
 
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanha.com.br/politica/2026/02/258943-quaest-consolida-flavio-como-principal-adversario-de-lula.html"
-                                target="_blank" class="news-image">
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/praia-barra-lotada_1-min.jpeg"
-                                    alt="Quaest consolida Flávio como principal adversário de Lula" />
-                                <span class="category-tag politics">[PESQUISA]</span>
+                        <article class="mini-opinion-card">
+                            <a href="noticia.html?id=noticia-003" class="opinion-avatar-link">
+                                <img src="images/colunistas/sonia-paes-02.jpg" alt="Sonia Paes" class="opinion-avatar">
                             </a>
-                            <div class="news-content">
-                                <h4>
-                                    Quaest consolida Flávio como principal
-                                    adversário de Lula
-                                </h4>
-                                <span class="author">Por Correio da Manhã</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanha.com.br/colunistas/martha-imenes/2026/02/258161-correio-economico-ministros-defendem-mais-parcerias-em-investimentos.html"
-                                target="_blank" class="news-image">
-                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/12/01/280x175/1_imagem_materia-511196.jpeg"
-                                    alt="CORREIO ECONÔMICO | Ministros defendem mais parcerias" />
-                                <span class="category-tag politics">[ECONOMIA]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    CORREIO ECONÔMICO | Ministros defendem
-                                    mais parcerias em investimentos
-                                </h4>
-                                <span class="author">Por Martha Imenes</span>
+                            <div class="mini-opinion-content">
+                                <span class="author-name">Sonia Paes</span>
+                                <h3 class="opinion-headline">
+                                    <a href="noticia.html?id=noticia-003">PLACEHOLDER</a>
+                                </h3>
                             </div>
                         </article>
                     </div>
                 </div>
             </section>
 
-            <!-- Economy Section -->
-            <section id="economia" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Economia</h2>
-                    <a href="economia.html" class="section-link">Ver todos →</a>
-                </div>
-                <div class="modern-section-grid">
-                    <!-- Main Article (Left) -->
-                    <article class="modern-section-main">
-                        <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                            <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Custo-de-vida-sobe-038-em-dezembro-e-fecha-2025-em-alta.jpg"
-                                alt="Custo de vida sobe 0,38% em dezembro" />
-                            <span class="category-tag economy">[ECONOMIA]</span>
-                        </a>
-                        <div class="news-content">
-                            <h3>
-                                Custo de vida sobe 0,38% em dezembro e fecha
-                                2025 em alta
-                            </h3>
-                            <p>
-                                Índice de preços mostra variação positiva no
-                                último mês do ano
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Correio da Manhã SP</span>
-                                <span class="time">Há 5 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Small Articles (Right - Stack of 3) -->
-                    <div class="modern-section-sidebar">
-                        <article class="modern-section-item">
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/pexels-max-fischer-5868272_1.jpg"
-                                    alt="Black Friday na região" />
-                                <span class="category-tag economy">[CONSUMO]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Aproveite as melhores ofertas de Black
-                                    Friday na região até o fim de semana
-                                </h4>
-                                <span class="author">Por Jornal da Barra</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Sao-Paulo-inicia-2026-com-17-mil-obras-em-execucao-simultanea.jpg"
-                                    alt="São Paulo inicia 2026 com 1,7 mil obras" style="object-position: center" />
-                                <span class="category-tag economy">[INFRAESTRUTURA]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    São Paulo inicia 2026 com 1,7 mil obras
-                                    em execução simultânea
-                                </h4>
-                                <span class="author">Por Correio da Manhã SP</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Grace_Kelly_1.jpeg"
-                                    alt="Encontro de empreendedores na Barra" />
-                                <span class="category-tag economy">[EMPREENDEDORISMO]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    1ª Edição de encontro de empreendedores
-                                    acontece na Barra com networking e
-                                    palestras
-                                </h4>
-                                <span class="author">Por Jornal da Barra</span>
-                            </div>
-                        </article>
+            <!-- Seção Política (Padronizada) -->
+            <section id="politica" class="editorial-section">
+                <div class="container">
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">Política</h2>
+                        <a href="politica.html" class="section-link">Ver todos →</a>
                     </div>
-                </div>
-            </section>
-
-            <!-- Jornal do Servidor Section -->
-            <section id="jornal-servidor" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Jornal do Servidor</h2>
-                    <a href="https://jornaldoservidor.com.br/" target="_blank" class="section-link">Visitar site →</a>
-                </div>
-                <div class="modern-section-grid">
-                    <!-- Main Article (Left) -->
-                    <article class="modern-section-main">
-                        <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                            <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/73093.jpg"
-                                alt="Volta Redonda investe em educação no trânsito" />
-                            <span class="category-tag justice">[SERVIDOR PÚBLICO]</span>
-                        </a>
-                        <div class="news-content">
-                            <h3>
-                                Volta Redonda investe em educação no
-                                trânsito e Minicidade capacita cerca de 8
-                                mil pessoas em 2025
-                            </h3>
-                            <p>
-                                Programa de educação para o trânsito forma
-                                milhares de pessoas na Minicidade de Volta
-                                Redonda
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Correio Sul Fluminense</span>
-                                <span class="time">Há 4 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Small Articles (Right - Stack of 3) -->
-                    <div class="modern-section-sidebar">
-                        <article class="modern-section-item">
-                            <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                                <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-12-at-16.33.22.jpeg"
-                                    alt="VR: Prefeito Neto garante reajuste para servidores" />
-                                <span class="category-tag justice">[SERVIDORES]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    VR: Prefeito Neto garante reajuste para
-                                    servidores
-                                </h4>
-                                <span class="author">Por Correio Sul Fluminense</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                                <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-12-at-16.30.43.jpeg"
-                                    alt="Pinheiral avança na implantação de unidade do Corpo de Bombeiros" />
-                                <span class="category-tag justice">[SEGURANÇA]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Pinheiral avança na implantação de
-                                    unidade do Corpo de Bombeiros
-                                </h4>
-                                <span class="author">Por Correio Sul Fluminense</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Retomada-das-aulas-em-Guararema-comeca-na-segunda.jpg"
-                                    alt="Retomada das aulas em Guararema" />
-                                <span class="category-tag justice">[EDUCAÇÃO]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Retomada das aulas em Guararema começa
-                                    na segunda
-                                </h4>
-                                <span class="author">Por Correio da Manhã SP</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Jornal da Barra Section -->
-            <section id="jornal-barra" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Jornal da Barra</h2>
-                    <a href="https://www.jornaldabarra.com.br/" target="_blank" class="section-link">Visitar site →</a>
-                </div>
-                <div class="modern-section-grid">
-                    <!-- Main Article (Left) -->
-                    <article class="modern-section-main">
-                        <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                            <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Prefeitura_do_rio_1.jpeg"
-                                alt="Início do funcionamento do sistema aquaviário deve acontecer no final de 2026" />
-                            <span class="category-tag brasil">[TRANSPORTE]</span>
-                        </a>
-                        <div class="news-content">
-                            <h3>
-                                Início do funcionamento do sistema
-                                aquaviário deve acontecer no final de 2026
-                            </h3>
-                            <p>
-                                A princípio apenas a rota entre o Canal
-                                Marapendi e a estação do Jardim Oceânico
-                                devem estar funcionando
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Jornal da Barra</span>
-                                <span class="time">Há 2 dias</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Small Articles (Right - Stack of 3) -->
-                    <div class="modern-section-sidebar">
-                        <article class="modern-section-item">
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Rooftop_piscina_noite_cred_Patrick-Teixeira-1024x683.jpg"
-                                    alt="Lagune Barra Hotel reinaugura rooftop com decoração pensada para o verão" />
-                                <span class="category-tag culture">[TURISMO]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Lagune Barra Hotel reinaugura rooftop
-                                    com decoração pensada para o verão
-                                </h4>
-                                <span class="author">Por Jornal da Barra</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Divul_1.jpg"
-                                    alt="Sindicato de Hotéis do Rio reúne hotelaria da Zona Sudoeste" />
-                                <span class="category-tag economy">[NEGÓCIOS]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Sindicato de Hotéis do Rio reúne
-                                    hotelaria da Zona Sudoeste para
-                                    discussão de demandas
-                                </h4>
-                                <span class="author">Por Jornal da Barra</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Fachada-Afya-Unigranrio-Barra-da-Tijuca-_3_.jpg"
-                                    alt="Evento reúne esporte e turismo em um bate-papo inovador na Afya Unigranrio" />
-                                <span class="category-tag sports">[EVENTOS]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Evento reúne esporte e turismo em um
-                                    bate-papo inovador na Afya Unigranrio
-                                </h4>
-                                <span class="author">Por Jornal da Barra</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Campinas Section -->
-            <section id="campinas" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Campinas e Região</h2>
-                    <a href="https://www.correiodamanha.com.br/nacional/sao-paulo/campinas-e-regiao" target="_blank"
-                        class="section-link">Visitar site →</a>
-                </div>
-                <div class="modern-section-grid">
-                    <!-- Main Article (Left) -->
-                    <article class="modern-section-main">
-                        <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                            <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Campinas-aplica-91-multas-por-bafometro-em-dois-meses-maioria-e-por-recusa-ao-teste.jpg"
-                                alt="Campinas aplica 91 multas por bafômetro em dois meses" />
-                            <span class="category-tag brasil">[CAMPINAS]</span>
-                        </a>
-                        <div class="news-content">
-                            <h3>
-                                Campinas aplica 91 multas por bafômetro em
-                                dois meses; maioria é por recusa ao teste
-                            </h3>
-                            <p>
-                                Operações da Lei Seca resultaram em quase
-                                uma centena de multas na cidade
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Correio da Manhã SP</span>
-                                <span class="time">Há 3 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Small Articles (Right - Stack of 3) -->
-                    <div class="modern-section-sidebar">
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Campinas-confirma-1a-morte-por-gripe-em-2026.jpg"
-                                    alt="Campinas confirma 1ª morte por gripe em 2026" />
-                                <span class="category-tag brasil">[SAÚDE]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Campinas confirma 1ª morte por gripe em
-                                    2026
-                                </h4>
-                                <span class="author">Por Correio da Manhã SP</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Associacao-luta-para-manter-oficinas-de-saude-mental-em-Campinas-SP.jpg"
-                                    alt="Associação luta para manter oficinas de saúde mental" />
-                                <span class="category-tag justice">[SAÚDE MENTAL]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Associação luta para manter oficinas de
-                                    saúde mental em Campinas
-                                </h4>
-                                <span class="author">Por Correio da Manhã SP</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Segundo-final-de-semana-de-pre-Carnaval-acontece-nos-dias-7-e-8-de-fevereiro-em-Campinas.jpg"
-                                    alt="Pré-Carnaval acontece nos dias 7 e 8 de fevereiro" />
-                                <span class="category-tag culture">[CARNAVAL]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Segundo final de semana de pré-Carnaval
-                                    acontece nos dias 7 e 8 de fevereiro
-                                </h4>
-                                <span class="author">Por Correio da Manhã SP</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Justice Section -->
-            <section id="justica" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Justiça</h2>
-                    <a href="justica.html" class="section-link">Ver todos →</a>
-                </div>
-                <div class="modern-section-grid">
-                    <!-- Main Article (Left) -->
-                    <article class="modern-section-main">
-                        <a href="https://www.correiodamanha.com.br/" target="_blank" class="news-image">
-                            <img src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/29/600x378/1_tomaz_silva_ag_brasil-497625.jpeg"
-                                alt="Moraes ordena que governador do RJ esclareça ação policial" />
-                            <span class="category-tag justice">[JUSTIÇA]</span>
-                        </a>
-                        <div class="news-content">
-                            <h3>
-                                Moraes ordena que governador do RJ esclareça
-                                ação policial com ao menos 119 mortos
-                            </h3>
-                            <p>
-                                Incursão policial contra o Comando Vermelho
-                                foi realizada na terça-feira (28) nos
-                                complexos do Alemão e da Penha, Zona Norte
-                                da capital fluminense
-                            </p>
-                            <div class="article-meta">
-                                <span class="author">Por Correio da Manhã</span>
-                                <span class="time">Há 3 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Small Articles (Right - Stack of 3) -->
-                    <div class="modern-section-sidebar">
-                        <article class="modern-section-item">
-                            <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                                <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/01/varejao-corrupcao.jpg"
-                                    alt="Vereadores comentam sobre caso com o MPE" />
-                                <span class="category-tag justice">[POLÍTICA]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Vereadores comentam sobre caso com o MPE
-                                </h4>
-                                <span class="author">Por Correio Sul Fluminense</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Corregedoria-prende-PMs-suspeitos-serem-segurancas-de-dono-da-Transwolff.jpg"
-                                    alt="Corregedoria prende PMs suspeitos serem seguranças de dono da Transwolff" />
-                                <span class="category-tag justice">[CORREGEDORIA]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Corregedoria prende PMs suspeitos serem
-                                    seguranças de dono da Transwolff
-                                </h4>
-                                <span class="author">Por Correio da Manhã SP</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                                <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/detonacao-serra-araras.jpg"
-                                    alt="Detonação de rochas na Serra das Araras estende para os sábados" />
-                                <span class="category-tag justice">[MEIO AMBIENTE]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Detonação de rochas na Serra das Araras
-                                    estende para os sábados
-                                </h4>
-                                <span class="author">Por Correio Sul Fluminense</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- National/Regions Section -->
-            <section id="regioes" class="section regions-section">
-                <div class="section-header">
-                    <h2 class="section-title">Nacional e Regiões</h2>
-                </div>
-                <div class="regions-tabs">
-                    <button class="region-tab active" data-region="brasil">
-                        Brasil
-                    </button>
-                    <button class="region-tab" data-region="sp">
-                        São Paulo
-                    </button>
-                    <button class="region-tab" data-region="rio">
-                        Rio de Janeiro
-                    </button>
-                    <button class="region-tab" data-region="sul-fluminense">
-                        Sul Fluminense
-                    </button>
-                    <button class="region-tab" data-region="petropolitano">
-                        Petrópolis
-                    </button>
-                    <button class="region-tab" data-region="df">
-                        Distrito Federal
-                    </button>
-                </div>
-
-                <!-- Region: Brasil -->
-                <div class="region-content active" id="region-brasil">
-                    <div class="region-skeleton">
-                        <div class="regions-grid">
-                            <div class="region-main-item">
-                                <div class="skeleton skeleton-img"></div>
-                                <div class="skeleton skeleton-title"></div>
-                                <div class="skeleton skeleton-text"></div>
-                                <div class="skeleton skeleton-text short"></div>
-                            </div>
-                            <div class="region-sidebar-list">
-                                <div class="region-sidebar-item">
-                                    <div class="thumb skeleton"></div>
-                                    <div style="flex:1">
-                                        <div class="skeleton skeleton-text"></div>
-                                        <div class="skeleton skeleton-text short"></div>
-                                    </div>
-                                </div>
-                                <div class="region-sidebar-item">
-                                    <div class="skeleton skeleton-text"></div>
-                                    <div class="skeleton skeleton-text short"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="region-header">
-                        <h3>Notícias do Brasil</h3>
-                        <a href="https://cm-portal-one.vercel.app/" class="region-link">Ver todas as notícias →</a>
-                    </div>
-
-                    <div class="regions-grid">
-                        <article class="region-main-item">
-                            <a href="https://www.correiodamanha.com.br/estado-do-rio/2026/02/258979-pedido-de-vista-de-fux-interrompe-julgamento-do-stf-sobre-inelegibilidade-de-washington-reis.html"
-                                target="_blank" class="img-wrapper">
+                    <div class="editorial-section-grid">
+                        <a href="noticia.html?id=noticia-001" class="editorial-item">
+                            <div class="img-wrapper">
                                 <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/11/600x378/1_tmazs_070220_6466_860x515-548705.jpeg"
-                                    alt="Pedido de vista de Fux interrompe julgamento do STF" />
-                            </a>
-                            <div class="news-content">
-                                <h3>
-                                    Pedido de vista de Fux interrompe julgamento
-                                    do STF sobre inelegibilidade de Washington Reis
-                                </h3>
-                                <p>
-                                    Ministro Luiz Fux pediu vistas do processo, paralisando o julgamento sobre a
-                                    inelegibilidade do prefeito do Rio de Janeiro.
-                                </p>
-                                <div class="article-meta">
-                                    <span class="author">Por Correio da Manhã</span>
-                                    <span class="time">11 fev 2026</span>
-                                </div>
+                                    alt="STF">
                             </div>
-                        </article>
-
-                        <div class="region-sidebar-list">
-                            <article class="region-sidebar-item">
-                                <a href="https://www.correiodamanha.com.br/colunistas/rudolfo-lago/2026/02/258499-correio-politico-lula-pode-ir-com-o-mdb-de-vice.html"
-                                    target="_blank" class="thumb">
-                                    <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_renanlula-547728.jpg"
-                                        alt="Lula e MDB" />
-                                </a>
-                                <div class="news-content">
-                                    <h4>CORREIO POLÍTICO | Lula pode ir com o MDB de vice?</h4>
-                                    <span class="time">Há 4 horas</span>
-                                </div>
-                            </article>
-
-                            <article class="region-sidebar-item">
-                                <div class="news-content">
-                                    <h4>STF forma maioria favorável à retirada de direitos políticos de condenados</h4>
-                                    <span class="time">Há 8 horas</span>
-                                </div>
-                            </article>
-
-                            <article class="region-sidebar-item">
-                                <div class="news-content">
-                                    <h4>Senado aprova projeto que muda regras do seguro-desemprego</h4>
-                                    <span class="time">Há 10 horas</span>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="region-empty-state">
-                        <p>Ainda não há atualizações para esta região hoje.</p>
-                    </div>
-                </div>
-
-                <!-- Region: SP -->
-                <div class="region-content" id="region-sp">
-                    <div class="region-skeleton">
-                        <div class="regions-grid">
-                            <div class="region-main-item">
-                                <div class="skeleton skeleton-img"></div>
-                                <div class="skeleton skeleton-title"></div>
-                                <div class="skeleton skeleton-text"></div>
-                                <div class="skeleton skeleton-text short"></div>
-                            </div>
-                            <div class="region-sidebar-list">
-                                <div class="region-sidebar-item">
-                                    <div class="thumb skeleton"></div>
-                                    <div style="flex:1">
-                                        <div class="skeleton skeleton-text"></div>
-                                        <div class="skeleton skeleton-text short"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="region-header">
-                        <h3>Notícias de São Paulo</h3>
-                        <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="region-site-button">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Visitar Correio da Manhã SP
+                            <span class="category-tag">Poder</span>
+                            <h3>STF julga validade de provas em acordo da Odebrecht</h3>
                         </a>
-                    </div>
-                    <div class="regions-grid">
-                        <article class="region-main-item">
+                        <a href="noticia.html?id=noticia-002" class="editorial-item">
                             <div class="img-wrapper">
-                                <img src="https://placehold.co/400x250/e5e5e5/333333?text=São+Paulo" alt="São Paulo" />
+                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2023/01/17/280x175/1_economia___nacional___baleia_rossi-119343.jpg"
+                                    alt="Congresso">
                             </div>
-                            <div class="news-content">
-                                <h4>Tarcísio anuncia novos investimentos em infraestrutura para 2026</h4>
-                                <span class="time">Há 2 horas</span>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="region-empty-state">
-                        <p>Ainda não há atualizações para esta região hoje.</p>
-                    </div>
-                </div>
-
-                <!-- Region: Rio -->
-                <div class="region-content" id="region-rio">
-                    <div class="region-skeleton">
-                        <div class="regions-grid">
-                            <div class="region-main-item">
-                                <div class="skeleton skeleton-img"></div>
-                                <div class="skeleton skeleton-title"></div>
-                                <div class="skeleton skeleton-text"></div>
-                                <div class="skeleton skeleton-text short"></div>
-                            </div>
-                            <div class="region-sidebar-list">
-                                <div class="region-sidebar-item">
-                                    <div class="thumb skeleton"></div>
-                                    <div style="flex:1">
-                                        <div class="skeleton skeleton-text"></div>
-                                        <div class="skeleton skeleton-text short"></div>
-                                    </div>
-                                </div>
-                                <div class="region-sidebar-item">
-                                    <div class="skeleton skeleton-text"></div>
-                                    <div class="skeleton skeleton-text short"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="region-header">
-                        <h3>Notícias do Rio de Janeiro</h3>
-                        <a href="https://www.correiodamanha.com.br/" target="_blank" class="region-site-button">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Visitar Correio da Manhã RJ
+                            <span class="category-tag">Legislativo</span>
+                            <h3>Câmara aprova texto-base de reforma ministerial</h3>
                         </a>
-                    </div>
-                    <div class="regions-grid">
-                        <article class="region-main-item">
-                            <a href="https://www.correiodamanha.com.br/rio-de-janeiro/2026/02/258957-shakira-e-a-grande-estrela-do-todo-mundo-no-rio-de-2026.html"
-                                target="_blank" class="img-wrapper">
-                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/11/280x175/1_shakira_performance_-548768.jpg"
-                                    alt="Shakira" />
-                            </a>
-                            <div class="news-content">
-                                <h3>Shakira é a grande estrela do 'Todo Mundo no Rio' de 2026</h3>
-                                <p>Cantora colombiana confirmada para o megaevento na Praia de Copacabana.</p>
-                                <div class="article-meta">
-                                    <span class="author">Por Correio da Manhã</span>
-                                    <span class="time">11 fev 2026</span>
-                                </div>
-                            </div>
-                        </article>
-                        <div class="region-sidebar-list">
-                            <article class="region-sidebar-item">
-                                <a href="#" class="thumb">
-                                    <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_enchentes_petrlopolis-547598.jpg"
-                                        alt="Enchentes" />
-                                </a>
-                                <div class="news-content">
-                                    <h4>Governo envia suporte para cidades afetadas pelas chuvas</h4>
-                                    <span class="time">10 fev 2026</span>
-                                </div>
-                            </article>
-                            <article class="region-sidebar-item">
-                                <div class="news-content">
-                                    <h4>Castro e Lewandowski criam escritório de combate ao crime organizado</h4>
-                                    <span class="time">29 out 2025</span>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="region-empty-state">
-                        <p>Ainda não há atualizações para esta região hoje.</p>
-                    </div>
-                </div>
-
-                <!-- Region: Sul Fluminense -->
-                <div class="region-content" id="region-sul-fluminense">
-                    <div class="region-skeleton">
-                        <div class="regions-grid">
-                            <div class="region-main-item">
-                                <div class="skeleton skeleton-img"></div>
-                                <div class="skeleton skeleton-title"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="region-header">
-                        <h3>Notícias do Sul Fluminense</h3>
-                        <a href="https://correiosulfluminense.com.br/" target="_blank" class="region-site-button">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Visitar Correio Sul Fluminense
-                        </a>
-                    </div>
-                    <div class="regions-grid">
-                        <article class="region-main-item">
+                        <a href="noticia.html?id=noticia-002" class="editorial-item">
                             <div class="img-wrapper">
-                                <img src="https://placehold.co/400x250/e5e5e5/333333?text=Sul+Fluminense"
-                                    alt="Sul Fluminense" />
+                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_alckmin_joao_campos_lula-547946.jpg"
+                                    alt="Eleições">
                             </div>
-                            <div class="news-content">
-                                <h4>Prefeito de Volta Redonda garante reajuste para servidores em 2026</h4>
-                                <span class="time">Há 3 horas</span>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="region-empty-state">
-                        <p>Ainda não há atualizações para esta região hoje.</p>
-                    </div>
-                </div>
-
-                <!-- Region: Petrópolis -->
-                <div class="region-content" id="region-petropolitano">
-                    <div class="region-skeleton">
-                        <div class="regions-grid">
-                            <div class="region-main-item">
-                                <div class="skeleton skeleton-img"></div>
-                                <div class="skeleton skeleton-title"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="region-header">
-                        <h3>Notícias de Petrópolis</h3>
-                        <a href="https://correiopetropolitano.com.br/" target="_blank" class="region-site-button">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Visitar Correio Petropolitano
+                            <span class="category-tag">2026</span>
+                            <h3>Articulação para 2026: PSD e MDB iniciam conversas</h3>
                         </a>
-                    </div>
-                    <div class="regions-grid">
-                        <article class="region-main-item">
+                        <a href="noticia.html?id=noticia-005" class="editorial-item">
                             <div class="img-wrapper">
-                                <img src="https://placehold.co/400x250/e5e5e5/333333?text=Petrópolis"
-                                    alt="Petrópolis" />
+                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/praia-barra-lotada_1-min.jpeg"
+                                    alt="Governo">
                             </div>
-                            <div class="news-content">
-                                <h4>Defesa Civil alerta para novas chuvas na Região Serrana</h4>
-                                <span class="time">Há 5 horas</span>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="region-empty-state">
-                        <p>Ainda não há atualizações para esta região hoje.</p>
-                    </div>
-                </div>
-
-                <!-- Region: DF -->
-                <div class="region-content" id="region-df">
-                    <div class="region-skeleton">
-                        <div class="regions-grid">
-                            <div class="region-main-item">
-                                <div class="skeleton skeleton-img"></div>
-                                <div class="skeleton skeleton-title"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="region-header">
-                        <h3>Notícias do Distrito Federal</h3>
-                        <a href="https://correiodamanhadf.com.br/" target="_blank" class="region-site-button">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Visitar Correio da Manhã DF
+                            <span class="category-tag">Executivo</span>
+                            <h3>Governo federal libera verba para contenção de encostas</h3>
                         </a>
-                    </div>
-                    <div class="regions-grid">
-                        <article class="region-main-item">
-                            <div class="img-wrapper">
-                                <img src="https://placehold.co/400x250/e5e5e5/333333?text=Distrito+Federal" alt="DF" />
-                            </div>
-                            <div class="news-content">
-                                <h4>Congresso Nacional retoma atividades com pauta econômica</h4>
-                                <span class="time">Há 1 hora</span>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="region-empty-state">
-                        <p>Ainda não há atualizações para esta região hoje.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Advertisement Placeholder -->
-            <div class="ad-placeholder">
-                <div class="ad-label">PUBLICIDADE</div>
-                <div class="ad-space">
-                    <img src="https://placehold.co/970x250/f0f0f0/999999?text=Espaço+Publicitário+-+970x250"
-                        alt="Espaço publicitário" />
-                </div>
-            </div>
-
-            <!-- Culture Section -->
-            <section id="cultura" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Cultura</h2>
-                    <a href="cultura.html" class="section-link">Ver todos →</a>
-                </div>
-                <div class="modern-section-grid">
-                    <!-- Main Article (Left) -->
-                    <article class="modern-section-main">
-                        <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                            <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
-                                alt="Do festival de chocolate ao show de pagode na Barra" </a>
-                            <div class="news-content">
-                                <h3>
-                                    Do festival de chocolate ao show de pagode:
-                                    A Barra da Tijuca garante sua diversão neste
-                                    final de semana
-                                </h3>
-                                <p>
-                                    Confira a lista de eventos para a Barra da
-                                    Tijuca e região preparada pelo Jornal da
-                                    Barra
-                                </p>
-                                <div class="article-meta">
-                                    <span class="author">Por Jornal da Barra</span>
-                                    <span class="time">Há 6 horas</span>
-                                </div>
-                            </div>
-                    </article>
-
-                    <!-- Small Articles (Right - Stack of 3) -->
-                    <div class="modern-section-sidebar">
-                        <article class="modern-section-item">
-                            <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                                <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/11/ines-pandelo-filme-agente-secreto.jpg"
-                                    alt="Inês Pandeló comemora vitória do filme" />
-                                <span class="category-tag culture">[CINEMA]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Inês Pandeló comemora vitória do filme
-                                    'O Agente Secreto'
-                                </h4>
-                                <span class="author">Por Correio Sul Fluminense</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Design_sem_nome_1.jpg"
-                                    alt="Festival Tupiniquim une música, arte e meio ambiente" />
-                                <span class="category-tag culture">[FESTIVAIS]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Festival Tupiniquim une música, arte e
-                                    meio ambiente em Vargem Pequena
-                                </h4>
-                                <span class="author">Por Jornal da Barra</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/CULTSP-PRO-oferece-programacao-cultural-gratuita-em-fevereiro-no-Bom-Retiro.jpg"
-                                    alt="CULTSP PRO oferece programação cultural gratuita" />
-                                <span class="category-tag culture">[EVENTOS]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    CULTSP PRO oferece programação cultural
-                                    gratuita em fevereiro no Bom Retiro
-                                </h4>
-                                <span class="author">Por Correio da Manhã SP</span>
-                            </div>
-                        </article>
+            <!-- Seção Justiça (Padronizada) -->
+            <section id="justica" class="editorial-section">
+                <div class="container">
+                    <div class="section-title-wrap">
+                        <h2 class="section-title">Justiça</h2>
+                        <a href="justica.html" class="section-link">Ver todos →</a>
                     </div>
-                </div>
-            </section>
-
-            <!-- Sports Section -->
-            <section id="esportes" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Esportes</h2>
-                    <a href="esportes.html" class="section-link">Ver todos →</a>
-                </div>
-                <div class="modern-section-grid">
-                    <!-- Main Article (Left) -->
-                    <article class="modern-section-main">
-                        <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                            <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/flamengo-portuguesa-raulino.jpg"
-                                alt="Flamengo e Portuguesa empatam no Raulino" />
-                            <span class="category-tag sports">[ESPORTES]</span>
+                    <div class="editorial-section-grid">
+                        <a href="noticia.html?id=noticia-001" class="editorial-item">
+                            <div class="img-wrapper">
+                                <img src="https://placehold.co/600x400/eeeeee/999999?text=Justiça+1" alt="Justiça 1">
+                            </div>
+                            <span class="category-tag">Judiciário</span>
+                            <h3>Novas regras para concursos públicos são debatidas</h3>
                         </a>
-                        <div class="news-content">
-                            <h3>
-                                Flamengo e Portuguesa empatam no Raulino
-                            </h3>
-                            <p>
-                                Partida realizada no estádio Raulino de
-                                Oliveira, em Volta Redonda, terminou
-                                empatada
+                        <a href="noticia.html?id=noticia-006" class="editorial-item">
+                            <span class="category-tag">Tribunais</span>
+                            <h3>STJ revisa tese sobre direito do consumidor</h3>
+                            <p>Ministros analisam alcance da responsabilidade civil em serviços digitais e proteção ao
+                                usuário final.</p>
+                        </a>
+                        <a href="noticia.html?id=noticia-001" class="editorial-item">
+                            <div class="img-wrapper">
+                                <img src="https://placehold.co/600x400/eeeeee/999999?text=Justiça+3" alt="Justiça 3">
+                            </div>
+                            <span class="category-tag">Direito</span>
+                            <h3>CNJ implementa novas diretrizes para processos digitais</h3>
+                        </a>
+                        <a href="noticia.html?id=noticia-006" class="editorial-item">
+                            <span class="category-tag">Advocacia</span>
+                            <h3>Exame da OAB registra recorde de inscritos em 2026</h3>
+                            <p>Mais de 500 mil candidatos buscam aprovação na prova que unifica as diretrizes da Ordem.
                             </p>
-                            <div class="article-meta">
-                                <span class="author">Por Correio Sul Fluminense</span>
-                                <span class="time">Há 8 horas</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Small Articles (Right - Stack of 3) -->
-                    <div class="modern-section-sidebar">
-                        <article class="modern-section-item">
-                            <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                                <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/estadio-raulino-gramado.jpg"
-                                    alt="Estádio Raulino terá gramado renovado" />
-                                <span class="category-tag sports">[INFRAESTRUTURA]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Estádio Raulino de Oliveira terá gramado
-                                    renovado para jogo entre Portuguesa e
-                                    Flamengo
-                                </h4>
-                                <span class="author">Por Correio Sul Fluminense</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                                <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/volta-redonda-copinha.jpg"
-                                    alt="Sub-20 do Voltaço perde partida" style="object-position: center" />
-                                <span class="category-tag sports">[COPINHA]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Sub-20 do Voltaço perde partida por 3 a
-                                    2 na Copinha
-                                </h4>
-                                <span class="author">Por Correio Sul Fluminense</span>
-                            </div>
-                        </article>
-
-                        <article class="modern-section-item">
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Fachada-Afya-Unigranrio-Barra-da-Tijuca-_3_.jpg"
-                                    alt="Evento reúne esporte e turismo na Afya Unigranrio" />
-                                <span class="category-tag sports">[EVENTOS]</span>
-                            </a>
-                            <div class="news-content">
-                                <h4>
-                                    Evento reúne esporte e turismo em um
-                                    bate-papo inovador na Afya Unigranrio
-                                </h4>
-                                <span class="author">Por Jornal da Barra</span>
-                            </div>
-                        </article>
+                        </a>
                     </div>
                 </div>
             </section>
 
-            <!-- Newsletter Section -->
-            <section class="newsletter-section">
-                <div class="newsletter-content">
-                    <h3>Receba as principais notícias do dia</h3>
-                    <p>
-                        Cadastre-se gratuitamente e fique por dentro de tudo
-                        que acontece no Brasil e no mundo.
-                    </p>
-                    <form class="newsletter-form" id="newsletter-form">
-                        <input type="email" placeholder="Seu melhor e-mail" required id="newsletter-email" />
-                        <button type="submit">Inscrever-se</button>
-                    </form>
+
+            <!-- Jornal do Servidor (Destaque Wrapper) -->
+            <section class="jornal-servidor-wrapper">
+                <div class="jornal-servidor-inner">
+                    <div class="layout-with-sidebar">
+                        <div class="main-column">
+                            <h2 class="section-title">JORNAL DO SERVIDOR</h2>
+                            <div class="servidor-grid">
+                                <a href="noticia.html?id=noticia-002" class="servidor-main">
+                                    <div class="img-wrapper">
+                                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/pexels-max-fischer-5868272_1.jpg"
+                                            alt="Servidor Público">
+                                    </div>
+                                    <h3>Reforma Administrativa: O que muda para o servidor em 2026?</h3>
+                                </a>
+                                <a href="noticia.html?id=noticia-007" class="servidor-side">
+                                    <div class="img-wrapper">
+                                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Sao-Paulo-inicia-2026-com-17-mil-obras-em-execucao-simultanea.jpg"
+                                            alt="Obras">
+                                    </div>
+                                    <h4>Plano de previdência complementar entra em nova fase</h4>
+                                </a>
+                                <a href="noticia.html?id=noticia-010" class="servidor-side">
+                                    <div class="img-wrapper">
+                                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Grace_Kelly_1.jpeg"
+                                            alt="Grace Kelly">
+                                    </div>
+                                    <h4>Calendário de pagamentos do primeiro semestre é divulgado</h4>
+                                </a>
+                            </div>
+                        </div>
+                        <aside class="sidebar-column">
+                            <div style="position: sticky; top: 20px;">
+                                <span
+                                    style="font-size:10px; color:#999; display:block; text-align:center; margin-bottom:5px;">Publicidade</span>
+                                <img src="images/seguranca_300x600.gif" alt="Publicidade"
+                                    style="max-width:100%; height:auto;">
+                            </div>
+                        </aside>
+                    </div>
                 </div>
             </section>
-        </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4 class="footer-title">Sobre</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Quem somos</a></li>
-                        <li><a href="#">Expediente</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Editorias</h4>
-                    <ul class="footer-links">
-                        <li><a href="opiniao.html">Opinião</a></li>
-                        <li><a href="politica.html">Política</a></li>
-                        <li><a href="economia.html">Economia</a></li>
-                        <li><a href="justica.html">Justiça</a></li>
-                        <li><a href="esportes.html">Esportes</a></li>
-                        <li><a href="cultura.html">Cultura</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Portais Regionais</h4>
-                    <ul class="footer-links">
-                        <li>
-                            <a href="https://www.correiodamanha.com.br/" target="_blank">Correio da Manhã</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Correio da Manhã SP</a>
-                        </li>
-                        <li>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul Fluminense</a>
-                        </li>
-                        <li>
-                            <a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a>
-                        </li>
-                        <li>
-                            <a href="https://www.correiodamanhadf.com.br/" target="_blank">Correio da Manhã DF</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Contato</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Fale conosco</a></li>
-                        <li><a href="#">Trabalhe conosco</a></li>
-                        <li><a href="#">Anuncie</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-logo">PORTAL CM</div>
-                <p>&copy; 2026 Portal CM. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+            <main class="main-content">
+                <div class="container">
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-    </button>
+                    <!-- Nacional e Regiões Section -->
+                    <section id="regioes" class="regions-dynamic-section">
+                        <div class="container">
+                            <div class="section-header">
+                                <h2 class="section-title">Nacional e Regiões</h2>
+                            </div>
 
-    <script src="js/main.js"></script>
+                            <div class="tabs-container">
+                                <span class="tab-item active" data-region="brasil">Brasil</span>
+                                <span class="tab-item" data-region="sp">São Paulo</span>
+                                <span class="tab-item" data-region="rj">Rio de Janeiro</span>
+                                <span class="tab-item" data-region="sulFluminense">Sul Fluminense</span>
+                                <span class="tab-item" data-region="petropolis">Petrópolis</span>
+                                <span class="tab-item" data-region="df">Distrito Federal</span>
+                            </div>
+
+                            <div id="region-content-render">
+                                <!-- Dinamicamente preenchido pelo js/regions-dynamic.js -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Esportes Section (Padronizada) -->
+                    <section id="esportes" class="editorial-section">
+                        <div class="container">
+                            <div class="section-title-wrap">
+                                <h2 class="section-title">Esportes</h2>
+                                <a href="esportes.html" class="section-link">Ver todos →</a>
+                            </div>
+                            <div class="editorial-section-grid">
+                                <a href="noticia.html?id=noticia-008" class="editorial-item">
+                                    <div class="img-wrapper">
+                                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/flamengo-portuguesa-raulino.jpg"
+                                            alt="Futebol">
+                                    </div>
+                                    <span class="category-tag">Carioca</span>
+                                    <h3>Flamengo e Portuguesa empatam no Raulino</h3>
+                                </a>
+                                <a href="noticia.html?id=noticia-008" class="editorial-item">
+                                    <div class="img-wrapper">
+                                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/estadio-raulino-gramado.jpg"
+                                            alt="Estádio">
+                                    </div>
+                                    <span class="category-tag">Infra</span>
+                                    <h3>Estádio Raulino de Oliveira terá gramado renovado</h3>
+                                </a>
+                                <a href="noticia.html?id=noticia-010" class="editorial-item">
+                                    <div class="img-wrapper">
+                                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/volta-redonda-copinha.jpg"
+                                            alt="Copinha">
+                                    </div>
+                                    <span class="category-tag">Sub-20</span>
+                                    <h3>Sub-20 do Voltaço perde partida na Copinha</h3>
+                                </a>
+                                <a href="noticia.html?id=noticia-008" class="editorial-item">
+                                    <div class="img-wrapper">
+                                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Fachada-Afya-Unigranrio-Barra-da-Tijuca-_3_.jpg"
+                                            alt="Afya">
+                                    </div>
+                                    <span class="category-tag">Encontro</span>
+                                    <h3>Evento reúne esporte e turismo na Afya Unigranrio</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cultura Section (Padronizada) -->
+                    <section id="cultura" class="editorial-section">
+                        <div class="container">
+                            <div class="section-title-wrap">
+                                <h2 class="section-title">Cultura</h2>
+                                <a href="cultura.html" class="section-link">Ver todos →</a>
+                            </div>
+                            <div class="editorial-section-grid">
+                                <a href="noticia.html?id=noticia-004" class="editorial-item">
+                                    <div class="img-wrapper">
+                                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
+                                            alt="Chocolate">
+                                    </div>
+                                    <span class="category-tag">Barra</span>
+                                    <h3>Festival de chocolate agita a Barra neste domingo</h3>
+                                </a>
+                                <a href="noticia.html?id=noticia-009" class="editorial-item">
+                                    <div class="img-wrapper">
+                                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/11/ines-pandelo-filme-agente-secreto.jpg"
+                                            alt="Cinema">
+                                    </div>
+                                    <span class="category-tag">Cinema</span>
+                                    <h3>Inês Pandeló comemora vitória do filme 'O Agente Secreto'</h3>
+                                </a>
+                                <a href="noticia.html?id=noticia-004" class="editorial-item">
+                                    <div class="img-wrapper">
+                                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Design_sem_nome_1.jpg"
+                                            alt="Festivais">
+                                    </div>
+                                    <span class="category-tag">Música</span>
+                                    <h3>Festival Tupiniquim une música e arte em Vargem Pequena</h3>
+                                </a>
+                                <a href="noticia.html?id=noticia-009" class="editorial-item">
+                                    <div class="img-wrapper">
+                                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/CULTSP-PRO-oferece-programacao-cultural-gratuita-em-fevereiro-no-Bom-Retiro.jpg"
+                                            alt="Educação">
+                                    </div>
+                                    <span class="category-tag">Agenda</span>
+                                    <h3>CULTSP PRO oferece programação gratuita em SP</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </main>
+
+            <!-- TV Correio da Manhã Ao Vivo Section -->
+            <section class="section live-section">
+                <div class="container">
+                    <h2 class="section-title"><span class="live-indicator">●</span> Ao Vivo: TV Correio da Manhã</h2>
+                    <div class="responsive-video-container">
+                        <iframe src="https://www.youtube.com/embed/Oup5MreJeJw?autoplay=1&mute=1"
+                            title="Transmissão Ao Vivo" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Global Footer Placeholder -->
+            <div id="global-footer"></div>
+
+            <script src="js/mock-data.js"></script>
+            <script src="js/news-list.js"></script>
+            <script src="js/main.js"></script>
+            <script src="js/regions-dynamic.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    // NewsList rendering for other sections can go here if needed
+                });
+            </script>
 </body>
 
 </html>

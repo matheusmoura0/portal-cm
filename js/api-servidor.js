@@ -40,10 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // Construção do HTML do card
             const isFeatured = index === 0 ? 'featured' : ''; // Se quiser o primeiro em destaque
             
+            const imageHTML = imageUrl.includes('placehold.co') 
+                ? `<div class="news-image no-image-fallback">CM</div>`
+                : `<img src="${imageUrl}" alt="Imagem da notícia" onerror="this.outerHTML='<div class=\'news-image no-image-fallback\'>CM</div>'">`;
+
             const cardHTML = `
                 <article class="news-card ${isFeatured}">
                     <a href="${link}" target="_blank" class="news-image">
-                        <img src="${imageUrl}" alt="Imagem da notícia" onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'">
+                        ${imageHTML}
                     </a>
                     <div class="news-content">
                         <span class="category-tag">Servidor</span>

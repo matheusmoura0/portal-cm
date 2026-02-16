@@ -31,36 +31,25 @@
 
 
     <!-- AO VIVO Live Coverage Section -->
-    <section class="live-coverage" id="ao-vivo">
-        <div class="container">
-            <div class="live-header">
-                <div class="live-indicator">
-                    <span class="pulse"></span>
-                    <span class="live-label">AO VIVO</span>
-                </div>
+    <!--<section class="breaking-news" id="ao-vivo">
+        <div class="container breaking-container">
+            <div class="breaking-header">
+                <span class="breaking-label">AO VIVO</span>
                 <button class="live-expand-btn" id="live-expand-btn" aria-label="Expandir cobertura">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </button>
             </div>
-            <div class="live-ticker-wrapper">
-                <div class="live-ticker" id="live-ticker">
-                    <span class="live-item">🔴 VR: Prefeito Neto garante reajuste para
-                        servidores</span>
-                    <span class="live-item">🔴 Nunes rejeita aliança entre MDB e PT em
-                        2026</span>
-                    <span class="live-item">🔴 Início do sistema aquaviário deve acontecer no
-                        final de 2026</span>
-                    <span class="live-item">🔴 Flamengo e Portuguesa empatam no Raulino</span>
-                    <span class="live-item">🔴 STF forma maioria favorável à mudança na Lei das
-                        Estatais</span>
-                    <span class="live-item">🔴 Congresso aprova projeto de reforma tributária
-                        em primeiro turno</span>
-                </div>
-            </div>
-        </div>
-        <div class="live-panel" id="live-panel">
+            <div class="ticker-wrapper">
+                <div class="ticker-content" id="breaking-news-ticker">
+                    <span>🔴 VR: Prefeito Neto garante reajuste para servidores</span>
+                    <span>🔴 Nunes rejeita aliança entre MDB e PT em 2026</span>
+                    <span>🔴 Início do sistema aquaviário deve acontecer no final de 2026</span>
+                    <span>🔴 Flamengo e Portuguesa empatam no Raulino</span>
+                    <span>🔴 STF forma maioria favorável à mudança na Lei das Estatais</span>
+                    <span>🔴 Congresso aprova projeto de reforma tributária em primeiro turno</span>
+    <!--<div class="live-panel" id="live-panel">
             <div class="container">
                 <div class="live-panel-header">
                     <h2>Cobertura Ao Vivo</h2>
@@ -196,7 +185,7 @@
                     <!-- Manchete Primária (8 colunas) -->
                     <article class="main-headline">
                         <a href="noticia.html?id=noticia-002" class="image-wrapper">
-                            <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
+                            <img onerror="this.outerHTML='<div class=\'news-image no-image-fallback\'>CM</div>'"
                                 src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_renanlula-547728.jpg"
                                 alt="Lula e MDB" />
                         </a>
@@ -384,7 +373,8 @@
                     <div class="editorial-section-grid">
                         <a href="noticia.html?id=noticia-001" class="editorial-item">
                             <div class="img-wrapper">
-                                <img src="https://placehold.co/600x400/eeeeee/999999?text=Justiça+1" alt="Justiça 1">
+                                <img onerror="this.outerHTML='<div class=\'news-image no-image-fallback\'>CM</div>'"
+                                    src="https://placehold.co/600x400/eeeeee/999999?text=Justiça+1" alt="Justiça 1">
                             </div>
                             <span class="category-tag">Judiciário</span>
                             <h3>Novas regras para concursos públicos são debatidas</h3>
@@ -397,7 +387,8 @@
                         </a>
                         <a href="noticia.html?id=noticia-001" class="editorial-item">
                             <div class="img-wrapper">
-                                <img src="https://placehold.co/600x400/eeeeee/999999?text=Justiça+3" alt="Justiça 3">
+                                <img onerror="this.outerHTML='<div class=\'news-image no-image-fallback\'>CM</div>'"
+                                    src="https://placehold.co/600x400/eeeeee/999999?text=Justiça+3" alt="Justiça 3">
                             </div>
                             <span class="category-tag">Direito</span>
                             <h3>CNJ implementa novas diretrizes para processos digitais</h3>
@@ -552,7 +543,7 @@
             </main>
 
             <!-- TV Correio da Manhã Ao Vivo Section -->
-            <section class="section live-section">
+            <!-- <section class="section live-section">
                 <div class="container">
                     <h2 class="section-title"><span class="live-indicator">●</span> Ao Vivo: TV Correio da Manhã</h2>
                     <div class="responsive-video-container">

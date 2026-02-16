@@ -904,7 +904,7 @@ const Newsletter = {
 
 const LiveCoverage = {
   init() {
-    this.ticker = document.getElementById("live-ticker");
+    this.ticker = document.getElementById("breaking-news-ticker");
     this.panel = document.getElementById("live-panel");
     this.expandBtn = document.getElementById("live-expand-btn");
     this.closeBtn = document.getElementById("live-close-btn");

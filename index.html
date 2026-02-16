@@ -419,28 +419,8 @@
                     <div class="layout-with-sidebar">
                         <div class="main-column">
                             <h2 class="section-title">JORNAL DO SERVIDOR</h2>
-                            <div class="servidor-grid">
-                                <a href="noticia.html?id=noticia-002" class="servidor-main">
-                                    <div class="img-wrapper">
-                                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/pexels-max-fischer-5868272_1.jpg"
-                                            alt="Servidor Público">
-                                    </div>
-                                    <h3>Reforma Administrativa: O que muda para o servidor em 2026?</h3>
-                                </a>
-                                <a href="noticia.html?id=noticia-007" class="servidor-side">
-                                    <div class="img-wrapper">
-                                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Sao-Paulo-inicia-2026-com-17-mil-obras-em-execucao-simultanea.jpg"
-                                            alt="Obras">
-                                    </div>
-                                    <h4>Plano de previdência complementar entra em nova fase</h4>
-                                </a>
-                                <a href="noticia.html?id=noticia-010" class="servidor-side">
-                                    <div class="img-wrapper">
-                                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Grace_Kelly_1.jpeg"
-                                            alt="Grace Kelly">
-                                    </div>
-                                    <h4>Calendário de pagamentos do primeiro semestre é divulgado</h4>
-                                </a>
+                            <div id="jornal-servidor-grid" class="newspaper-grid">
+                                <div class="loading-spinner" style="display: block; margin: 40px auto;"></div>
                             </div>
                         </div>
                         <aside class="sidebar-column">
@@ -592,6 +572,7 @@
             <script src="js/news-list.js"></script>
             <script src="js/main.js"></script>
             <script src="js/regions-dynamic.js"></script>
+            <script src="js/api-servidor.js"></script>
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     // NewsList rendering for other sections can go here if needed

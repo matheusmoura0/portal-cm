@@ -497,51 +497,47 @@
     </main>
     <div id="global-footer"></div>
 
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-    </button>
-
+    <script src="js/main.js"></script>
     <script>
         // Load More functionality
         const loadMoreBtn = document.getElementById("load-more-btn");
         const loadingSpinner = document.getElementById("loading-spinner");
         const hiddenCards = document.querySelectorAll(".news-card.hidden");
-        let visibleCount = 0;
-        const cardsPerLoad = 3;
 
-        loadMoreBtn.addEventListener("click", function () {
-            loadingSpinner.style.display = "block";
-            loadMoreBtn.disabled = true;
+        if (loadMoreBtn) {
+            let visibleCount = 0;
+            const cardsPerLoad = 3;
 
-            setTimeout(() => {
-                let shown = 0;
-                for (
-                    let i = 0;
-                    i < hiddenCards.length && shown < cardsPerLoad;
-                    i++
-                ) {
-                    if (hiddenCards[i].classList.contains("hidden")) {
-                        hiddenCards[i].classList.remove("hidden");
-                        shown++;
+            loadMoreBtn.addEventListener("click", function () {
+                if (loadingSpinner) loadingSpinner.style.display = "block";
+                loadMoreBtn.disabled = true;
+
+                setTimeout(() => {
+                    let shown = 0;
+                    for (
+                        let i = 0;
+                        i < hiddenCards.length && shown < cardsPerLoad;
+                        i++
+                    ) {
+                        if (hiddenCards[i].classList.contains("hidden")) {
+                            hiddenCards[i].classList.remove("hidden");
+                            shown++;
+                        }
                     }
-                }
 
-                visibleCount += shown;
-                loadingSpinner.style.display = "none";
-                loadMoreBtn.disabled = false;
+                    visibleCount += shown;
+                    if (loadingSpinner) loadingSpinner.style.display = "none";
+                    loadMoreBtn.disabled = false;
 
-                const remainingHidden =
-                    document.querySelectorAll(".news-card.hidden");
-                if (remainingHidden.length === 0) {
-                    loadMoreBtn.textContent = "Não há mais notícias";
-                    loadMoreBtn.disabled = true;
-                }
-            }, 500);
-        });
+                    const remainingHidden =
+                        document.querySelectorAll(".news-card.hidden");
+                    if (remainingHidden.length === 0) {
+                        loadMoreBtn.textContent = "Não há mais notícias";
+                        loadMoreBtn.disabled = true;
+                    }
+                }, 500);
+            });
+        }
     </script>
 </body>
 

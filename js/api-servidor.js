@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const link = post.link; // Link original da matéria
             
             // Tratamento para extrair a imagem de destaque do _embedded
-            let imageUrl = 'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem';
+            const fallbackImage = 'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem';
+            let imageUrl = fallbackImage;
             if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0].source_url) {
                 imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
             }
@@ -40,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Construção do HTML do card
             const isFeatured = index === 0 ? 'featured' : ''; // Se quiser o primeiro em destaque
             
-            const imageHTML = imageUrl.includes('placehold.co') 
+            const imageHTML = (imageUrl === fallbackImage || imageUrl.includes('placehold.co'))
                 ? `<div class="news-image no-image-fallback">CM</div>`
                 : `<img src="${imageUrl}" alt="Imagem da notícia" onerror="this.outerHTML='<div class=\'news-image no-image-fallback\'>CM</div>'">`;
 

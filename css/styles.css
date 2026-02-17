@@ -792,6 +792,23 @@ button {
     flex-shrink: 0;
 }
 
+/* --- Restauração do Grid Principal --- */
+.newspaper-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    gap: 30px !important;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+/* Garante que os cards não vazem */
+.newspaper-grid .news-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Faz todos os cards da linha terem a mesma altura */
+}
+
 /* Anúncio Flutuante para dentro do texto da notícia */
 .ad-float-right {
     float: right;
@@ -3255,4 +3272,15 @@ input:focus {
     font-size: 0.75rem;
     color: #555;
     text-transform: uppercase;
+}
+/* --- Restauração Forçada do Grid Principal --- */
+.newspaper-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    gap: 30px !important;
+    width: 100%;
+}
+
+.newspaper-grid .news-card {
+    height: 100%;
 }

@@ -321,39 +321,8 @@
                         <h2 class="section-title">Política</h2>
                         <a href="politica.html" class="section-link">Ver todos →</a>
                     </div>
-                    <div class="editorial-section-grid">
-                        <a href="noticia.html?id=noticia-001" class="editorial-item">
-                            <div class="img-wrapper">
-                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/11/600x378/1_tmazs_070220_6466_860x515-548705.jpeg"
-                                    alt="STF">
-                            </div>
-                            <span class="category-tag">Poder</span>
-                            <h3>STF julga validade de provas em acordo da Odebrecht</h3>
-                        </a>
-                        <a href="noticia.html?id=noticia-002" class="editorial-item">
-                            <div class="img-wrapper">
-                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2023/01/17/280x175/1_economia___nacional___baleia_rossi-119343.jpg"
-                                    alt="Congresso">
-                            </div>
-                            <span class="category-tag">Legislativo</span>
-                            <h3>Câmara aprova texto-base de reforma ministerial</h3>
-                        </a>
-                        <a href="noticia.html?id=noticia-002" class="editorial-item">
-                            <div class="img-wrapper">
-                                <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_alckmin_joao_campos_lula-547946.jpg"
-                                    alt="Eleições">
-                            </div>
-                            <span class="category-tag">2026</span>
-                            <h3>Articulação para 2026: PSD e MDB iniciam conversas</h3>
-                        </a>
-                        <a href="noticia.html?id=noticia-005" class="editorial-item">
-                            <div class="img-wrapper">
-                                <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/praia-barra-lotada_1-min.jpeg"
-                                    alt="Governo">
-                            </div>
-                            <span class="category-tag">Executivo</span>
-                            <h3>Governo federal libera verba para contenção de encostas</h3>
-                        </a>
+                    <div id="politica-grid" class="newspaper-grid">
+                        <div class="loading-spinner">Carregando...</div>
                     </div>
                 </div>
             </section>
@@ -365,33 +334,8 @@
                         <h2 class="section-title">Justiça</h2>
                         <a href="justica.html" class="section-link">Ver todos →</a>
                     </div>
-                    <div class="editorial-section-grid">
-                        <a href="noticia.html?id=noticia-001" class="editorial-item">
-                            <div class="img-wrapper">
-                                <div class="news-image no-image-fallback">CM</div>
-                            </div>
-                            <span class="category-tag">Judiciário</span>
-                            <h3>Novas regras para concursos públicos são debatidas</h3>
-                        </a>
-                        <a href="noticia.html?id=noticia-006" class="editorial-item">
-                            <span class="category-tag">Tribunais</span>
-                            <h3>STJ revisa tese sobre direito do consumidor</h3>
-                            <p>Ministros analisam alcance da responsabilidade civil em serviços digitais e proteção ao
-                                usuário final.</p>
-                        </a>
-                        <a href="noticia.html?id=noticia-001" class="editorial-item">
-                            <div class="img-wrapper">
-                                <div class="news-image no-image-fallback">CM</div>
-                            </div>
-                            <span class="category-tag">Direito</span>
-                            <h3>CNJ implementa novas diretrizes para processos digitais</h3>
-                        </a>
-                        <a href="noticia.html?id=noticia-006" class="editorial-item">
-                            <span class="category-tag">Advocacia</span>
-                            <h3>Exame da OAB registra recorde de inscritos em 2026</h3>
-                            <p>Mais de 500 mil candidatos buscam aprovação na prova que unifica as diretrizes da Ordem.
-                            </p>
-                        </a>
+                    <div id="justica-grid" class="newspaper-grid">
+                        <div class="loading-spinner">Carregando...</div>
                     </div>
                 </div>
             </section>
@@ -403,8 +347,60 @@
                     <div class="layout-with-sidebar">
                         <div class="main-column">
                             <h2 class="section-title-print">JORNAL DO SERVIDOR</h2>
-                            <div id="jornal-servidor-grid" class="newspaper-grid">
-                                <div class="loading-spinner" style="display: block; margin: 40px auto;"></div>
+                            <div id="jornal-servidor-grid">
+                                <article class="print-featured-article">
+                                    <span class="print-tag"
+                                        style="color: #d0021b; font-weight: 800; text-transform: uppercase; font-size: 0.8rem;">Destaque</span>
+                                    <a href="noticia.html" style="text-decoration: none;">
+                                        <h3 class="print-headline"
+                                            style="font-family: 'Noto Serif', serif; font-size: 2.8rem; font-weight: 900; line-height: 1.1; color: #000; margin: 10px 0 20px 0; letter-spacing: -1px;">
+                                            Plano de saúde vai subir menos que o solicitado pela operadora</h3>
+                                    </a>
+                                    <a href="noticia.html">
+                                        <img src="https://picsum.photos/seed/serv1/800/500" alt="Imagem da notícia"
+                                            style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border: 1px solid #eaeaea; margin-bottom: 15px;">
+                                    </a>
+                                    <p class="print-excerpt"
+                                        style="font-family: 'Noto Serif', serif; font-size: 1.1rem; color: #333; line-height: 1.6;">
+                                        O Biovida Saúde, plano de saúde do Sindicato Nacional dos Aposentados,
+                                        Pensionistas e Idosos – Sindnapi, terá um reajuste menor do que o mercado
+                                        esperava após intervenção regulatória da ANS...</p>
+                                </article>
+
+                                <div class="print-side-column"
+                                    style="display: flex; flex-direction: column; gap: 20px;">
+                                    <article class="print-secondary-article"
+                                        style="border-bottom: 1px solid #ccc; padding-bottom: 20px;">
+                                        <span class="print-tag"
+                                            style="color: #d0021b; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; display: block;">Servidor</span>
+                                        <a href="noticia.html" style="text-decoration: none;">
+                                            <h3 class="print-headline"
+                                                style="font-family: 'Noto Serif', serif; font-size: 1.4rem; font-weight: 700; line-height: 1.2; color: #000; margin-bottom: 10px;">
+                                                Câmara aprova redução de tributos para indústria química</h3>
+                                        </a>
+                                        <p class="print-excerpt"
+                                            style="font-family: 'Noto Serif', serif; font-size: 0.95rem; color: #333;">A
+                                            Câmara dos Deputados aprovou o projeto de lei complementar que estabelece
+                                            alíquotas de transição menores para as indústrias do setor nos próximos
+                                            quatro anos...</p>
+                                    </article>
+
+                                    <article class="print-secondary-article"
+                                        style="border-bottom: 1px solid #ccc; padding-bottom: 20px;">
+                                        <span class="print-tag"
+                                            style="color: #d0021b; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; display: block;">Servidor</span>
+                                        <a href="noticia.html" style="text-decoration: none;">
+                                            <h3 class="print-headline"
+                                                style="font-family: 'Noto Serif', serif; font-size: 1.4rem; font-weight: 700; line-height: 1.2; color: #000; margin-bottom: 10px;">
+                                                Servidores defendem redução de jornada com escala 5×2</h3>
+                                        </a>
+                                        <p class="print-excerpt"
+                                            style="font-family: 'Noto Serif', serif; font-size: 0.95rem; color: #333;">
+                                            As principais centrais sindicais do país divulgaram nota pública em defesa
+                                            da redução da jornada de trabalho e da adoção imediata do modelo no serviço
+                                            público federal...</p>
+                                    </article>
+                                </div>
                             </div>
                         </div>
                         <aside class="sidebar-column">
@@ -440,39 +436,8 @@
                                 <h2 class="section-title">Esportes</h2>
                                 <a href="esportes.html" class="section-link">Ver todos →</a>
                             </div>
-                            <div class="editorial-section-grid">
-                                <a href="noticia.html?id=noticia-008" class="editorial-item">
-                                    <div class="img-wrapper">
-                                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/flamengo-portuguesa-raulino.jpg"
-                                            alt="Futebol">
-                                    </div>
-                                    <span class="category-tag">Carioca</span>
-                                    <h3>Flamengo e Portuguesa empatam no Raulino</h3>
-                                </a>
-                                <a href="noticia.html?id=noticia-008" class="editorial-item">
-                                    <div class="img-wrapper">
-                                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/estadio-raulino-gramado.jpg"
-                                            alt="Estádio">
-                                    </div>
-                                    <span class="category-tag">Infra</span>
-                                    <h3>Estádio Raulino de Oliveira terá gramado renovado</h3>
-                                </a>
-                                <a href="noticia.html?id=noticia-010" class="editorial-item">
-                                    <div class="img-wrapper">
-                                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/volta-redonda-copinha.jpg"
-                                            alt="Copinha">
-                                    </div>
-                                    <span class="category-tag">Sub-20</span>
-                                    <h3>Sub-20 do Voltaço perde partida na Copinha</h3>
-                                </a>
-                                <a href="noticia.html?id=noticia-008" class="editorial-item">
-                                    <div class="img-wrapper">
-                                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Fachada-Afya-Unigranrio-Barra-da-Tijuca-_3_.jpg"
-                                            alt="Afya">
-                                    </div>
-                                    <span class="category-tag">Encontro</span>
-                                    <h3>Evento reúne esporte e turismo na Afya Unigranrio</h3>
-                                </a>
+                            <div id="esportes-grid" class="newspaper-grid">
+                                <div class="loading-spinner">Carregando...</div>
                             </div>
                         </div>
                     </section>
@@ -484,39 +449,8 @@
                                 <h2 class="section-title">Cultura</h2>
                                 <a href="cultura.html" class="section-link">Ver todos →</a>
                             </div>
-                            <div class="editorial-section-grid">
-                                <a href="noticia.html?id=noticia-004" class="editorial-item">
-                                    <div class="img-wrapper">
-                                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
-                                            alt="Chocolate">
-                                    </div>
-                                    <span class="category-tag">Barra</span>
-                                    <h3>Festival de chocolate agita a Barra neste domingo</h3>
-                                </a>
-                                <a href="noticia.html?id=noticia-009" class="editorial-item">
-                                    <div class="img-wrapper">
-                                        <img src="https://correiosulfluminense.com.br/wp-content/uploads/2025/11/ines-pandelo-filme-agente-secreto.jpg"
-                                            alt="Cinema">
-                                    </div>
-                                    <span class="category-tag">Cinema</span>
-                                    <h3>Inês Pandeló comemora vitória do filme 'O Agente Secreto'</h3>
-                                </a>
-                                <a href="noticia.html?id=noticia-004" class="editorial-item">
-                                    <div class="img-wrapper">
-                                        <img src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Design_sem_nome_1.jpg"
-                                            alt="Festivais">
-                                    </div>
-                                    <span class="category-tag">Música</span>
-                                    <h3>Festival Tupiniquim une música e arte em Vargem Pequena</h3>
-                                </a>
-                                <a href="noticia.html?id=noticia-009" class="editorial-item">
-                                    <div class="img-wrapper">
-                                        <img src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/CULTSP-PRO-oferece-programacao-cultural-gratuita-em-fevereiro-no-Bom-Retiro.jpg"
-                                            alt="Educação">
-                                    </div>
-                                    <span class="category-tag">Agenda</span>
-                                    <h3>CULTSP PRO oferece programação gratuita em SP</h3>
-                                </a>
+                            <div id="cultura-grid" class="newspaper-grid">
+                                <div class="loading-spinner">Carregando...</div>
                             </div>
                         </div>
                     </section>
@@ -559,11 +493,9 @@
             <div id="global-footer"></div>
 
             <script src="js/mock-data.js"></script>
-            <script src="js/news-list.js"></script>
-            <script src="js/main.js"></script>
-            <script src="js/regions-dynamic.js"></script>
-            <script src="js/api-servidor.js"></script>
+            <script src="js/api-home.js"></script>
             <script src="js/api-regionais.js"></script>
+            <!-- <script src="js/api-servidor.js"></script> -->
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     // NewsList rendering for other sections can go here if needed

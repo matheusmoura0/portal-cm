@@ -2,73 +2,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const gridServidor = document.getElementById('jornal-servidor-grid');
     if (!gridServidor) return;
 
-    // URL da API REST do WordPress (buscando 3 posts e incluindo as mídias)
-    const apiUrl = 'https://jornaldoservidor.com.br/wp-json/wp/v2/posts?_embed&per_page=3';
+    // Aguarda o mock-data ser carregado
+    setTimeout(() => {
+        if (typeof portalMockData !== 'undefined' && portalMockData.servidor) {
+            const posts = portalMockData.servidor;
+            let featuredHTML = '';
+            let sideColumnHTML = '<div class="print-side-column" style="display: flex; flex-direction: column; gap: 20px;">';
 
-    async function fetchJornalDoServidor() {
-        try {
-            const response = await fetch(apiUrl);
-            if (!response.ok) throw new Error('Erro na resposta da API');
-            
-            const posts = await response.json();
-            renderPosts(posts);
-        } catch (error) {
-            console.error('Erro ao buscar notícias do Jornal do Servidor:', error);
-            gridServidor.innerHTML = '<p style="text-align: center; color: #666; width: 100%;">Não foi possível carregar as notícias no momento.</p>';
+            posts.forEach((post, index) => {
+                if (index === 0) {
+                    // Destaque Principal
+                    featuredHTML = `
+                        <article class="print-featured-article" style="padding-right: 30px; border-right: 1px solid #ccc;">
+                            <span class="print-tag" style="color: #d0021b; font-weight: 800; text-transform: uppercase; font-size: 0.8rem;">Destaque</span>
+                            <a href="${post.link}" style="text-decoration: none;">
+                                <h3 class="print-headline" style="font-family: 'Noto Serif', serif; font-size: 2.8rem; font-weight: 900; line-height: 1.1; color: #000; margin: 10px 0 20px 0; letter-spacing: -1px;">${post.title}</h3>
+                            </a>
+                            <a href="${post.link}"><img src="${post.img}" alt="Imagem" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border: 1px solid #eaeaea; margin-bottom: 15px;"></a>
+                            <p class="print-excerpt" style="font-family: 'Noto Serif', serif; font-size: 1.1rem; color: #333; line-height: 1.6;">${post.excerpt}</p>
+                        </article>
+                    `;
+                } else {
+                    // Coluna Lateral
+                    sideColumnHTML += `
+                        <article class="print-secondary-article" style="border-bottom: 1px solid #ccc; padding-bottom: 20px;">
+                            <span class="print-tag" style="color: #d0021b; font-weight: 800; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; display: block;">Servidor</span>
+                            <a href="${post.link}" style="text-decoration: none;">
+                                <h3 class="print-headline" style="font-family: 'Noto Serif', serif; font-size: 1.4rem; font-weight: 700; line-height: 1.2; color: #000; margin-bottom: 10px;">${post.title}</h3>
+                            </a>
+                            <p class="print-excerpt" style="font-family: 'Noto Serif', serif; font-size: 0.95rem; color: #333;">${post.excerpt}</p>
+                        </article>
+                    `;
+                }
+            });
+
+            sideColumnHTML += '</div>';
+            gridServidor.innerHTML = featuredHTML + sideColumnHTML;
         }
-    }
-
-    function renderPosts(posts) {
-        gridServidor.innerHTML = ''; // Limpa o spinner
-
-        let featuredHTML = '';
-        let sideColumnHTML = '<div class="print-side-column">';
-
-        posts.forEach((post, index) => {
-            const title = post.title.rendered;
-            const link = post.link;
-            
-            let imageUrl = ''; // No impresso, as secundárias podem não ter imagem para economizar espaço
-            if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0].source_url) {
-                imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
-            }
-
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = post.excerpt.rendered;
-            const excerpt = tempDiv.textContent || tempDiv.innerText || '';
-
-            // Se for a primeira notícia (Destaque Gigante)
-            if (index === 0) {
-                featuredHTML = `
-                    <article class="print-featured-article">
-                        <span class="print-tag">Destaque</span>
-                        <a href="${link}" target="_blank" style="text-decoration: none;">
-                            <h3 class="print-headline">${title}</h3>
-                        </a>
-                        ${imageUrl ? `<a href="${link}" target="_blank"><img src="${imageUrl}" alt="Imagem"></a>` : ''}
-                        <p class="print-excerpt">${excerpt.substring(0, 200)}...</p>
-                    </article>
-                `;
-            } else {
-                // Notícias 2 e 3 (Coluna Lateral)
-                sideColumnHTML += `
-                    <article class="print-secondary-article">
-                        <span class="print-tag">Servidor</span>
-                        <a href="${link}" target="_blank" style="text-decoration: none;">
-                            <h3 class="print-headline">${title}</h3>
-                        </a>
-                        <p class="print-excerpt" style="font-size: 0.95rem;">${excerpt.substring(0, 100)}...</p>
-                    </article>
-                `;
-            }
-        });
-
-        sideColumnHTML += '</div>'; // Fecha a coluna lateral
-
-        // Injeta tudo no grid
-        gridServidor.innerHTML = featuredHTML + sideColumnHTML;
-    }
-
-    // Inicia a busca
-    fetchJornalDoServidor();
+    }, 150);
 });

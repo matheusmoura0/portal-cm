@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Noto+Serif:wght@400;700;900&display=swap"
         rel="stylesheet" />
     <script src="js/components/Header.js"></script>
     <script src="js/components/Footer.js"></script>
@@ -170,11 +170,11 @@
         </div>
     </section>
     <!-- Top Ad Banner (970x250) -->
-    <div class="container">
+    <div class="container top-ad-banner">
         <div class="ad-wrapper grid-span-full">
             <span class="ad-label-small">Espaço Publicitário</span>
-            <img src="https://placehold.co/970x250/f8fafc/1a3a5c?text=Espaço+Publicitário+-+970x250" alt="Anúncio Topo"
-                class="ad-placeholder-img">
+            <img src="https://placehold.co/970x90/f8fafc/1a3a5c?text=Publicidade+-+970x90" alt="Anúncio Topo"
+                class="top-ad-img">
         </div>
     </div>
 
@@ -267,54 +267,47 @@
                         <a href="opiniao.html" class="section-link">Ver todos →</a>
                     </div>
                     <div class="home-opinion-grid">
-                        <article class="mini-opinion-card">
+                        <article class="opinion-bar-item">
                             <a href="noticia.html?id=noticia-003" class="opinion-avatar-link">
                                 <img src="images/colunistas/img_colunistas_magnavita-87116.jpg" alt="Magnavita"
-                                    class="opinion-avatar">
+                                    class="opinion-bar-avatar">
                             </a>
                             <div class="mini-opinion-content">
-                                <span class="author-name">Magnavita</span>
-                                <h3 class="opinion-headline">
-                                    <a href="noticia.html?id=noticia-003">PLACEHOLDER</a>
-                                </h3>
+                                <span class="opinion-bar-name">Magnavita</span>
+                                <span class="opinion-bar-role">Colunista</span>
                             </div>
                         </article>
 
-                        <article class="mini-opinion-card">
+                        <article class="opinion-bar-item">
                             <a href="noticia.html?id=noticia-003" class="opinion-avatar-link">
                                 <img src="images/colunistas/tales_faria_foto__colunista_300px-445320.jpg"
-                                    alt="Tales Faria" class="opinion-avatar">
+                                    alt="Tales Faria" class="opinion-bar-avatar">
                             </a>
                             <div class="mini-opinion-content">
-                                <span class="author-name">Tales Faria</span>
-                                <h3 class="opinion-headline">
-                                    <a href="noticia.html?id=noticia-003">PLACEHOLDER</a>
-                                </h3>
+                                <span class="opinion-bar-name">Tales Faria</span>
+                                <span class="opinion-bar-role">Colunista</span>
                             </div>
                         </article>
 
-                        <article class="mini-opinion-card">
+                        <article class="opinion-bar-item">
                             <a href="noticia.html?id=noticia-003" class="opinion-avatar-link">
                                 <img src="images/colunistas/alexandre_garcia___300px-161864.jpg" alt="Alexandre Garcia"
-                                    class="opinion-avatar">
+                                    class="opinion-bar-avatar">
                             </a>
                             <div class="mini-opinion-content">
-                                <span class="author-name">Alexandre Garcia</span>
-                                <h3 class="opinion-headline">
-                                    <a href="noticia.html?id=noticia-003">PLACEHOLDER</a>
-                                </h3>
+                                <span class="opinion-bar-name">Alexandre Garcia</span>
+                                <span class="opinion-bar-role">Colunista</span>
                             </div>
                         </article>
 
-                        <article class="mini-opinion-card">
+                        <article class="opinion-bar-item">
                             <a href="noticia.html?id=noticia-003" class="opinion-avatar-link">
-                                <img src="images/colunistas/sonia-paes-02.jpg" alt="Sonia Paes" class="opinion-avatar">
+                                <img src="images/colunistas/sonia-paes-02.jpg" alt="Sonia Paes"
+                                    class="opinion-bar-avatar">
                             </a>
                             <div class="mini-opinion-content">
-                                <span class="author-name">Sonia Paes</span>
-                                <h3 class="opinion-headline">
-                                    <a href="noticia.html?id=noticia-003">PLACEHOLDER</a>
-                                </h3>
+                                <span class="opinion-bar-name">Sonia Paes</span>
+                                <span class="opinion-bar-role">Colunista</span>
                             </div>
                         </article>
                     </div>
@@ -409,7 +402,7 @@
                 <div class="jornal-servidor-inner">
                     <div class="layout-with-sidebar">
                         <div class="main-column">
-                            <h2 class="section-title">JORNAL DO SERVIDOR</h2>
+                            <h2 class="section-title-print">JORNAL DO SERVIDOR</h2>
                             <div id="jornal-servidor-grid" class="newspaper-grid">
                                 <div class="loading-spinner" style="display: block; margin: 40px auto;"></div>
                             </div>
@@ -430,25 +423,13 @@
             <main class="main-content">
                 <div class="container">
 
-                    <!-- Nacional e Regiões Section -->
-                    <section id="regioes" class="regions-dynamic-section">
-                        <div class="container">
-                            <div class="section-header">
-                                <h2 class="section-title">Nacional e Regiões</h2>
-                            </div>
-
-                            <div class="tabs-container">
-                                <span class="tab-item active" data-region="brasil">Brasil</span>
-                                <span class="tab-item" data-region="sp">São Paulo</span>
-                                <span class="tab-item" data-region="rj">Rio de Janeiro</span>
-                                <span class="tab-item" data-region="sulFluminense">Sul Fluminense</span>
-                                <span class="tab-item" data-region="petropolis">Petrópolis</span>
-                                <span class="tab-item" data-region="df">Distrito Federal</span>
-                            </div>
-
-                            <div id="region-content-render">
-                                <!-- Dinamicamente preenchido pelo js/regions-dynamic.js -->
-                            </div>
+                    <!-- Nacional e Regionais Section -->
+                    <section class="section">
+                        <h2 class="section-title">Nacional e Regionais</h2>
+                        <div id="regionais-grid" class="newspaper-grid"
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                            <div class="loading-spinner" style="display: block; margin: 40px auto; text-align: center;">
+                                Carregando notícias da rede CM...</div>
                         </div>
                     </section>
 
@@ -557,6 +538,23 @@
                 </div>
             </section>
 
+            <section class="section premium-live-section" style="background: linear-gradient(135deg, #1a3a5c 0%, #0a1724 100%); padding: 50px 0; border-top: 3px solid #d0021b;">
+                <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
+                    <div class="live-info" style="flex: 1; min-width: 300px;">
+                        <div class="live-badge" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(208,2,27,0.15); color: #ff4d4d; padding: 6px 14px; border-radius: 20px; font-weight: bold; text-transform: uppercase; margin-bottom: 20px; border: 1px solid rgba(208,2,27,0.3);">
+                            <span class="blink-dot" style="width: 8px; height: 8px; background: #ff4d4d; border-radius: 50%; animation: pulse-red 1.5s infinite;"></span> AO VIVO
+                        </div>
+                        <h2 style="font-family: 'Noto Serif', serif; font-size: 2.2rem; color: #fff; margin-bottom: 15px;">TV Correio da Manhã</h2>
+                        <p style="color: #a0aec0; line-height: 1.6;">Acompanhe nossa programação em tempo real com análises políticas, entrevistas exclusivas e os bastidores do poder.</p>
+                    </div>
+                    <div class="live-player-wrapper" style="flex: 1.5; min-width: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; background: #000;">
+                            <iframe src="https://www.youtube.com/embed/Oup5MreJeJw?autoplay=1&mute=1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Global Footer Placeholder -->
             <div id="global-footer"></div>
 
@@ -565,6 +563,7 @@
             <script src="js/main.js"></script>
             <script src="js/regions-dynamic.js"></script>
             <script src="js/api-servidor.js"></script>
+            <script src="js/api-regionais.js"></script>
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                     // NewsList rendering for other sections can go here if needed

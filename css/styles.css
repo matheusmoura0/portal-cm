@@ -1100,12 +1100,28 @@ button {
 }
 
 .section-title {
-    font-family: var(--font-body);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-text);
+    font-family: 'Noto Serif', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #1a1a2e;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.5px;
+    border-bottom: 3px solid #1a1a2e;
+    /* Linha grossa embaixo, padrão jornal */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Adiciona um detalhe vermelho sutil no início da linha preta */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #d0021b;
 }
 
 .section-link {
@@ -2953,4 +2969,290 @@ input:focus {
     .hero-title {
         font-size: 1.8rem;
     }
+}
+
+/* --- Estilo Editorial Impresso: Jornal do Servidor --- */
+.section-title-print {
+    font-family: 'Noto Serif', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1a1a2e;
+    border-top: 4px solid #1a1a2e;
+    border-bottom: 2px solid #1a1a2e;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+}
+
+/* O contêiner principal simulando a página */
+#jornal-servidor-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    /* Esquerda bem maior que a direita */
+    gap: 30px;
+    border-bottom: 4px solid #1a1a2e;
+    padding-bottom: 30px;
+}
+
+/* Matéria Principal (Manchete) */
+.print-featured-article {
+    padding-right: 30px;
+    border-right: 1px solid #ccc;
+    /* Linha divisória de coluna de jornal */
+}
+
+.print-featured-article .print-headline {
+    font-family: 'Noto Serif', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #000;
+    margin: 10px 0 20px 0;
+    letter-spacing: -1px;
+}
+
+.print-featured-article img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 1px solid #eaeaea;
+}
+
+.print-excerpt {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Matérias Secundárias (Coluna da Direita) */
+.print-side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.print-secondary-article {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+.print-secondary-article:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.print-secondary-article .print-headline {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.print-tag {
+    color: #d0021b;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Responsividade: No mobile, vira uma coluna só e as linhas mudam */
+@media (max-width: 768px) {
+    #jornal-servidor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .print-featured-article {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 2px solid #000;
+        padding-bottom: 25px;
+    }
+}
+
+/* --- Seção Premium Ao Vivo --- */
+.premium-live-section {
+    background: linear-gradient(135deg, #1a3a5c 0%, #0a1724 100%);
+    /* Fundo azul luxuoso */
+    padding: 50px 0;
+    margin: 40px 0;
+    border-top: 3px solid #d0021b;
+    /* Linha vermelha superior */
+}
+
+.live-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Coluna de Texto */
+.live-info {
+    flex: 1;
+    max-width: 450px;
+}
+
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(208, 2, 27, 0.15);
+    color: #ff4d4d;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(208, 2, 27, 0.3);
+}
+
+/* Efeito pulsante da bolinha vermelha */
+.blink-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(255, 77, 77, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 77, 77, 0);
+    }
+}
+
+.live-title {
+    font-family: 'Noto Serif', serif;
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.live-desc {
+    color: #a0aec0;
+    /* Cinza azulado claro para leitura */
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Coluna do Vídeo */
+.live-player-wrapper {
+    flex: 1;
+    max-width: 600px;
+    /* Impede o vídeo de ficar gigante */
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Borda fina e elegante */
+}
+
+/* Ratio 16:9 inquebrável */
+.responsive-video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    background-color: #000;
+}
+
+.responsive-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Adaptação para Celular e Tablet */
+@media (max-width: 992px) {
+    .live-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .live-info {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .live-player-wrapper {
+        max-width: 100%;
+    }
+}
+
+/* --- Refinamentos de Layout --- */
+
+/* --- Correção: Banner Topo Centralizado --- */
+.top-ad-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px auto 30px auto;
+    text-align: center;
+}
+
+.top-ad-img {
+    max-width: 970px;
+    width: 100%;
+    height: auto;
+    max-height: 90px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Task 2: Barra horizontal de Colunistas (Home) */
+.opinion-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.opinion-bar-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #d0021b;
+    /* Borda vermelha CM */
+}
+
+.opinion-bar-name {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #d0021b;
+    text-transform: uppercase;
+    display: block;
+}
+
+.opinion-bar-role {
+    font-size: 0.75rem;
+    color: #555;
+    text-transform: uppercase;
 }

@@ -21,45 +21,52 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderPosts(posts) {
         gridServidor.innerHTML = ''; // Limpa o spinner
 
+        let featuredHTML = '';
+        let sideColumnHTML = '<div class="print-side-column">';
+
         posts.forEach((post, index) => {
-            // Extração segura de dados do WordPress
             const title = post.title.rendered;
-            const link = post.link; // Link original da matéria
+            const link = post.link;
             
-            // Tratamento para extrair a imagem de destaque do _embedded
-            const fallbackImage = 'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem';
-            let imageUrl = fallbackImage;
+            let imageUrl = ''; // No impresso, as secundárias podem não ter imagem para economizar espaço
             if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0].source_url) {
                 imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
             }
 
-            // Tratamento para o resumo (excerpt) removendo tags HTML indesejadas
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = post.excerpt.rendered;
             const excerpt = tempDiv.textContent || tempDiv.innerText || '';
 
-            // Construção do HTML do card
-            const isFeatured = index === 0 ? 'featured' : ''; // Se quiser o primeiro em destaque
-            
-            const imageHTML = (imageUrl === fallbackImage || imageUrl.includes('placehold.co'))
-                ? `<div class="news-image no-image-fallback">CM</div>`
-                : `<img src="${imageUrl}" alt="Imagem da notícia" onerror="this.outerHTML='<div class=\'news-image no-image-fallback\'>CM</div>'">`;
-
-            const cardHTML = `
-                <article class="news-card ${isFeatured}">
-                    <a href="${link}" target="_blank" class="news-image">
-                        ${imageHTML}
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">Servidor</span>
-                        <h3><a href="${link}" target="_blank">${title}</a></h3>
-                        <p class="news-excerpt">${excerpt.substring(0, 120)}...</p>
-                    </div>
-                </article>
-            `;
-            
-            gridServidor.insertAdjacentHTML('beforeend', cardHTML);
+            // Se for a primeira notícia (Destaque Gigante)
+            if (index === 0) {
+                featuredHTML = `
+                    <article class="print-featured-article">
+                        <span class="print-tag">Destaque</span>
+                        <a href="${link}" target="_blank" style="text-decoration: none;">
+                            <h3 class="print-headline">${title}</h3>
+                        </a>
+                        ${imageUrl ? `<a href="${link}" target="_blank"><img src="${imageUrl}" alt="Imagem"></a>` : ''}
+                        <p class="print-excerpt">${excerpt.substring(0, 200)}...</p>
+                    </article>
+                `;
+            } else {
+                // Notícias 2 e 3 (Coluna Lateral)
+                sideColumnHTML += `
+                    <article class="print-secondary-article">
+                        <span class="print-tag">Servidor</span>
+                        <a href="${link}" target="_blank" style="text-decoration: none;">
+                            <h3 class="print-headline">${title}</h3>
+                        </a>
+                        <p class="print-excerpt" style="font-size: 0.95rem;">${excerpt.substring(0, 100)}...</p>
+                    </article>
+                `;
+            }
         });
+
+        sideColumnHTML += '</div>'; // Fecha a coluna lateral
+
+        // Injeta tudo no grid
+        gridServidor.innerHTML = featuredHTML + sideColumnHTML;
     }
 
     // Inicia a busca

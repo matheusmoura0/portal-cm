@@ -772,6 +772,36 @@ button {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* --- Anúncios Responsivos --- */
+.ad-container-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 40px auto;
+    /* Espaçamento vertical generoso */
+    padding: 0 15px;
+    /* Margem de segurança no mobile */
+    box-sizing: border-box;
+}
+
+.ad-fluid {
+    max-width: 100%;
+    /* Nunca ultrapassa a largura da tela */
+    height: auto;
+    /* Mantém a proporção (não estica) */
+    display: block;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    /* Sombra leve para destacar */
+}
+
+/* Ajuste específico para o banner lateral não ficar gigante no mobile */
+.sidebar-ad-container img,
+.ad-wrapper img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Layout de Duas Colunas (Principal + Sidebar) */
 .layout-with-sidebar {
     display: flex;
@@ -3273,6 +3303,7 @@ input:focus {
     color: #555;
     text-transform: uppercase;
 }
+
 /* --- Restauração Forçada do Grid Principal --- */
 .newspaper-grid {
     display: grid !important;
@@ -3283,4 +3314,43 @@ input:focus {
 
 .newspaper-grid .news-card {
     height: 100%;
+}
+
+/* --- Correção: Título da Manchete (Forçando Sobrescrita) --- */
+
+/* Desktop */
+.hero-main-title {
+    font-family: 'Noto Serif', serif;
+    font-size: 2rem !important;
+    /* !important necessário para vencer o tema */
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 20px 0 10px 0;
+    color: #1a1a2e;
+}
+
+/* Mobile (Telas menores que 992px) */
+@media (max-width: 992px) {
+    .hero-main-title {
+        font-size: 1.5rem !important;
+        /* Redução forçada para mobile */
+        margin-top: 15px;
+    }
+}
+
+/* --- Correção: Título do Jornal do Servidor --- */
+
+/* Desktop */
+.print-featured-article .print-headline {
+    font-size: 2rem !important;
+    /* Reduz de 2.8rem para 2rem */
+    line-height: 1.2;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+    .print-featured-article .print-headline {
+        font-size: 1.5rem !important;
+        /* Redução para telas menores */
+    }
 }

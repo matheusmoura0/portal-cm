@@ -12,9 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Renderiza as seções usando os dados do mock
             renderSection('politica-grid', portalMockData.politica, 'Política');
+            renderSection('economia-grid', portalMockData.economia, 'Economia');
             renderSection('justica-grid', portalMockData.justica, 'Justiça');
             renderSection('esportes-grid', portalMockData.esportes, 'Esportes');
+
             renderSection('cultura-grid', portalMockData.cultura, 'Cultura');
+
             
             console.log("api-home: Mock Data renderizado com sucesso.");
         }, 500);

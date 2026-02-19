@@ -1534,3 +1534,21 @@ window.CM = {
   NewsService,
   HomeManager,
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Seleciona o header (tenta pela tag header ou pela classe .main-header)
+    const header = document.querySelector('header') || document.querySelector('.main-header');
+    
+    if (header) {
+        window.addEventListener('scroll', function() {
+            // Se rolar mais de 50 pixels para baixo...
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled'); // Adiciona a classe que encolhe
+            } else {
+                header.classList.remove('scrolled'); // Remove a classe, voltando ao normal
+            }
+        });
+    } else {
+        console.warn("Header não encontrado para o efeito shrink.");
+    }
+});

@@ -98,11 +98,21 @@ body {
     font-family: var(--font-body);
     color: var(--color-text);
     line-height: 1.5;
-    padding-top: 130px;
-    /* Compensation for fixed header */
     background-color: var(--color-bg);
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-top: 130px !important;
+    /* Compensa o header fixo no desktop */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ajuste específico para mobile */
+@media (max-width: 768px) {
+    body {
+        padding-top: 210px !important;
+        /* Compensa o header fixo (mais alto) no mobile */
+    }
 }
 
 img {
@@ -3364,6 +3374,7 @@ input:focus {
         /* Redução para telas menores */
     }
 }
+
 /* --- PÁGINA DE OPINIÃO --- */
 
 .page-header-title {
@@ -3399,7 +3410,8 @@ input:focus {
     left: 0;
     width: 60px;
     height: 3px;
-    background-color: #d0021b; /* Tracinho vermelho */
+    background-color: #d0021b;
+    /* Tracinho vermelho */
 }
 
 /* Grid de Destaques */
@@ -3426,7 +3438,9 @@ input:focus {
 
 /* Responsividade */
 @media (max-width: 992px) {
-    .opinion-highlights-grid, .editorials-grid {
+
+    .opinion-highlights-grid,
+    .editorials-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -3455,7 +3469,8 @@ input:focus {
 }
 
 .columnist-premium-card:hover {
-    transform: translateY(-5px); /* Efeito de elevação suave ao passar o mouse */
+    transform: translateY(-5px);
+    /* Efeito de elevação suave ao passar o mouse */
 }
 
 /* O Avatar (Círculo Perfeito) */
@@ -3463,22 +3478,26 @@ input:focus {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    padding: 3px; /* Espaçamento entre a imagem e a borda */
-    border: 2px solid #eaeaea; /* Borda cinza neutra inicial */
+    padding: 3px;
+    /* Espaçamento entre a imagem e a borda */
+    border: 2px solid #eaeaea;
+    /* Borda cinza neutra inicial */
     margin-bottom: 15px;
     transition: border-color 0.3s ease;
     background-color: #fff;
 }
 
 .columnist-premium-card:hover .columnist-avatar-wrapper {
-    border-color: #d0021b; /* O anel fica vermelho CM ao passar o mouse */
+    border-color: #d0021b;
+    /* O anel fica vermelho CM ao passar o mouse */
 }
 
 .columnist-avatar-wrapper img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    object-fit: cover; /* Garante que rostos não fiquem achatados/esticados */
+    object-fit: cover;
+    /* Garante que rostos não fiquem achatados/esticados */
     display: block;
 }
 
@@ -3505,5 +3524,234 @@ input:focus {
 }
 
 .columnist-premium-card:hover .columnist-action {
-    opacity: 1; /* Fica mais forte no hover */
+    opacity: 1;
+    /* Fica mais forte no hover */
+}
+
+/* ========================================= */
+/* --- AJUSTES GERAIS MOBILE (Até 768px) --- */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. Tipografia Geral Mobile */
+    .hero-main-title {
+        font-size: 1.6rem !important;
+    }
+
+    .section-title,
+    .opinion-section-title,
+    .strip-header h3 {
+        font-size: 1.1rem !important;
+    }
+
+    .section {
+        margin-bottom: 30px !important;
+    }
+
+    /* 2. Top 5 (Faixa Numerada) -> Efeito Swipe (Rolagem Horizontal) */
+    .numbered-strip {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        /* Suavidade no iOS */
+        padding-bottom: 15px !important;
+        gap: 15px !important;
+    }
+
+    .numbered-strip>div {
+        /* Cada item ocupa 80% da tela, mostrando um pedaço do próximo para induzir o swipe */
+        flex: 0 0 80vw !important;
+        min-width: auto !important;
+        border-left: none !important;
+        border-right: 1px solid #eaeaea;
+        padding-left: 0 !important;
+        padding-right: 15px;
+    }
+
+    .numbered-strip>div:last-child {
+        border-right: none;
+    }
+
+    /* Esconde a barra de rolagem (opcional, deixa mais clean) */
+    .numbered-strip::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 3. Colunistas Premium -> Efeito Swipe (Rolagem Horizontal) */
+    .opinion-premium-grid {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 15px !important;
+        padding-bottom: 15px !important;
+        justify-content: flex-start !important;
+    }
+
+    .columnist-premium-card {
+        min-width: 120px !important;
+        /* Largura fixa para os cards no carrossel */
+        flex: 0 0 auto !important;
+    }
+
+    /* Diminui um pouco as fotos dos colunistas no celular */
+    .columnist-avatar-wrapper {
+        width: 85px !important;
+        height: 85px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .columnist-name {
+        font-size: 1rem !important;
+    }
+
+    .opinion-premium-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 4. Grids de Notícias (Política, Justiça, Economia...) */
+    .newspaper-grid {
+        grid-template-columns: 1fr !important;
+        /* Força 1 coluna */
+        gap: 20px !important;
+    }
+
+    .news-card img {
+        height: 200px !important;
+        /* Trava a altura para a imagem não ficar gigante */
+        object-fit: cover !important;
+    }
+
+    /* 5. Jornal do Servidor (Reorganização de Colunas) */
+    .print-featured-article {
+        padding-right: 0 !important;
+        border-right: none !important;
+        border-bottom: 1px solid #ccc !important;
+        padding-bottom: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .print-featured-article .print-headline {
+        font-size: 1.6rem !important;
+    }
+}
+
+/* ========================================= */
+/* --- EFEITO SHRINK DO HEADER AO ROLAR  --- */
+/* ========================================= */
+
+/* 1. Prepara os elementos para uma animação suave */
+header,
+.main-header,
+.cm-text,
+.portal-text {
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* 2. Reduz o tamanho da barra inteira (Estado Scrolled) */
+header.scrolled,
+.main-header.scrolled {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    min-height: auto !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    /* Deixa a sombra um pouco mais forte */
+}
+
+/* 3. Encolhe o texto "CM" */
+header.scrolled .cm-text,
+.main-header.scrolled .cm-text {
+    font-size: 2rem !important;
+    /* Ajuste este valor se quiser menor ou maior */
+}
+
+/* 4. Encolhe o texto "PORTAL" */
+header.scrolled .portal-text,
+.main-header.scrolled .portal-text {
+    font-size: 0.6rem !important;
+    letter-spacing: 2px !important;
+    margin-top: 0 !important;
+}
+
+/* ========================================= */
+/* --- AJUSTES EXCLUSIVOS DO HEADER MOBILE --- */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. Transforma o Header em uma pilha organizada */
+    header,
+    .main-header {
+        flex-direction: column !important;
+        /* Coloca um elemento em cima do outro */
+        padding: 15px 20px !important;
+        gap: 15px !important;
+        /* Espaçamento entre logo, busca e menu */
+        height: auto !important;
+        /* Deixa o header crescer o necessário */
+    }
+
+    /* 2. Centraliza o Logo "CM PORTAL" */
+    .logo-container-right {
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    .cm-text {
+        font-size: 2.5rem !important;
+        /* Reduz o tamanho da fonte */
+        text-align: center !important;
+    }
+
+    .portal-text {
+        text-align: center !important;
+        font-size: 0.7rem !important;
+    }
+
+    /* 3. Ajusta a Barra de Busca para ocupar a tela toda */
+    .header-search-box,
+    header input[type="text"],
+    .main-header input[type="text"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box;
+    }
+
+    /* 4. Transforma o Menu de Navegação em "Swipe" (Rolagem Horizontal) */
+    header nav ul,
+    .main-header ul {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        /* Impede de quebrar em 5 linhas */
+        overflow-x: auto !important;
+        /* Permite arrastar para o lado */
+        -webkit-overflow-scrolling: touch;
+        /* Suavidade no iPhone */
+        width: 100% !important;
+        justify-content: flex-start !important;
+        padding-bottom: 5px !important;
+        gap: 20px !important;
+    }
+
+    /* Esconde a barrinha de rolagem feia do menu */
+    header nav ul::-webkit-scrollbar,
+    .main-header ul::-webkit-scrollbar {
+        display: none;
+    }
+
+}
+
+/* --- Oculta a barra de utilidades APENAS no mobile --- */
+@media (max-width: 768px) {
+
+    /* Nota pro agente: Se a classe da barra preta do topo for diferente, adicione-a aqui */
+    .top-bar,
+    .header-top,
+    .top-header-bar,
+    .ticker-container {
+        display: none !important;
+    }
 }

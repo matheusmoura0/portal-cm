@@ -1153,7 +1153,7 @@ const ScrollNav = {
     const currentScroll = window.pageYOffset;
 
     if (this.container) {
-      if (currentScroll > 80) {
+      if (currentScroll > 50) {
         this.container.classList.add("scrolled");
       } else {
         this.container.classList.remove("scrolled");

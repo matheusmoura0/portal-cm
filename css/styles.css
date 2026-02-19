@@ -98,6 +98,8 @@ body {
     font-family: var(--font-body);
     color: var(--color-text);
     line-height: 1.5;
+    padding-top: 130px;
+    /* Compensation for fixed header */
     background-color: var(--color-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -209,12 +211,21 @@ button {
 
 /* Sticky Header Container */
 .sticky-nav-unified {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
-    background-color: var(--color-header-bg, #ffffff);
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    background-color: var(--color-header-bg, #1a3a5c);
+    transition: all 0.4s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sticky-nav-unified.scrolled {
+    padding: 2px 0;
+    /* Header gets thinner */
+    background-color: rgba(26, 58, 92, 0.95);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .sticky-nav-unified.scrolled {
@@ -229,15 +240,14 @@ button {
 
 .main-header {
     background-color: transparent;
-    /* Color comes from parent container */
-    padding: var(--spacing-md) 0;
+    padding: 15px 0;
     position: relative;
     z-index: 1001;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .sticky-nav-unified.scrolled .main-header {
-    padding: var(--spacing-sm) 0;
+    padding: 5px 0;
 }
 
 .main-header .logo {
@@ -3353,4 +3363,147 @@ input:focus {
         font-size: 1.5rem !important;
         /* Redução para telas menores */
     }
+}
+/* --- PÁGINA DE OPINIÃO --- */
+
+.page-header-title {
+    font-family: 'Noto Serif', serif;
+    font-size: 2.5rem;
+    color: #1a1a2e;
+    margin: 0 0 10px 0;
+}
+
+.page-header-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin: 0 0 40px 0;
+}
+
+/* Títulos de Seção com Linha Inferior */
+.opinion-section-title {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    text-transform: uppercase;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.opinion-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #d0021b; /* Tracinho vermelho */
+}
+
+/* Grid de Destaques */
+.opinion-highlights-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Grid de Editoriais */
+.editorials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.editorial-card {
+    background: #f8f9fa;
+    padding: 30px;
+    border-left: 4px solid #1a3a5c;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .opinion-highlights-grid, .editorials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- SEÇÃO OPINIÃO (PREMIUM) --- */
+
+.opinion-premium-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+/* O Card Interativo */
+.columnist-premium-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    flex: 1;
+    min-width: 150px;
+    transition: transform 0.3s ease;
+}
+
+.columnist-premium-card:hover {
+    transform: translateY(-5px); /* Efeito de elevação suave ao passar o mouse */
+}
+
+/* O Avatar (Círculo Perfeito) */
+.columnist-avatar-wrapper {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    padding: 3px; /* Espaçamento entre a imagem e a borda */
+    border: 2px solid #eaeaea; /* Borda cinza neutra inicial */
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+    background-color: #fff;
+}
+
+.columnist-premium-card:hover .columnist-avatar-wrapper {
+    border-color: #d0021b; /* O anel fica vermelho CM ao passar o mouse */
+}
+
+.columnist-avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; /* Garante que rostos não fiquem achatados/esticados */
+    display: block;
+}
+
+/* Tipografia do Nome */
+.columnist-name {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #1a1a2e;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+
+/* Tag "Leia a Coluna" */
+.columnist-action {
+    font-family: sans-serif;
+    font-size: 0.75rem;
+    color: #d0021b;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+    opacity: 0.8;
+}
+
+.columnist-premium-card:hover .columnist-action {
+    opacity: 1; /* Fica mais forte no hover */
 }

@@ -3645,14 +3645,15 @@ input:focus {
 /* 1. Prepara os elementos para uma animação suave */
 header,
 .main-header,
-.cm-text,
-.portal-text {
+.logo,
+.logo-portal {
     transition: all 0.3s ease-in-out !important;
 }
 
 /* 2. Reduz o tamanho da barra inteira (Estado Scrolled) */
 header.scrolled,
-.main-header.scrolled {
+.main-header.scrolled,
+.sticky-nav-unified.scrolled {
     padding-top: 5px !important;
     padding-bottom: 5px !important;
     min-height: auto !important;
@@ -3661,16 +3662,13 @@ header.scrolled,
 }
 
 /* 3. Encolhe o texto "CM" */
-header.scrolled .cm-text,
-.main-header.scrolled .cm-text {
-    font-size: 2rem !important;
-    /* Ajuste este valor se quiser menor ou maior */
+.scrolled .logo {
+    font-size: 1.8rem !important;
 }
 
 /* 4. Encolhe o texto "PORTAL" */
-header.scrolled .portal-text,
-.main-header.scrolled .portal-text {
-    font-size: 0.6rem !important;
+.scrolled .logo-portal {
+    font-size: 0.55rem !important;
     letter-spacing: 2px !important;
     margin-top: 0 !important;
 }

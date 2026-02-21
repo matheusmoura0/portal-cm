@@ -3811,3 +3811,116 @@ header.scrolled,
         opacity: 1;
     }
 }
+
+/* --- HERO GRID REFINEMENT (1+2 Aesthetics) --- */
+
+.hero-grid {
+    display: grid;
+    /* 1.6fr para acomodar melhor o quadrado principal sem esticar a lateral */
+    grid-template-columns: 1.6fr 1fr;
+    gap: 30px;
+    align-items: start;
+    /* Alinha tudo pelo topo */
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Responsividade para Mobile */
+@media (max-width: 768px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+/* Distribuição da Barra Lateral */
+.hero-sidebar {
+    display: flex;
+    flex-direction: column;
+    /* Espaço entre os cards para preencher a altura visual se necessário */
+    gap: 25px;
+}
+
+/* Notícia Principal e Itens Laterais */
+.main-featured-news,
+.sidebar-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Figuras e Imagens Quadradas (O Ponto Chave) */
+.hero-figure {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-figure img {
+    width: 109%;
+    /* O segredo do visual: Quadrado Perfeito */
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    /* Recorta para manter a proporção */
+    border-radius: 4px;
+    display: block;
+}
+
+/* Category Tags (Badges) */
+.category-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #d32f2f;
+    color: white;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    z-index: 10;
+}
+
+/* Hierarquia de Títulos */
+.hero-content h1 {
+    font-size: 2em;
+    line-height: 1.1;
+    font-weight: 800;
+    margin: 20px 0 15px 0;
+    color: #111;
+    font-family: 'Noto Serif', serif;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* Ajuste dos Textos Laterais */
+.sidebar-card h3 {
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin: 10px 0 5px 0;
+    color: #111;
+    font-family: 'Noto Serif', serif;
+}
+
+.sidebar-excerpt {
+    display: none;
+    /* Oculto para focar na imagem e título */
+}
+
+.hero-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 1.5em;
+    }
+}

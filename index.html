@@ -181,55 +181,60 @@
     <main class="main-content">
         <div class="container">
 
-            <div class="news-container">
-                <div class="grid-12">
-                    <!-- Manchete Primária (8 colunas) -->
-                    <article class="main-headline">
-                        <a href="noticia.html?id=noticia-002" class="image-wrapper">
-                            <img onerror="this.outerHTML='<div class=\'news-image no-image-fallback\'>CM</div>'"
-                                src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_renanlula-547728.jpg"
-                                alt="Lula e MDB" />
+            <section class="hero-grid">
+                <!-- Coluna Principal -->
+                <article class="main-featured-news">
+                    <figure class="hero-figure">
+                        <span class="category-tag">Política</span>
+                        <a href="noticia.html?id=noticia-002">
+                            <img src="https://www.correiodamanha.com.br/_midias/jpg/2026/02/10/280x175/1_renanlula-547728.jpg"
+                                alt="Lula e MDB">
                         </a>
-                        <div class="content">
-                            <a href="noticia.html?id=noticia-002">
-                                <h2 class="hero-main-title">CORREIO POLÍTICO | Lula pode ir com o MDB de vice em 2026?
-                                </h2>
+                    </figure>
+                    <div class="hero-content">
+                        <a href="noticia.html?id=noticia-002" style="text-decoration: none; color: inherit;">
+                            <h1>CORREIO POLÍTICO | Lula pode ir com o MDB de vice em 2026?</h1>
+                        </a>
+                        <p>MDB é cortejado por Lula e por Tarcísio para compor as chapas de 2026, sendo o fiel da
+                            balança no xadrez político nacional. O partido busca protagonismo nas próximas eleições.</p>
+                        <div class="hero-meta">
+                            <span>👤 Redação</span>
+                            <span>🕒 05/09/2025</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Barra Lateral -->
+                <aside class="hero-sidebar">
+                    <article class="sidebar-card">
+                        <figure class="hero-figure">
+                            <span class="category-tag">Economia</span>
+                            <a href="noticia.html?id=noticia-007">
+                                <img src="https://placehold.co/400x400/f8fafc/1a3a5c?text=Economia" alt="Economia">
                             </a>
-                            <p class="excerpt">
-                                MDB é cortejado por Lula e por Tarcísio para compor as chapas de 2026, sendo o fiel da
-                                balança no xadrez político nacional. O partido busca protagonismo nas próximas eleições.
-                            </p>
+                        </figure>
+                        <div class="sidebar-content">
+                            <a href="noticia.html?id=noticia-007" style="text-decoration: none; color: inherit;">
+                                <h3>Custo de vida sobe 0,38% em dezembro e fecha 2025 em alta recorde</h3>
+                            </a>
                         </div>
                     </article>
 
-                    <!-- Manchetes Secundárias (4 colunas) -->
-                    <aside class="side-headlines">
-                        <article class="side-item">
-                            <span class="meta">Economia</span>
-                            <h3><a href="noticia.html?id=noticia-007">Custo de vida sobe 0,38% em dezembro e fecha 2025
-                                    em alta recorde</a></h3>
-                        </article>
-
-                        <article class="side-item">
-                            <span class="meta">Esportes</span>
-                            <h3><a href="noticia.html?id=noticia-008">Flamengo e Portuguesa empatam no Raulino de
-                                    Oliveira em jogo morno</a></h3>
-                        </article>
-
-                        <article class="side-item">
-                            <span class="meta">Justiça</span>
-                            <h3><a href="noticia.html?id=noticia-006">Dinheiro é jogado pela janela em SC durante
-                                    operação da PF sobre Rioprevidência</a></h3>
-                        </article>
-
-                        <article class="side-item">
-                            <span class="meta">Cultura</span>
-                            <h3><a href="noticia.html?id=noticia-004">Festival de chocolate agita a Barra da Tijuca com
-                                    recorde de público</a></h3>
-                        </article>
-                    </aside>
-                </div>
-            </div>
+                    <article class="sidebar-card">
+                        <figure class="hero-figure">
+                            <span class="category-tag">Esportes</span>
+                            <a href="noticia.html?id=noticia-008">
+                                <img src="https://placehold.co/400x400/f8fafc/1a3a5c?text=Esportes" alt="Esportes">
+                            </a>
+                        </figure>
+                        <div class="sidebar-content">
+                            <a href="noticia.html?id=noticia-008" style="text-decoration: none; color: inherit;">
+                                <h3>Flamengo e Portuguesa empatam no Raulino de Oliveira em jogo morno</h3>
+                            </a>
+                        </div>
+                    </article>
+                </aside>
+            </section>
 
             <!-- Mais Lidos (Premium Horizontal) -->
             <section class="most-read-horizontal">
@@ -237,15 +242,15 @@
                     <div class="strip-header"
                         style="border-bottom: 1px solid #eaeaea; margin-bottom: 25px; position: relative;">
                         <h3 style="
-                            font-family: 'Noto Serif', serif; 
-                            font-size: 1.2rem; 
-                            font-weight: 800; 
-                            color: #1a1a2e; 
-                            text-transform: uppercase; 
-                            margin: 0; 
-                            display: inline-block; 
-                            border-bottom: 3px solid #d0021b; 
-                            padding-bottom: 8px; 
+                            font-family: 'Noto Serif', serif;
+                            font-size: 1.2rem;
+                            font-weight: 800;
+                            color: #1a1a2e;
+                            text-transform: uppercase;
+                            margin: 0;
+                            display: inline-block;
+                            border-bottom: 3px solid #d0021b;
+                            padding-bottom: 8px;
                             margin-bottom: -1px;">
                             Destaques
                         </h3>

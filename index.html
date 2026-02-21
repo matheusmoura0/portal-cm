@@ -20,6 +20,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Noto+Serif:wght@400;700;900&display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
     <script src="js/components/Header.js"></script>
     <script src="js/components/Footer.js"></script>
     <script src="js/components/MainLayout.js"></script>
@@ -236,101 +238,148 @@
                 </aside>
             </section>
 
-            <!-- Mais Lidos (Premium Horizontal) -->
-            <section class="most-read-horizontal">
-                <div class="container">
-                    <div class="strip-header"
-                        style="border-bottom: 1px solid #eaeaea; margin-bottom: 25px; position: relative;">
-                        <h3 style="
-                            font-family: 'Noto Serif', serif;
-                            font-size: 1.2rem;
-                            font-weight: 800;
-                            color: #1a1a2e;
-                            text-transform: uppercase;
-                            margin: 0;
-                            display: inline-block;
-                            border-bottom: 3px solid var(--primary-color);
-                            padding-bottom: 8px;
-                            margin-bottom: -1px;">
-                            Destaques
-                        </h3>
-                    </div>
-                    <div class="most-read-horizontal-grid">
-                        <a href="noticia.html?id=noticia-002" class="most-read-horizontal-item">
-                            <span class="number">1</span>
+            <!-- Mais Lidos (Destaques) -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Destaques</h2>
+                </div>
+                <div class="destaques-list">
+                    <a href="noticia.html?id=noticia-002" class="destaque-item">
+                        <span class="destaque-number">1</span>
+                        <div class="destaque-content">
                             <h4>Lula e MDB: O novo xadrez para as eleições de 2026</h4>
-                        </a>
-                        <a href="noticia.html?id=noticia-007" class="most-read-horizontal-item">
-                            <span class="number">2</span>
+                        </div>
+                    </a>
+                    <a href="noticia.html?id=noticia-007" class="destaque-item">
+                        <span class="destaque-number">2</span>
+                        <div class="destaque-content">
                             <h4>Custo de vida sobe e bate recorde em 2025</h4>
-                        </a>
-                        <a href="noticia.html?id=noticia-008" class="most-read-horizontal-item">
-                            <span class="number">3</span>
+                        </div>
+                    </a>
+                    <a href="noticia.html?id=noticia-008" class="destaque-item">
+                        <span class="destaque-number">3</span>
+                        <div class="destaque-content">
                             <h4>Flamengo e Portuguesa empatam no Raulino de Oliveira</h4>
-                        </a>
-                        <a href="noticia.html?id=noticia-006" class="most-read-horizontal-item">
-                            <span class="number">4</span>
+                        </div>
+                    </a>
+                    <a href="noticia.html?id=noticia-006" class="destaque-item">
+                        <span class="destaque-number">4</span>
+                        <div class="destaque-content">
                             <h4>Operação da PF encontra dinheiro jogado pela janela em SC</h4>
-                        </a>
-                        <a href="noticia.html?id=noticia-004" class="most-read-horizontal-item">
-                            <span class="number">5</span>
+                        </div>
+                    </a>
+                    <a href="noticia.html?id=noticia-004" class="destaque-item">
+                        <span class="destaque-number">5</span>
+                        <div class="destaque-content">
                             <h4>Festival de chocolate registra público recorde na Barra</h4>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </section>
 
-            <!-- Opinião / Colunistas Section -->
-            <section class="section" style="margin-bottom: 40px;">
-                <div class="strip-header" style="border-bottom: 1px solid #eaeaea; margin-bottom: 25px;">
-                    <h3
-                        style="font-family: 'Noto Serif', serif; font-size: 1.2rem; font-weight: 800; color: #1a1a2e; text-transform: uppercase; margin: 0; display: inline-block; border-bottom: 3px solid #d0021b; padding-bottom: 8px; margin-bottom: -1px;">
-                        Colunistas
-                    </h3>
-                </div>
+            <section class="colunistas-wrapper">
+                <div class="container">
 
-                <div class="opinion-premium-grid">
-
-                    <a href="coluna.html" class="columnist-premium-card">
-                        <div class="columnist-avatar-wrapper">
-                            <img src="images/colunistas/img_colunistas_magnavita-87116.jpg" alt="MAGNAVITA">
+                    <div class="colunistas-header-flex">
+                        <div class="colunistas-title-group">
+                            <div class="colunistas-icon-box">
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="colunistas-title-text">
+                                <h2>Colunistas em Destaque</h2>
+                                <p>Análises exclusivas dos nossos especialistas</p>
+                            </div>
                         </div>
-                        <h4 class="columnist-name">MAGNAVITA</h4>
-                        <span class="columnist-action">Leia a Coluna</span>
-                    </a>
+                        <a href="opiniao.html" class="btn-outline-brand">Ver todos os colunistas &rarr;</a>
+                    </div>
 
-                    <a href="coluna.html" class="columnist-premium-card">
-                        <div class="columnist-avatar-wrapper">
-                            <img src="images/colunistas/tales_faria_foto__colunista_300px-445320.jpg" alt="Tales Faria">
-                        </div>
-                        <h4 class="columnist-name">Tales Faria</h4>
-                        <span class="columnist-action">Leia a Coluna</span>
-                    </a>
+                    <div class="colunistas-cards-grid">
 
-                    <a href="coluna.html" class="columnist-premium-card">
-                        <div class="columnist-avatar-wrapper">
-                            <img src="images/colunistas/Martha-Imenes-colunista-300px.jpg" alt="Martha Imenes">
-                        </div>
-                        <h4 class="columnist-name">Martha Imenes</h4>
-                        <span class="columnist-action">Leia a Coluna</span>
-                    </a>
+                        <article class="card-colunista">
+                            <div class="card-col-header">
+                                <img src="images/colunistas/img_colunistas_magnavita-87116.jpg" alt="Magnavita"
+                                    class="card-col-avatar">
+                                <div class="card-col-info">
+                                    <h3>Magnavita</h3>
+                                    <span>Analista Político</span>
+                                </div>
+                            </div>
+                            <p class="card-col-bio">Analista político com vasta experiência em conjuntura nacional.
+                                Especialista em relações entre os poderes.</p>
+                            <div class="card-col-latest">
+                                <div class="card-col-latest-title">
+                                    <i class="far fa-comment-dots"></i>
+                                    <h4>A Conjuntura Política e os Desafios de 2026</h4>
+                                </div>
+                                <span class="card-col-date">21/02/2026</span>
+                            </div>
+                            <a href="coluna.html" class="card-col-action">Ver todas as colunas &rarr;</a>
+                        </article>
 
-                    <a href="coluna.html" class="columnist-premium-card">
-                        <div class="columnist-avatar-wrapper">
-                            <img src="images/colunistas/ruy_castro-87101.jpg" alt="Ruy Castro">
-                        </div>
-                        <h4 class="columnist-name">Ruy Castro</h4>
-                        <span class="columnist-action">Leia a Coluna</span>
-                    </a>
+                        <article class="card-colunista">
+                            <div class="card-col-header">
+                                <img src="images/colunistas/tales_faria_foto__colunista_300px-445320.jpg"
+                                    alt="Tales Faria" class="card-col-avatar">
+                                <div class="card-col-info">
+                                    <h3>Tales Faria</h3>
+                                    <span>Jornalista Político</span>
+                                </div>
+                            </div>
+                            <p class="card-col-bio">Jornalista especializado em política nacional com mais de 20 anos de
+                                experiência na cobertura do Planalto.</p>
+                            <div class="card-col-latest">
+                                <div class="card-col-latest-title">
+                                    <i class="far fa-comment-dots"></i>
+                                    <h4>Mudanças no Cenário Político Nacional</h4>
+                                </div>
+                                <span class="card-col-date">21/02/2026</span>
+                            </div>
+                            <a href="coluna.html" class="card-col-action">Ver todas as colunas &rarr;</a>
+                        </article>
 
-                    <a href="coluna.html" class="columnist-premium-card">
-                        <div class="columnist-avatar-wrapper">
-                            <img src="images/colunistas/ViniciusLummertz-colunista.jpg" alt="Vinicius Lummertz">
-                        </div>
-                        <h4 class="columnist-name">Vinicius Lummertz</h4>
-                        <span class="columnist-action">Leia a Coluna</span>
-                    </a>
+                        <article class="card-colunista">
+                            <div class="card-col-header">
+                                <img src="images/colunistas/colunista_fernando_molica-157938.jpg" alt="Fernando Molica"
+                                    class="card-col-avatar">
+                                <div class="card-col-info">
+                                    <h3>Fernando Molica</h3>
+                                    <span>Jornalista e Escritor</span>
+                                </div>
+                            </div>
+                            <p class="card-col-bio">Cobertura investigativa e análise aprofundada sobre os impactos das
+                                decisões jurídicas e políticas no Brasil.</p>
+                            <div class="card-col-latest">
+                                <div class="card-col-latest-title">
+                                    <i class="far fa-comment-dots"></i>
+                                    <h4>Os bastidores do poder e a nova dinâmica do Congresso</h4>
+                                </div>
+                                <span class="card-col-date">21/02/2026</span>
+                            </div>
+                            <a href="coluna.html" class="card-col-action">Ver todas as colunas &rarr;</a>
+                        </article>
 
+                        <article class="card-colunista">
+                            <div class="card-col-header">
+                                <img src="images/colunistas/Martha-Imenes-colunista-300px.jpg" alt="Martha Imenes"
+                                    class="card-col-avatar">
+                                <div class="card-col-info">
+                                    <h3>Martha Imenes</h3>
+                                    <span>Especialista em Economia</span>
+                                </div>
+                            </div>
+                            <p class="card-col-bio">Especialista em economia política, com foco em análise de mercado,
+                                inflação e políticas públicas.</p>
+                            <div class="card-col-latest">
+                                <div class="card-col-latest-title">
+                                    <i class="far fa-comment-dots"></i>
+                                    <h4>O que esperar das metas fiscais para este semestre</h4>
+                                </div>
+                                <span class="card-col-date">21/02/2026</span>
+                            </div>
+                            <a href="coluna.html" class="card-col-action">Ver todas as colunas &rarr;</a>
+                        </article>
+
+                    </div>
                 </div>
             </section>
 

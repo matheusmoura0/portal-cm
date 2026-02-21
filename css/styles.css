@@ -3927,3 +3927,223 @@ header.scrolled,
         font-size: 1.5em;
     }
 }
+
+
+/* --- SEÇÃO COLUNISTAS (CARDS MODERNOS) --- */
+
+.colunistas-wrapper {
+    background-color: #f4f5f7;
+    /* Fundo cinza claro da seção */
+    padding: 60px 0;
+    margin: 40px 0;
+}
+
+/* Cabeçalho da Seção */
+.colunistas-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.colunistas-title-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.colunistas-icon-box {
+    background-color: var(--primary-color);
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.colunistas-title-text h2 {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #1a1a2e;
+    margin: 0 0 5px 0;
+}
+
+.colunistas-title-text p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+}
+
+.btn-outline-brand {
+    border: 1px solid #eaeaea;
+    background: #fff;
+    color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-brand:hover {
+    border-color: var(--primary-color);
+    background: #f0f7ff;
+}
+
+/* Grid de Cards */
+/* --- CARROSSEL HORIZONTAL DE COLUNISTAS (Desktop e Mobile) --- */
+
+.colunistas-cards-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    /* Suavidade no iOS */
+    gap: 30px;
+    padding-bottom: 25px;
+    /* Espaço para a barra de rolagem e sombra do hover */
+    scroll-snap-type: x mandatory;
+    /* Efeito de ímã ao rolar */
+}
+
+/* Customização da Barra de Rolagem do Carrossel */
+.colunistas-cards-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.colunistas-cards-grid::-webkit-scrollbar-track {
+    background: #eaeaea;
+    border-radius: 4px;
+}
+
+.colunistas-cards-grid::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    /* Barra azul CM elegante */
+    border-radius: 4px;
+}
+
+/* Trava a largura do Card para o Carrossel */
+.card-colunista {
+    flex: 0 0 auto !important;
+    /* Impede que o card encolha */
+    width: 340px !important;
+    /* Largura ideal para desktop */
+    max-width: 85vw !important;
+    /* No mobile, ocupa 85% da tela para mostrar que tem mais pro lado */
+    scroll-snap-align: start;
+    /* O card "trava" no canto da tela ao rolar */
+
+    /* Mantendo as propriedades do design anterior */
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-colunista:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Topo do Card (Foto + Nome) */
+.card-col-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card-col-avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f4f5f7;
+}
+
+.card-col-info h3 {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #1a1a2e;
+    margin: 0 0 3px 0;
+}
+
+.card-col-info span {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Bio / Resumo */
+.card-col-bio {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* Última Coluna (Com borda lateral) */
+.card-col-latest {
+    border-left: 3px solid #e0e0e0;
+    padding-left: 15px;
+    margin-bottom: 25px;
+    flex-grow: 1;
+    /* Empurra o botão pro final */
+}
+
+.card-col-latest-title {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.card-col-latest-title i {
+    color: #aaa;
+    margin-top: 4px;
+}
+
+.card-col-latest-title h4 {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    line-height: 1.3;
+    margin: 0 0 8px 0;
+}
+
+.card-col-date {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+/* Botão do Card */
+.card-col-action {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+@media (max-width: 992px) {
+    .colunistas-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .colunistas-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -6,9 +6,11 @@
 /* CSS Variables */
 :root {
     /* Cores da Marca */
-    --color-primary: #d0021b;
-    --color-primary-dark: #a00015;
-    --color-primary-light: #e63946;
+    --primary-color: #1a3a5c;
+    --primary-hover: #142d47;
+    --color-primary: var(--primary-color);
+    --color-primary-dark: var(--primary-hover);
+    --color-primary-light: #2c527a;
 
     /* Cores de Header Regionais (podem ser alteradas via JS) */
     --color-header-bg: #1a3a5c;
@@ -27,7 +29,7 @@
     --color-text-muted: #cccccc;
 
     /* Cores de Editorias */
-    --color-politics: #d0021b;
+    --color-politics: var(--primary-color);
     --color-economy: #0056b3;
     --color-sports: #00853e;
     --color-culture: #6a1b9a;
@@ -1188,7 +1190,7 @@ button {
     left: 0;
     width: 60px;
     height: 3px;
-    background-color: #d0021b;
+    background-color: var(--primary-color);
 }
 
 .section-link {
@@ -3866,11 +3868,12 @@ header.scrolled,
 }
 
 /* Category Tags (Badges) */
-.category-tag {
+.category-tag,
+.category-badge {
     position: absolute;
     top: 15px;
     left: 15px;
-    background-color: #d32f2f;
+    background-color: var(--primary-color) !important;
     color: white;
     padding: 4px 8px;
     font-size: 0.75rem;

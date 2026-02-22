@@ -11,68 +11,74 @@ const Footer = {
     // Create temporary container to parse HTML
     const temp = document.createElement("div");
     temp.innerHTML = `
-    <!-- Newsletter Section -->
     <section class="newsletter-section">
-        <div class="newsletter-content">
-            <h3>Receba as principais notícias do dia</h3>
-            <p>
-                Cadastre-se gratuitamente e fique por dentro de tudo
-                que acontece no Brasil e no mundo através da nossa curadoria editorial.
-            </p>
-            <form class="newsletter-form" id="newsletter-form">
-                <input type="email" placeholder="Seu melhor e-mail" required id="newsletter-email" />
+        <div class="container">
+            <h2 class="newsletter-title">Receba as principais notícias do dia</h2>
+            <p class="newsletter-desc">Cadastre-se para receber o nosso boletim diário com os destaques da nossa equipe editorial.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault();">
+                <input type="email" placeholder="Seu e-mail" required>
                 <button type="submit">Inscrever-se</button>
             </form>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-section">
-                    <span class="footer-title">Sobre</span>
-                    <ul class="footer-links">
-                        <li><a href="/sobre.html">Quem somos</a></li>
-                        <li><a href="/expediente.html">Expediente</a></li>
-                        <li><a href="/privacidade.html">Política de Privacidade</a></li>
-                        <li><a href="/termos.html">Termos de Uso</a></li>
+                
+                <div class="footer-col">
+                    <h4>Sobre</h4>
+                    <ul>
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Expediente</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <span class="footer-title">Editorias</span>
-                    <ul class="footer-links">
-                        <li><a href="/opiniao.html">Opinião</a></li>
-                        <li><a href="/politica.html">Política</a></li>
-                        <li><a href="/economia.html">Economia</a></li>
-                        <li><a href="/justica.html">Justiça</a></li>
-                        <li><a href="/esportes.html">Esportes</a></li>
-                        <li><a href="/cultura.html">Cultura</a></li>
+
+                <div class="footer-col">
+                    <h4>Editorias</h4>
+                    <ul>
+                        <li><a href="opiniao.html">Opinião</a></li>
+                        <li><a href="#">Política</a></li>
+                        <li><a href="#">Economia</a></li>
+                        <li><a href="#">Justiça</a></li>
+                        <li><a href="#">Esportes</a></li>
+                        <li><a href="#">Cultura</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <span class="footer-title">Portais Regionais</span>
-                    <ul class="footer-links">
-                        <li><a href="https://www.correiodamanha.com.br/" target="_blank">Correio Rio</a></li>
-                        <li><a href="https://correiodamanhasp.com.br/" target="_blank">Correio SP</a></li>
-                        <li><a href="https://correiodamanhadf.com.br/" target="_blank">Correio DF</a></li>
-                        <li><a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul Fluminense</a></li>
-                        <li><a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a></li>
+
+                <div class="footer-col">
+                    <h4>Portais Regionais</h4>
+                    <ul>
+                        <li><a href="#">Correio RJ</a></li>
+                        <li><a href="#">Correio SP</a></li>
+                        <li><a href="#">Correio DF</a></li>
+                        <li><a href="#">Correio Sul Fluminense</a></li>
+                        <li><a href="#">Correio Petropolitano</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <span class="footer-title">Contato</span>
-                    <ul class="footer-links">
-                        <li><a href="/contato.html">Fale conosco</a></li>
-                        <li><a href="/trabalhe-conosco.html">Trabalhe conosco</a></li>
-                        <li><a href="/anuncie.html">Anuncie</a></li>
-                        <li><a href="/assine.html">Assine</a></li>
+
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="#">Fale conosco</a></li>
+                        <li><a href="#">Trabalhe conosco</a></li>
+                        <li><a href="#">Anuncie</a></li>
+                        <li><a href="#">Assine</a></li>
                     </ul>
                 </div>
+
             </div>
-            <div class="footer-bottom">
-                <div class="footer-logo">PORTAL CM</div>
-                <p>PORTAL CM &copy; 2026. Todos os direitos reservados. O conteúdo deste portal é protegido por lei.</p>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <div class="footer-logo">
+                    <span style="font-family: 'Noto Serif', serif; font-weight: 900; font-size: 1.5rem; color: #fff; line-height: 0.8; display: block;">CM</span>
+                    <span style="font-family: sans-serif; font-size: 0.6rem; letter-spacing: 3px; color: #fff; display: block; margin-top: 5px;">PORTAL</span>
+                </div>
+                <p>&copy; 2026 Portal CM. Todos os direitos reservados. O conteúdo não pode ser reproduzido sem autorização.</p>
             </div>
         </div>
     </footer>

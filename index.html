@@ -32,148 +32,126 @@
     <div id="global-header"></div>
 
 
-    <!-- AO VIVO Live Coverage Section -->
-    <section class="breaking-news" id="ao-vivo">
-        <div class="container breaking-container">
-            <div class="breaking-header">
-                <span class="breaking-label">AO VIVO</span>
-                <button class="live-expand-btn" id="live-expand-btn" aria-label="Expandir cobertura">
+
+
+    <div class="live-panel" id="live-panel">
+        <div class="container">
+            <div class="live-panel-header">
+                <h2>Cobertura Ao Vivo</h2>
+                <button class="live-close-btn" id="live-close-btn" aria-label="Fechar">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </button>
             </div>
-            <div class="ticker-wrapper">
-                <div class="ticker-content" id="breaking-news-ticker">
-                    <span>🔴 VR: Prefeito Neto garante reajuste para servidores</span>
-                    <span>🔴 Nunes rejeita aliança entre MDB e PT em 2026</span>
-                    <span>🔴 Início do sistema aquaviário deve acontecer no final de 2026</span>
-                    <span>🔴 Flamengo e Portuguesa empatam no Raulino</span>
-                    <span>🔴 STF forma maioria favorável à mudança na Lei das Estatais</span>
-                    <span>🔴 Congresso aprova projeto de reforma tributária em primeiro turno</span>
-                </div>
+            <div class="live-updates" id="live-updates">
+                <article class="live-update featured">
+                    <div class="update-time">
+                        <span class="time-badge">AGORA</span>
+                    </div>
+                    <div class="update-content">
+                        <h3>
+                            STF forma maioria favorável à mudança na Lei
+                            das Estatais
+                        </h3>
+                        <p>
+                            Ministros do Supremo Tribunal Federal
+                            sinalizaram apoio à alteração que permite
+                            nomeações políticas em empresas estatais. A
+                            decisão ainda não é definitiva.
+                        </p>
+                        <div class="update-tags">
+                            <span class="tag">Política</span>
+                            <span class="tag">STF</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="live-update">
+                    <div class="update-time">
+                        <span class="time-badge">15:42</span>
+                    </div>
+                    <div class="update-content">
+                        <h4>
+                            Congresso aprova projeto de reforma
+                            tributária em primeiro turno
+                        </h4>
+                        <p>
+                            A proposta foi aprovada com 290 votos a
+                            favor e 140 contra. O texto agora segue para
+                            o Senado.
+                        </p>
+                        <div class="update-tags">
+                            <span class="tag">Economia</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="live-update">
+                    <div class="update-time">
+                        <span class="time-badge">15:30</span>
+                    </div>
+                    <div class="update-content">
+                        <h4>
+                            VR: Prefeito Neto garante reajuste para
+                            servidores
+                        </h4>
+                        <p>
+                            O prefeito de Volta Redonda confirmou
+                            reajuste de 8% para servidores municipais a
+                            partir de março.
+                        </p>
+                        <div class="update-tags">
+                            <span class="tag">Volta Redonda</span>
+                            <span class="tag">Servidores</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="live-update">
+                    <div class="update-time">
+                        <span class="time-badge">15:15</span>
+                    </div>
+                    <div class="update-content">
+                        <h4>
+                            Nunes rejeita aliança entre MDB e PT em 2026
+                        </h4>
+                        <p>
+                            O governador Cláudio Nunes descartou
+                            possibilidade de aliança com o PT nas
+                            eleições de 2026.
+                        </p>
+                        <div class="update-tags">
+                            <span class="tag">Política</span>
+                            <span class="tag">Rio de Janeiro</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="live-update">
+                    <div class="update-time">
+                        <span class="time-badge">14:58</span>
+                    </div>
+                    <div class="update-content">
+                        <h4>
+                            Flamengo e Portuguesa empatam no Raulino
+                        </h4>
+                        <p>
+                            Jogo válido pelo Campeonato Carioca terminou
+                            em 1x1 no estádio Raulino de Oliveira.
+                        </p>
+                        <div class="update-tags">
+                            <span class="tag">Esportes</span>
+                            <span class="tag">Futebol</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="live-footer">
+                <span class="auto-update">
+                    <span class="pulse-small"></span>
+                    Atualizando automaticamente
+                </span>
             </div>
         </div>
-
-        <div class="live-panel" id="live-panel">
-            <div class="container">
-                <div class="live-panel-header">
-                    <h2>Cobertura Ao Vivo</h2>
-                    <button class="live-close-btn" id="live-close-btn" aria-label="Fechar">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-                <div class="live-updates" id="live-updates">
-                    <article class="live-update featured">
-                        <div class="update-time">
-                            <span class="time-badge">AGORA</span>
-                        </div>
-                        <div class="update-content">
-                            <h3>
-                                STF forma maioria favorável à mudança na Lei
-                                das Estatais
-                            </h3>
-                            <p>
-                                Ministros do Supremo Tribunal Federal
-                                sinalizaram apoio à alteração que permite
-                                nomeações políticas em empresas estatais. A
-                                decisão ainda não é definitiva.
-                            </p>
-                            <div class="update-tags">
-                                <span class="tag">Política</span>
-                                <span class="tag">STF</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="live-update">
-                        <div class="update-time">
-                            <span class="time-badge">15:42</span>
-                        </div>
-                        <div class="update-content">
-                            <h4>
-                                Congresso aprova projeto de reforma
-                                tributária em primeiro turno
-                            </h4>
-                            <p>
-                                A proposta foi aprovada com 290 votos a
-                                favor e 140 contra. O texto agora segue para
-                                o Senado.
-                            </p>
-                            <div class="update-tags">
-                                <span class="tag">Economia</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="live-update">
-                        <div class="update-time">
-                            <span class="time-badge">15:30</span>
-                        </div>
-                        <div class="update-content">
-                            <h4>
-                                VR: Prefeito Neto garante reajuste para
-                                servidores
-                            </h4>
-                            <p>
-                                O prefeito de Volta Redonda confirmou
-                                reajuste de 8% para servidores municipais a
-                                partir de março.
-                            </p>
-                            <div class="update-tags">
-                                <span class="tag">Volta Redonda</span>
-                                <span class="tag">Servidores</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="live-update">
-                        <div class="update-time">
-                            <span class="time-badge">15:15</span>
-                        </div>
-                        <div class="update-content">
-                            <h4>
-                                Nunes rejeita aliança entre MDB e PT em 2026
-                            </h4>
-                            <p>
-                                O governador Cláudio Nunes descartou
-                                possibilidade de aliança com o PT nas
-                                eleições de 2026.
-                            </p>
-                            <div class="update-tags">
-                                <span class="tag">Política</span>
-                                <span class="tag">Rio de Janeiro</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="live-update">
-                        <div class="update-time">
-                            <span class="time-badge">14:58</span>
-                        </div>
-                        <div class="update-content">
-                            <h4>
-                                Flamengo e Portuguesa empatam no Raulino
-                            </h4>
-                            <p>
-                                Jogo válido pelo Campeonato Carioca terminou
-                                em 1x1 no estádio Raulino de Oliveira.
-                            </p>
-                            <div class="update-tags">
-                                <span class="tag">Esportes</span>
-                                <span class="tag">Futebol</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="live-footer">
-                    <span class="auto-update">
-                        <span class="pulse-small"></span>
-                        Atualizando automaticamente
-                    </span>
-                </div>
-            </div>
-        </div>
+    </div>
     </section>
     <!-- Anúncio Topo Padrão -->
     <div class="ad-placeholder ad-950x250">
@@ -504,8 +482,7 @@
                     <!-- Nacional e Regionais Section -->
                     <section class="section">
                         <h2 class="section-title">Nacional e Regionais</h2>
-                        <div id="regionais-grid"
-                            style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;">
+                        <div id="regionais-grid" class="grid-regionais">
 
                             <!-- Card 1: Nacional -->
                             <article class="card-regional">
@@ -707,38 +684,100 @@
                 </div>
             </main>
 
-            <!-- TV Correio da Manhã Ao Vivo Section -->
-            <!-- <section class="section live-section">
-                <div class="container">
-                    <h2 class="section-title"><span class="live-indicator">●</span> Ao Vivo: TV Correio da Manhã</h2>
-                    <div class="responsive-video-container">
-                        <iframe src="https://www.youtube.com/embed/Oup5MreJeJw?autoplay=1&mute=1"
-                            title="Transmissão Ao Vivo" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
+            <!-- TV Correio Section -->
+            <section class="video-section container" id="tv-correio">
+
+                <div class="video-section-header">
+                    <i class="fab fa-youtube" style="color: #d0021b; font-size: 1.8rem;"></i>
+                    <h2>TV Correio</h2>
                 </div>
-            </section> -->
 
-            <!-- TV Ao Vivo (Final da Página) -->
-            <section class="live-tv-footer-section">
+                <div class="video-grid">
+
+                    <div class="video-main">
+                        <div class="video-responsive-wrapper">
+                            <iframe src="https://www.youtube.com/embed/PnHesjXVfpE" title="TV Correio da Manhã Ao Vivo"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+
+                            <span class="video-tag tag-live">Ao Vivo</span>
+                        </div>
+                        <h3 class="video-main-title">Acompanhe as últimas notícias e coberturas especiais da TV Correio
+                            da Manhã</h3>
+                    </div>
+
+                    <div class="video-sidebar">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eaeaea; margin-bottom: 10px; padding-bottom: 10px;">
+                            <h4 class="video-sidebar-title" style="margin: 0; border: none;">Últimos Vídeos</h4>
+                            <a href="https://www.youtube.com/@TVCorreiodaManhã" target="_blank"
+                                style="font-size: 0.75rem; color: #d0021b; text-decoration: none; font-weight: bold;">Ver
+                                Canal →</a>
+                        </div>
+
+                        <a href="https://www.youtube.com/watch?v=X-fnjeko5ak" target="_blank" class="video-side-item">
+                            <div class="video-side-thumb">
+                                <img src="https://img.youtube.com/vi/X-fnjeko5ak/hqdefault.jpg" alt="Vídeo Recente">
+                                <i class="fas fa-play-circle play-icon-overlay"></i>
+                            </div>
+                            <div class="video-side-info">
+                                <h5>Correio Petropolitano na TV 1ª Edição</h5>
+                                <span>Destaque</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.youtube.com/watch?v=3JAzzx_D1Ww" target="_blank" class="video-side-item">
+                            <div class="video-side-thumb">
+                                <img src="https://img.youtube.com/vi/3JAzzx_D1Ww/hqdefault.jpg" alt="Vídeo Recente">
+                                <i class="fas fa-play-circle play-icon-overlay"></i>
+                            </div>
+                            <div class="video-side-info">
+                                <h5>Correio Petropolitano na TV 2ª Edição</h5>
+                                <span>Recente</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.youtube.com/watch?v=swQ-pSs3SwM" target="_blank" class="video-side-item">
+                            <div class="video-side-thumb">
+                                <img src="https://img.youtube.com/vi/swQ-pSs3SwM/hqdefault.jpg" alt="Vídeo Recente">
+                                <i class="fas fa-play-circle play-icon-overlay"></i>
+                            </div>
+                            <div class="video-side-info">
+                                <h5>Correio Petropolitano Debate</h5>
+                                <span>Especial</span>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Instagram Section -->
+            <section class="instagram-section">
                 <div class="container">
-                    <div class="live-header">
-                        <span class="live-dot"
-                            style="width: 10px; height: 10px; background: #d0021b; border-radius: 50%; display: inline-block; margin-right: 8px; animation: blink 1.5s infinite;"></span>
-                        <h3
-                            style="font-family: 'Noto Serif', serif; font-size: 1.3rem; font-weight: 800; text-transform: uppercase; display: inline-block; margin: 0;">
-                            TV Correio da Manhã</h3>
+
+                    <div class="insta-header">
+                        <i class="fab fa-instagram insta-icon"></i>
+                        <h2 class="insta-title">Siga o Correio da Manhã</h2>
+                        <p class="insta-subtitle">Fique por dentro das últimas notícias em tempo real no nosso perfil.
+                        </p>
+                        <a href="https://www.instagram.com/correiodamanhabr/" target="_blank" class="btn-follow-insta">
+                            Seguir @correiodamanhabr
+                        </a>
                     </div>
 
-                    <div class="live-container">
-                        <iframe src="https://www.youtube.com/embed/GUbvNle5KYs?autoplay=0&mute=1"
-                            title="Transmissão TV Correio da Manhã"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
+                    <div class="insta-feed-container" id="instafeed">
+
+                        <div class="insta-placeholder-grid">
+                            <div class="insta-placeholder-item"><i class="fas fa-image"></i></div>
+                            <div class="insta-placeholder-item"><i class="fas fa-image"></i></div>
+                            <div class="insta-placeholder-item"><i class="fas fa-image"></i></div>
+                            <div class="insta-placeholder-item"><i class="fas fa-image"></i></div>
+                        </div>
+
                     </div>
+
                 </div>
             </section>
 

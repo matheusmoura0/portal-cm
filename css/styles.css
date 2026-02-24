@@ -4168,7 +4168,7 @@ header.scrolled,
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px auto;
+    margin: 60px auto 10px;
     /* Garante respiro em cima e embaixo, e centraliza na tela */
     width: 100%;
     box-sizing: border-box;
@@ -4181,6 +4181,29 @@ header.scrolled,
     max-width: 970px;
     min-height: 250px;
 }
+
+.ad-950x250 {
+    max-width: 950px;
+    min-height: 250px;
+}
+
+/* --- Novo formato intermediário (Desktop 970x150 -> Mobile 320x150) --- */
+.ad-970x150 {
+    max-width: 970px;
+    min-height: 150px;
+    transition: all 0.3s ease;
+}
+
+/* Força o tamanho exato de 320x150 em telas menores */
+@media (max-width: 992px) {
+    .ad-970x150 {
+        max-width: 320px !important;
+        min-height: 150px !important;
+        padding: 10px !important;
+        /* Reduz o padding para caber o texto no mobile */
+    }
+}
+
 
 .ad-728x90 {
     max-width: 728px;
@@ -4202,4 +4225,161 @@ header.scrolled,
         padding: 40px 20px;
         /* Mantém uma área clicável boa no mobile */
     }
+}
+
+/* --- Anúncio Mutável: Jornal do Servidor (Desktop 300x600 -> Mobile 300x250) --- */
+.ad-jornal-sidebar {
+    width: 100%;
+    max-width: 300px;
+    min-height: 600px;
+    transition: min-height 0.3s ease;
+    /* Transição suave caso redimensione a tela */
+}
+
+/* Quando a tela for menor que 992px (Tablets e Celulares) */
+@media (max-width: 992px) {
+    .ad-jornal-sidebar {
+        min-height: 250px;
+    }
+}
+
+/* ========================================= */
+/* --- AJUSTES MOBILE (JORNAL DO SERVIDOR) --- */
+/* ========================================= */
+
+@media (max-width: 992px) {
+
+    /* 1. Garante que o container geral empilhe corretamente */
+    .jornal-servidor-inner .layout-with-sidebar {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* 2. O conteúdo principal de notícias vem primeiro */
+    .jornal-servidor-inner .main-column {
+        order: 1 !important;
+    }
+
+    /* 3. A sidebar (anúncio) vai lá pro final da seção */
+    .jornal-servidor-sidebar {
+        order: 2 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        /* Centraliza o conteúdo da sidebar */
+        margin-top: 30px !important;
+        /* Dá um respiro entre as notícias e o anúncio */
+    }
+
+    /* 4. Trava o tamanho do anúncio e centraliza */
+    .ad-jornal-sidebar {
+        margin: 0 auto !important;
+        max-width: 300px !important;
+        min-height: 250px !important;
+    }
+}
+
+/* --- Botão Voltar ao Topo (Ajuste Mobile) --- */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 15px !important;
+        right: 15px !important;
+        width: 40px !important;
+        height: 40px !important;
+        opacity: 0.8;
+        /* Leve transparência */
+        z-index: 1001 !important;
+        /* Garante que fique acima de tudo */
+    }
+
+    .back-to-top svg {
+        width: 1.2rem !important;
+        height: 1.2rem !important;
+    }
+}
+
+/* ========================================= */
+/* --- CARDS: NACIONAL E REGIONAIS --- */
+/* ========================================= */
+
+.card-regional {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    /* Borda cinza bem sutil do design original */
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Faz todos os cards da linha terem a mesma altura */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-regional:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+.card-regional-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Container da Imagem + Tag */
+.card-regional-media {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    /* Altura fixa para alinhar o grid */
+    overflow: hidden;
+}
+
+.card-regional-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.card-regional:hover .card-regional-media img {
+    transform: scale(1.04);
+}
+
+/* Área de Texto com Espaçamento (Padding) */
+.card-regional-content {
+    padding: 20px 15px;
+    /* Devolve o "respiro" branco em volta do texto */
+    flex-grow: 1;
+}
+
+.card-regional-content h3 {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.05rem;
+    /* Tamanho original mais delicado */
+    font-weight: 700;
+    /* Reduzido de 800 para tirar o peso excessivo */
+    line-height: 1.4;
+    color: #222;
+    margin: 0;
+}
+
+/* Estilo da Tag Flutuante */
+.tag-sobreposta {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 8px;
+    color: #fff;
+    font-size: 0.70rem;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    background-color: #1a3a5c;
+    /* Azul característico do site */
+    border-radius: 2px;
+    z-index: 2;
 }

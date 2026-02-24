@@ -11,46 +11,6 @@ const Header = {
     // Create temporary container to parse HTML
     const temp = document.createElement("div");
     temp.innerHTML = `
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-left">
-                <span id="current-date"></span>
-                <span class="top-bar-separator">|</span>
-                <span id="weather-info">Rio de Janeiro: 22°C Parcialmente nublado</span>
-                <span class="top-bar-separator">|</span>
-                <span id="usd-rate">USD: R$ 5.07</span>
-                <span class="top-bar-separator">|</span>
-                <span id="ibov-rate">IBOV: 135.152</span>
-            </div>
-            <div class="top-bar-right">
-                <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
-                </a>
-                <a href="https://youtube.com" target="_blank" class="social-icon" aria-label="YouTube">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
-                            fill="none" stroke="white" stroke-width="2"></path>
-                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"></polygon>
-                    </svg>
-                </a>
-                <a href="#share" class="social-icon" aria-label="Compartilhar">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="18" cy="5" r="3"></circle>
-                        <circle cx="6" cy="12" r="3"></circle>
-                        <circle cx="18" cy="19" r="3"></circle>
-                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </div>
 
     <!-- Unified Sticky Header -->
     <div class="sticky-nav-unified">

@@ -203,15 +203,15 @@
 }
 
 .section-link {
-    color: var(--color-primary, #1a3a5c);
-    font-weight: 600;
+    color: #1a3a5c;
+    font-weight: 800;
     font-size: 0.875rem;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .section-link:hover {
-    color: var(--color-header-bg, #cc0000);
+    color: #2a5a8c;
 }
 
 /* Responsive design */

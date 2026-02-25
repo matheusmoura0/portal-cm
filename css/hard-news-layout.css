@@ -723,9 +723,9 @@ img {
     font-family: var(--font-body);
     font-size: 0.85rem;
     text-transform: uppercase;
-    color: #d0021b;
+    color: #1a3a5c;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .editorial-section-grid {

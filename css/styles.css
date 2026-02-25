@@ -938,7 +938,7 @@ button {
 
 .mini-opinion-content .author-name {
     font-size: 0.85rem;
-    color: #d0021b;
+    color: #1a3a5c;
     /* Vermelho CM para destaque */
     font-weight: 700;
     text-transform: uppercase;
@@ -958,7 +958,7 @@ button {
 }
 
 .opinion-headline a:hover {
-    color: #d0021b;
+    color: #2a5a8c;
 }
 
 /* Responsividade para telas muito pequenas */
@@ -1193,14 +1193,33 @@ button {
     background-color: var(--primary-color);
 }
 
+/* Action Links */
+.card-col-action {
+    color: #1a3a5c !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 0.85rem;
+}
+
+.card-col-action:hover {
+    color: #2a5a8c !important;
+}
+
 .section-link {
-    color: var(--color-primary);
-    font-weight: 600;
+    color: #1a3a5c;
+    font-weight: 800;
+    text-transform: uppercase;
     font-size: 0.875rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .section-link:hover {
-    color: var(--color-primary-dark);
+    color: #2a5a8c;
 }
 
 /* News Grid - New Layout: 1 Main + 3 Small */
@@ -3308,14 +3327,14 @@ input:focus {
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #d0021b;
+    border: 2px solid #1a3a5c;
     /* Borda vermelha CM */
 }
 
 .opinion-bar-name {
     font-size: 0.85rem;
     font-weight: 800;
-    color: #d0021b;
+    color: #1a3a5c;
     text-transform: uppercase;
     display: block;
 }
@@ -3412,8 +3431,8 @@ input:focus {
     left: 0;
     width: 60px;
     height: 3px;
-    background-color: #d0021b;
-    /* Tracinho vermelho */
+    background-color: #1a3a5c;
+    /* Tracinho azul institutional */
 }
 
 /* Grid de Destaques */
@@ -3490,7 +3509,7 @@ input:focus {
 }
 
 .columnist-premium-card:hover .columnist-avatar-wrapper {
-    border-color: #d0021b;
+    border-color: #1a3a5c;
     /* O anel fica vermelho CM ao passar o mouse */
 }
 
@@ -3517,7 +3536,7 @@ input:focus {
 .columnist-action {
     font-family: sans-serif;
     font-size: 0.75rem;
-    color: #d0021b;
+    color: #1a3a5c;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -3983,7 +4002,7 @@ header.scrolled,
 .btn-outline-brand {
     border: 1px solid #eaeaea;
     background: #fff;
-    color: var(--primary-color);
+    color: #1a3a5c;
     padding: 10px 20px;
     border-radius: 4px;
     text-decoration: none;
@@ -3993,8 +4012,8 @@ header.scrolled,
 }
 
 .btn-outline-brand:hover {
-    border-color: var(--primary-color);
-    background: #f0f7ff;
+    border-color: #1a3a5c;
+    background: #f4f8fc;
 }
 
 /* Grid de Cards */
@@ -4383,6 +4402,7 @@ header.scrolled,
     border-radius: 2px;
     z-index: 2;
 }
+
 /* ========================================= */
 /* --- SEÇÃO MULTIMÍDIA / VÍDEOS --- */
 /* ========================================= */
@@ -4425,13 +4445,14 @@ header.scrolled,
 /* Truque para deixar o iframe do YouTube 100% responsivo */
 .video-responsive-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* Proporção 16:9 */
+    padding-bottom: 56.25%;
+    /* Proporção 16:9 */
     height: 0;
     overflow: hidden;
     border-radius: 8px;
     background-color: #000;
     margin-bottom: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .video-responsive-wrapper iframe {
@@ -4465,13 +4486,28 @@ header.scrolled,
     border-radius: 4px;
     z-index: 10;
 }
-.tag-live { background-color: #d0021b; animation: pulse-red 2s infinite; }
-.tag-highlight { background-color: #1a3a5c; }
+
+.tag-live {
+    background-color: #d0021b;
+    animation: pulse-red 2s infinite;
+}
+
+.tag-highlight {
+    background-color: #1a3a5c;
+}
 
 @keyframes pulse-red {
-    0% { box-shadow: 0 0 0 0 rgba(208, 2, 27, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(208, 2, 27, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(208, 2, 27, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(208, 2, 27, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(208, 2, 27, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(208, 2, 27, 0);
+    }
 }
 
 /* --- LISTA DE VÍDEOS LATERAL --- */
@@ -4512,7 +4548,8 @@ header.scrolled,
 
 .video-side-thumb {
     position: relative;
-    width: 130px; /* Largura fixa para a miniatura lateral */
+    width: 130px;
+    /* Largura fixa para a miniatura lateral */
     flex-shrink: 0;
     border-radius: 4px;
     overflow: hidden;
@@ -4539,7 +4576,7 @@ header.scrolled,
     transform: translate(-50%, -50%);
     color: #fff;
     font-size: 1.5rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .video-side-info {
@@ -4566,8 +4603,10 @@ header.scrolled,
 /* Responsividade */
 @media (max-width: 992px) {
     .video-grid {
-        grid-template-columns: 1fr; /* Empilha tudo no celular */
+        grid-template-columns: 1fr;
+        /* Empilha tudo no celular */
     }
+
     .video-side-thumb {
         width: 150px;
     }
@@ -4615,13 +4654,14 @@ header.scrolled,
 /* Truque para deixar o iframe do YouTube 100% responsivo */
 .video-responsive-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* Proporção 16:9 */
+    padding-bottom: 56.25%;
+    /* Proporção 16:9 */
     height: 0;
     overflow: hidden;
     border-radius: 8px;
     background-color: #000;
     margin-bottom: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .video-responsive-wrapper iframe {
@@ -4655,13 +4695,28 @@ header.scrolled,
     border-radius: 4px;
     z-index: 10;
 }
-.tag-live { background-color: #d0021b; animation: pulse-red 2s infinite; }
-.tag-highlight { background-color: #1a3a5c; }
+
+.tag-live {
+    background-color: #d0021b;
+    animation: pulse-red 2s infinite;
+}
+
+.tag-highlight {
+    background-color: #1a3a5c;
+}
 
 @keyframes pulse-red {
-    0% { box-shadow: 0 0 0 0 rgba(208, 2, 27, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(208, 2, 27, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(208, 2, 27, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(208, 2, 27, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(208, 2, 27, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(208, 2, 27, 0);
+    }
 }
 
 /* --- LISTA DE VÍDEOS LATERAL --- */
@@ -4702,7 +4757,8 @@ header.scrolled,
 
 .video-side-thumb {
     position: relative;
-    width: 130px; /* Largura fixa para a miniatura lateral */
+    width: 130px;
+    /* Largura fixa para a miniatura lateral */
     flex-shrink: 0;
     border-radius: 4px;
     overflow: hidden;
@@ -4729,7 +4785,7 @@ header.scrolled,
     transform: translate(-50%, -50%);
     color: #fff;
     font-size: 1.5rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .video-side-info {
@@ -4756,8 +4812,10 @@ header.scrolled,
 /* Responsividade */
 @media (max-width: 992px) {
     .video-grid {
-        grid-template-columns: 1fr; /* Empilha tudo no celular */
+        grid-template-columns: 1fr;
+        /* Empilha tudo no celular */
     }
+
     .video-side-thumb {
         width: 150px;
     }
@@ -4776,7 +4834,7 @@ header.scrolled,
 /* Para Tablets (Telas médias) */
 @media (max-width: 1024px) {
     .grid-regionais {
-        grid-template-columns: repeat(2, 1fr) !important; 
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 20px !important;
     }
 }
@@ -4784,13 +4842,14 @@ header.scrolled,
 /* Para Celulares (Telas pequenas) */
 @media (max-width: 768px) {
     .grid-regionais {
-        grid-template-columns: 1fr !important; /* Empilha 1 card por linha */
+        grid-template-columns: 1fr !important;
+        /* Empilha 1 card por linha */
         gap: 20px !important;
     }
-    
+
     /* Ajuste opcional para a imagem não ficar gigante no celular */
     .card-regional-media {
-        height: 220px !important; 
+        height: 220px !important;
     }
 }
 
@@ -4799,7 +4858,8 @@ header.scrolled,
 /* ========================================= */
 
 .instagram-section {
-    background-color: #fafafa; /* Fundo característico do Instagram */
+    background-color: #fafafa;
+    /* Fundo característico do Instagram */
     padding: 60px 0;
     margin: 50px 0;
     border-top: 1px solid #eaeaea;
@@ -4838,7 +4898,8 @@ header.scrolled,
 }
 
 .btn-follow-insta {
-    background-color: #0095f6; /* Azul oficial do botão de seguir do Instagram */
+    background-color: #0095f6;
+    /* Azul oficial do botão de seguir do Instagram */
     color: #fff;
     padding: 8px 20px;
     border-radius: 4px;
@@ -4884,6 +4945,7 @@ header.scrolled,
 
 @media (max-width: 768px) {
     .insta-placeholder-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 fotos por linha no celular */
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 fotos por linha no celular */
     }
 }

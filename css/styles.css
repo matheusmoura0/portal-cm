@@ -321,6 +321,12 @@ button {
     max-width: 400px;
 }
 
+@media (max-width: 768px) {
+    .search-section {
+        display: none;
+    }
+}
+
 .search-box {
     display: flex;
     align-items: center;
@@ -4949,12 +4955,14 @@ header.scrolled,
         /* 2 fotos por linha no celular */
     }
 }
+
 /* ========================================= */
 /* --- GRIDS DAS SEÇÕES REGIONAIS (4x1) --- */
 /* ========================================= */
 
 .regional-section-wrapper {
-    margin: 50px auto; /* Espaçamento padrão entre as seções */
+    margin: 50px auto;
+    /* Espaçamento padrão entre as seções */
 }
 
 .regional-grid-4 {
@@ -4975,16 +4983,20 @@ header.scrolled,
     color: inherit;
     height: 100%;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: normal !important;
+    /* Desfaz o bug do nowrap */
+    width: 100%;
 }
 
 .regional-card-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .regional-card-item img {
     width: 100%;
-    height: 180px; /* Altura padrão para as fotos */
+    height: 180px;
+    /* Altura padrão para as fotos */
     object-fit: cover;
 }
 
@@ -4994,19 +5006,153 @@ header.scrolled,
 }
 
 .regional-card-content h3 {
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
     font-family: 'Noto Serif', serif;
-    font-size: 1.05rem;
+    font-size: 1rem !important;
+    /* Tamanho idêntico aos cards originais */
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.4 !important;
     color: #222;
     margin: 0;
 }
 
 /* Responsividade */
 @media (max-width: 1024px) {
-    .regional-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .regional-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
 }
+
 @media (max-width: 768px) {
-    .regional-grid-4 { grid-template-columns: 1fr; }
-    .regional-card-item img { height: 220px; }
+    .regional-grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .regional-card-item img {
+        height: 220px;
+    }
+}
+
+/* ========================================= */
+/* --- AJUSTE DOS CABEÇALHOS REGIONAIS --- */
+/* ========================================= */
+
+/* 1. Protege APENAS o link "VER TODOS" (ignora os cards) */
+.regional-section-wrapper>div:first-child>a {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    margin-left: 15px !important;
+}
+
+/* 2. Permite que o Título ocupe o espaço restante corretamente */
+.regional-section-wrapper h2 {
+    flex: 1;
+    overflow-wrap: break-word;
+    /* Se a palavra for maior que a tela, quebra com segurança */
+}
+
+/* 3. Ajuste Responsivo para Celulares */
+@media (max-width: 768px) {
+    .regional-section-wrapper h2 {
+        font-size: 1.4rem !important;
+        /* Reduz de 2rem para 1.4rem no mobile */
+    }
+
+    /* Centraliza os itens verticalmente no mobile para ficar mais harmônico */
+    .regional-section-wrapper>div:first-child {
+        align-items: center !important;
+    }
+}
+
+/* 4. Ajuste Extremo (Para celulares muito pequenos tipo iPhone SE) */
+@media (max-width: 375px) {
+    .regional-section-wrapper h2 {
+        font-size: 1.2rem !important;
+    }
+
+    .regional-section-wrapper a {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* ========================================= */
+/* --- PADRONIZAÇÃO DE TÍTULOS (MOBILE) --- */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    /* O seletor mira exatamente o <h2> que fica dentro da primeira <div> 
+       de qualquer <section> (que é o padrão de cabeçalho do portal)
+    */
+    section>div:first-child>h2,
+    .regional-section-wrapper h2 {
+        font-size: 1.25rem !important;
+        /* Tamanho único, elegante e que não quebra a tela */
+        line-height: 1.3 !important;
+    }
+
+    /* Garante que o botão 'VER TODOS' nas seções antigas também fique protegido */
+    section>div:first-child>a {
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        font-size: 0.8rem !important;
+        margin-left: 10px !important;
+    }
+}
+
+/* Ajuste fino para celulares muito pequenos (ex: iPhone SE) */
+@media (max-width: 375px) {
+
+    section>div:first-child>h2,
+    .regional-section-wrapper h2 {
+        font-size: 1.15rem !important;
+    }
+}
+
+/* ========================================= */
+/* --- BARRA DE PESQUISA EXPANSÍVEL MOBILE --- */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    /* O container do formulário precisa alinhar os itens */
+    .search-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    /* Oculta o campo de texto por padrão no celular */
+    #search-input {
+        width: 0 !important;
+        padding: 0 !important;
+        opacity: 0;
+        border: none !important;
+        transition: width 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+        overflow: hidden;
+    }
+
+    /* Garante que o botão da lupa fique sempre visível e clicável */
+    .search-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        color: #fff;
+        /* O ícone é branco no portal */
+        z-index: 2;
+    }
+
+    /* O estado "Aberto" (ativado pelo JavaScript) */
+    .search-box.search-active #search-input {
+        width: 200px !important;
+        /* Largura da barra quando aberta */
+        opacity: 1;
+        padding: 8px 15px !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        /* Borda da barra ativa */
+    }
 }

@@ -4949,3 +4949,64 @@ header.scrolled,
         /* 2 fotos por linha no celular */
     }
 }
+/* ========================================= */
+/* --- GRIDS DAS SEÇÕES REGIONAIS (4x1) --- */
+/* ========================================= */
+
+.regional-section-wrapper {
+    margin: 50px auto; /* Espaçamento padrão entre as seções */
+}
+
+.regional-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+/* Reutilizando o design de card limpo (fundo branco, borda sutil) */
+.regional-card-item {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.regional-card-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.regional-card-item img {
+    width: 100%;
+    height: 180px; /* Altura padrão para as fotos */
+    object-fit: cover;
+}
+
+.regional-card-content {
+    padding: 20px 15px;
+    flex-grow: 1;
+}
+
+.regional-card-content h3 {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #222;
+    margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .regional-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+@media (max-width: 768px) {
+    .regional-grid-4 { grid-template-columns: 1fr; }
+    .regional-card-item img { height: 220px; }
+}

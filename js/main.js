@@ -82,7 +82,13 @@ const Utils = {
 
   // Verifica se uma string de imagem é válida ou um placeholder
   isValidImage(src) {
-    if (!src || src === "" || src === "undefined" || src.includes("javascript:void(0)")) return false;
+    if (
+      !src ||
+      src === "" ||
+      src === "undefined" ||
+      src.includes("javascript:void(0)")
+    )
+      return false;
     // Padrões de placeholder comuns
     const placeholderPatterns = [
       "placehold.co",
@@ -92,10 +98,10 @@ const Utils = {
       "Sem+Imagem",
       "Espaço+Publicitário",
       "f0f0f0",
-      "728x90"
+      "728x90",
     ];
-    return !placeholderPatterns.some(pattern => src.includes(pattern));
-  }
+    return !placeholderPatterns.some((pattern) => src.includes(pattern));
+  },
 };
 
 // ========================================
@@ -106,52 +112,53 @@ const UI = {
   init() {
     this.handleNoImageCards();
     this.hideEmptyAds();
-    
+
     // Observa mudanças no DOM para cards carregados via AJAX
     this.observeDOM();
   },
 
   handleNoImageCards() {
     const selectors = [
-      '.news-card', 
-      '.featured-item', 
-      '.modern-section-item', 
-      '.region-main-item', 
-      '.region-sidebar-item',
-      '.editorial-item',
-      '.servidor-main',
-      '.servidor-side',
-      '.mobile-grid-item',
-      '.mobile-grid-main'
+      ".news-card",
+      ".featured-item",
+      ".modern-section-item",
+      ".region-main-item",
+      ".region-sidebar-item",
+      ".editorial-item",
+      ".servidor-main",
+      ".servidor-side",
+      ".mobile-grid-item",
+      ".mobile-grid-main",
     ];
-    const cards = document.querySelectorAll(selectors.join(', '));
-    
-    cards.forEach(card => {
-      const img = card.querySelector('img');
+    const cards = document.querySelectorAll(selectors.join(", "));
+
+    cards.forEach((card) => {
+      const img = card.querySelector("img");
       const hasValidImage = img && Utils.isValidImage(img.src);
-      
+
       if (!hasValidImage) {
-        card.classList.add('card-no-thumbnail');
+        card.classList.add("card-no-thumbnail");
         // Se for um link de imagem de erro conhecido, removemos o container
         const imgWrappers = [
-            '.news-image', 
-            '.img-wrapper', 
-            '.featured-image-wrapper', 
-            '.featured-item-image',
-            '.featured-main-image',
-            '.featured-item-image',
-            '.carousel-image'
+          ".news-image",
+          ".img-wrapper",
+          ".featured-image-wrapper",
+          ".featured-item-image",
+          ".featured-main-image",
+          ".featured-item-image",
+          ".carousel-image",
         ];
-        imgWrappers.forEach(selector => {
-            const wrapper = card.querySelector(selector) || (card.classList.contains(selector.replace('.', '')) ? card : null);
-            if (wrapper) {
-                wrapper.style.display = 'none';
-            }
+        imgWrappers.forEach((selector) => {
+          const wrapper =
+            card.querySelector(selector) ||
+            (card.classList.contains(selector.replace(".", "")) ? card : null);
+          if (wrapper) {
+            wrapper.style.display = "none";
+          }
         });
       }
     });
   },
-
 
   observeDOM() {
     const observer = new MutationObserver((mutations) => {
@@ -163,9 +170,9 @@ const UI = {
       });
     });
 
-    const target = document.querySelector('.main-content') || document.body;
+    const target = document.querySelector(".main-content") || document.body;
     observer.observe(target, { childList: true, subtree: true });
-  }
+  },
 };
 
 // ========================================
@@ -335,11 +342,13 @@ const MobileMenu = {
     // Animação do ícone hamburguer
     const spans = toggleBtn.querySelectorAll("span");
     if (menu.classList.contains("active")) {
-      if (spans[0]) spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+      if (spans[0])
+        spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
       if (spans[1]) spans[1].style.opacity = "0";
-      if (spans[2]) spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
+      if (spans[2])
+        spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
     } else {
-      spans.forEach(span => {
+      spans.forEach((span) => {
         span.style.transform = "";
         span.style.opacity = "";
       });
@@ -349,12 +358,12 @@ const MobileMenu = {
   closeMenu() {
     const menu = document.getElementById("nav-menu");
     const toggle = document.getElementById("mobile-menu-toggle");
-    
+
     if (menu) menu.classList.remove("active");
     if (toggle) {
       toggle.classList.remove("active");
       const spans = toggle.querySelectorAll("span");
-      spans.forEach(span => {
+      spans.forEach((span) => {
         span.style.transform = "";
         span.style.opacity = "";
       });
@@ -385,7 +394,8 @@ const NewsService = {
     rio: "https://placehold.co/600x400/cc0000/ffffff?text=Correio+Rio",
     sp: "https://placehold.co/600x400/1a365d/ffffff?text=Correio+SP",
     df: "https://placehold.co/600x400/1a3a5c/ffffff?text=Correio+DF",
-    "sul-fluminense": "https://placehold.co/600x400/1e6ba8/ffffff?text=Sul+Fluminense",
+    "sul-fluminense":
+      "https://placehold.co/600x400/1e6ba8/ffffff?text=Sul+Fluminense",
     petropolis: "https://placehold.co/600x400/d60000/ffffff?text=Petropolitano",
     default: "https://placehold.co/600x400/1a3a5c/ffffff?text=Correio+da+Manha",
   },
@@ -396,7 +406,8 @@ const NewsService = {
 
     try {
       const response = await fetch(`${baseUrl}?_embed&per_page=${count}`);
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok)
+        throw new Error(`HTTP error! status: ${response.status}`);
       const posts = await response.json();
       return this.mapPosts(posts, region);
     } catch (error) {
@@ -410,7 +421,7 @@ const NewsService = {
     const promises = regions.map((region) => this.fetchRegionPosts(region, 20));
 
     const results = await Promise.allSettled(promises);
-    
+
     let allPosts = [];
     results.forEach((result) => {
       if (result.status === "fulfilled") {
@@ -462,8 +473,8 @@ const NewsService = {
       <article class="${cardClass}">
         <a href="${article.link}" class="article-link">
           <div class="img-wrapper">
-            <img 
-              src="${article.image}" 
+            <img
+              src="${article.image}"
               alt="${article.title}"
               loading="lazy"
               onerror="this.onerror=null; this.src='${fallback}';"
@@ -542,7 +553,8 @@ const RegionTabs = {
     if (!grid) return;
 
     if (posts.length === 0) {
-      grid.innerHTML = '<div class="region-empty-state">Nenhuma notícia recente nesta região.</div>';
+      grid.innerHTML =
+        '<div class="region-empty-state">Nenhuma notícia recente nesta região.</div>';
       return;
     }
 
@@ -1315,7 +1327,7 @@ const SocialShare = {
 const NewsNavigation = {
   init() {
     // Legacy navigation removed. Using native <a> links with IDs.
-  }
+  },
 };
 
 // ========================================
@@ -1474,6 +1486,14 @@ const RegionalColors = {
 // ========================================
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Tiny Header only for regional pages
+  if (
+    window.TinyHeader &&
+    document.body.classList.contains("has-regional-headers")
+  ) {
+    window.TinyHeader.render();
+  }
+
   // Inicializa o Header Global primeiro para que os elementos existam no DOM
   if (window.CMHeader) {
     window.CMHeader.render();
@@ -1535,20 +1555,21 @@ window.CM = {
   HomeManager,
 };
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Seleciona o header (tenta pela tag header ou pela classe .main-header)
-    const header = document.querySelector('header') || document.querySelector('.main-header');
-    
-    if (header) {
-        window.addEventListener('scroll', function() {
-            // Se rolar mais de 50 pixels para baixo...
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled'); // Adiciona a classe que encolhe
-            } else {
-                header.classList.remove('scrolled'); // Remove a classe, voltando ao normal
-            }
-        });
-    } else {
-        console.warn("Header não encontrado para o efeito shrink.");
-    }
+document.addEventListener("DOMContentLoaded", function () {
+  // Seleciona o header (tenta pela tag header ou pela classe .main-header)
+  const header =
+    document.querySelector("header") || document.querySelector(".main-header");
+
+  if (header) {
+    window.addEventListener("scroll", function () {
+      // Se rolar mais de 50 pixels para baixo...
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled"); // Adiciona a classe que encolhe
+      } else {
+        header.classList.remove("scrolled"); // Remove a classe, voltando ao normal
+      }
+    });
+  } else {
+    console.warn("Header não encontrado para o efeito shrink.");
+  }
 });

@@ -1,418 +1,534 @@
 <!doctype html>
 <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Cultura - portal CM. Notícias sobre artes, espetáculos, música, cinema e cultura brasileira."
+        />
+        <title>Cultura | portal CM</title>
+        <link rel="stylesheet" href="css/styles.css" />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Cultura - portal CM. Notícias sobre artes, espetáculos, música, cinema e cultura brasileira." />
-    <title>Cultura | portal CM</title>
-    <link rel="stylesheet" href="css/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <script src="js/components/Footer.js"></script>
+        <script src="js/components/MainLayout.js"></script>
+        <script src="js/components/Header.js"></script>
+    </head>
 
+    <body class="category-cultura">
+        <!-- Global Header Placeholder -->
+        <div id="global-header"></div>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
-        rel="stylesheet" />
-    <script src="js/components/Footer.js"></script>
-    <script src="js/components/MainLayout.js"></script>
-    <script src="js/components/Header.js"></script>
+        <!-- Anúncio Topo Padrão -->
+        <div class="ad-placeholder ad-970x150">
+            Espaço Publicitário - 950x150
+        </div>
 
-</head>
+        <!-- Main Content -->
+        <main class="main-content category-view">
+            <div class="container">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1>Cultura</h1>
+                    <p>
+                        Notícias sobre artes, espetáculos, música, cinema e
+                        cultura brasileira
+                    </p>
+                </div>
 
-<body class="category-cultura">
-    <!-- Global Header Placeholder -->
-    <div id="global-header"></div>
+                <!-- Advertisement -->
 
-    <!-- Anúncio Topo Padrão -->
-    <div class="ad-placeholder ad-970x150">
-        Espaço Publicitário - 950x150
-    </div>
-
-
-    <!-- Main Content -->
-    <main class="main-content category-view">
-        <div class="container">
-            <!-- Page Header -->
-            <div class="page-header">
-                <h1>Cultura</h1>
-                <p>
-                    Notícias sobre artes, espetáculos, música, cinema e
-                    cultura brasileira
-                </p>
-            </div>
-
-            <!-- Advertisement -->
-
-            <!-- Newspaper Grid -->
-            <div class="newspaper-grid" id="news-grid">
-                <!-- Featured Article -->
-                <article class="news-card featured">
-                    <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
-                            alt="Festival de chocolate e pagode" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">EVENTOS</span>
-                        <h3>
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank">Do festival de chocolate ao show
-                                de pagode:
-                                A Barra da Tijuca garante sua diversão neste
-                                final de semana</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Confira a lista de eventos para a Barra da
-                            Tijuca e região preparada pelo Jornal da Barra.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Jornal da Barra</span>
-                            <span class="time">Há 6 horas</span>
+                <!-- Newspaper Grid -->
+                <div class="newspaper-grid" id="news-grid">
+                    <!-- Featured Article -->
+                    <article class="news-card featured">
+                        <a
+                            href="https://www.jornaldabarra.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/2148349283_1_1.jpg"
+                                alt="Festival de chocolate e pagode"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">EVENTOS</span>
+                            <h3>
+                                <a
+                                    href="https://www.jornaldabarra.com.br/"
+                                    target="_blank"
+                                    >Do festival de chocolate ao show de pagode:
+                                    A Barra da Tijuca garante sua diversão neste
+                                    final de semana</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Confira a lista de eventos para a Barra da
+                                Tijuca e região preparada pelo Jornal da Barra.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Jornal da Barra</span>
+                                <span class="time">Há 6 horas</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Article 2 -->
-                <article class="news-card">
-                    <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/11/ines-pandelo-filme-agente-secreto.jpg"
-                            alt="Inês Pandeló" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">CINEMA</span>
-                        <h3>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Inês Pandeló comemora vitória
-                                do filme 'O
-                                Agente Secreto'</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Atriz celebra sucesso do longa nacional que tem
-                            feito bilheteria nos cinemas.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio Sul Fluminense</span>
-                            <span class="time">Há 8 horas</span>
+                    <!-- Article 2 -->
+                    <article class="news-card">
+                        <a
+                            href="https://correiosulfluminense.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://correiosulfluminense.com.br/wp-content/uploads/2025/11/ines-pandelo-filme-agente-secreto.jpg"
+                                alt="Inês Pandeló"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">CINEMA</span>
+                            <h3>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >Inês Pandeló comemora vitória do filme 'O
+                                    Agente Secreto'</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Atriz celebra sucesso do longa nacional que tem
+                                feito bilheteria nos cinemas.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio Sul Fluminense</span
+                                >
+                                <span class="time">Há 8 horas</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Article 3 -->
-                <article class="news-card">
-                    <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Design_sem_nome_1.jpg"
-                            alt="Festival Tupiniquim" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">MÚSICA</span>
-                        <h3>
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank">Festival Tupiniquim une música,
-                                arte e meio
-                                ambiente em Vargem Pequena</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Festival celebra os 15 anos com programação que
-                            inclui shows, exposições e troca de saberes.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Jornal da Barra</span>
-                            <span class="time">Há 10 horas</span>
+                    <!-- Article 3 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.jornaldabarra.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Design_sem_nome_1.jpg"
+                                alt="Festival Tupiniquim"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">MÚSICA</span>
+                            <h3>
+                                <a
+                                    href="https://www.jornaldabarra.com.br/"
+                                    target="_blank"
+                                    >Festival Tupiniquim une música, arte e meio
+                                    ambiente em Vargem Pequena</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Festival celebra os 15 anos com programação que
+                                inclui shows, exposições e troca de saberes.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Jornal da Barra</span>
+                                <span class="time">Há 10 horas</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Anúncio In-Feed -->
+                    <!-- Anúncio In-Feed -->
+                    <div class="ad-placeholder ad-300x250">
+                        Espaço Publicitário - 300x250
+                    </div>
+
+                    <!-- Article 4 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/CULTSP-PRO-oferece-programacao-cultural-gratuita-em-fevereiro-no-Bom-Retiro.jpg"
+                                alt="Programação cultural"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">CULTURA</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >CULTSP PRO oferece programação cultural
+                                    gratuita em fevereiro no Bom Retiro</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Secretaria de Cultura de SP promove série de
+                                eventos gratuitos no bairro do Bom Retiro.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 12 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 5 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.jornaldabarra.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Captura_de_tela_2025-12-09_154306_1.png"
+                                alt="Gala Brusco"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">DANÇA</span>
+                            <h3>
+                                <a
+                                    href="https://www.jornaldabarra.com.br/"
+                                    target="_blank"
+                                    >Espetáculo inédito "Gala Brusco" chega ao
+                                    VillageMall com apresentação de balé</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Companhia Thiago Soares apresenta o melhor da
+                                dança contemporânea com estilo neoclássico.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Jornal da Barra</span>
+                                <span class="time">Há 1 dia</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 6 -->
+                    <article class="news-card">
+                        <a
+                            href="https://correiosulfluminense.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/programacao-aniversario-angra.jpg"
+                                alt="Aniversário de Angra"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">EVENTOS</span>
+                            <h3>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >Programação de aniversário segue em Angra
+                                    dos Reis</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Cidade celebra data festiva com programação
+                                especial que inclui shows e atrações gratuitas.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio Sul Fluminense</span
+                                >
+                                <span class="time">Há 2 dias</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Hidden Articles (to be loaded) -->
+                    <article class="news-card hidden">
+                        <a
+                            href="https://correiosulfluminense.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/musica-2026-lancamentos.jpg"
+                                alt="Música 2026"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">MÚSICA</span>
+                            <h3>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >A música em 2026: Lançamentos que
+                                    prometem</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Confira os principais lançamentos musicais
+                                promissores para este ano que começa.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio Sul Fluminense</span
+                                >
+                                <span class="time">Há 3 dias</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card hidden">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Mostra-gratuita-no-CCSP-mixa-cinema.jpg"
+                                alt="Mostra de cinema"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">CINEMA</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Mostra gratuita no CCSP mistura cinema
+                                    amador e clássicos do cinema</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Centro Cultural São Paulo apresenta programação
+                                especial com exibição de filmes gratuitos.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 4 dias</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card hidden">
+                        <a
+                            href="https://www.jornaldabarra.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/pexels-pixabay-106148_1.jpg"
+                                alt="Festa do Morango"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">GASTRONOMIA</span>
+                            <h3>
+                                <a
+                                    href="https://www.jornaldabarra.com.br/"
+                                    target="_blank"
+                                    >Festa do Morango chega ao Uptown Barra
+                                    neste fim de semana</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Evento gastronômico celebra a fruta com
+                                receitas, degustações e atrações para toda
+                                família.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Jornal da Barra</span>
+                                <span class="time">Há 5 dias</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Anúncio Lateral -->
                 <div class="ad-placeholder ad-300x250">
                     Espaço Publicitário - 300x250
                 </div>
 
-                <!-- Article 4 -->
-                <article class="news-card">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/CULTSP-PRO-oferece-programacao-cultural-gratuita-em-fevereiro-no-Bom-Retiro.jpg"
-                            alt="Programação cultural" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">CULTURA</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">CULTSP PRO oferece
-                                programação cultural
-                                gratuita em fevereiro no Bom Retiro</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Secretaria de Cultura de SP promove série de
-                            eventos gratuitos no bairro do Bom Retiro.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 12 horas</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 5 -->
-                <article class="news-card">
-                    <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Captura_de_tela_2025-12-09_154306_1.png"
-                            alt="Gala Brusco" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">DANÇA</span>
-                        <h3>
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank">Espetáculo inédito "Gala Brusco"
-                                chega ao
-                                VillageMall com apresentação de balé</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Companhia Thiago Soares apresenta o melhor da
-                            dança contemporânea com estilo neoclássico.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Jornal da Barra</span>
-                            <span class="time">Há 1 dia</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 6 -->
-                <article class="news-card">
-                    <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/programacao-aniversario-angra.jpg"
-                            alt="Aniversário de Angra" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">EVENTOS</span>
-                        <h3>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Programação de aniversário
-                                segue em Angra
-                                dos Reis</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Cidade celebra data festiva com programação
-                            especial que inclui shows e atrações gratuitas.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio Sul Fluminense</span>
-                            <span class="time">Há 2 dias</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Hidden Articles (to be loaded) -->
-                <article class="news-card hidden">
-                    <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/12/musica-2026-lancamentos.jpg"
-                            alt="Música 2026" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">MÚSICA</span>
-                        <h3>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">A música em 2026: Lançamentos
-                                que
-                                prometem</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Confira os principais lançamentos musicais
-                            promissores para este ano que começa.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio Sul Fluminense</span>
-                            <span class="time">Há 3 dias</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="news-card hidden">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Mostra-gratuita-no-CCSP-mixa-cinema.jpg"
-                            alt="Mostra de cinema" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">CINEMA</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Mostra gratuita no CCSP
-                                mistura cinema
-                                amador e clássicos do cinema</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Centro Cultural São Paulo apresenta programação
-                            especial com exibição de filmes gratuitos.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 4 dias</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="news-card hidden">
-                    <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/pexels-pixabay-106148_1.jpg"
-                            alt="Festa do Morango" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">GASTRONOMIA</span>
-                        <h3>
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank">Festa do Morango chega ao Uptown
-                                Barra
-                                neste fim de semana</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Evento gastronômico celebra a fruta com
-                            receitas, degustações e atrações para toda
-                            família.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Jornal da Barra</span>
-                            <span class="time">Há 5 dias</span>
-                        </div>
-                    </div>
-                </article>
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <div class="loading-spinner" id="loading-spinner"></div>
+                    <button class="load-more-btn" id="load-more-btn">
+                        Carregar mais notícias
+                    </button>
+                </div>
             </div>
+        </main>
 
-            <!-- Anúncio Lateral -->
-            <div class="ad-placeholder ad-300x250">
-                Espaço Publicitário - 300x250
-            </div>
+        <div id="global-footer"></div>
 
-            <!-- Load More Button -->
-            <div class="load-more-container">
-                <div class="loading-spinner" id="loading-spinner"></div>
-                <button class="load-more-btn" id="load-more-btn">
-                    Carregar mais notícias
-                </button>
-            </div>
-        </div>
-    </main>
+        <script src="js/main.js"></script>
+        <script>
+            // News link click handler - redirects to noticia.html with URL parameters
+            document.addEventListener("DOMContentLoaded", function () {
+                const newsCards = document.querySelectorAll(".news-card");
 
-    <div id="global-footer"></div>
+                newsCards.forEach(function (card) {
+                    const links = card.querySelectorAll(
+                        'a[href]:not([href^="javascript"]):not([href*="noticia.html"])',
+                    );
 
-    <script src="js/main.js"></script>
-    <script>
-        // News link click handler - redirects to noticia.html with URL parameters
-        document.addEventListener("DOMContentLoaded", function () {
-            const newsCards = document.querySelectorAll(".news-card");
+                    // Extract data from card
+                    const category =
+                        card.querySelector(".category-tag")?.textContent ||
+                        "Cultura";
+                    const title =
+                        card.querySelector("h3 a, h3")?.textContent?.trim() ||
+                        "";
+                    const subtitle =
+                        card
+                            .querySelector(".news-excerpt")
+                            ?.textContent?.trim() || "";
+                    const image = card.querySelector("img")?.src || "";
+                    const authorText =
+                        card.querySelector(".author")?.textContent?.trim() ||
+                        "";
+                    const author = authorText.replace("Por ", "").trim();
+                    const timeText =
+                        card.querySelector(".time")?.textContent?.trim() || "";
 
-            newsCards.forEach(function (card) {
-                const links = card.querySelectorAll(
-                    'a[href]:not([href^="javascript"]):not([href*="noticia.html"])',
-                );
+                    // Set data attributes
+                    card.dataset.category = category;
+                    card.dataset.title = title;
+                    card.dataset.subtitle = subtitle;
+                    card.dataset.image = image;
+                    card.dataset.author = author;
+                    card.dataset.authorRole = "Jornalista";
+                    card.dataset.date = "06/02/2026";
+                    card.dataset.time =
+                        timeText
+                            .replace("Há ", "")
+                            .replace(" horas", "")
+                            .replace(" dia", "1 dia") || "14:00";
 
-                // Extract data from card
-                const category =
-                    card.querySelector(".category-tag")?.textContent ||
-                    "Cultura";
-                const title =
-                    card.querySelector("h3 a, h3")?.textContent?.trim() ||
-                    "";
-                const subtitle =
-                    card
-                        .querySelector(".news-excerpt")
-                        ?.textContent?.trim() || "";
-                const image = card.querySelector("img")?.src || "";
-                const authorText =
-                    card.querySelector(".author")?.textContent?.trim() ||
-                    "";
-                const author = authorText.replace("Por ", "").trim();
-                const timeText =
-                    card.querySelector(".time")?.textContent?.trim() || "";
-
-                // Set data attributes
-                card.dataset.category = category;
-                card.dataset.title = title;
-                card.dataset.subtitle = subtitle;
-                card.dataset.image = image;
-                card.dataset.author = author;
-                card.dataset.authorRole = "Jornalista";
-                card.dataset.date = "06/02/2026";
-                card.dataset.time =
-                    timeText
-                        .replace("Há ", "")
-                        .replace(" horas", "")
-                        .replace(" dia", "1 dia") || "14:00";
-
-                // Find original link
-                let originalLink = "";
-                links.forEach(function (link) {
-                    if (link.href && !link.href.includes("javascript:")) {
-                        originalLink = link.href;
-                    }
-                });
-                card.dataset.link = originalLink;
-
-                // Update all links to redirect to noticia.html
-                links.forEach(function (link) {
-                    link.href = "javascript:void(0)";
-                    link.classList.add("news-link");
-
-                    link.addEventListener("click", function (e) {
-                        e.preventDefault();
-
-                        const params = new URLSearchParams();
-                        params.set("category", card.dataset.category);
-                        params.set("title", card.dataset.title);
-                        params.set("subtitle", card.dataset.subtitle);
-                        params.set("image", card.dataset.image);
-                        params.set("author", card.dataset.author);
-                        params.set("authorRole", card.dataset.authorRole);
-                        params.set("date", card.dataset.date);
-                        params.set("time", card.dataset.time);
-                        if (card.dataset.link) {
-                            params.set("link", card.dataset.link);
+                    // Find original link
+                    let originalLink = "";
+                    links.forEach(function (link) {
+                        if (link.href && !link.href.includes("javascript:")) {
+                            originalLink = link.href;
                         }
+                    });
+                    card.dataset.link = originalLink;
 
-                        window.location.href =
-                            "noticia.html?" + params.toString();
+                    // Update all links to redirect to noticia.html
+                    links.forEach(function (link) {
+                        link.href = "javascript:void(0)";
+                        link.classList.add("news-link");
+
+                        link.addEventListener("click", function (e) {
+                            e.preventDefault();
+
+                            const params = new URLSearchParams();
+                            params.set("category", card.dataset.category);
+                            params.set("title", card.dataset.title);
+                            params.set("subtitle", card.dataset.subtitle);
+                            params.set("image", card.dataset.image);
+                            params.set("author", card.dataset.author);
+                            params.set("authorRole", card.dataset.authorRole);
+                            params.set("date", card.dataset.date);
+                            params.set("time", card.dataset.time);
+                            if (card.dataset.link) {
+                                params.set("link", card.dataset.link);
+                            }
+
+                            window.location.href =
+                                "noticia.html?" + params.toString();
+                        });
                     });
                 });
             });
-        });
 
-        // Load More functionality
-        const loadMoreBtn = document.getElementById("load-more-btn");
-        const loadingSpinner = document.getElementById("loading-spinner");
-        const hiddenCards = document.querySelectorAll(".news-card.hidden");
-        let visibleCount = 0;
-        const cardsPerLoad = 3;
+            // Load More functionality
+            const loadMoreBtn = document.getElementById("load-more-btn");
+            const loadingSpinner = document.getElementById("loading-spinner");
+            const hiddenCards = document.querySelectorAll(".news-card.hidden");
+            let visibleCount = 0;
+            const cardsPerLoad = 3;
 
-        loadMoreBtn.addEventListener("click", function () {
-            loadingSpinner.style.display = "block";
-            loadMoreBtn.disabled = true;
+            loadMoreBtn.addEventListener("click", function () {
+                loadingSpinner.style.display = "block";
+                loadMoreBtn.disabled = true;
 
-            setTimeout(() => {
-                let shown = 0;
-                for (
-                    let i = 0;
-                    i < hiddenCards.length && shown < cardsPerLoad;
-                    i++
-                ) {
-                    if (hiddenCards[i].classList.contains("hidden")) {
-                        hiddenCards[i].classList.remove("hidden");
-                        shown++;
+                setTimeout(() => {
+                    let shown = 0;
+                    for (
+                        let i = 0;
+                        i < hiddenCards.length && shown < cardsPerLoad;
+                        i++
+                    ) {
+                        if (hiddenCards[i].classList.contains("hidden")) {
+                            hiddenCards[i].classList.remove("hidden");
+                            shown++;
+                        }
                     }
-                }
 
-                visibleCount += shown;
-                loadingSpinner.style.display = "none";
-                loadMoreBtn.disabled = false;
+                    visibleCount += shown;
+                    loadingSpinner.style.display = "none";
+                    loadMoreBtn.disabled = false;
 
-                const remainingHidden =
-                    document.querySelectorAll(".news-card.hidden");
-                if (remainingHidden.length === 0) {
-                    loadMoreBtn.textContent = "Não há mais notícias";
-                    loadMoreBtn.disabled = true;
-                }
-            }, 500);
-        });
-    </script>
-</body>
-
+                    const remainingHidden =
+                        document.querySelectorAll(".news-card.hidden");
+                    if (remainingHidden.length === 0) {
+                        loadMoreBtn.textContent = "Não há mais notícias";
+                        loadMoreBtn.disabled = true;
+                    }
+                }, 500);
+            });
+        </script>
+    </body>
 </html>

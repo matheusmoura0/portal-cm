@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700;900&display=swap");
 
 /* ========================================
    Correio da Manhã - Portal de Notícias
@@ -51,7 +51,9 @@
 
     /* Fontes */
     --font-display: "Merriweather", Georgia, serif;
-    --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body:
+        "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        sans-serif;
 
     /* Espaçamento Premium */
     --spacing-xs: 0.25rem;
@@ -245,7 +247,11 @@ button {
 .sticky-nav-unified.scrolled {
     background-color: rgba(var(--color-header-bg-rgb, 26, 58, 92), 0.9);
     /* Falling back to dark blue if RGB var not set */
-    background-color: color-mix(in srgb, var(--color-header-bg), transparent 10%);
+    background-color: color-mix(
+        in srgb,
+        var(--color-header-bg),
+        transparent 10%
+    );
     /* Modern way to add transparency to hex */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -445,7 +451,8 @@ button {
     z-index: 1000;
 }
 
-.nav-dropdown:hover .dropdown-menu {
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown .dropdown-menu.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -532,7 +539,7 @@ button {
 
 /* Bolinha branca a piscar dentro do rótulo vermelho */
 .breaking-label::before {
-    content: '';
+    content: "";
     display: block;
     width: 8px;
     height: 8px;
@@ -671,9 +678,11 @@ button {
 }
 
 .live-update.featured {
-    background: linear-gradient(135deg,
-            rgba(208, 2, 27, 0.05) 0%,
-            rgba(26, 58, 92, 0.05) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(208, 2, 27, 0.05) 0%,
+        rgba(26, 58, 92, 0.05) 100%
+    );
     padding: 20px;
     margin: 0;
     border-radius: 8px;
@@ -784,7 +793,6 @@ button {
         margin: 0;
     }
 }
-
 
 /* --- Arquitetura de Publicidade (Nova Estratégia) --- */
 
@@ -921,7 +929,9 @@ button {
     background: #fff;
     border: 1px solid #eaeaea;
     border-radius: 8px;
-    transition: transform 0.2s, border-color 0.2s;
+    transition:
+        transform 0.2s,
+        border-color 0.2s;
 }
 
 .mini-opinion-card:hover {
@@ -1177,7 +1187,7 @@ button {
 }
 
 .section-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 2rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -1192,7 +1202,7 @@ button {
 
 /* Adiciona um detalhe vermelho sutil no início da linha preta */
 .section-title::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -3px;
     left: 0;
@@ -2605,10 +2615,12 @@ button {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(0, 0, 0, 0.05),
-            transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 0, 0, 0.05),
+        transparent
+    );
     animation: loading 1.5s infinite;
 }
 
@@ -2624,7 +2636,6 @@ button {
 
 /* Print Styles */
 @media print {
-
     .top-bar,
     .main-nav,
     .breaking-news,
@@ -2703,7 +2714,6 @@ input:focus {
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -2804,7 +2814,7 @@ input:focus {
 
 /* --- Página de Notícia (Leitura Premium) --- */
 .article-main-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 2.5rem;
     font-weight: 800;
     line-height: 1.2;
@@ -2813,7 +2823,7 @@ input:focus {
 }
 
 .article-subtitle {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 1.25rem;
     color: #4b5563;
     font-weight: 400;
@@ -2822,7 +2832,7 @@ input:focus {
 }
 
 .article-content {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.15rem;
     line-height: 1.8;
     color: #333333;
@@ -2865,7 +2875,7 @@ input:focus {
     aspect-ratio: 16/9;
     /* Mantém a mesma proporção das fotos reais */
     color: rgba(255, 255, 255, 0.15);
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 2rem;
     font-weight: 900;
     letter-spacing: 2px;
@@ -3009,7 +3019,7 @@ input:focus {
 }
 
 .hero-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 2.5rem;
     line-height: 1.2;
     margin-bottom: 20px;
@@ -3036,7 +3046,7 @@ input:focus {
 
 /* Garante que o texto secundário não vaze */
 .secondary-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.2rem;
     line-height: 1.4;
     color: #333;
@@ -3069,7 +3079,7 @@ input:focus {
 
 /* --- Estilo Editorial Impresso: Jornal do Servidor --- */
 .section-title-print {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 2.5rem;
     font-weight: 900;
     text-align: center;
@@ -3100,7 +3110,7 @@ input:focus {
 }
 
 .print-featured-article .print-headline {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 2.8rem;
     font-weight: 900;
     line-height: 1.1;
@@ -3119,7 +3129,7 @@ input:focus {
 }
 
 .print-excerpt {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.1rem;
     color: #333;
     line-height: 1.6;
@@ -3143,7 +3153,7 @@ input:focus {
 }
 
 .print-secondary-article .print-headline {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1.2;
@@ -3238,7 +3248,7 @@ input:focus {
 }
 
 .live-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 2.2rem;
     color: #ffffff;
     margin-bottom: 15px;
@@ -3369,7 +3379,7 @@ input:focus {
 
 /* Desktop */
 .hero-main-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 2rem !important;
     /* !important necessário para vencer o tema */
     font-weight: 900;
@@ -3407,7 +3417,7 @@ input:focus {
 /* --- PÁGINA DE OPINIÃO --- */
 
 .page-header-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 2.5rem;
     color: #1a1a2e;
     margin: 0 0 10px 0;
@@ -3421,7 +3431,7 @@ input:focus {
 
 /* Títulos de Seção com Linha Inferior */
 .opinion-section-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.4rem;
     font-weight: 800;
     color: #1a1a2e;
@@ -3433,7 +3443,7 @@ input:focus {
 }
 
 .opinion-section-title::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2px;
     left: 0;
@@ -3467,7 +3477,6 @@ input:focus {
 
 /* Responsividade */
 @media (max-width: 992px) {
-
     .opinion-highlights-grid,
     .editorials-grid {
         grid-template-columns: 1fr;
@@ -3532,7 +3541,7 @@ input:focus {
 
 /* Tipografia do Nome */
 .columnist-name {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.15rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -3562,7 +3571,6 @@ input:focus {
 /* ========================================= */
 
 @media (max-width: 768px) {
-
     /* 1. Tipografia Geral Mobile */
     .hero-main-title {
         font-size: 1.6rem !important;
@@ -3589,7 +3597,7 @@ input:focus {
         gap: 15px !important;
     }
 
-    .numbered-strip>div {
+    .numbered-strip > div {
         /* Cada item ocupa 80% da tela, mostrando um pedaço do próximo para induzir o swipe */
         flex: 0 0 80vw !important;
         min-width: auto !important;
@@ -3599,7 +3607,7 @@ input:focus {
         padding-right: 15px;
     }
 
-    .numbered-strip>div:last-child {
+    .numbered-strip > div:last-child {
         border-right: none;
     }
 
@@ -3707,7 +3715,6 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 768px) {
-
     /* 1. Transforma o Header em uma pilha organizada */
     header,
     .main-header {
@@ -3768,12 +3775,10 @@ header.scrolled,
     .main-header ul::-webkit-scrollbar {
         display: none;
     }
-
 }
 
 /* --- Oculta a barra de utilidades APENAS no mobile --- */
 @media (max-width: 768px) {
-
     /* Nota pro agente: Se a classe da barra preta do topo for diferente, adicione-a aqui */
     .top-bar,
     .header-top,
@@ -3917,7 +3922,7 @@ header.scrolled,
     font-weight: 800;
     margin: 20px 0 15px 0;
     color: #111;
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
 }
 
 .hero-content p {
@@ -3934,7 +3939,7 @@ header.scrolled,
     font-weight: 700;
     margin: 10px 0 5px 0;
     color: #111;
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
 }
 
 .sidebar-excerpt {
@@ -3954,7 +3959,6 @@ header.scrolled,
         font-size: 1.5em;
     }
 }
-
 
 /* --- SEÇÃO COLUNISTAS (CARDS MODERNOS) --- */
 
@@ -3994,7 +3998,7 @@ header.scrolled,
 }
 
 .colunistas-title-text h2 {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.8rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -4074,7 +4078,9 @@ header.scrolled,
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .card-colunista:hover {
@@ -4099,7 +4105,7 @@ header.scrolled,
 }
 
 .card-col-info h3 {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.2rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -4140,7 +4146,7 @@ header.scrolled,
 }
 
 .card-col-latest-title h4 {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.05rem;
     font-weight: 800;
     color: #1a1a2e;
@@ -4231,7 +4237,6 @@ header.scrolled,
     }
 }
 
-
 .ad-728x90 {
     max-width: 728px;
     min-height: 90px;
@@ -4275,7 +4280,6 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 992px) {
-
     /* 1. Garante que o container geral empilhe corretamente */
     .jornal-servidor-inner .layout-with-sidebar {
         display: flex !important;
@@ -4339,7 +4343,9 @@ header.scrolled,
     flex-direction: column;
     height: 100%;
     /* Faz todos os cards da linha terem a mesma altura */
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
 }
 
 .card-regional:hover {
@@ -4384,7 +4390,7 @@ header.scrolled,
 }
 
 .card-regional-content h3 {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.05rem;
     /* Tamanho original mais delicado */
     font-weight: 700;
@@ -4401,7 +4407,7 @@ header.scrolled,
     left: 10px;
     padding: 4px 8px;
     color: #fff;
-    font-size: 0.70rem;
+    font-size: 0.7rem;
     font-family: sans-serif;
     font-weight: 800;
     text-transform: uppercase;
@@ -4429,7 +4435,7 @@ header.scrolled,
 }
 
 .video-section-header h2 {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.8rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -4473,7 +4479,7 @@ header.scrolled,
 }
 
 .video-main-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.4rem;
     font-weight: 800;
     line-height: 1.3;
@@ -4594,7 +4600,7 @@ header.scrolled,
 }
 
 .video-side-info h5 {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.3;
@@ -4638,7 +4644,7 @@ header.scrolled,
 }
 
 .video-section-header h2 {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.8rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -4682,7 +4688,7 @@ header.scrolled,
 }
 
 .video-main-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.4rem;
     font-weight: 800;
     line-height: 1.3;
@@ -4803,7 +4809,7 @@ header.scrolled,
 }
 
 .video-side-info h5 {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.3;
@@ -4884,14 +4890,21 @@ header.scrolled,
 
 .insta-icon {
     font-size: 2.5rem;
-    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(
+        45deg,
+        #f09433 0%,
+        #e6683c 25%,
+        #dc2743 50%,
+        #cc2366 75%,
+        #bc1888 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
 }
 
 .insta-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.8rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -4984,7 +4997,9 @@ header.scrolled,
     text-decoration: none;
     color: inherit;
     height: 100%;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
     white-space: normal !important;
     /* Desfaz o bug do nowrap */
     width: 100%;
@@ -5011,7 +5026,7 @@ header.scrolled,
     white-space: normal !important;
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1rem !important;
     /* Tamanho idêntico aos cards originais */
     font-weight: 700;
@@ -5043,7 +5058,7 @@ header.scrolled,
 /* ========================================= */
 
 /* 1. Protege APENAS o link "VER TODOS" (ignora os cards) */
-.regional-section-wrapper>div:first-child>a {
+.regional-section-wrapper > div:first-child > a {
     white-space: nowrap !important;
     flex-shrink: 0 !important;
     margin-left: 15px !important;
@@ -5064,7 +5079,7 @@ header.scrolled,
     }
 
     /* Centraliza os itens verticalmente no mobile para ficar mais harmônico */
-    .regional-section-wrapper>div:first-child {
+    .regional-section-wrapper > div:first-child {
         align-items: center !important;
     }
 }
@@ -5085,11 +5100,10 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 768px) {
-
-    /* O seletor mira exatamente o <h2> que fica dentro da primeira <div> 
+    /* O seletor mira exatamente o <h2> que fica dentro da primeira <div>
        de qualquer <section> (que é o padrão de cabeçalho do portal)
     */
-    section>div:first-child>h2,
+    section > div:first-child > h2,
     .regional-section-wrapper h2 {
         font-size: 1.25rem !important;
         /* Tamanho único, elegante e que não quebra a tela */
@@ -5097,7 +5111,7 @@ header.scrolled,
     }
 
     /* Garante que o botão 'VER TODOS' nas seções antigas também fique protegido */
-    section>div:first-child>a {
+    section > div:first-child > a {
         white-space: nowrap !important;
         flex-shrink: 0 !important;
         font-size: 0.8rem !important;
@@ -5107,8 +5121,7 @@ header.scrolled,
 
 /* Ajuste fino para celulares muito pequenos (ex: iPhone SE) */
 @media (max-width: 375px) {
-
-    section>div:first-child>h2,
+    section > div:first-child > h2,
     .regional-section-wrapper h2 {
         font-size: 1.15rem !important;
     }
@@ -5119,7 +5132,6 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 768px) {
-
     /* O container do formulário precisa alinhar os itens */
     .search-box {
         display: flex;
@@ -5133,7 +5145,10 @@ header.scrolled,
         padding: 0 !important;
         opacity: 0;
         border: none !important;
-        transition: width 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+        transition:
+            width 0.4s ease,
+            opacity 0.4s ease,
+            padding 0.4s ease;
         overflow: hidden;
     }
 
@@ -5157,7 +5172,9 @@ header.scrolled,
         border: 1px solid rgba(255, 255, 255, 0.2) !important;
         /* Borda da barra ativa */
     }
-}/* ========================================
+}
+
+/* ========================================
    Modern Mais Lidos & Destaques Section Layout
    Mobile-first design based on modern portal patterns
    ======================================== */
@@ -5368,7 +5385,7 @@ header.scrolled,
     margin: 0;
 }
 
-.featured-main>a {
+.featured-main > a {
     text-decoration: none;
     display: block;
 }
@@ -5465,7 +5482,6 @@ header.scrolled,
    ======================================== */
 
 @media (min-width: 769px) {
-
     /* Most Read - 3 columns on desktop */
     .most-read-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -5515,7 +5531,7 @@ header.scrolled,
         margin: 0;
     }
 
-    .featured-main>a {
+    .featured-main > a {
         text-decoration: none;
         display: block;
     }
@@ -5781,7 +5797,9 @@ header.scrolled,
         font-size: 0.7rem;
         color: #999;
     }
-}/* ========================================
+}
+
+/* ========================================
    Modern Portal Section Layout
    Based on research of top news portals:
    - G1 (Brazil): Clean grid with hero + sidebar
@@ -5806,7 +5824,7 @@ header.scrolled,
     flex-direction: column;
 }
 
-.modern-section-main>a {
+.modern-section-main > a {
     display: block;
     text-decoration: none;
 }
@@ -6057,7 +6075,9 @@ header.scrolled,
     .modern-section-item.compact {
         padding: 10px 0;
     }
-}/* ========================================
+}
+
+/* ========================================
    Regions Section - Defensive Grid & Fallbacks
    Focus: Anti-Layout Shift & Scalable Content
    ======================================== */
@@ -6305,7 +6325,9 @@ header.scrolled,
     .regions-grid {
         grid-template-columns: 1fr;
     }
-}/* ========================================
+}
+
+/* ========================================
    MOBILE BOTTOM NAVIGATION
    ========================================
    Modern pattern used by Instagram, Twitter/X, NYT
@@ -6319,7 +6341,7 @@ header.scrolled,
     right: 0;
     background: #ffffff;
     border-top: 1px solid var(--color-border);
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     padding: var(--spacing-sm) 0;
     padding-bottom: env(safe-area-inset-bottom, 10px);
@@ -6427,13 +6449,16 @@ body.dark-mode .nav-item.active {
 }
 
 @keyframes bounce {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-3px);
     }
 }
+
 /* ========================================
    DARK MODE SUPPORT
    ======================================== */
@@ -6528,7 +6553,7 @@ body.dark-mode .dropdown-menu a {
 }
 
 body.dark-mode .dropdown-menu a:hover {
-    background-color: rgba(255,255,255,0.05);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode .breaking-news {
@@ -6732,7 +6757,10 @@ body,
 .opinion-article,
 .section,
 .footer-section {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 /* Dark mode icon in toggle */
@@ -6754,8 +6782,8 @@ body.dark-mode .dark-mode-toggle .sun-icon {
     --text-muted: #4a4a4a;
     --border-light: #e5e5e5;
     --bg-white: #ffffff;
-    --font-serif: 'Noto Serif', serif;
-    --font-sans: 'Noto Sans', sans-serif;
+    --font-serif: "Noto Serif", serif;
+    --font-sans: "Noto Sans", sans-serif;
 }
 
 /* Reset Editorial Severo */
@@ -7061,7 +7089,8 @@ img {
     z-index: 1000;
 }
 
-.nav-dropdown:hover .dropdown-menu {
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown .dropdown-menu.show {
     display: flex !important;
 }
 
@@ -7337,7 +7366,7 @@ img {
     font-weight: 800;
     text-transform: uppercase;
     color: #1a1a1a;
-    font-family: var(--font-serif, 'Noto Serif', serif);
+    font-family: var(--font-serif, "Noto Serif", serif);
 }
 
 .destaques-list,
@@ -7425,7 +7454,6 @@ img {
 }
 
 @media (max-width: 1024px) {
-
     .destaques-list,
     .colunistas-list {
         grid-template-columns: repeat(3, 1fr);
@@ -7433,7 +7461,6 @@ img {
 }
 
 @media (max-width: 768px) {
-
     .destaques-list,
     .colunistas-list {
         grid-template-columns: 1fr;
@@ -7676,6 +7703,7 @@ img {
         font-size: 2rem;
     }
 }
+
 /* ========================================
    ESTILOS CONSOLIDADOS (EX-INLINE)
    ======================================== */
@@ -7750,7 +7778,7 @@ img {
 }
 
 .titulo-blindado {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-weight: 800;
     color: #1a1a2e;
     line-height: 1.3;
@@ -7796,7 +7824,7 @@ img {
     font-size: 0.8125rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: #6B7280;
+    color: #6b7280;
 }
 
 .breadcrumb a {
@@ -7814,7 +7842,7 @@ img {
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
     font-size: 0.875rem;
-    color: #6B7280;
+    color: #6b7280;
 }
 
 #article-author {
@@ -7835,7 +7863,7 @@ img {
 
 #article-image-caption {
     font-size: 0.8125rem;
-    color: #6B7280;
+    color: #6b7280;
     margin-top: 10px;
     font-style: italic;
     text-align: center;
@@ -7989,12 +8017,35 @@ img {
     border-color: var(--color-text);
 }
 
-.category-pill.politics.active { background-color: var(--color-politics); border-color: var(--color-politics); }
-.category-pill.economy.active { background-color: var(--color-economy); border-color: var(--color-economy); }
-.category-pill.sports.active { background-color: var(--color-sports); border-color: var(--color-sports); }
-.category-pill.culture.active { background-color: var(--color-culture); border-color: var(--color-culture); }
-.category-pill.justice.active { background-color: var(--color-justice); border-color: var(--color-justice); }
-.category-pill.brasil.active { background-color: var(--color-brasil); border-color: var(--color-brasil); }
+.category-pill.politics.active {
+    background-color: var(--color-politics);
+    border-color: var(--color-politics);
+}
+
+.category-pill.economy.active {
+    background-color: var(--color-economy);
+    border-color: var(--color-economy);
+}
+
+.category-pill.sports.active {
+    background-color: var(--color-sports);
+    border-color: var(--color-sports);
+}
+
+.category-pill.culture.active {
+    background-color: var(--color-culture);
+    border-color: var(--color-culture);
+}
+
+.category-pill.justice.active {
+    background-color: var(--color-justice);
+    border-color: var(--color-justice);
+}
+
+.category-pill.brasil.active {
+    background-color: var(--color-brasil);
+    border-color: var(--color-brasil);
+}
 
 .news-results-info {
     display: flex;
@@ -8070,12 +8121,29 @@ img {
     letter-spacing: 0.5px;
 }
 
-.news-card-category.politics { background-color: var(--color-politics); }
-.news-card-category.economy { background-color: var(--color-economy); }
-.news-card-category.sports { background-color: var(--color-sports); }
-.news-card-category.culture { background-color: var(--color-culture); }
-.news-card-category.justice { background-color: var(--color-justice); }
-.news-card-category.brasil { background-color: var(--color-brasil); }
+.news-card-category.politics {
+    background-color: var(--color-politics);
+}
+
+.news-card-category.economy {
+    background-color: var(--color-economy);
+}
+
+.news-card-category.sports {
+    background-color: var(--color-sports);
+}
+
+.news-card-category.culture {
+    background-color: var(--color-culture);
+}
+
+.news-card-category.justice {
+    background-color: var(--color-justice);
+}
+
+.news-card-category.brasil {
+    background-color: var(--color-brasil);
+}
 
 .news-card-content {
     padding: var(--spacing-md);
@@ -8175,12 +8243,29 @@ img {
     letter-spacing: 0.5px;
 }
 
-.news-list-item-category.politics { background-color: var(--color-politics); }
-.news-list-item-category.economy { background-color: var(--color-economy); }
-.news-list-item-category.sports { background-color: var(--color-sports); }
-.news-list-item-category.culture { background-color: var(--color-culture); }
-.news-list-item-category.justice { background-color: var(--color-justice); }
-.news-list-item-category.brasil { background-color: var(--color-brasil); }
+.news-list-item-category.politics {
+    background-color: var(--color-politics);
+}
+
+.news-list-item-category.economy {
+    background-color: var(--color-economy);
+}
+
+.news-list-item-category.sports {
+    background-color: var(--color-sports);
+}
+
+.news-list-item-category.culture {
+    background-color: var(--color-culture);
+}
+
+.news-list-item-category.justice {
+    background-color: var(--color-justice);
+}
+
+.news-list-item-category.brasil {
+    background-color: var(--color-brasil);
+}
 
 .news-list-item-title {
     font-family: var(--font-display);
@@ -8344,19 +8429,890 @@ img {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Specific Category Colors Override */
-.category-brasil { --category-main-color: var(--color-brasil, #009c3b); }
-.category-cultura { --category-main-color: var(--color-culture, #d97706); }
-.category-politica { --category-main-color: var(--color-politics, #1a3a5c); }
-.category-economia { --category-main-color: var(--color-economy, #0056b3); }
-.category-esportes { --category-main-color: var(--color-sports, #00853e); }
-.category-justica { --category-main-color: var(--color-justice, #ff6b00); }
+.category-brasil {
+    --category-main-color: var(--color-brasil, #009c3b);
+}
+
+.category-cultura {
+    --category-main-color: var(--color-culture, #d97706);
+}
+
+.category-politica {
+    --category-main-color: var(--color-politics, #1a3a5c);
+}
+
+.category-economia {
+    --category-main-color: var(--color-economy, #0056b3);
+}
+
+.category-esportes {
+    --category-main-color: var(--color-sports, #00853e);
+}
+
+.category-justica {
+    --category-main-color: var(--color-justice, #ff6b00);
+}
 
 .category-view .newspaper-grid .news-content h3 a:hover {
+    /* ========================================
+   REGIONAL HEADERS
+   Two-header system for regional pages
+   ======================================== */
+
+    /* Body adjustment for regional pages with two headers */
+    body.has-regional-headers {
+        padding-top: 108px !important; /* 48px global + 60px product */
+    }
+
+    @media (max-width: 768px) {
+        body.has-regional-headers {
+            padding-top: 116px !important; /* 48px global + 68px product on mobile */
+        }
+    }
+
+    /* ========================================
+   GLOBAL REGIONAL HEADER (Fixed)
+   ======================================== */
+
+    .regional-global-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 48px;
+        background-color: #1a3a5c;
+        z-index: 1001;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .regional-global-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        padding: 0 20px;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    /* Regional Logo */
+    .regional-logo-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .regional-logo-link:hover {
+        opacity: 0.85;
+    }
+
+    .regional-logo-cm {
+        font-family: "Merriweather", Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #ffffff;
+        line-height: 1;
+        letter-spacing: -0.5px;
+    }
+
+    .regional-logo-text {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    /* Region Selector */
+    .regional-region-selector {
+        position: relative;
+    }
+
+    .regional-selector-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 16px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .regional-selector-btn:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .regional-selector-btn.active {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .current-region-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .regional-selector-icon {
+        font-size: 0.5rem;
+        color: #ffffff;
+        transition: transform 0.2s ease;
+    }
+
+    .regional-selector-btn.active .regional-selector-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Region Selector Dropdown */
+    .regional-selector-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        min-width: 200px;
+        background-color: #ffffff;
+        border-radius: 6px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+        overflow: hidden;
+    }
+
+    .regional-selector-dropdown.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .region-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        color: #1a1a2e;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .region-option:last-child {
+        border-bottom: none;
+    }
+
+    .region-option:hover {
+        background-color: #f8f9fa;
+    }
+
+    .region-option.active {
+        background-color: #f0f4f8;
+        color: #1a3a5c;
+        font-weight: 600;
+    }
+
+    .region-check {
+        font-size: 0.7rem;
+        color: #1a3a5c;
+    }
+
+    /* Mobile Toggle */
+    .regional-mobile-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .regional-mobile-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background-color: #ffffff;
+        transition: all 0.2s ease;
+    }
+
+    /* ========================================
+   PRODUCT HEADER (Brand Colors)
+   ======================================== */
+
+    .product-header {
+        position: relative;
+        margin-top: 48px; /* Below fixed global header */
+        height: 60px;
+        background-color: var(--product-color, #d20a11);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        padding: 0 20px;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    /* Product Menu Button */
+    .product-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: #ffffff;
+    }
+
+    .product-menu-btn:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .product-menu-btn.active {
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .product-menu-btn i {
+        font-size: 1rem;
+    }
+
+    /* Product Logo */
+    .product-logo {
+        font-family: "Noto Serif", serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #ffffff;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: opacity 0.2s ease;
+        flex: 1;
+        text-align: center;
+    }
+
+    .product-logo:hover {
+        opacity: 0.9;
+    }
+
+    /* Product Search Button */
+    .product-search-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: #ffffff;
+    }
+
+    .product-search-btn:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .product-search-btn i {
+        font-size: 1rem;
+    }
+
+    /* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+
+    @media (max-width: 768px) {
+        /* Adjust global header for mobile */
+        .regional-global-header {
+            height: 48px;
+        }
+
+        .regional-global-container {
+            padding: 0 15px;
+        }
+
+        .regional-logo-cm {
+            font-size: 1.25rem;
+        }
+
+        .regional-logo-text {
+            font-size: 0.55rem;
+            letter-spacing: 1.5px;
+        }
+
+        /* Adjust region selector for mobile */
+        .current-region-name {
+            font-size: 0.7rem;
+        }
+
+        .regional-selector-btn {
+            padding: 5px 12px;
+            gap: 6px;
+        }
+
+        .regional-selector-dropdown {
+            right: -15px;
+            min-width: 180px;
+        }
+
+        /* Show mobile toggle */
+        .regional-mobile-toggle {
+            display: flex;
+        }
+
+        /* Adjust product header for mobile */
+        .product-header {
+            height: 68px;
+            margin-top: 48px;
+        }
+
+        .product-header-container {
+            padding: 0 15px;
+        }
+
+        .product-logo {
+            font-size: 1.1rem;
+            padding: 0 10px;
+        }
+
+        .product-menu-btn,
+        .product-search-btn {
+            width: 36px;
+            height: 36px;
+        }
+
+        .product-menu-btn i,
+        .product-search-btn i {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .regional-logo-cm {
+            font-size: 1.1rem;
+        }
+
+        .regional-logo-text {
+            display: none;
+        }
+
+        .current-region-name {
+            font-size: 0.65rem;
+        }
+
+        .product-logo {
+            font-size: 1rem;
+        }
+    }
     color: var(--category-main-color);
 }
 
+/* ========================================
+   TINY HEADER (Enhanced)
+   Header for regional pages with site navigation dropdown
+   ======================================== */
+
+/* Body adjustment for pages with regional headers (includes tiny header) */
+body.has-regional-headers {
+    padding-top: 157px !important; /* 49px tiny + 48px global + 60px product */
+}
+
+@media (max-width: 768px) {
+    body.has-regional-headers {
+        padding-top: 165px !important; /* 49px tiny + 48px global + 68px product */
+    }
+}
+
+.tiny-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 49px;
+    background-color: #0f2438;
+    z-index: 1002;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tiny-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Tiny Logo */
+.tiny-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.tiny-logo-link:hover {
+    opacity: 0.85;
+}
+
+.tiny-logo-cm {
+    font-family: "Merriweather", Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.tiny-logo-text {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Tiny Dropdown */
+.tiny-dropdown-wrapper {
+    position: relative;
+}
+
+.tiny-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #ffffff;
+}
+
+.tiny-dropdown-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.tiny-dropdown-btn.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tiny-dropdown-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tiny-dropdown-icon {
+    font-size: 0.6rem;
+    color: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+.tiny-dropdown-btn.active .tiny-dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Tiny Dropdown Menu */
+.tiny-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 240px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+    z-index: 1003;
+}
+
+.tiny-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.tiny-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: #1a1a2e;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.tiny-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.tiny-dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.tiny-dropdown-item.active {
+    background-color: #f0f4f8;
+    color: #1a3a5c;
+    font-weight: 600;
+}
+
+.tiny-dropdown-check {
+    font-size: 0.8rem;
+    color: #1a3a5c;
+    width: 16px;
+    text-align: center;
+}
+
+.tiny-dropdown-item.active .tiny-dropdown-check {
+    color: #1a3a5c;
+}
+
+.tiny-dropdown-item:not(.active) .tiny-dropdown-check {
+    color: #cccccc;
+}
+
+.tiny-dropdown-divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 4px 0;
+}
+
+.tiny-dropdown-back {
+    color: #1a3a5c;
+    font-weight: 600;
+}
+
+/* Mobile Toggle */
+.tiny-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.tiny-menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .tiny-header {
+        height: 49px;
+    }
+
+    .tiny-header-container {
+        padding: 0 15px;
+    }
+
+    .tiny-logo-cm {
+        font-size: 1.1rem;
+    }
+
+    .tiny-logo-text {
+        font-size: 0.55rem;
+        letter-spacing: 1.5px;
+    }
+
+    .tiny-dropdown-btn {
+        padding: 5px 12px;
+        gap: 6px;
+    }
+
+    .tiny-dropdown-text {
+        font-size: 0.7rem;
+    }
+
+    .tiny-dropdown-menu {
+        right: -15px;
+        min-width: 200px;
+    }
+
+    /* Show mobile toggle */
+    .tiny-menu-toggle {
+        display: flex;
+    }
+}
+
+/* ========================================
+   REGIONAL NEWS LAYOUT
+   News grid for regional pages
+   ======================================== */
+
+#regional-news-container {
+    max-width: 1280px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Hero Article */
+.regional-hero-article {
+    margin-bottom: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.regional-hero-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.regional-hero-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.regional-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.regional-hero-article:hover .regional-hero-image img {
+    transform: scale(1.05);
+}
+
+.regional-hero-content {
+    padding: 30px;
+}
+
+.regional-hero-title {
+    font-family: "Noto Serif", serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1a1a2e;
+    margin: 0 0 15px 0;
+}
+
+.regional-hero-excerpt {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666666;
+    margin: 0 0 20px 0;
+}
+
+.regional-article-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.875rem;
+    color: #999999;
+}
+
+.regional-author {
+    font-weight: 500;
+    color: #1a3a5c;
+}
+
+.regional-time {
+    color: #999999;
+}
+
+/* Regional Category Tags */
+.regional-category-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 14px;
+    background-color: #d20a11;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+}
+
+/* News Grid */
+.regional-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Regional News Cards */
+.regional-news-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.regional-news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.regional-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.regional-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.regional-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.regional-news-card:hover .regional-card-image img {
+    transform: scale(1.1);
+}
+
+.regional-card-content {
+    padding: 20px;
+}
+
+.regional-card-title {
+    font-family: "Noto Serif", serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #1a1a2e;
+    margin: 0 0 12px 0;
+}
+
+.regional-card-excerpt {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #666666;
+    margin: 0 0 15px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Responsive Design for Regional News */
+
+@media (max-width: 1024px) {
+    .regional-news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .regional-hero-title {
+        font-size: 1.75rem;
+    }
+
+    .regional-hero-excerpt {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #regional-news-container {
+        padding: 0 15px;
+        margin: 30px auto;
+    }
+
+    .regional-hero-content {
+        padding: 20px;
+    }
+
+    .regional-hero-title {
+        font-size: 1.5rem;
+    }
+
+    .regional-hero-excerpt {
+        font-size: 0.95rem;
+    }
+
+    .regional-news-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .regional-card-content {
+        padding: 15px;
+    }
+
+    .regional-card-title {
+        font-size: 1rem;
+    }
+
+    .regional-card-excerpt {
+        font-size: 0.875rem;
+    }
+
+    .regional-category-tag {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .regional-hero-title {
+        font-size: 1.25rem;
+    }
+
+    .regional-hero-excerpt {
+        font-size: 0.875rem;
+    }
+
+    .regional-card-title {
+        font-size: 0.95rem;
+    }
+
+    .regional-card-excerpt {
+        font-size: 0.8rem;
+    }
+}

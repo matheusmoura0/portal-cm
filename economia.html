@@ -1,336 +1,456 @@
 <!doctype html>
 <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Economia - portal CM. Notícias, análises e cobertura econômica do Brasil e do mundo."
+        />
+        <title>Economia | portal CM</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Economia - portal CM. Notícias, análises e cobertura econômica do Brasil e do mundo." />
-    <title>Economia | portal CM</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <script src="js/components/Header.js"></script>
+        <script src="js/components/Footer.js"></script>
+        <script src="js/components/MainLayout.js"></script>
+    </head>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
-        rel="stylesheet" />
-    <script src="js/components/Header.js"></script>
-    <script src="js/components/Footer.js"></script>
-    <script src="js/components/MainLayout.js"></script>
+    <body class="category-economia">
+        <!-- Global Header Placeholder -->
+        <div id="global-header"></div>
 
-</head>
+        <!-- Anúncio Topo Padrão -->
+        <div class="ad-placeholder ad-970x150">
+            Espaço Publicitário - 950x150
+        </div>
 
-<body class="category-economia">
-    <!-- Global Header Placeholder -->
-    <div id="global-header"></div>
+        <!-- Main Content -->
+        <main class="main-content category-view">
+            <div class="container">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1>Economia</h1>
+                    <p>
+                        Notícias, análises e cobertura econômica do Brasil e do
+                        mundo
+                    </p>
+                </div>
 
-    <!-- Anúncio Topo Padrão -->
-    <div class="ad-placeholder ad-970x150">
-        Espaço Publicitário - 950x150
-    </div>
+                <!-- Advertisement -->
 
-
-
-    <!-- Main Content -->
-    <main class="main-content category-view">
-        <div class="container">
-            <!-- Page Header -->
-            <div class="page-header">
-                <h1>Economia</h1>
-                <p>
-                    Notícias, análises e cobertura econômica do Brasil e do
-                    mundo
-                </p>
-            </div>
-
-            <!-- Advertisement -->
-
-            <!-- Newspaper Grid -->
-            <div class="newspaper-grid" id="news-grid">
-                <!-- Featured Article -->
-                <article class="news-card featured">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Custo-de-vida-sobe-038-em-dezembro-e-fecha-2025-em-alta.jpg"
-                            alt="Custo de vida sobe 0,38%" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">ECONOMIA</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Custo de vida sobe 0,38% em
-                                dezembro e
-                                fecha 2025 em alta</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Índice de preços mostra variação positiva no
-                            último mês do ano, impactando o bolso dos
-                            consumidores.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 5 horas</span>
+                <!-- Newspaper Grid -->
+                <div class="newspaper-grid" id="news-grid">
+                    <!-- Featured Article -->
+                    <article class="news-card featured">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Custo-de-vida-sobe-038-em-dezembro-e-fecha-2025-em-alta.jpg"
+                                alt="Custo de vida sobe 0,38%"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">ECONOMIA</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Custo de vida sobe 0,38% em dezembro e
+                                    fecha 2025 em alta</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Índice de preços mostra variação positiva no
+                                último mês do ano, impactando o bolso dos
+                                consumidores.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 5 horas</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Article 2 -->
-                <article class="news-card">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Sao-Paulo-inicia-2026-com-17-mil-obras-em-execucao-simultanea.jpg"
-                            alt="Obras em São Paulo" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">INFRAESTRUTURA</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">São Paulo inicia 2026 com 1,7
-                                mil obras em
-                                execução simultânea</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Estado paulista tem recorde de investimentos em
-                            infraestrutura neste início de ano.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 6 horas</span>
+                    <!-- Article 2 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Sao-Paulo-inicia-2026-com-17-mil-obras-em-execucao-simultanea.jpg"
+                                alt="Obras em São Paulo"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">INFRAESTRUTURA</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >São Paulo inicia 2026 com 1,7 mil obras em
+                                    execução simultânea</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Estado paulista tem recorde de investimentos em
+                                infraestrutura neste início de ano.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 6 horas</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Article 3 -->
-                <article class="news-card">
-                    <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/pexels-max-fischer-5868272_1.jpg"
-                            alt="Black Friday" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">VAREJO</span>
-                        <h3>
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank">Aproveite as melhores ofertas de
-                                Black
-                                Friday na região até o fim de semana</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Descontos de até 90% em diversos
-                            estabelecimentos da Barra da Tijuca e região.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Jornal da Barra</span>
-                            <span class="time">Há 8 horas</span>
+                    <!-- Article 3 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.jornaldabarra.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/pexels-max-fischer-5868272_1.jpg"
+                                alt="Black Friday"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">VAREJO</span>
+                            <h3>
+                                <a
+                                    href="https://www.jornaldabarra.com.br/"
+                                    target="_blank"
+                                    >Aproveite as melhores ofertas de Black
+                                    Friday na região até o fim de semana</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Descontos de até 90% em diversos
+                                estabelecimentos da Barra da Tijuca e região.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Jornal da Barra</span>
+                                <span class="time">Há 8 horas</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Anúncio In-Feed -->
+                    <!-- Anúncio In-Feed -->
+                    <div class="ad-placeholder ad-300x250">
+                        Espaço Publicitário - 300x250
+                    </div>
+
+                    <!-- Article 4 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-anuncia-plano-bilionario-de-moradias.jpg"
+                                alt="Plano de moradias"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">HABITAÇÃO</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Tarcísio anuncia plano bilionário de
+                                    moradias no eixo do trem entre São Paulo e
+                                    Campinas</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Governo de SP investe R$ 6,4 bilhões em programa
+                                de habitação popular.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 10 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 5 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.jornaldabarra.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Grace_Kelly_1.jpeg"
+                                alt="Empreendedores"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">EMPREENDEDORISMO</span>
+                            <h3>
+                                <a
+                                    href="https://www.jornaldabarra.com.br/"
+                                    target="_blank"
+                                    >1ª Edição de encontro de empreendedores
+                                    acontece na Barra com networking e
+                                    palestras</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Evento "O Networking: Hub do Empreendedorismo"
+                                reúne empresários e profissionais da região.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Jornal da Barra</span>
+                                <span class="time">Há 12 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 6 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.correiodamanha.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_megaoperacao-497151.jpg"
+                                alt="Economia"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">MERCADOS</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanha.com.br/"
+                                    target="_blank"
+                                    >Mercado brasileiro apresenta estabilidade
+                                    em início de 2026</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Analistas projetam crescimento moderado para a
+                                economia nos próximos meses.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Correio da Manhã</span>
+                                <span class="time">Há 1 dia</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Hidden Articles (to be loaded) -->
+                    <article class="news-card hidden">
+                        <a
+                            href="https://www.jornaldabarra.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/0_3.jpg"
+                                alt="Feira de Varejo"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">COMÉRCIO</span>
+                            <h3>
+                                <a
+                                    href="https://www.jornaldabarra.com.br/"
+                                    target="_blank"
+                                    >Feira de Varejo com descontos de até 90%
+                                    acontece no Riocentro no início de
+                                    dezembro</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Evento gratuito terá marcas como Nike, Adidas,
+                                Vans e muitas outras.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Jornal da Barra</span>
+                                <span class="time">Há 2 dias</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card hidden">
+                        <a
+                            href="https://correiosulfluminense.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/varejao-corrupcao.jpg"
+                                alt="Economia regional"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">REGIONAL</span>
+                            <h3>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >Câmara Municipal devolve R$ 1,2 milhão aos
+                                    cofres da prefeitura de Barra do Piraí</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Verba será aplicada em obras e serviços
+                                essenciais para a população.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio Sul Fluminense</span
+                                >
+                                <span class="time">Há 3 dias</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card hidden">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Guarulhos-entra-em-pacote-bilionario-de-mobilidade.jpg"
+                                alt="Mobilidade urbana"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">MOBILIDADE</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Guarulhos entra em pacote bilionário de
+                                    mobilidade</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Governo de SP anuncia grandes investimentos em
+                                transporte para a cidade.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 4 dias</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Anúncio Lateral -->
                 <div class="ad-placeholder ad-300x250">
                     Espaço Publicitário - 300x250
                 </div>
 
-                <!-- Article 4 -->
-                <article class="news-card">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-anuncia-plano-bilionario-de-moradias.jpg"
-                            alt="Plano de moradias" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">HABITAÇÃO</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Tarcísio anuncia plano
-                                bilionário de
-                                moradias no eixo do trem entre São Paulo e
-                                Campinas</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Governo de SP investe R$ 6,4 bilhões em programa
-                            de habitação popular.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 10 horas</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 5 -->
-                <article class="news-card">
-                    <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/Grace_Kelly_1.jpeg"
-                            alt="Empreendedores" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">EMPREENDEDORISMO</span>
-                        <h3>
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank">1ª Edição de encontro de
-                                empreendedores
-                                acontece na Barra com networking e
-                                palestras</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Evento "O Networking: Hub do Empreendedorismo"
-                            reúne empresários e profissionais da região.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Jornal da Barra</span>
-                            <span class="time">Há 12 horas</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 6 -->
-                <article class="news-card">
-                    <a href="https://www.correiodamanha.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/28/280x175/1_megaoperacao-497151.jpg"
-                            alt="Economia" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">MERCADOS</span>
-                        <h3>
-                            <a href="https://www.correiodamanha.com.br/" target="_blank">Mercado brasileiro apresenta
-                                estabilidade
-                                em início de 2026</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Analistas projetam crescimento moderado para a
-                            economia nos próximos meses.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã</span>
-                            <span class="time">Há 1 dia</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Hidden Articles (to be loaded) -->
-                <article class="news-card hidden">
-                    <a href="https://www.jornaldabarra.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.jornaldabarra.com.br/images/stories/2025/out-2025/0_3.jpg"
-                            alt="Feira de Varejo" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">COMÉRCIO</span>
-                        <h3>
-                            <a href="https://www.jornaldabarra.com.br/" target="_blank">Feira de Varejo com descontos de
-                                até 90%
-                                acontece no Riocentro no início de
-                                dezembro</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Evento gratuito terá marcas como Nike, Adidas,
-                            Vans e muitas outras.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Jornal da Barra</span>
-                            <span class="time">Há 2 dias</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="news-card hidden">
-                    <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/varejao-corrupcao.jpg"
-                            alt="Economia regional" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">REGIONAL</span>
-                        <h3>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Câmara Municipal devolve R$
-                                1,2 milhão aos
-                                cofres da prefeitura de Barra do Piraí</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Verba será aplicada em obras e serviços
-                            essenciais para a população.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio Sul Fluminense</span>
-                            <span class="time">Há 3 dias</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="news-card hidden">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Guarulhos-entra-em-pacote-bilionario-de-mobilidade.jpg"
-                            alt="Mobilidade urbana" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">MOBILIDADE</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Guarulhos entra em pacote
-                                bilionário de
-                                mobilidade</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Governo de SP anuncia grandes investimentos em
-                            transporte para a cidade.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 4 dias</span>
-                        </div>
-                    </div>
-                </article>
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <div class="loading-spinner" id="loading-spinner"></div>
+                    <button class="load-more-btn" id="load-more-btn">
+                        Carregar mais notícias
+                    </button>
+                </div>
             </div>
+        </main>
 
-            <!-- Anúncio Lateral -->
-            <div class="ad-placeholder ad-300x250">
-                Espaço Publicitário - 300x250
-            </div>
+        <!-- Global Footer Placeholder -->
+        <div id="global-footer"></div>
 
-            <!-- Load More Button -->
-            <div class="load-more-container">
-                <div class="loading-spinner" id="loading-spinner"></div>
-                <button class="load-more-btn" id="load-more-btn">
-                    Carregar mais notícias
-                </button>
-            </div>
-        </div>
-    </main>
+        <script src="js/main.js"></script>
+        <script>
+            // Load More functionality
+            const loadMoreBtn = document.getElementById("load-more-btn");
+            const loadingSpinner = document.getElementById("loading-spinner");
+            const hiddenCards = document.querySelectorAll(".news-card.hidden");
 
-    <!-- Global Footer Placeholder -->
-    <div id="global-footer"></div>
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener("click", function () {
+                    loadingSpinner.style.display = "block";
+                    loadMoreBtn.disabled = true;
 
-    <script src="js/main.js"></script>
-    <script>
-        // Load More functionality
-        const loadMoreBtn = document.getElementById("load-more-btn");
-        const loadingSpinner = document.getElementById("loading-spinner");
-        const hiddenCards = document.querySelectorAll(".news-card.hidden");
+                    setTimeout(() => {
+                        let shown = 0;
+                        hiddenCards.forEach((card) => {
+                            if (
+                                card.classList.contains("hidden") &&
+                                shown < 3
+                            ) {
+                                card.classList.remove("hidden");
+                                shown++;
+                            }
+                        });
 
-        if (loadMoreBtn) {
-            loadMoreBtn.addEventListener("click", function () {
-                loadingSpinner.style.display = "block";
-                loadMoreBtn.disabled = true;
+                        loadingSpinner.style.display = "none";
+                        loadMoreBtn.disabled = false;
 
-                setTimeout(() => {
-                    let shown = 0;
-                    hiddenCards.forEach(card => {
-                        if (card.classList.contains("hidden") && shown < 3) {
-                            card.classList.remove("hidden");
-                            shown++;
+                        const remainingHidden =
+                            document.querySelectorAll(".news-card.hidden");
+                        if (remainingHidden.length === 0) {
+                            loadMoreBtn.textContent = "Não há mais notícias";
+                            loadMoreBtn.disabled = true;
                         }
-                    });
-
-                    loadingSpinner.style.display = "none";
-                    loadMoreBtn.disabled = false;
-
-                    const remainingHidden = document.querySelectorAll(".news-card.hidden");
-                    if (remainingHidden.length === 0) {
-                        loadMoreBtn.textContent = "Não há mais notícias";
-                        loadMoreBtn.disabled = true;
-                    }
-                }, 500);
-            });
-        }
-    </script>
-</body>
-
+                    }, 500);
+                });
+            }
+        </script>
+    </body>
 </html>

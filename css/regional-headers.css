@@ -1,0 +1,919 @@
+/* ========================================
+   REGIONAL HEADERS CSS - NEWSPAPER STYLE
+   Classic newspaper aesthetic with brand color accents
+   ======================================== */
+
+/* ========================================
+   BRAND COLORS
+   ======================================== */
+:root {
+    --brand-sp: #194466;
+    --brand-nacional: #d20a11;
+    --brand-df: #1e73be;
+    --brand-sulfluminense: #003366;
+    --brand-petropolitano: #d20a11;
+    --brand-servidor: #003366;
+    --brand-barra: #1a1a1a;
+    --brand-default: #1a3a5c;
+}
+
+/* ========================================
+   BODY ADJUSTMENT (tiny header + product header only)
+   ======================================== */
+body.has-regional-headers {
+    padding-top: 139px !important; /* 49px tiny + 90px product */
+}
+
+@media (max-width: 768px) {
+    body.has-regional-headers {
+        padding-top: 147px !important; /* 49px tiny + 98px product on mobile */
+    }
+}
+
+/* ========================================
+   TINY HEADER (Dark Blue - Matches Main Header)
+   ======================================== */
+
+.tiny-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 49px;
+    background-color: #1a3a5c;
+    z-index: 1002;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tiny-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Tiny Logo */
+.tiny-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.tiny-logo-link:hover {
+    opacity: 0.85;
+}
+
+.tiny-logo-cm {
+    font-family: "Merriweather", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.tiny-logo-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Tiny Dropdown */
+.tiny-dropdown-wrapper {
+    position: relative;
+}
+
+.tiny-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #ffffff;
+}
+
+.tiny-dropdown-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.tiny-dropdown-btn.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tiny-dropdown-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tiny-dropdown-icon {
+    font-size: 0.6rem;
+    color: #ffffff;
+    transition: transform 0.2s ease;
+}
+
+.tiny-dropdown-btn.active .tiny-dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Tiny Dropdown Menu */
+.tiny-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 240px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+    z-index: 1003;
+}
+
+.tiny-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.tiny-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: #1a1a2e;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.tiny-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.tiny-dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.tiny-dropdown-item.active {
+    background-color: #f0f4f8;
+    color: #1a3a5c;
+    font-weight: 600;
+}
+
+.tiny-dropdown-check {
+    font-size: 0.8rem;
+    color: #1a3a5c;
+    width: 16px;
+    text-align: center;
+}
+
+.tiny-dropdown-item.active .tiny-dropdown-check {
+    color: #1a3a5c;
+}
+
+.tiny-dropdown-item:not(.active) .tiny-dropdown-check {
+    color: #cccccc;
+}
+
+.tiny-dropdown-divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 4px 0;
+}
+
+.tiny-dropdown-back {
+    color: #1a3a5c;
+    font-weight: 600;
+}
+
+/* Mobile Toggle */
+.tiny-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.tiny-menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .tiny-header {
+        height: 49px;
+    }
+
+    .tiny-header-container {
+        padding: 0 15px;
+    }
+
+    .tiny-logo-cm {
+        font-size: 1.2rem;
+    }
+
+    .tiny-logo-text {
+        font-size: 0.6rem;
+        letter-spacing: 1.5px;
+    }
+
+    .tiny-dropdown-btn {
+        padding: 6px 12px;
+        gap: 6px;
+    }
+
+    .tiny-dropdown-text {
+        font-size: 0.7rem;
+    }
+
+    .tiny-dropdown-menu {
+        right: -15px;
+        min-width: 200px;
+    }
+
+    /* Show mobile toggle */
+    .tiny-menu-toggle {
+        display: flex;
+    }
+}
+
+/* ========================================
+   REGIONAL GLOBAL HEADER (Newspaper Style)
+   ======================================== */
+
+.regional-global-header {
+    position: fixed;
+    top: 49px;
+    left: 0;
+    width: 100%;
+    height: 49px;
+    background-color: #ffffff;
+    z-index: 1001;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-top: 2px solid var(--brand-color, var(--brand-default));
+    border-bottom: 1px solid var(--brand-color, var(--brand-default));
+}
+
+.regional-global-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Regional Logo */
+.regional-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.regional-logo-link:hover {
+    opacity: 0.75;
+}
+
+.regional-logo-cm {
+    font-family: "Merriweather", Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #1a1a2e;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.regional-logo-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Region Selector */
+.regional-region-selector {
+    position: relative;
+}
+
+.regional-selector-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.regional-selector-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #d0d0d0;
+}
+
+.regional-selector-btn.active {
+    background-color: #f0f0f0;
+}
+
+.current-region-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.regional-selector-icon {
+    font-size: 0.5rem;
+    color: #666666;
+    transition: transform 0.2s ease;
+}
+
+.regional-selector-btn.active .regional-selector-icon {
+    transform: rotate(180deg);
+}
+
+/* Region Selector Dropdown */
+.regional-selector-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 220px;
+    background-color: #ffffff;
+    padding: 6px 0;
+    margin: 0;
+    list-style: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e8e8e8;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 1000;
+}
+
+.regional-selector-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.region-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1a1a2e;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.region-option:last-child {
+    border-bottom: none;
+}
+
+.region-option:hover {
+    background-color: #f8f9fa;
+}
+
+.region-option.active {
+    background-color: #f0f4f8;
+    color: #1a3a5c;
+    font-weight: 600;
+}
+
+.region-check {
+    font-size: 0.65rem;
+    color: #1a3a5c;
+}
+
+/* Mobile Toggle */
+.regional-mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.regional-mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #1a1a2e;
+    transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .regional-global-container {
+        padding: 0 15px;
+    }
+
+    .regional-logo-cm {
+        font-size: 1.2rem;
+    }
+
+    .regional-logo-text {
+        font-size: 0.6rem;
+        letter-spacing: 1.5px;
+    }
+
+    .current-region-name {
+        font-size: 0.7rem;
+    }
+
+    .regional-selector-btn {
+        padding: 5px 10px;
+        gap: 6px;
+    }
+
+    .regional-selector-dropdown {
+        right: -15px;
+        min-width: 180px;
+    }
+
+    .regional-mobile-toggle {
+        display: flex;
+    }
+}
+
+/* ========================================
+   PRODUCT HEADER (Newspaper Style)
+   ======================================== */
+
+.product-header {
+    position: relative;
+    margin-top: 49px; /* Below fixed tiny header */
+    height: 90px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-top: 2px solid var(--product-color, #d20a11);
+    border-bottom: 2px solid var(--product-color, #d20a11);
+}
+
+.product-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 30px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Product Menu Button */
+.product-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: #f8f9fa;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #1a1a2e;
+}
+
+.product-menu-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #d0d0d0;
+}
+
+.product-menu-btn.active {
+    background-color: #f0f0f0;
+}
+
+.product-menu-btn i {
+    font-size: 1.1rem;
+}
+
+/* Product Logo */
+.product-logo {
+    font-family: "Noto Serif", serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #1a1a2e;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+    flex: 1;
+    text-align: center;
+}
+
+.product-logo:hover {
+    color: var(--product-color, #d20a11);
+}
+
+/* Product Search Button */
+.product-search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: #f8f9fa;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #1a1a2e;
+}
+
+.product-search-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #d0d0d0;
+}
+
+.product-search-btn i {
+    font-size: 1.1rem;
+}
+
+/* ========================================
+   REGIONAL NEWS LAYOUT (Newspaper Style)
+   ======================================== */
+
+#regional-news-container {
+    max-width: 1280px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Hero Article */
+.regional-hero-article {
+    margin-bottom: 40px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    border: 1px solid #e8e8e8;
+}
+
+.regional-hero-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.regional-hero-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.regional-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.regional-hero-article:hover .regional-hero-image img {
+    transform: scale(1.03);
+}
+
+.regional-hero-content {
+    padding: 28px 30px 24px;
+}
+
+.regional-hero-title {
+    font-family: "Noto Serif", serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1a1a2e;
+    margin: 0 0 8px 0;
+    position: relative;
+    padding-top: 12px;
+}
+
+/* Newspaper style decorative line before title */
+.regional-hero-title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--product-color, #d20a11);
+}
+
+.regional-hero-excerpt {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #555555;
+    margin: 0 0 18px 0;
+}
+
+.regional-article-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.8rem;
+    color: #888888;
+    padding-top: 12px;
+    border-top: 1px solid #e8e8e8;
+}
+
+.regional-author {
+    font-weight: 500;
+    color: #1a3a5c;
+}
+
+.regional-time {
+    color: #888888;
+}
+
+/* Regional Category Tags - Newspaper style */
+.regional-category-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 12px;
+    background-color: #ffffff;
+    color: #1a1a2e;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-left: 3px solid var(--category-color, #d20a11);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* News Grid */
+.regional-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Regional News Cards - Newspaper style */
+.regional-news-card {
+    background-color: #ffffff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid #e8e8e8;
+}
+
+.regional-news-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.regional-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.regional-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.regional-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.regional-news-card:hover .regional-card-image img {
+    transform: scale(1.05);
+}
+
+.regional-card-content {
+    padding: 18px;
+}
+
+.regional-card-title {
+    font-family: "Noto Serif", serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #1a1a2e;
+    margin: 0 0 10px 0;
+    position: relative;
+    padding-top: 10px;
+}
+
+/* Newspaper style decorative line before card title */
+.regional-card-title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--category-color, #d20a11);
+}
+
+.regional-card-excerpt {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #666666;
+    margin: 0 0 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.regional-article-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 0.75rem;
+    color: #888888;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.regional-author {
+    font-weight: 500;
+    color: #1a3a5c;
+}
+
+.regional-time {
+    color: #888888;
+}
+
+/* Advertisement Banner - Newspaper style */
+.ad-placeholder.ad-970x150 {
+    margin: 40px auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px dashed #cccccc;
+    color: #888888;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN FOR REGIONAL NEWS
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .regional-news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .regional-hero-title {
+        font-size: 1.75rem;
+    }
+
+    .regional-hero-excerpt {
+        font-size: 1rem;
+    }
+
+    .regional-hero-title::before {
+        width: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    #regional-news-container {
+        padding: 0 15px;
+        margin: 30px auto;
+    }
+
+    .regional-hero-content {
+        padding: 20px;
+    }
+
+    .regional-hero-title {
+        font-size: 1.4rem;
+    }
+
+    .regional-hero-excerpt {
+        font-size: 0.95rem;
+    }
+
+    .regional-hero-title::before {
+        width: 40px;
+    }
+
+    .regional-news-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .regional-card-content {
+        padding: 16px;
+    }
+
+    .regional-card-title {
+        font-size: 1rem;
+    }
+
+    .regional-card-excerpt {
+        font-size: 0.85rem;
+    }
+
+    .regional-card-title::before {
+        width: 25px;
+    }
+
+    .regional-category-tag {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+    }
+
+    .product-header {
+        margin-top: 49px;
+        height: 98px;
+    }
+
+    .product-header-container {
+        padding: 0 15px;
+    }
+
+    .product-logo {
+        font-size: 1.6rem;
+        padding: 0 10px;
+    }
+
+    .product-menu-btn,
+    .product-search-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .product-menu-btn i,
+    .product-search-btn i {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .regional-hero-title {
+        font-size: 1.25rem;
+    }
+
+    .regional-hero-excerpt {
+        font-size: 0.875rem;
+    }
+
+    .regional-hero-title::before {
+        width: 35px;
+    }
+
+    .regional-card-title {
+        font-size: 0.95rem;
+    }
+
+    .regional-card-excerpt {
+        font-size: 0.8rem;
+    }
+
+    .regional-card-title::before {
+        width: 20px;
+    }
+}

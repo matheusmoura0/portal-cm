@@ -1,337 +1,461 @@
 <!doctype html>
 <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Brasil - portal CM. Notícias nacionais, política e cobertura do Brasil."
+        />
+        <title>Brasil | portal CM</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Brasil - portal CM. Notícias nacionais, política e cobertura do Brasil." />
-    <title>Brasil | portal CM</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <script src="js/components/Header.js"></script>
+        <script src="js/components/Footer.js"></script>
+        <script src="js/components/MainLayout.js"></script>
+    </head>
 
+    <body class="category-brasil">
+        <!-- Global Header Placeholder -->
+        <div id="global-header"></div>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
-        rel="stylesheet" />
-    <script src="js/components/Header.js"></script>
-    <script src="js/components/Footer.js"></script>
-    <script src="js/components/MainLayout.js"></script>
+        <!-- Anúncio Topo Padrão -->
+        <div class="ad-placeholder ad-970x150">
+            Espaço Publicitário - 970x150
+        </div>
 
-
-</head>
-
-<body class="category-brasil">
-    <!-- Global Header Placeholder -->
-    <div id="global-header"></div>
-
-    <!-- Anúncio Topo Padrão -->
-    <div class="ad-placeholder ad-970x150">
-        Espaço Publicitário - 970x150
-    </div>
-
-    <!-- Breaking News Ticker --
+        <!-- Breaking News Ticker --
 
     <!-- Main Content -->
-    <main class="main-content category-view">
-        <div class="container">
-            <!-- Page Header -->
-            <div class="page-header">
-                <h1>Brasil</h1>
-                <p>
-                    Notícias nacionais, política e cobertura de todo o
-                    Brasil
-                </p>
-            </div>
+        <main class="main-content category-view">
+            <div class="container">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1>Brasil</h1>
+                    <p>
+                        Notícias nacionais, política e cobertura de todo o
+                        Brasil
+                    </p>
+                </div>
 
-            <!-- Advertisement -->
+                <!-- Advertisement -->
 
-            <!-- Newspaper Grid -->
-            <div class="newspaper-grid" id="news-grid">
-                <!-- Featured Article -->
-                <article class="news-card featured">
-                    <a href="noticia.html?id=noticia-005" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/29/600x378/1_tomaz_silva_ag_brasil-497625.jpeg"
-                            alt="Ação policial no RJ" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">NACIONAL</span>
-                        <h3>
-                            <a href="noticia.html?id=noticia-005">Moraes ordena que governador do
-                                RJ
-                                esclareça ação policial com ao menos 119
-                                mortos</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Incursão policial contra o Comando Vermelho foi
-                            realizada na terça-feira (28) nos complexos do
-                            Alemão e da Penha.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã</span>
-                            <span class="time">Há 3 horas</span>
+                <!-- Newspaper Grid -->
+                <div class="newspaper-grid" id="news-grid">
+                    <!-- Featured Article -->
+                    <article class="news-card featured">
+                        <a
+                            href="noticia.html?id=noticia-005"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanha.com.br/_midias/jpg/2025/10/29/600x378/1_tomaz_silva_ag_brasil-497625.jpeg"
+                                alt="Ação policial no RJ"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">NACIONAL</span>
+                            <h3>
+                                <a href="noticia.html?id=noticia-005"
+                                    >Moraes ordena que governador do RJ
+                                    esclareça ação policial com ao menos 119
+                                    mortos</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Incursão policial contra o Comando Vermelho foi
+                                realizada na terça-feira (28) nos complexos do
+                                Alemão e da Penha.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author">Por Correio da Manhã</span>
+                                <span class="time">Há 3 horas</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Article 2 -->
-                <article class="news-card">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Nunes-rejeita-alianca-entre-MDB-e-PT-em-2026.jpg"
-                            alt="Nunes rejeita aliança" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">POLÍTICA</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Nunes rejeita aliança entre
-                                MDB e PT em
-                                2026</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Prefeito de São Paulo descarta possibilidade de
-                            coligação com o PT nas eleições municipais.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 5 horas</span>
+                    <!-- Article 2 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Nunes-rejeita-alianca-entre-MDB-e-PT-em-2026.jpg"
+                                alt="Nunes rejeita aliança"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">POLÍTICA</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Nunes rejeita aliança entre MDB e PT em
+                                    2026</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Prefeito de São Paulo descarta possibilidade de
+                                coligação com o PT nas eleições municipais.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 5 horas</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Article 3 -->
-                <article class="news-card">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-anuncia-plano-bilionario-de-moradias.jpg"
-                            alt="Plano de moradias" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">HABITAÇÃO</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Governo paulista anuncia R$
-                                6,4 bilhões
-                                para habitação no estado</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Programa visa construir milhares de unidades
-                            habitacionais em todo o território paulista.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 8 horas</span>
+                    <!-- Article 3 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Tarcisio-anuncia-plano-bilionario-de-moradias.jpg"
+                                alt="Plano de moradias"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">HABITAÇÃO</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Governo paulista anuncia R$ 6,4 bilhões
+                                    para habitação no estado</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Programa visa construir milhares de unidades
+                                habitacionais em todo o território paulista.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 8 horas</span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- Anúncio In-Feed -->
+                    <!-- Anúncio In-Feed -->
+                    <div class="ad-placeholder ad-300x250">
+                        Espaço Publicitário - 300x250
+                    </div>
+
+                    <!-- Article 4 -->
+                    <article class="news-card">
+                        <a
+                            href="https://correiosulfluminense.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-12-at-16.33.22.jpeg"
+                                alt="Reajuste servidores"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">SERVIDOR</span>
+                            <h3>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >VR: Prefeito Neto garante reajuste para
+                                    servidores</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Prefeito de Volta Redonda confirma aumento
+                                salarial para servidores públicos municipais.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio Sul Fluminense</span
+                                >
+                                <span class="time">Há 10 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 5 -->
+                    <article class="news-card">
+                        <a
+                            href="https://correiosulfluminense.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/73093.jpg"
+                                alt="Educação no trânsito"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">EDUCAÇÃO</span>
+                            <h3>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >Volta Redonda investe em educação no
+                                    trânsito e capacita cerca de 8 mil
+                                    pessoas</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Minicidade da cidade forma milhares de
+                                condutores em programa de educação para o
+                                trânsito.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio Sul Fluminense</span
+                                >
+                                <span class="time">Há 12 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 6 -->
+                    <article class="news-card">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Guarulhos-entra-em-pacote-bilionario-de-mobilidade.jpg"
+                                alt="Mobilidade urbana"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">INFRAESTRUTURA</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Guarulhos entra em pacote bilionário de
+                                    mobilidade</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Governo de SP anuncia grandes investimentos em
+                                transporte para a cidade de Guarulhos.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 1 dia</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Hidden Articles (to be loaded) -->
+                    <article class="news-card hidden">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Campinas-aplica-91-multas-por-bafometro.jpg"
+                                alt="Lei Seca"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">SEGURANÇA</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Campinas aplica 91 multas por bafômetro em
+                                    dois meses; maioria é por recusa</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Operações da Lei Seca resultam em quase uma
+                                centena de multas na cidade de Campinas.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 2 dias</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card hidden">
+                        <a
+                            href="https://correiosulfluminense.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/varejao-corrupcao.jpg"
+                                alt="Câmara Municipal"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">POLÍTICA</span>
+                            <h3>
+                                <a
+                                    href="https://correiosulfluminense.com.br/"
+                                    target="_blank"
+                                    >Câmara Municipal devolve R$ 1,2 milhão aos
+                                    cofres da prefeitura de Barra do Piraí</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Verba não utilizada será aplicada em obras e
+                                serviços essenciais para a população.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio Sul Fluminense</span
+                                >
+                                <span class="time">Há 3 dias</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card hidden">
+                        <a
+                            href="https://www.correiodamanhasp.com.br/"
+                            target="_blank"
+                            class="news-image"
+                        >
+                            <img
+                                onerror="
+                                    this.src =
+                                        'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
+                                "
+                                src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Santo-Andre-confirma-Corte-do-Carnaval-2026.jpg"
+                                alt="Carnaval"
+                            />
+                        </a>
+                        <div class="news-content">
+                            <span class="category-tag">CULTURA</span>
+                            <h3>
+                                <a
+                                    href="https://www.correiodamanhasp.com.br/"
+                                    target="_blank"
+                                    >Santo André confirma Corte do Carnaval 2026
+                                    e programação completa</a
+                                >
+                            </h3>
+                            <p class="news-excerpt">
+                                Cidade de São Paulo anuncia programação completa
+                                para o carnaval deste ano.
+                            </p>
+                            <div class="article-meta">
+                                <span class="author"
+                                    >Por Correio da Manhã SP</span
+                                >
+                                <span class="time">Há 4 dias</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Anúncio Lateral -->
                 <div class="ad-placeholder ad-300x250">
                     Espaço Publicitário - 300x250
                 </div>
 
-                <!-- Article 4 -->
-                <article class="news-card">
-                    <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-12-at-16.33.22.jpeg"
-                            alt="Reajuste servidores" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">SERVIDOR</span>
-                        <h3>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">VR: Prefeito Neto garante
-                                reajuste para
-                                servidores</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Prefeito de Volta Redonda confirma aumento
-                            salarial para servidores públicos municipais.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio Sul Fluminense</span>
-                            <span class="time">Há 10 horas</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 5 -->
-                <article class="news-card">
-                    <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://correiosulfluminense.com.br/wp-content/uploads/2026/01/73093.jpg"
-                            alt="Educação no trânsito" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">EDUCAÇÃO</span>
-                        <h3>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Volta Redonda investe em
-                                educação no
-                                trânsito e capacita cerca de 8 mil
-                                pessoas</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Minicidade da cidade forma milhares de
-                            condutores em programa de educação para o
-                            trânsito.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio Sul Fluminense</span>
-                            <span class="time">Há 12 horas</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 6 -->
-                <article class="news-card">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Guarulhos-entra-em-pacote-bilionario-de-mobilidade.jpg"
-                            alt="Mobilidade urbana" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">INFRAESTRUTURA</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Guarulhos entra em pacote
-                                bilionário de
-                                mobilidade</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Governo de SP anuncia grandes investimentos em
-                            transporte para a cidade de Guarulhos.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 1 dia</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Hidden Articles (to be loaded) -->
-                <article class="news-card hidden">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Campinas-aplica-91-multas-por-bafometro.jpg"
-                            alt="Lei Seca" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">SEGURANÇA</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Campinas aplica 91 multas por
-                                bafômetro em
-                                dois meses; maioria é por recusa</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Operações da Lei Seca resultam em quase uma
-                            centena de multas na cidade de Campinas.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 2 dias</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="news-card hidden">
-                    <a href="https://correiosulfluminense.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://correiosulfluminense.com.br/wp-content/uploads/2025/10/varejao-corrupcao.jpg"
-                            alt="Câmara Municipal" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">POLÍTICA</span>
-                        <h3>
-                            <a href="https://correiosulfluminense.com.br/" target="_blank">Câmara Municipal devolve R$
-                                1,2 milhão aos
-                                cofres da prefeitura de Barra do Piraí</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Verba não utilizada será aplicada em obras e
-                            serviços essenciais para a população.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio Sul Fluminense</span>
-                            <span class="time">Há 3 dias</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="news-card hidden">
-                    <a href="https://www.correiodamanhasp.com.br/" target="_blank" class="news-image">
-                        <img onerror="this.src='https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'"
-                            src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Santo-Andre-confirma-Corte-do-Carnaval-2026.jpg"
-                            alt="Carnaval" />
-                    </a>
-                    <div class="news-content">
-                        <span class="category-tag">CULTURA</span>
-                        <h3>
-                            <a href="https://www.correiodamanhasp.com.br/" target="_blank">Santo André confirma Corte do
-                                Carnaval 2026
-                                e programação completa</a>
-                        </h3>
-                        <p class="news-excerpt">
-                            Cidade de São Paulo anuncia programação completa
-                            para o carnaval deste ano.
-                        </p>
-                        <div class="article-meta">
-                            <span class="author">Por Correio da Manhã SP</span>
-                            <span class="time">Há 4 dias</span>
-                        </div>
-                    </div>
-                </article>
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <div class="loading-spinner" id="loading-spinner"></div>
+                    <button class="load-more-btn" id="load-more-btn">
+                        Carregar mais notícias
+                    </button>
+                </div>
             </div>
+        </main>
 
-            <!-- Anúncio Lateral -->
-            <div class="ad-placeholder ad-300x250">
-                Espaço Publicitário - 300x250
-            </div>
+        <!-- Global Footer Placeholder -->
+        <div id="global-footer"></div>
 
-            <!-- Load More Button -->
-            <div class="load-more-container">
-                <div class="loading-spinner" id="loading-spinner"></div>
-                <button class="load-more-btn" id="load-more-btn">
-                    Carregar mais notícias
-                </button>
-            </div>
-        </div>
-    </main>
+        <script src="js/main.js"></script>
+        <script>
+            // Load More functionality for hardcoded items
+            const loadMoreBtn = document.getElementById("load-more-btn");
+            const loadingSpinner = document.getElementById("loading-spinner");
+            const hiddenCards = document.querySelectorAll(".news-card.hidden");
 
-    <!-- Global Footer Placeholder -->
-    <div id="global-footer"></div>
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener("click", function () {
+                    loadingSpinner.style.display = "block";
+                    loadMoreBtn.disabled = true;
 
-    <script src="js/main.js"></script>
-    <script>
-        // Load More functionality for hardcoded items
-        const loadMoreBtn = document.getElementById("load-more-btn");
-        const loadingSpinner = document.getElementById("loading-spinner");
-        const hiddenCards = document.querySelectorAll(".news-card.hidden");
+                    setTimeout(() => {
+                        let shown = 0;
+                        hiddenCards.forEach((card) => {
+                            if (
+                                card.classList.contains("hidden") &&
+                                shown < 3
+                            ) {
+                                card.classList.remove("hidden");
+                                shown++;
+                            }
+                        });
 
-        if (loadMoreBtn) {
-            loadMoreBtn.addEventListener("click", function () {
-                loadingSpinner.style.display = "block";
-                loadMoreBtn.disabled = true;
+                        loadingSpinner.style.display = "none";
+                        loadMoreBtn.disabled = false;
 
-                setTimeout(() => {
-                    let shown = 0;
-                    hiddenCards.forEach(card => {
-                        if (card.classList.contains("hidden") && shown < 3) {
-                            card.classList.remove("hidden");
-                            shown++;
+                        const remainingHidden =
+                            document.querySelectorAll(".news-card.hidden");
+                        if (remainingHidden.length === 0) {
+                            loadMoreBtn.textContent = "Não há mais notícias";
+                            loadMoreBtn.disabled = true;
                         }
-                    });
-
-                    loadingSpinner.style.display = "none";
-                    loadMoreBtn.disabled = false;
-
-                    const remainingHidden = document.querySelectorAll(".news-card.hidden");
-                    if (remainingHidden.length === 0) {
-                        loadMoreBtn.textContent = "Não há mais notícias";
-                        loadMoreBtn.disabled = true;
-                    }
-                }, 500);
-            });
-        }
-    </script>
-</body>
-
+                    }, 500);
+                });
+            }
+        </script>
+    </body>
 </html>

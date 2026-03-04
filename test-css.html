@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Test Page</h1>
+        <p>If CSS is working, this should have styles.</p>
+    </div>
+    <script>
+        // Check if CSS loaded
+        setTimeout(() => {
+            const testDiv = document.querySelector('.container');
+            const styles = window.getComputedStyle(testDiv);
+            console.log('CSS loaded:', styles.maxWidth);
+        }, 100);
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mundo - Notícias Internacionais</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/regional-headers.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <script src="js/components/TinyHeader.js"></script>
+        <script src="js/components/ProductHeader.js"></script>
+        <script src="js/components/RegionalNews.js"></script>
+    </head>
+
+    <body class="has-regional-headers theme-mundo">
+        <!-- Product Header -->
+        <div
+            id="product-header"
+            data-product-name="Mundo"
+            data-product-short-name="MUNDO"
+            data-product-color="#003366"
+            data-product-url="mundo.html"
+        ></div>
+
+        <!-- Regional News Container -->
+        <div id="regional-news-container"></div>
+
+        <script>
+            // Initialize all components
+            document.addEventListener("DOMContentLoaded", function () {
+                TinyHeader.render();
+                ProductHeader.render();
+                RegionalNews.render("mundo");
+            });
+        </script>
+    </body>
+</html>

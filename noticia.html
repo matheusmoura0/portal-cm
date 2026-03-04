@@ -1,87 +1,99 @@
 <!doctype html>
 <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title id="page-title">Notícia | portal CM</title>
+        <link rel="stylesheet" href="css/styles.css" />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="page-title">Notícia | portal CM</title>
-    <link rel="stylesheet" href="css/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+            rel="stylesheet"
+        />
+    </head>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
-        rel="stylesheet" />
+    <body>
+        <!-- Global Header Placeholder -->
+        <div id="global-header"></div>
 
-</head>
-
-<body>
-    <!-- Global Header Placeholder -->
-    <div id="global-header"></div>
-
-    <!-- Anúncio Topo Padrão -->
-    <div class="ad-placeholder ad-970x150">
-        Espaço Publicitário - 970x150
-    </div>
-
-    <main>
-        <div id="article-loader-wrapper" class="article-page-container">
-            <!-- Breadcrumb -->
-            <div class="breadcrumb">
-                <a href="index.html">Home</a> &gt; <span id="bread-category">Categoria</span>
-            </div>
-
-            <!-- Artigo Principal -->
-            <article id="article-content-wrapper" style="display: none;">
-                <header class="article-header">
-                    <span id="article-category" class="category-tag"></span>
-                    <h1 id="article-title"></h1>
-                    <p id="article-subtitle" class="article-subtitle"></p>
-
-                    <div class="article-meta">
-                        <span class="author">Por <span id="article-author"></span></span>
-                        <span class="date" id="article-date"></span>
-                    </div>
-                </header>
-
-
-                <div class="article-featured-image">
-                    <img id="article-image" src="" alt=""
-                        onerror="this.src='https://placehold.co/800x450/f0f0f0/999999?text=Imagem+Indispon%C3%ADvel'">
-                    <figcaption id="article-image-caption"></figcaption>
-                </div>
-
-                <div id="article-body" class="article-content">
-                    <!-- Conteúdo via article-loader.js -->
-                </div>
-
-                <div class="ad-placeholder ad-300x250"
-                    style="margin: 60px auto; padding-top: 40px; border-top: 1px solid #eaeaea;">
-                    Espaço Publicitário - 300x250
-                </div>
-
-            </article>
-
-            <!-- Mensagem de Erro (Oculta no Modo Demo) -->
-            <div id="error-message" class="not-found" style="display: none;">
-                <h1>404</h1>
-                <p>Notícia não encontrada.</p>
-                <br>
-                <a href="index.html" class="btn">Voltar para a Home</a>
-            </div>
+        <!-- Anúncio Topo Padrão -->
+        <div class="ad-placeholder ad-970x150">
+            Espaço Publicitário - 970x150
         </div>
-    </main>
 
-    <!-- Global Footer Placeholder -->
-    <div id="global-footer"></div>
+        <main>
+            <div id="article-loader-wrapper" class="article-page-container">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> &gt;
+                    <span id="bread-category">Categoria</span>
+                </div>
 
-    <!-- Scripts do Sistema -->
-    <script src="js/mock-data.js"></script>
-    <script src="js/components/Header.js"></script>
-    <script src="js/components/Footer.js"></script>
-    <script src="js/components/MainLayout.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/article-loader.js"></script>
-</body>
+                <!-- Artigo Principal -->
+                <article id="article-content-wrapper" style="display: none">
+                    <header class="article-header">
+                        <span id="article-category" class="category-tag"></span>
+                        <h1 id="article-title"></h1>
+                        <p id="article-subtitle" class="article-subtitle"></p>
 
+                        <div class="article-meta">
+                            <span class="author"
+                                >Por <span id="article-author"></span
+                            ></span>
+                            <span class="date" id="article-date"></span>
+                        </div>
+                    </header>
+
+                    <div class="article-featured-image">
+                        <img
+                            id="article-image"
+                            src=""
+                            alt=""
+                            onerror="
+                                this.src =
+                                    'https://placehold.co/800x450/f0f0f0/999999?text=Imagem+Indispon%C3%ADvel'
+                            "
+                        />
+                        <figcaption id="article-image-caption"></figcaption>
+                    </div>
+
+                    <div id="article-body" class="article-content">
+                        <!-- Conteúdo via article-loader.js -->
+                    </div>
+
+                    <div
+                        class="ad-placeholder ad-300x250"
+                        style="
+                            margin: 60px auto;
+                            padding-top: 40px;
+                            border-top: 1px solid #eaeaea;
+                        "
+                    >
+                        Espaço Publicitário - 300x250
+                    </div>
+                </article>
+
+                <!-- Mensagem de Erro (Oculta no Modo Demo) -->
+                <div id="error-message" class="not-found" style="display: none">
+                    <h1>404</h1>
+                    <p>Notícia não encontrada.</p>
+                    <br />
+                    <a href="index.html" class="btn">Voltar para a Home</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Global Footer Placeholder -->
+        <div id="global-footer"></div>
+
+        <!-- Scripts do Sistema -->
+        <script src="js/mock-data.js"></script>
+        <script src="js/components/Header.js"></script>
+        <script src="js/components/Footer.js"></script>
+        <script src="js/components/MainLayout.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/article-loader.js"></script>
+    </body>
 </html>

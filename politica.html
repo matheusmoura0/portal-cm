@@ -44,10 +44,10 @@
                             </p>
                         </div>
 
-                        <!-- Newspaper Grid -->
-                        <div class="newspaper-grid" id="news-grid">
-                            <!-- Featured Article -->
-                            <article class="news-card featured">
+                        <!-- Newspaper Grid - Loaded by data-loader.js -->
+                        <div class="newspaper-grid" id="politica-grid">
+                            <!-- Content will be loaded from mockdata.js -->
+                        </div>
                                 <a
                                     href="noticia.html?id=noticia-001"
                                     class="news-image"
@@ -263,8 +263,6 @@
                                     <img
                                         onerror="
                                             this.src =
-                                                'https://placehold.co/600x400/eeeeee/999999?text=Sem+Imagem'
-                                        "
                                         src="https://www.correiodamanhasp.com.br/wp-content/uploads/2025/12/Comissao-e-instalada-no-Senado-para-apurar-fraudes.jpg"
                                         alt="Comissão no Senado"
                                     />
@@ -439,6 +437,8 @@
         <div id="global-footer"></div>
 
         <script src="js/main.js"></script>
+        <script src="js/mock-data.js"></script>
+        <script src="js/data-loader.js"></script>
         <script>
             // Load More functionality
             const loadMoreBtn = document.getElementById("load-more-btn");

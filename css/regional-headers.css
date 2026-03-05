@@ -912,3 +912,60 @@ body.has-regional-headers {
         font-size: 0.8rem;
     }
 }
+
+/* ========================================
+   ARTICLE BREADCRUMB (noticia.html)
+   ======================================== */
+
+.article-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 0;
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+.article-breadcrumb a {
+    color: #1a3a5c;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.article-breadcrumb a:hover {
+    color: var(--product-color, #d20a11);
+}
+
+.article-breadcrumb .breadcrumb-separator {
+    color: #cccccc;
+    font-size: 0.75rem;
+    margin: 0 4px;
+}
+
+.article-breadcrumb .breadcrumb-current {
+    color: var(--product-color, #d20a11);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .article-breadcrumb {
+        font-size: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .article-breadcrumb .breadcrumb-separator {
+        margin: 0 2px;
+    }
+}
+
+/* ========================================
+   PRODUCT THEME VARIABLES (Dynamic)
+   ======================================== */
+
+/* These are set dynamically by JavaScript based on the product */
+body:not([data-product-loaded]) {
+    --product-color: #d20a11;
+    --product-color-dark: #a80000;
+}

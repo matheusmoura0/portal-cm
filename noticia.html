@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title id="page-title">Notícia | portal CM</title>
         <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/regional-headers.css" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,11 +13,18 @@
             href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
             rel="stylesheet"
         />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
     </head>
 
-    <body>
-        <!-- Global Header Placeholder -->
-        <div id="global-header"></div>
+    <body class="has-regional-headers">
+        <!-- Tiny Header Placeholder -->
+        <div id="tiny-header"></div>
+
+        <!-- Product Header Placeholder -->
+        <div id="product-header"></div>
 
         <!-- Anúncio Topo Padrão -->
         <div class="ad-placeholder ad-970x150">
@@ -26,10 +34,16 @@
         <main>
             <div id="article-loader-wrapper" class="article-page-container">
                 <!-- Breadcrumb -->
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a> &gt;
+                <nav
+                    class="article-breadcrumb"
+                    aria-label="Breadcrumb navigation"
+                >
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-separator">&rsaquo;</span>
+                    <a href="#" id="bread-product">Produto</a>
+                    <span class="breadcrumb-separator">&rsaquo;</span>
                     <span id="bread-category">Categoria</span>
-                </div>
+                </nav>
 
                 <!-- Artigo Principal -->
                 <article id="article-content-wrapper" style="display: none">
@@ -39,9 +53,9 @@
                         <p id="article-subtitle" class="article-subtitle"></p>
 
                         <div class="article-meta">
-                            <span class="author"
-                                >Por <span id="article-author"></span
-                            ></span>
+                            <span class="author">
+                                Por <span id="article-author"></span>
+                            </span>
                             <span class="date" id="article-date"></span>
                         </div>
                     </header>
@@ -90,7 +104,8 @@
 
         <!-- Scripts do Sistema -->
         <script src="js/mock-data.js"></script>
-        <script src="js/components/Header.js"></script>
+        <script src="js/components/TinyHeader.js"></script>
+        <script src="js/components/ProductHeader.js"></script>
         <script src="js/components/Footer.js"></script>
         <script src="js/components/MainLayout.js"></script>
         <script src="js/main.js"></script>

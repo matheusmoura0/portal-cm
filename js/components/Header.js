@@ -56,7 +56,7 @@ const Header = {
                     <li><a href="#cultura" class="nav-link">Cultura</a></li>
                     <li><a href="#esportes" class="nav-link">Esportes</a></li>
                     <li><a href="#mundo" class="nav-link">Mundo</a></li>
-                    <li><a href="#tv" class="nav-link">TV</a></li>
+                    <li><a href="#tv" class="nav-link">TV Correio</a></li>
                     <li class="nav-dropdown">
                         <a href="#produtos" class="nav-link dropdown-toggle">Produtos ▾</a>
                         <ul class="dropdown-menu">
@@ -70,10 +70,6 @@ const Header = {
                             <li><a href="#jornal-turismo">Jornal de Turismo</a></li>
                             <li><a href="#jornal-servidor">Jornal do Servidor</a></li>
                         </ul>
-                    </li>
-                    <li><a href="/cultura.html" class="nav-link">Cultura</a></li>
-                    <li>
-                        <a href="/esportes.html" class="nav-link">Esportes</a>
                     </li>
                 </ul>
             </div>

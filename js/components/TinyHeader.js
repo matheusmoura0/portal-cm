@@ -49,10 +49,11 @@ const TinyHeader = {
     tinyHeader.className = "tiny-header";
     tinyHeader.innerHTML = `
       <div class="tiny-header-container">
-        <a href="index.html" class="tiny-logo-link" aria-label="Voltar ao Portal CM">
-          <span class="tiny-logo-cm">CM</span>
-          <span class="tiny-logo-text">PORTAL</span>
-        </a>
+        <button class="tiny-menu-toggle" id="tiny-menu-toggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
         <div class="tiny-dropdown-wrapper">
           <button class="tiny-dropdown-btn" id="tiny-dropdown-btn" aria-label="Todos os Sites">
@@ -78,11 +79,10 @@ const TinyHeader = {
           </div>
         </div>
 
-        <button class="tiny-menu-toggle" id="tiny-menu-toggle" aria-label="Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <a href="index.html" class="tiny-logo-link" aria-label="Voltar ao Portal CM">
+          <span class="tiny-logo-cm">CM</span>
+          <span class="tiny-logo-text">PORTAL</span>
+        </a>
       </div>
     `;
 

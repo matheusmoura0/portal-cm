@@ -71,6 +71,10 @@ const Header = {
                             <li><a href="#jornal-servidor">Jornal do Servidor</a></li>
                         </ul>
                     </li>
+                    <li><a href="/cultura.html" class="nav-link">Cultura</a></li>
+                    <li>
+                        <a href="/esportes.html" class="nav-link">Esportes</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -95,9 +99,16 @@ const Header = {
     const navMenu = document.getElementById("nav-menu");
 
     if (mobileToggle && navMenu) {
-      mobileToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-        mobileToggle.classList.toggle("active");
+      mobileToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        // Use unified MobileMenu if available
+        if (window.CMMobileMenu) {
+          window.CMMobileMenu.toggle(true);
+        } else {
+          // Fallback to local toggle if needed
+          navMenu.classList.toggle("active");
+          mobileToggle.classList.toggle("active");
+        }
       });
     }
 

@@ -75,10 +75,11 @@ const RegionalHeader = {
     return `
       <nav class="regional-global-header" style="--brand-color: ${brandColor};">
         <div class="regional-global-container">
-          <a href="index.html" class="regional-logo-link">
-            <span class="regional-logo-cm">CM</span>
-            <span class="regional-logo-text">Portal</span>
-          </a>
+          <button class="regional-mobile-toggle" id="regional-mobile-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
           <div class="regional-region-selector">
             <button class="regional-selector-btn" id="region-selector-btn" aria-label="Selecionar região">
@@ -99,11 +100,10 @@ const RegionalHeader = {
             </div>
           </div>
 
-          <button class="regional-mobile-toggle" id="regional-mobile-toggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          <a href="index.html" class="regional-logo-link">
+            <span class="regional-logo-cm">CM</span>
+            <span class="regional-logo-text">Portal</span>
+          </a>
         </div>
       </nav>
     `;

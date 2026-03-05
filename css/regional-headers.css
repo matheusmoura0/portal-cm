@@ -21,12 +21,14 @@
    BODY ADJUSTMENT (tiny header + product header only)
    ======================================== */
 body.has-regional-headers {
-    padding-top: 139px !important; /* 49px tiny + 90px product */
+    padding-top: 139px !important;
+    /* 49px tiny + 90px product */
 }
 
 @media (max-width: 768px) {
     body.has-regional-headers {
-        padding-top: 147px !important; /* 49px tiny + 98px product on mobile */
+        padding-top: 147px !important;
+        /* 49px tiny + 98px product on mobile */
     }
 }
 
@@ -479,7 +481,8 @@ body.has-regional-headers {
 
 .product-header {
     position: relative;
-    margin-top: 49px; /* Below fixed tiny header */
+    margin-top: 49px;
+    /* Below fixed tiny header */
     height: 90px;
     background-color: #ffffff;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -502,27 +505,27 @@ body.has-regional-headers {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    background-color: #f8f9fa;
-    border: 1px solid #e8e8e8;
-    border-radius: 4px;
+    width: 44px;
+    height: 44px;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
     transition: all 0.2s ease;
     color: #1a1a2e;
+    padding: 0;
 }
 
 .product-menu-btn:hover {
-    background-color: #f0f0f0;
-    border-color: #d0d0d0;
+    color: var(--product-color, #d20a11);
+    opacity: 0.7;
 }
 
 .product-menu-btn.active {
-    background-color: #f0f0f0;
+    color: var(--product-color, #d20a11);
 }
 
 .product-menu-btn i {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
 }
 
 /* Product Logo */
@@ -548,23 +551,23 @@ body.has-regional-headers {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    background-color: #f8f9fa;
-    border: 1px solid #e8e8e8;
-    border-radius: 4px;
+    width: 44px;
+    height: 44px;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
     transition: all 0.2s ease;
     color: #1a1a2e;
+    padding: 0;
 }
 
 .product-search-btn:hover {
-    background-color: #f0f0f0;
-    border-color: #d0d0d0;
+    color: var(--product-color, #d20a11);
+    opacity: 0.7;
 }
 
 .product-search-btn i {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
 }
 
 /* ========================================
@@ -836,10 +839,6 @@ body.has-regional-headers {
         font-size: 0.95rem;
     }
 
-    .regional-hero-title::before {
-        width: 40px;
-    }
-
     .regional-news-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -911,9 +910,5 @@ body.has-regional-headers {
 
     .regional-card-excerpt {
         font-size: 0.8rem;
-    }
-
-    .regional-card-title::before {
-        width: 20px;
     }
 }

@@ -287,24 +287,26 @@ const HeaderInfo = {
 // Menu Mobile
 // ========================================
 
-const MobileMenu = {
+const MobileController = {
   initialized: false,
 
   init() {
     if (this.initialized) return;
-    console.log("MobileMenu: Inicializando delegador de eventos...");
+    console.log("MobileController: Inicializando centralizador de eventos...");
     this.bindEvents();
     this.initialized = true;
   },
 
   bindEvents() {
-    // Event delegation for mobile menu toggle
+    // 1. Delegated click handling for all types of hamburger buttons
     document.addEventListener("click", (e) => {
-      // Toggle button click
-      const toggle = e.target.closest("#mobile-menu-toggle");
+      // Main Portal, Tiny Header, Product Header, Regional Global Header
+      const toggle = e.target.closest("#mobile-menu-toggle, #tiny-menu-toggle, #product-menu-btn, #regional-mobile-toggle");
+      
       if (toggle) {
-        console.log("MobileMenu: Clique detectado no toggle");
-        this.toggleMenu(toggle);
+        console.log("MobileController: Hamburguer detectado via clique");
+        e.preventDefault();
+        this.openUnifiedMenu();
         return;
       }
 
@@ -316,65 +318,35 @@ const MobileMenu = {
         dropdown?.classList.toggle("active");
         return;
       }
+    });
 
-      // Close menu when clicking on a link (not a dropdown toggle)
-      const navLink = e.target.closest(".nav-link");
-      if (navLink && !navLink.classList.contains("dropdown-toggle")) {
-        this.closeMenu();
-        return;
-      }
+    // 2. Custom Event handling for decoupled components
+    const customEvents = [
+      "tiny-menu-toggle",
+      "product-menu-toggle",
+      "regional-menu-toggle",
+      "main-menu-toggle"
+    ];
 
-      // Close menu when clicking outside
-      if (!e.target.closest(".main-nav")) {
-        this.closeMenu();
-      }
+    customEvents.forEach(eventType => {
+      window.addEventListener(eventType, () => {
+        console.log(`MobileController: Evento decorrente de ${eventType}`);
+        this.openUnifiedMenu();
+      });
     });
   },
 
-  toggleMenu(toggleBtn) {
-    const menu = document.getElementById("nav-menu");
-    console.log("MobileMenu: Toggling menu...", { menuExists: !!menu });
-    if (!menu || !toggleBtn) return;
-
-    menu.classList.toggle("active");
-    toggleBtn.classList.toggle("active");
-
-    // Animação do ícone hamburguer
-    const spans = toggleBtn.querySelectorAll("span");
-    if (menu.classList.contains("active")) {
-      if (spans[0])
-        spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
-      if (spans[1]) spans[1].style.opacity = "0";
-      if (spans[2])
-        spans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
+  openUnifiedMenu() {
+    if (window.CMMobileMenu) {
+      window.CMMobileMenu.toggle(true);
     } else {
-      spans.forEach((span) => {
-        span.style.transform = "";
-        span.style.opacity = "";
-      });
+      console.warn("MobileController: Componente CMMobileMenu não encontrado!");
     }
   },
 
-  closeMenu() {
-    const menu = document.getElementById("nav-menu");
-    const toggle = document.getElementById("mobile-menu-toggle");
-
-    if (menu) menu.classList.remove("active");
-    if (toggle) {
-      toggle.classList.remove("active");
-      const spans = toggle.querySelectorAll("span");
-      spans.forEach((span) => {
-        span.style.transform = "";
-        span.style.opacity = "";
-      });
-    }
-
-    // Fecha todos os dropdowns
-    const dropdowns = menu?.querySelectorAll(".nav-dropdown");
-    dropdowns?.forEach((dropdown) => {
-      dropdown.classList.remove("active");
-    });
-  },
+  // Legacy methods kept for compatibility
+  toggleMenu(toggleBtn) { this.openUnifiedMenu(); },
+  closeMenu() { if (window.CMMobileMenu) window.CMMobileMenu.toggle(false); }
 };
 
 // ========================================
@@ -1538,7 +1510,7 @@ window.CM = {
   Utils,
   DateTime,
   HeaderInfo,
-  MobileMenu,
+  MobileMenu: MobileController,
   RegionTabs,
   Search,
   Newsletter,

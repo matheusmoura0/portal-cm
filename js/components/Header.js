@@ -181,6 +181,7 @@ const Header = {
         const target = document.querySelector(href);
 
         if (target && href !== "#produtos") {
+          // Target exists on current page - smooth scroll (index.html behavior)
           e.preventDefault();
           target.scrollIntoView({
             behavior: "smooth",
@@ -194,6 +195,10 @@ const Header = {
           if (mobileToggle) {
             mobileToggle.classList.remove("active");
           }
+        } else if (!target && href !== "#produtos") {
+          // Target doesn't exist - redirect to index.html#section
+          e.preventDefault();
+          window.location.href = `index.html${href}`;
         }
       });
     });

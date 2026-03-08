@@ -22,7 +22,7 @@ const Header = {
                         <a href="index.html" style="font-family: Arial, Helvetica, sans-serif;">
                             <h1 class="logo" style="font-family: inherit;">
                             
-                           
+
                             
                             www.cm.com.br</h1>
                             <span class="logo-portal" style="font-family: inherit;">O portal do grupo correio da manhã</span>
@@ -62,7 +62,7 @@ const Header = {
                     <li><a href="#mundo" class="nav-link">Mundo</a></li>
                     <li><a href="#tv" class="nav-link">TV Correio</a></li>
                     <li class="nav-dropdown">
-                        <a href="#produtos" class="nav-link dropdown-toggle">Produtos ▾</a>
+                        <a href="#produtos" class="nav-link dropdown-toggle">Nossos Jornais ▾</a>
                         <ul class="dropdown-menu">
                             <li><a href="#rio-de-janeiro">CM Rio de Janeiro</a></li>
                             <li><a href="#sao-paulo">CM São Paulo</a></li>

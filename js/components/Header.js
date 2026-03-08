@@ -60,7 +60,7 @@ const Header = {
                     <li><a href="#cultura" class="nav-link">Cultura</a></li>
                     <li><a href="#esportes" class="nav-link">Esportes</a></li>
                     <li><a href="#mundo" class="nav-link">Mundo</a></li>
-                    <li><a href="#tv" class="nav-link">TV Correio</a></li>
+                    <li><a href="#tv" class="nav-link">CM News TV</a></li>
                     <li class="nav-dropdown">
                         <a href="#produtos" class="nav-link dropdown-toggle">Nossos Jornais ▾</a>
                         <ul class="dropdown-menu">

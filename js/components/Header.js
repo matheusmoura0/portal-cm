@@ -20,7 +20,7 @@ const Header = {
                 <div class="header-content">
                     <div class="logo-section">
                         <a href="index.html" style="font-family: Arial, Helvetica, sans-serif;">
-                            <h1 class="logo" style="font-family: inherit;">CM.com.br</h1>
+                            <h1 class="logo" style="font-family: inherit;">CM.COM.BR</h1>
                             <span class="logo-portal" style="font-family: inherit;">O portal do grupo correio da manhã</span>
                         </a>
                     </div>

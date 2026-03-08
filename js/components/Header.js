@@ -53,7 +53,7 @@ const Header = {
                     <span></span>
                 </button>
                 <ul class="nav-menu" id="nav-menu">
-                    <li><a href="#opiniao" class="nav-link">Opinião</a></li>
+                    <li><a href="#opiniao" class="nav-link">Colunas</a></li>
                     <li><a href="#politica" class="nav-link">Política</a></li>
                     <li><a href="#economia" class="nav-link">Economia</a></li>
                     <li><a href="#justica" class="nav-link">Justiça</a></li>

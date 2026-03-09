@@ -6,23 +6,26 @@
 const MobileMenu = {
   render() {
     // Prevent double rendering
-    if (document.getElementById('mobile-menu-overlay')) return;
+    if (document.getElementById("mobile-menu-overlay")) return;
 
-    const overlay = document.createElement('div');
-    overlay.id = 'mobile-menu-overlay';
-    overlay.className = 'mobile-menu-overlay';
+    const overlay = document.createElement("div");
+    overlay.id = "mobile-menu-overlay";
+    overlay.className = "mobile-menu-overlay";
     overlay.innerHTML = `
       <div class="mobile-menu-drawer">
         <div class="mobile-menu-header">
           <div class="mobile-logo-brand">
             <span class="logo-cm">CM</span>
-            <span class="logo-portal">PORTAL</span>
+            <div class="mobile-logo-text">
+              <span class="logo">www.cm.com.br</span>
+              <span class="logo-portal">O portal do grupo correio da manhã</span>
+            </div>
           </div>
           <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Fechar">
             <i class="fas fa-times"></i>
           </button>
         </div>
-        
+
         <div class="mobile-menu-search">
           <form class="mobile-search-form" action="index.html">
             <input type="text" placeholder="Buscar no portal..." name="q" id="mobile-search-input">
@@ -72,23 +75,23 @@ const MobileMenu = {
     document.body.appendChild(overlay);
     this.init();
   },
-  
+
   init() {
-    const closeBtn = document.getElementById('mobile-menu-close');
-    const overlay = document.getElementById('mobile-menu-overlay');
-    const searchForm = overlay?.querySelector('.mobile-search-form');
-    
+    const closeBtn = document.getElementById("mobile-menu-close");
+    const overlay = document.getElementById("mobile-menu-overlay");
+    const searchForm = overlay?.querySelector(".mobile-search-form");
+
     if (closeBtn && overlay) {
-      closeBtn.addEventListener('click', () => this.toggle(false));
-      overlay.addEventListener('click', (e) => {
+      closeBtn.addEventListener("click", () => this.toggle(false));
+      overlay.addEventListener("click", (e) => {
         if (e.target === overlay) this.toggle(false);
       });
     }
 
     if (searchForm) {
-      searchForm.addEventListener('submit', (e) => {
+      searchForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const query = document.getElementById('mobile-search-input').value;
+        const query = document.getElementById("mobile-search-input").value;
         if (query) {
           console.log("Searching for:", query);
           this.toggle(false);
@@ -98,16 +101,16 @@ const MobileMenu = {
     }
 
     // Handle internal links to close menu
-    const links = overlay?.querySelectorAll('.mobile-nav-links a');
-    links?.forEach(link => {
-      link.addEventListener('click', () => {
+    const links = overlay?.querySelectorAll(".mobile-nav-links a");
+    links?.forEach((link) => {
+      link.addEventListener("click", () => {
         this.toggle(false);
       });
     });
   },
 
   toggle(show) {
-    const overlay = document.getElementById('mobile-menu-overlay');
+    const overlay = document.getElementById("mobile-menu-overlay");
     if (!overlay) {
       if (show) {
         this.render();
@@ -116,18 +119,18 @@ const MobileMenu = {
       }
       return;
     }
-    
+
     if (show) {
-      overlay.classList.add('active');
-      document.body.classList.add('mobile-menu-open');
+      overlay.classList.add("active");
+      document.body.classList.add("mobile-menu-open");
       // Prevent body scroll
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      overlay.classList.remove('active');
-      document.body.classList.remove('mobile-menu-open');
-      document.body.style.overflow = '';
+      overlay.classList.remove("active");
+      document.body.classList.remove("mobile-menu-open");
+      document.body.style.overflow = "";
     }
-  }
+  },
 };
 
 window.CMMobileMenu = MobileMenu;

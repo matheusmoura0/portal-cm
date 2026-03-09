@@ -20,12 +20,11 @@ const Header = {
                 <div class="header-content">
                     <div class="logo-section">
                         <a href="index.html" style="font-family: Arial, Helvetica, sans-serif;">
-                            <h1 class="logo" style="font-family: inherit;">
-                            
-
-                            
-                            www.cm.com.br</h1>
-                            <span class="logo-portal" style="font-family: inherit;">O portal do grupo correio da manhã</span>
+                            <span class="logo-cm" style="font-family: inherit; color="white">CM</span>
+                            <div class="logo-text">
+                                <h1 class="logo" style="font-family: inherit;">www.cm.com.br</h1>
+                                <span class="logo-portal" style="font-family: inherit;">O portal do grupo correio da manhã</span>
+                            </div>
                         </a>
                     </div>
                     <div class="search-section">
@@ -64,10 +63,10 @@ const Header = {
                     <li class="nav-dropdown">
                         <a href="#produtos" class="nav-link dropdown-toggle">Nossos Jornais ▾</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#rio-de-janeiro">CM Rio de Janeiro</a></li>
-                            <li><a href="#sao-paulo">CM São Paulo</a></li>
-                            <li><a href="#campinas">CM Campinas</a></li>
-                            <li><a href="#distrito-federal">CM Distrito Federal</a></li>
+                            <li><a href="#rio-de-janeiro">Correio da Manhã RJ</a></li>
+                            <li><a href="#sao-paulo">Correio da Manhã SP</a></li>
+                            <li><a href="#campinas">Correio da Manhã Campinas</a></li>
+                            <li><a href="#distrito-federal">Correio da Manhã DF</a></li>
                             <li><a href="#petropolitano">Correio Petropolitano</a></li>
                             <li><a href="#sul-fluminense">Correio Sul Fluminense</a></li>
                             <li><a href="#jornal-barra">Jornal da Barra</a></li>

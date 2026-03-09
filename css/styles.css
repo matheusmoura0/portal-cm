@@ -51,8 +51,8 @@
 
     /* Fontes */
     --font-display: "Noto Sans", sans-serif;
-    --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        sans-serif;
+    --font-body: "Noto Serif", serif;
+    --font-ui: "Noto Sans", sans-serif;
 
     /* Espaçamento Premium */
     --spacing-xs: 0.25rem;
@@ -246,9 +246,11 @@ button {
 .sticky-nav-unified.scrolled {
     background-color: rgba(var(--color-header-bg-rgb, 26, 58, 92), 0.9);
     /* Falling back to dark blue if RGB var not set */
-    background-color: color-mix(in srgb,
-            var(--color-header-bg),
-            transparent 10%);
+    background-color: color-mix(
+        in srgb,
+        var(--color-header-bg),
+        transparent 10%
+    );
     /* Modern way to add transparency to hex */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -291,16 +293,32 @@ button {
 
 .logo-section a {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.logo-cm {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: white !important;
+    line-height: 1;
+}
+
+.logo-text {
+    display: flex;
     flex-direction: column;
+    line-height: 1.1;
 }
 
 .logo {
     font-family: var(--font-display);
-    font-size: 4rem;
-    font-weight: 900;
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--color-text);
-    letter-spacing: -1px;
-    line-height: 1;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
 }
 
 .logo-tagline {
@@ -313,12 +331,29 @@ button {
 }
 
 .logo-portal {
-    font-size: 0.8125rem;
+    font-size: 0.81rem;
     color: #ffffff;
     font-weight: 700;
-    margin-top: var(--spacing-xs);
-    letter-spacing: 2px;
+    letter-spacing: 0.5px;
+
+    line-height: 1.1;
+}
+
+/* Mixed Typography for Special Headlines */
+.headline-mixed {
+    display: inline;
+}
+
+.headline-prefix {
+    font-family: var(--font-ui);
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.headline-title {
+    font-family: var(--font-body);
+    font-weight: 700;
 }
 
 .search-section {
@@ -675,9 +710,11 @@ button {
 }
 
 .live-update.featured {
-    background: linear-gradient(135deg,
-            rgba(208, 2, 27, 0.05) 0%,
-            rgba(26, 58, 92, 0.05) 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(208, 2, 27, 0.05) 0%,
+        rgba(26, 58, 92, 0.05) 100%
+    );
     padding: 20px;
     margin: 0;
     border-radius: 8px;
@@ -1054,7 +1091,7 @@ button {
 }
 
 .hero-content h2 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 2.25rem;
     /* Bold journalistic weight */
     font-weight: 900;
@@ -1116,7 +1153,7 @@ button {
 }
 
 .side-article h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.4;
@@ -1185,7 +1222,7 @@ button {
 }
 
 .section-title {
-    font-family: "Noto Serif", serif;
+    font-family: var(--font-ui);
     font-size: 2rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -1280,7 +1317,7 @@ button {
 }
 
 .modern-section-main h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1.35rem;
     font-weight: 700;
     line-height: 1.3;
@@ -1346,7 +1383,7 @@ button {
 }
 
 .modern-section-item h4 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.4;
@@ -1415,7 +1452,7 @@ button {
 }
 
 .news-card.main .news-content h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1.3;
@@ -1484,7 +1521,7 @@ button {
 }
 
 .news-card.small .news-content h4 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 600;
     line-height: 1.4;
@@ -1538,7 +1575,7 @@ button {
 }
 
 .news-content h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1.0625rem;
     font-weight: 600;
     line-height: 1.4;
@@ -1547,7 +1584,7 @@ button {
 }
 
 .news-content h4 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 600;
     line-height: 1.4;
@@ -1660,7 +1697,7 @@ button {
 }
 
 .most-read-number {
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     font-size: 1.75rem;
     font-weight: 900;
     color: var(--color-primary);
@@ -1775,7 +1812,7 @@ button {
 }
 
 .featured-content h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1.3;
@@ -1840,7 +1877,7 @@ button {
 }
 
 .featured-item h4 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 600;
     line-height: 1.4;
@@ -2034,7 +2071,7 @@ button {
 }
 
 .opinion-title {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.4;
@@ -2043,7 +2080,7 @@ button {
 }
 
 .opinion-article h4 {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 0.875rem;
     font-weight: 600;
     line-height: 1.4;
@@ -2232,7 +2269,7 @@ button {
 }
 
 .footer-title {
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     font-size: 0.875rem;
     font-weight: 600;
     margin-bottom: var(--spacing-md);
@@ -2304,8 +2341,16 @@ button {
         grid-template-columns: 1fr;
     }
 
+    .logo-cm {
+        font-size: 2.2rem;
+    }
+
     .logo {
-        font-size: 2rem;
+        font-size: 0.85rem;
+    }
+
+    .logo-portal {
+        font-size: 0.5rem;
     }
 
     .nav-menu {
@@ -2533,12 +2578,16 @@ button {
         padding: 0 var(--spacing-md);
     }
 
+    .logo-cm {
+        font-size: 1.8rem;
+    }
+
     .logo {
-        font-size: 1.625rem;
+        font-size: 1.5rem;
     }
 
     .logo-portal {
-        font-size: 0.75rem;
+        font-size: 0.59rem;
     }
 
     .section-title {
@@ -2613,10 +2662,12 @@ button {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(0, 0, 0, 0.05),
-            transparent);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 0, 0, 0.05),
+        transparent
+    );
     animation: loading 1.5s infinite;
 }
 
@@ -2632,7 +2683,6 @@ button {
 
 /* Print Styles */
 @media print {
-
     .top-bar,
     .main-nav,
     .breaking-news,
@@ -2711,7 +2761,6 @@ input:focus {
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -3415,7 +3464,7 @@ input:focus {
 /* --- PÁGINA DE OPINIÃO --- */
 
 .page-header-title {
-    font-family: "Noto Serif", serif;
+    font-family: var(--font-ui);
     font-size: 2.5rem;
     color: #1a1a2e;
     margin: 0 0 10px 0;
@@ -3429,7 +3478,7 @@ input:focus {
 
 /* Títulos de Seção com Linha Inferior */
 .opinion-section-title {
-    font-family: "Noto Serif", serif;
+    font-family: var(--font-ui);
     font-size: 1.4rem;
     font-weight: 800;
     color: #1a1a2e;
@@ -3475,7 +3524,6 @@ input:focus {
 
 /* Responsividade */
 @media (max-width: 992px) {
-
     .opinion-highlights-grid,
     .editorials-grid {
         grid-template-columns: 1fr;
@@ -3540,7 +3588,7 @@ input:focus {
 
 /* Tipografia do Nome */
 .columnist-name {
-    font-family: "Noto Serif", serif;
+    font-family: var(--font-ui);
     font-size: 1.15rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -3570,7 +3618,6 @@ input:focus {
 /* ========================================= */
 
 @media (max-width: 768px) {
-
     /* 1. Tipografia Geral Mobile */
     .hero-main-title {
         font-size: 1.6rem !important;
@@ -3597,7 +3644,7 @@ input:focus {
         gap: 15px !important;
     }
 
-    .numbered-strip>div {
+    .numbered-strip > div {
         /* Cada item ocupa 80% da tela, mostrando um pedaço do próximo para induzir o swipe */
         flex: 0 0 80vw !important;
         min-width: auto !important;
@@ -3607,7 +3654,7 @@ input:focus {
         padding-right: 15px;
     }
 
-    .numbered-strip>div:last-child {
+    .numbered-strip > div:last-child {
         border-right: none;
     }
 
@@ -3699,15 +3746,18 @@ header.scrolled,
 }
 
 /* 3. Encolhe o texto "CM" */
-.scrolled .logo {
+.scrolled .logo-cm {
     font-size: 1.8rem !important;
 }
 
 /* 4. Encolhe o texto "PORTAL" */
+.scrolled .logo {
+    display: none;
+    font-size: 0.6rem !important;
+}
+
 .scrolled .logo-portal {
-    font-size: 0.55rem !important;
-    letter-spacing: 2px !important;
-    margin-top: 0 !important;
+    font-size: 1rem !important;
 }
 
 /* ========================================= */
@@ -3715,7 +3765,6 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 768px) {
-
     /* 1. Transforma o Header em uma pilha organizada */
     header,
     .main-header {
@@ -3780,7 +3829,6 @@ header.scrolled,
 
 /* --- Oculta a barra de utilidades APENAS no mobile --- */
 @media (max-width: 768px) {
-
     /* Nota pro agente: Se a classe da barra preta do topo for diferente, adicione-a aqui */
     .top-bar,
     .header-top,
@@ -4000,7 +4048,7 @@ header.scrolled,
 }
 
 .colunistas-title-text h2 {
-    font-family: "Noto Serif", serif;
+    font-family: var(--font-ui);
     font-size: 1.8rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -4107,7 +4155,7 @@ header.scrolled,
 }
 
 .card-col-info h3 {
-    font-family: "Noto Serif", serif;
+    font-family: "Noto Sans", serif;
     font-size: 1.2rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -4309,7 +4357,6 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 992px) {
-
     /* 1. Garante que o container geral empilhe corretamente */
     .jornal-servidor-inner .layout-with-sidebar {
         display: flex !important;
@@ -4465,7 +4512,7 @@ header.scrolled,
 }
 
 .video-section-header h2 {
-    font-family: "Noto Serif", serif;
+    font-family: var(--font-ui);
     font-size: 1.8rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -4674,7 +4721,7 @@ header.scrolled,
 }
 
 .video-section-header h2 {
-    font-family: "Noto Serif", serif;
+    font-family: var(--font-ui);
     font-size: 1.8rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -4920,19 +4967,21 @@ header.scrolled,
 
 .insta-icon {
     font-size: 2.5rem;
-    background: -webkit-linear-gradient(45deg,
-            #f09433 0%,
-            #e6683c 25%,
-            #dc2743 50%,
-            #cc2366 75%,
-            #bc1888 100%);
+    background: -webkit-linear-gradient(
+        45deg,
+        #f09433 0%,
+        #e6683c 25%,
+        #dc2743 50%,
+        #cc2366 75%,
+        #bc1888 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
 }
 
 .insta-title {
-    font-family: "Noto Serif", serif;
+    font-family: var(--font-ui);
     font-size: 1.8rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -5086,7 +5135,7 @@ header.scrolled,
 /* ========================================= */
 
 /* 1. Protege APENAS o link "VER TODOS" (ignora os cards) */
-.regional-section-wrapper>div:first-child>a {
+.regional-section-wrapper > div:first-child > a {
     white-space: nowrap !important;
     flex-shrink: 0 !important;
     margin-left: 15px !important;
@@ -5107,7 +5156,7 @@ header.scrolled,
     }
 
     /* Centraliza os itens verticalmente no mobile para ficar mais harmônico */
-    .regional-section-wrapper>div:first-child {
+    .regional-section-wrapper > div:first-child {
         align-items: center !important;
     }
 }
@@ -5128,11 +5177,10 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 768px) {
-
     /* O seletor mira exatamente o <h2> que fica dentro da primeira <div>
        de qualquer <section> (que é o padrão de cabeçalho do portal)
     */
-    section>div:first-child>h2,
+    section > div:first-child > h2,
     .regional-section-wrapper h2 {
         font-size: 1.25rem !important;
         /* Tamanho único, elegante e que não quebra a tela */
@@ -5140,7 +5188,7 @@ header.scrolled,
     }
 
     /* Garante que o botão 'VER TODOS' nas seções antigas também fique protegido */
-    section>div:first-child>a {
+    section > div:first-child > a {
         white-space: nowrap !important;
         flex-shrink: 0 !important;
         font-size: 0.8rem !important;
@@ -5150,8 +5198,7 @@ header.scrolled,
 
 /* Ajuste fino para celulares muito pequenos (ex: iPhone SE) */
 @media (max-width: 375px) {
-
-    section>div:first-child>h2,
+    section > div:first-child > h2,
     .regional-section-wrapper h2 {
         font-size: 1.15rem !important;
     }
@@ -5162,7 +5209,6 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 768px) {
-
     /* O container do formulário precisa alinhar os itens */
     .search-box {
         display: flex;
@@ -5416,7 +5462,7 @@ header.scrolled,
     margin: 0;
 }
 
-.featured-main>a {
+.featured-main > a {
     text-decoration: none;
     display: block;
 }
@@ -5513,7 +5559,6 @@ header.scrolled,
    ======================================== */
 
 @media (min-width: 769px) {
-
     /* Most Read - 3 columns on desktop */
     .most-read-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -5563,7 +5608,7 @@ header.scrolled,
         margin: 0;
     }
 
-    .featured-main>a {
+    .featured-main > a {
         text-decoration: none;
         display: block;
     }
@@ -5770,7 +5815,7 @@ header.scrolled,
     }
 
     .mobile-grid-main h4 {
-        font-family: var(--font-display, "Noto Serif", serif);
+        font-family: var(--font-body);
         font-size: 1.15rem;
         line-height: 1.3;
         margin: 0;
@@ -5816,7 +5861,7 @@ header.scrolled,
     }
 
     .mobile-grid-item h4 {
-        font-family: var(--font-display, "Noto Serif", serif);
+        font-family: var(--font-body);
         font-size: 0.9rem;
         line-height: 1.3;
         margin: 0 0 8px 0;
@@ -5856,7 +5901,7 @@ header.scrolled,
     flex-direction: column;
 }
 
-.modern-section-main>a {
+.modern-section-main > a {
     display: block;
     text-decoration: none;
 }
@@ -5886,7 +5931,7 @@ header.scrolled,
 }
 
 .modern-section-main h3 {
-    font-family: var(--font-display, "Merriweather", serif);
+    font-family: var(--font-body);
     font-size: 1.5rem;
     font-weight: 800;
     line-height: 1.25;
@@ -5968,7 +6013,7 @@ header.scrolled,
 }
 
 .modern-section-item h4 {
-    font-family: var(--font-display, "Merriweather", serif);
+    font-family: var(--font-body);
     font-size: 1.0625rem;
     font-weight: 700;
     line-height: 1.35;
@@ -6481,7 +6526,6 @@ body.dark-mode .nav-item.active {
 }
 
 @keyframes bounce {
-
     0%,
     100% {
         transform: translateY(0);
@@ -7356,7 +7400,7 @@ img {
 }
 
 .footer-bottom p {
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     font-size: 0.8rem;
     color: #6b7280;
     margin: 0;
@@ -7399,7 +7443,7 @@ img {
     font-weight: 800;
     text-transform: uppercase;
     color: #1a1a1a;
-    font-family: var(--font-serif, "Noto Serif", serif);
+    font-family: var(--font-ui);
 }
 
 .destaques-list,
@@ -7431,10 +7475,11 @@ img {
     font-weight: 800;
     color: var(--primary-color);
     line-height: 1;
-    font-family: var(--font-serif);
+    font-family: var(--font-ui);
 }
 
 .destaque-content h4 {
+    font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.3;
@@ -7487,7 +7532,6 @@ img {
 }
 
 @media (max-width: 1024px) {
-
     .destaques-list,
     .colunistas-list {
         grid-template-columns: repeat(3, 1fr);
@@ -7495,7 +7539,6 @@ img {
 }
 
 @media (max-width: 768px) {
-
     .destaques-list,
     .colunistas-list {
         grid-template-columns: 1fr;
@@ -7531,7 +7574,7 @@ img {
 }
 
 .editorial-section .section-link {
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     font-size: 0.85rem;
     text-transform: uppercase;
     color: #1a3a5c;
@@ -7813,7 +7856,7 @@ img {
 }
 
 .titulo-blindado {
-    font-family: "Noto Serif", serif;
+    font-family: var(--font-ui);
     font-weight: 800;
     color: #1a1a2e;
     line-height: 1.3;
@@ -7976,7 +8019,7 @@ img {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     font-size: 0.875rem;
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     background-color: var(--color-bg);
     color: var(--color-text);
     cursor: pointer;
@@ -8107,7 +8150,7 @@ img {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     font-size: 0.8125rem;
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     background-color: var(--color-bg);
     color: var(--color-text);
 }
@@ -8185,7 +8228,7 @@ img {
 }
 
 .news-card-title {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.4;
@@ -8303,7 +8346,7 @@ img {
 }
 
 .news-list-item-title {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 1.125rem;
     font-weight: 600;
     line-height: 1.4;
@@ -8785,7 +8828,6 @@ img {
    ======================================== */
 
     @media (max-width: 768px) {
-
         /* Adjust global header for mobile */
         .regional-global-header {
             height: 48px;
@@ -9414,16 +9456,30 @@ body.has-regional-headers {
     gap: 8px;
 }
 
+.mobile-logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
 .mobile-logo-brand .logo-cm {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 900;
+    line-height: 1;
+}
+
+.mobile-logo-brand .logo {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.1;
 }
 
 .mobile-logo-brand .logo-portal {
-    font-size: 0.7rem;
+    font-size: 0.45rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    line-height: 1.1;
+    text-transform: uppercase;
 }
 
 .mobile-menu-close {

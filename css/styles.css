@@ -246,11 +246,9 @@ button {
 .sticky-nav-unified.scrolled {
     background-color: rgba(var(--color-header-bg-rgb, 26, 58, 92), 0.9);
     /* Falling back to dark blue if RGB var not set */
-    background-color: color-mix(
-        in srgb,
-        var(--color-header-bg),
-        transparent 10%
-    );
+    background-color: color-mix(in srgb,
+            var(--color-header-bg),
+            transparent 10%);
     /* Modern way to add transparency to hex */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -710,11 +708,9 @@ button {
 }
 
 .live-update.featured {
-    background: linear-gradient(
-        135deg,
-        rgba(208, 2, 27, 0.05) 0%,
-        rgba(26, 58, 92, 0.05) 100%
-    );
+    background: linear-gradient(135deg,
+            rgba(208, 2, 27, 0.05) 0%,
+            rgba(26, 58, 92, 0.05) 100%);
     padding: 20px;
     margin: 0;
     border-radius: 8px;
@@ -2662,12 +2658,10 @@ button {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(0, 0, 0, 0.05),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 0, 0, 0.05),
+            transparent);
     animation: loading 1.5s infinite;
 }
 
@@ -2683,6 +2677,7 @@ button {
 
 /* Print Styles */
 @media print {
+
     .top-bar,
     .main-nav,
     .breaking-news,
@@ -2761,6 +2756,7 @@ input:focus {
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -3524,6 +3520,7 @@ input:focus {
 
 /* Responsividade */
 @media (max-width: 992px) {
+
     .opinion-highlights-grid,
     .editorials-grid {
         grid-template-columns: 1fr;
@@ -3618,6 +3615,7 @@ input:focus {
 /* ========================================= */
 
 @media (max-width: 768px) {
+
     /* 1. Tipografia Geral Mobile */
     .hero-main-title {
         font-size: 1.6rem !important;
@@ -3644,7 +3642,7 @@ input:focus {
         gap: 15px !important;
     }
 
-    .numbered-strip > div {
+    .numbered-strip>div {
         /* Cada item ocupa 80% da tela, mostrando um pedaço do próximo para induzir o swipe */
         flex: 0 0 80vw !important;
         min-width: auto !important;
@@ -3654,7 +3652,7 @@ input:focus {
         padding-right: 15px;
     }
 
-    .numbered-strip > div:last-child {
+    .numbered-strip>div:last-child {
         border-right: none;
     }
 
@@ -3765,6 +3763,7 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 768px) {
+
     /* 1. Transforma o Header em uma pilha organizada */
     header,
     .main-header {
@@ -3829,6 +3828,7 @@ header.scrolled,
 
 /* --- Oculta a barra de utilidades APENAS no mobile --- */
 @media (max-width: 768px) {
+
     /* Nota pro agente: Se a classe da barra preta do topo for diferente, adicione-a aqui */
     .top-bar,
     .header-top,
@@ -4357,6 +4357,7 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 992px) {
+
     /* 1. Garante que o container geral empilhe corretamente */
     .jornal-servidor-inner .layout-with-sidebar {
         display: flex !important;
@@ -4967,14 +4968,12 @@ header.scrolled,
 
 .insta-icon {
     font-size: 2.5rem;
-    background: -webkit-linear-gradient(
-        45deg,
-        #f09433 0%,
-        #e6683c 25%,
-        #dc2743 50%,
-        #cc2366 75%,
-        #bc1888 100%
-    );
+    background: -webkit-linear-gradient(45deg,
+            #f09433 0%,
+            #e6683c 25%,
+            #dc2743 50%,
+            #cc2366 75%,
+            #bc1888 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
@@ -5135,7 +5134,7 @@ header.scrolled,
 /* ========================================= */
 
 /* 1. Protege APENAS o link "VER TODOS" (ignora os cards) */
-.regional-section-wrapper > div:first-child > a {
+.regional-section-wrapper>div:first-child>a {
     white-space: nowrap !important;
     flex-shrink: 0 !important;
     margin-left: 15px !important;
@@ -5156,7 +5155,7 @@ header.scrolled,
     }
 
     /* Centraliza os itens verticalmente no mobile para ficar mais harmônico */
-    .regional-section-wrapper > div:first-child {
+    .regional-section-wrapper>div:first-child {
         align-items: center !important;
     }
 }
@@ -5177,10 +5176,11 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 768px) {
+
     /* O seletor mira exatamente o <h2> que fica dentro da primeira <div>
        de qualquer <section> (que é o padrão de cabeçalho do portal)
     */
-    section > div:first-child > h2,
+    section>div:first-child>h2,
     .regional-section-wrapper h2 {
         font-size: 1.25rem !important;
         /* Tamanho único, elegante e que não quebra a tela */
@@ -5188,7 +5188,7 @@ header.scrolled,
     }
 
     /* Garante que o botão 'VER TODOS' nas seções antigas também fique protegido */
-    section > div:first-child > a {
+    section>div:first-child>a {
         white-space: nowrap !important;
         flex-shrink: 0 !important;
         font-size: 0.8rem !important;
@@ -5198,7 +5198,8 @@ header.scrolled,
 
 /* Ajuste fino para celulares muito pequenos (ex: iPhone SE) */
 @media (max-width: 375px) {
-    section > div:first-child > h2,
+
+    section>div:first-child>h2,
     .regional-section-wrapper h2 {
         font-size: 1.15rem !important;
     }
@@ -5209,6 +5210,7 @@ header.scrolled,
 /* ========================================= */
 
 @media (max-width: 768px) {
+
     /* O container do formulário precisa alinhar os itens */
     .search-box {
         display: flex;
@@ -5462,7 +5464,7 @@ header.scrolled,
     margin: 0;
 }
 
-.featured-main > a {
+.featured-main>a {
     text-decoration: none;
     display: block;
 }
@@ -5559,6 +5561,7 @@ header.scrolled,
    ======================================== */
 
 @media (min-width: 769px) {
+
     /* Most Read - 3 columns on desktop */
     .most-read-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -5608,7 +5611,7 @@ header.scrolled,
         margin: 0;
     }
 
-    .featured-main > a {
+    .featured-main>a {
         text-decoration: none;
         display: block;
     }
@@ -5901,7 +5904,7 @@ header.scrolled,
     flex-direction: column;
 }
 
-.modern-section-main > a {
+.modern-section-main>a {
     display: block;
     text-decoration: none;
 }
@@ -6526,6 +6529,7 @@ body.dark-mode .nav-item.active {
 }
 
 @keyframes bounce {
+
     0%,
     100% {
         transform: translateY(0);
@@ -7532,6 +7536,7 @@ img {
 }
 
 @media (max-width: 1024px) {
+
     .destaques-list,
     .colunistas-list {
         grid-template-columns: repeat(3, 1fr);
@@ -7539,6 +7544,7 @@ img {
 }
 
 @media (max-width: 768px) {
+
     .destaques-list,
     .colunistas-list {
         grid-template-columns: 1fr;
@@ -8828,6 +8834,7 @@ img {
    ======================================== */
 
     @media (max-width: 768px) {
+
         /* Adjust global header for mobile */
         .regional-global-header {
             height: 48px;
@@ -9604,10 +9611,18 @@ body.has-regional-headers {
 
 /* O Container que vai segurar a Esquerda e a Direita */
 .home-master-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr; /* 280px pra sidebar, o resto pras notícias */
-    gap: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1600px;
+    gap: 60px;
     margin: 40px auto;
+    padding: 0 40px;
+}
+
+.main-news-wrapper {
+    flex: 0 1 1200px;
+    min-width: 0;
 }
 
 /* ========================================= */
@@ -9619,7 +9634,8 @@ body.has-regional-headers {
     padding: 20px;
     background: #ffffff;
     border-radius: 4px;
-    height: fit-content; /* Para não esticar caso a coluna de notícias seja muito longa */
+    height: fit-content;
+    /* Para não esticar caso a coluna de notícias seja muito longa */
 }
 
 .digital-editions-title {
@@ -9637,7 +9653,8 @@ body.has-regional-headers {
 
 .digital-editions-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 colunas para as capas */
+    grid-template-columns: 1fr 1fr;
+    /* 2 colunas para as capas */
     gap: 15px;
 }
 
@@ -9662,28 +9679,37 @@ body.has-regional-headers {
 }
 
 .edition-card:hover .edition-cover {
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     border-color: #1a3a5c;
 }
 
 /* O estilo de capa de jornal/PDF */
 .edition-cover {
     width: 100%;
-    aspect-ratio: 1 / 1.4; /* Proporção clássica de jornal impresso */
+    aspect-ratio: 1 / 1.4;
+    /* Proporção clássica de jornal impresso */
     background: #f4f5f7;
     border: 1px solid #d1d5db;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
     color: #9ca3af;
     margin-bottom: 8px;
     transition: all 0.2s ease;
 }
 
-.edition-cover i { font-size: 1.5rem; margin-bottom: 5px; }
-.edition-cover span { font-size: 0.65rem; font-weight: bold; font-family: sans-serif; }
+.edition-cover i {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.edition-cover span {
+    font-size: 0.65rem;
+    font-weight: bold;
+    font-family: sans-serif;
+}
 
 .edition-name {
     font-size: 0.75rem;
@@ -9694,22 +9720,51 @@ body.has-regional-headers {
 }
 
 /* Responsividade: Empilha a sidebar no celular/tablet */
-@media (max-width: 1024px) {
+@media (max-width: 1400px) {
     .home-master-layout {
-        grid-template-columns: 1fr; /* Vira uma coluna só */
+        gap: 40px;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .home-master-layout {
+        flex-direction: column;
+        align-items: center;
         gap: 30px;
     }
-    
+
+    .main-news-wrapper {
+        width: 100%;
+    }
+
     /* Move a sidebar para cima das notícias no mobile */
-    .digital-editions-sidebar { order: -1; }
-    
+    .digital-editions-sidebar {
+        order: -1;
+        width: 100%;
+        max-width: 500px;
+    }
+
     /* Coloca as capas em uma linha horizontal no tablet para economizar espaço */
-    .digital-editions-grid { grid-template-columns: repeat(4, 1fr); }
-    .digital-editions-grid a:last-child { grid-column: auto; width: 100%; }
+    .digital-editions-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .digital-editions-grid a:last-child {
+        grid-column: auto;
+        width: 100%;
+    }
 }
 
 @media (max-width: 600px) {
+
     /* No celular, volta a ter 2 por linha */
-    .digital-editions-grid { grid-template-columns: repeat(2, 1fr); }
-    .digital-editions-grid a:last-child { grid-column: 1 / -1; width: 50%; }
+    .digital-editions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .digital-editions-grid a:last-child {
+        grid-column: 1 / -1;
+        width: 50%;
+    }
 }

@@ -9597,3 +9597,119 @@ body.has-regional-headers {
     font-size: 0.7rem;
     color: #999999;
 }
+
+/* ========================================= */
+/* --- LAYOUT PRINCIPAL (SIDEBAR + CONTEÚDO) --- */
+/* ========================================= */
+
+/* O Container que vai segurar a Esquerda e a Direita */
+.home-master-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* 280px pra sidebar, o resto pras notícias */
+    gap: 40px;
+    margin: 40px auto;
+}
+
+/* ========================================= */
+/* --- SIDEBAR: EDIÇÕES DIGITAIS --- */
+/* ========================================= */
+
+.digital-editions-sidebar {
+    border: 1px solid #eaeaea;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 4px;
+    height: fit-content; /* Para não esticar caso a coluna de notícias seja muito longa */
+}
+
+.digital-editions-title {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #1a1a2e;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 20px 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #1a3a5c;
+    line-height: 1.3;
+}
+
+.digital-editions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colunas para as capas */
+    gap: 15px;
+}
+
+/* O 7º item centralizado na última linha (exatamente como no desenho) */
+.digital-editions-grid a:last-child {
+    grid-column: 1 / -1;
+    width: 65%;
+    margin: 0 auto;
+}
+
+.edition-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #222;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edition-card:hover {
+    transform: translateY(-3px);
+}
+
+.edition-card:hover .edition-cover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    border-color: #1a3a5c;
+}
+
+/* O estilo de capa de jornal/PDF */
+.edition-cover {
+    width: 100%;
+    aspect-ratio: 1 / 1.4; /* Proporção clássica de jornal impresso */
+    background: #f4f5f7;
+    border: 1px solid #d1d5db;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+    color: #9ca3af;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.edition-cover i { font-size: 1.5rem; margin-bottom: 5px; }
+.edition-cover span { font-size: 0.65rem; font-weight: bold; font-family: sans-serif; }
+
+.edition-name {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+/* Responsividade: Empilha a sidebar no celular/tablet */
+@media (max-width: 1024px) {
+    .home-master-layout {
+        grid-template-columns: 1fr; /* Vira uma coluna só */
+        gap: 30px;
+    }
+    
+    /* Move a sidebar para cima das notícias no mobile */
+    .digital-editions-sidebar { order: -1; }
+    
+    /* Coloca as capas em uma linha horizontal no tablet para economizar espaço */
+    .digital-editions-grid { grid-template-columns: repeat(4, 1fr); }
+    .digital-editions-grid a:last-child { grid-column: auto; width: 100%; }
+}
+
+@media (max-width: 600px) {
+    /* No celular, volta a ter 2 por linha */
+    .digital-editions-grid { grid-template-columns: repeat(2, 1fr); }
+    .digital-editions-grid a:last-child { grid-column: 1 / -1; width: 50%; }
+}

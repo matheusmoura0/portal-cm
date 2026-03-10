@@ -75,7 +75,7 @@ const DataLoader = {
     // Add product parameter to link if provided
     const linkWithProduct = product ? `${link}?product=${product}` : link;
 
-    const imageHTML = `<img src="${imageUrl}" alt="${this.escapeHtml(title)}" style="width: 100%; height: 180px; object-fit: cover;">`;
+    const imageHTML = `<img src="${imageUrl}" alt="${this.escapeHtml(title)}">`;
     const excerptHTML = excerpt
       ? `<p class="news-excerpt">${this.escapeHtml(excerpt)}</p>`
       : "";
@@ -83,21 +83,21 @@ const DataLoader = {
     const metadataHTML = hideMetadata
       ? ""
       : `
-      <div class="article-meta" style="margin-top: auto; padding-top: 10px; font-size: 0.85rem; color: #666;">
+      <div class="article-meta">
         <span class="author">${this.escapeHtml(author)}</span>
         <span class="time">${this.escapeHtml(time)}</span>
       </div>
     `;
 
     return `
-            <article class="${cardClass}" style="display: flex; flex-direction: column; background: #fff; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-                <a href="${linkWithProduct}" target="_blank" class="news-image" style="display: block;">
+            <article class="${cardClass}">
+                <a href="${linkWithProduct}" target="_blank" class="news-image">
                     ${imageHTML}
                 </a>
-                <div class="news-content" style="padding: 15px; display: flex; flex-direction: column; flex: 1;">
-                    <span class="category-tag" style="color: #d0021b; font-weight: 800; font-size: 0.75rem; text-transform: uppercase;">${this.escapeHtml(categoryTag)}</span>
-                    <h3 style="font-family: 'Noto Serif', serif; font-size: ${cardClass.includes("featured") ? "1.3rem" : "1.1rem"}; line-height: 1.3; margin: 10px 0;">
-                        <a href="${linkWithProduct}" target="_blank" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(title)}</a>
+                <div class="news-content">
+                    <span class="category-tag">${this.escapeHtml(categoryTag)}</span>
+                    <h3>
+                        <a href="${linkWithProduct}" target="_blank">${this.escapeHtml(title)}</a>
                     </h3>
                     ${excerptHTML}
                     ${metadataHTML}
@@ -393,6 +393,7 @@ const DataLoader = {
       "sul-fluminense-grid": "sul-fluminense",
       "jornal-barra-grid": "jornal-da-barra",
       "jornal-turismo-grid": "jornal-turismo",
+      "jornal-servidor-grid": "servidor",
       "mundo-grid": "mundo",
     };
 

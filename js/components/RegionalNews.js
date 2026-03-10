@@ -729,20 +729,51 @@ const RegionalNews = {
     const newsContainer = document.getElementById("regional-news-container");
     if (!newsContainer) return;
 
-    const news = this.mockNews[region] || this.mockNews.nacional;
+    const news = this.getNewsForRegion(region);
     const featuredArticle = news.find((article) => article.featured) || news[0];
     const gridArticles = news
       .filter((article) => !article.featured)
       .slice(0, 6);
 
-    newsContainer.innerHTML = this.getTemplate(featuredArticle, gridArticles);
+    newsContainer.innerHTML = this.getTemplate(
+      featuredArticle,
+      gridArticles,
+      this.getProductKey(region),
+    );
   },
 
-  getTemplate(featuredArticle, gridArticles) {
+  getNewsForRegion(region) {
+    const sharedDataKey = this.getPortalDataKey(region);
+    const sharedNews =
+      typeof portalMockData !== "undefined" && Array.isArray(portalMockData[sharedDataKey])
+        ? portalMockData[sharedDataKey].map((article, index) => ({
+            id: article.id || `${sharedDataKey}-${index + 1}`,
+            category: article.category || article.tag || "Notícias",
+            categoryColor: article.categoryColor || "var(--product-color, #1a3a5c)",
+            title: article.title,
+            excerpt: article.excerpt || "",
+            image: article.image || article.img,
+            author: article.author || "Correio da Manhã",
+            time: article.time || "Há pouco",
+            featured: index === 0,
+            link:
+              article.link ||
+              `noticia.html?id=${article.id || `${sharedDataKey}-${index + 1}`}&product=${this.getProductKey(region)}`,
+          }))
+        : [];
+
+    if (sharedNews.length > 0) {
+      return sharedNews;
+    }
+
+    return this.mockNews[region] || this.mockNews.nacional;
+  },
+
+  getTemplate(featuredArticle, gridArticles, productKey) {
     return `
       <!-- Hero Article -->
       <article class="regional-hero-article">
-        <a href="noticia.html?id=${featuredArticle.id}" class="regional-hero-link">
+        <a href="${featuredArticle.link || this.getArticleUrl(featuredArticle.id, productKey)}" class="regional-hero-link">
           <div class="regional-hero-image">
             <img src="${featuredArticle.image}" alt="${featuredArticle.title}"
                  onerror="this.src='https://placehold.co/800x450/f0f0f0/999999?text=Imagem+Indisponível'">
@@ -767,7 +798,7 @@ const RegionalNews = {
           .map(
             (article) => `
           <article class="regional-news-card">
-            <a href="noticia.html?id=${article.id}" class="regional-card-link">
+            <a href="${article.link || this.getArticleUrl(article.id, productKey)}" class="regional-card-link">
               <div class="regional-card-image">
                 <img src="${article.image}" alt="${article.title}"
                      onerror="this.src='https://placehold.co/400x300/f0f0f0/999999?text=Sem+Imagem'">
@@ -795,6 +826,44 @@ const RegionalNews = {
         Espaço Publicitário - 970x150
       </div>
     `;
+  },
+
+  getArticleUrl(articleId, productKey) {
+    return `noticia.html?id=${encodeURIComponent(articleId)}&product=${encodeURIComponent(productKey)}`;
+  },
+
+  getProductKey(region) {
+    const regionMap = {
+      nacional: "nacional",
+      sp: "sp",
+      df: "df",
+      sulfluminense: "sulfluminense",
+      petropolitano: "petropolis",
+      barra: "barra",
+      turismo: "turismo",
+      servidor: "servidor",
+      campinas: "campinas",
+      mundo: "nacional",
+    };
+
+    return regionMap[region] || "nacional";
+  },
+
+  getPortalDataKey(region) {
+    const dataKeyMap = {
+      nacional: "nacional",
+      sp: "sao-paulo",
+      df: "distrito-federal",
+      sulfluminense: "sul-fluminense",
+      petropolitano: "petropolis",
+      barra: "jornal-da-barra",
+      turismo: "jornal-turismo",
+      servidor: "servidor",
+      campinas: "campinas",
+      mundo: "mundo",
+    };
+
+    return dataKeyMap[region] || "nacional";
   },
 };
 

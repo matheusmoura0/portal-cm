@@ -67,9 +67,9 @@ const MobileMenu = {
         <div class="mobile-menu-footer">
           <div class="mobile-socials">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/correiodamanhabr/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/correiodamanhabr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.youtube.com/@TVCorreiodaManhã" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.youtube.com/@TVCorreiodaManhã" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           </div>
           <p class="mobile-copyright">© 2026 Correio da Manhã</p>
         </div>

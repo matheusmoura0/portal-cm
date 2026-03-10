@@ -8,6 +8,7 @@ const ProductHeader = {
   render() {
     const headerPlaceholder = document.getElementById("product-header");
     if (!headerPlaceholder) return;
+    if (document.querySelector(".product-header")) return;
 
     // Get configuration from data attributes
     const productName =

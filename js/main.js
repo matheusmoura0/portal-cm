@@ -160,6 +160,23 @@ const UI = {
     });
   },
 
+  hideEmptyAds() {
+    const placeholders = document.querySelectorAll(".ad-placeholder");
+
+    placeholders.forEach((placeholder) => {
+      const hasMedia = placeholder.querySelector("img, iframe, video, object");
+      const text = placeholder.textContent.replace(/\s+/g, " ").trim();
+      const isLabelOnly =
+        text === "" ||
+        text.startsWith("Espaço Publicitário") ||
+        text.startsWith("Publicidade");
+
+      if (!hasMedia && isLabelOnly) {
+        placeholder.setAttribute("data-ad-state", "placeholder");
+      }
+    });
+  },
+
   observeDOM() {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
@@ -751,6 +768,66 @@ const HomeManager = {
   },
 };
 
+const PageBootstrap = {
+  detectPage() {
+    if (document.getElementById("article-loader-wrapper")) {
+      return "article";
+    }
+
+    if (document.getElementById("regional-news-container")) {
+      return "regional";
+    }
+
+    return "portal";
+  },
+
+  initLayout(pageType) {
+    if (
+      window.CMMainLayout &&
+      (pageType === "portal" || pageType === "article")
+    ) {
+      window.CMMainLayout.init();
+    }
+  },
+
+  initRegionalPage() {
+    if (window.TinyHeader) {
+      window.TinyHeader.render();
+    }
+
+    if (window.ProductHeader) {
+      window.ProductHeader.render();
+    }
+
+    const regionalKey = document.body.dataset.regionalKey;
+    if (regionalKey && window.RegionalNews) {
+      window.RegionalNews.render(regionalKey);
+    }
+  },
+
+  initSharedModules(pageType) {
+    DateTime.init();
+    HeaderInfo.init();
+    MobileController.init();
+    Search.init();
+    Newsletter.init();
+    UI.init();
+    LiveCoverage.init();
+    SectionLayout.init();
+    BreakingNews.init();
+    ScrollNav.init();
+    BackToTop.init();
+    ScrollAnimations.init();
+    SocialShare.init();
+    NewsNavigation.init();
+    RegionalColors.init();
+
+    if (pageType === "portal" && document.body.dataset.enableHomeHub === "true") {
+      HomeManager.init();
+    }
+  },
+};
+
 // ========================================
 // Busca de Notícias
 // ========================================
@@ -1144,17 +1221,6 @@ const ScrollNav = {
       }
     }
 
-    // Logo shrink effect for premium feel
-    if (this.logo && this.portal) {
-      if (currentScroll > 100) {
-        this.logo.style.fontSize = "2.8rem";
-        this.portal.style.fontSize = "0.7rem";
-      } else {
-        this.logo.style.fontSize = "4rem";
-        this.portal.style.fontSize = "0.8125rem";
-      }
-    }
-
     this.lastScroll = currentScroll;
   },
 };
@@ -1458,43 +1524,16 @@ const RegionalColors = {
 // ========================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Tiny Header only for regional pages
-  if (
-    window.TinyHeader &&
-    document.body.classList.contains("has-regional-headers")
-  ) {
-    window.TinyHeader.render();
-  }
+  const pageType = PageBootstrap.detectPage();
 
-  // Inicializa o Header Global primeiro para que os elementos existam no DOM
-  if (window.CMHeader) {
-    window.CMHeader.render();
-  }
+  PageBootstrap.initLayout(pageType);
 
-  // Inicializa o Footer Global
-  if (window.CMFooter) {
-    window.CMFooter.render();
+  if (pageType === "regional") {
+    PageBootstrap.initRegionalPage();
   }
 
   // Inicializa todos os módulos estáticos e de UI
-  DateTime.init();
-  HeaderInfo.init();
-  MobileMenu.init();
-  Search.init();
-  Newsletter.init();
-  UI.init();
-  LiveCoverage.init();
-  SectionLayout.init();
-  BreakingNews.init();
-  ScrollNav.init();
-  BackToTop.init();
-  ScrollAnimations.init();
-  SocialShare.init();
-  NewsNavigation.init();
-  RegionalColors.init();
-
-  // Hub Global de Notícias (Provedor de Dados Dinâmicos)
-  HomeManager.init();
+  PageBootstrap.initSharedModules(pageType);
 
   // Adiciona classe ao body para indicar que JS está carregado
   document.body.classList.add("js-loaded");
@@ -1526,22 +1565,3 @@ window.CM = {
   NewsService,
   HomeManager,
 };
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Seleciona o header (tenta pela tag header ou pela classe .main-header)
-  const header =
-    document.querySelector("header") || document.querySelector(".main-header");
-
-  if (header) {
-    window.addEventListener("scroll", function () {
-      // Se rolar mais de 50 pixels para baixo...
-      if (window.scrollY > 50) {
-        header.classList.add("scrolled"); // Adiciona a classe que encolhe
-      } else {
-        header.classList.remove("scrolled"); // Remove a classe, voltando ao normal
-      }
-    });
-  } else {
-    console.warn("Header não encontrado para o efeito shrink.");
-  }
-});

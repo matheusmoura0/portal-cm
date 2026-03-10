@@ -12,10 +12,11 @@
     <script src="js/components/ProductHeader.js"></script>
     <script src="js/components/RegionalNews.js"></script>
     <script src="js/components/MobileMenu.js"></script>
+    <script src="js/mock-data.js"></script>
     <script src="js/main.js"></script>
 </head>
 
-<body class="has-regional-headers theme-nacional">
+<body class="has-regional-headers theme-nacional" data-regional-key="nacional">
     <!-- Product Header -->
     <div id="product-header" data-product-name="Correio da Manhã" data-product-short-name="CM"
         data-product-color="#D20A11" data-product-url="correio-nacional.html"></div>
@@ -23,18 +24,6 @@
     <!-- Regional News Container -->
     <div id="regional-news-container"></div>
 
-    <script>
-        // Initialize all components
-        document.addEventListener("DOMContentLoaded", function () {
-            TinyHeader.render();
-            ProductHeader.render();
-            RegionalNews.render("nacional");
-            // Initialize MobileMenu listeners
-            if (window.CM && window.CM.MobileMenu) window.CM.MobileMenu.init();
-        });
-    </script>
-        <script src="js/mock-data.js"></script>
-        <script src="js/data-loader.js"></script>
 </body>
 
 </html>

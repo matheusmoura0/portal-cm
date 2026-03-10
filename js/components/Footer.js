@@ -53,11 +53,11 @@ const Footer = {
                 <div class="footer-section">
                     <span class="footer-title">Portais Regionais</span>
                     <ul class="footer-links">
-                        <li><a href="https://www.correiodamanha.com.br/" target="_blank">Correio Rio</a></li>
-                        <li><a href="https://correiodamanhasp.com.br/" target="_blank">Correio SP</a></li>
-                        <li><a href="https://correiodamanhadf.com.br/" target="_blank">Correio DF</a></li>
-                        <li><a href="https://correiosulfluminense.com.br/" target="_blank">Correio Sul Fluminense</a></li>
-                        <li><a href="https://correiopetropolitano.com.br/" target="_blank">Correio Petropolitano</a></li>
+                        <li><a href="https://www.correiodamanha.com.br/" target="_blank" rel="noopener noreferrer">Correio Rio</a></li>
+                        <li><a href="https://correiodamanhasp.com.br/" target="_blank" rel="noopener noreferrer">Correio SP</a></li>
+                        <li><a href="https://correiodamanhadf.com.br/" target="_blank" rel="noopener noreferrer">Correio DF</a></li>
+                        <li><a href="https://correiosulfluminense.com.br/" target="_blank" rel="noopener noreferrer">Correio Sul Fluminense</a></li>
+                        <li><a href="https://correiopetropolitano.com.br/" target="_blank" rel="noopener noreferrer">Correio Petropolitano</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

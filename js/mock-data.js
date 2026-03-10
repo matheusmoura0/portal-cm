@@ -1119,3 +1119,102 @@ const portalMockData = {
     },
   ],
 };
+
+const portalProductMap = {
+  politica: "nacional",
+  justica: "nacional",
+  economia: "nacional",
+  esportes: "nacional",
+  cultura: "nacional",
+  brasil: "nacional",
+  mundo: "nacional",
+  opiniao: "nacional",
+  nacional: "nacional",
+  "sao-paulo": "sp",
+  "distrito-federal": "df",
+  "sul-fluminense": "sulfluminense",
+  petropolis: "petropolis",
+  campinas: "campinas",
+  "jornal-da-barra": "barra",
+  "jornal-turismo": "turismo",
+  servidor: "servidor",
+};
+
+const articleAliasMap = {
+  "noticia-001": "justica-1",
+  "noticia-002": "politica-1",
+  "noticia-004": "brasil-1",
+  "noticia-005": "brasil-2",
+  "noticia-006": "politica-2",
+  "noticia-007": "economia-1",
+  "noticia-008": "esportes-1",
+};
+
+function buildArticleBody(item) {
+  const excerpt = item.excerpt || "Conteúdo indisponível.";
+  const author = item.author || "Correio da Manhã";
+  const category = item.category || item.tag || "Notícias";
+
+  return `
+    <p>${excerpt}</p>
+    <p>${author} acompanha os desdobramentos de ${category.toLowerCase()} e reúne os principais pontos desta cobertura para a edição digital do portal.</p>
+    <h2>Contexto</h2>
+    <p>${excerpt}</p>
+    <p>Novas atualizações serão incorporadas assim que houver publicação complementar na mesma editoria.</p>
+  `;
+}
+
+function buildArticleId(sectionKey, index, item) {
+  const explicitId =
+    typeof item.id === "string" && item.id.trim() !== ""
+      ? item.id.trim()
+      : null;
+
+  return explicitId || `${sectionKey}-${index + 1}`;
+}
+
+function normalizeArticleData() {
+  const articles = {};
+
+  Object.entries(portalMockData).forEach(([sectionKey, items]) => {
+    if (!Array.isArray(items)) return;
+
+    const product = portalProductMap[sectionKey] || "nacional";
+
+    items.forEach((item, index) => {
+      const articleId = buildArticleId(sectionKey, index, item);
+      const date = item.date || "10 de março de 2026";
+      const image =
+        item.image ||
+        item.img ||
+        "https://placehold.co/1200x600/1a3a5c/ffffff?text=Imagem+de+Destaque";
+      const title = item.title || "Sem título";
+
+      articles[articleId] = {
+        id: articleId,
+        category: item.category || item.tag || "Notícias",
+        title,
+        subtitle: item.excerpt || "",
+        author: item.author || "Correio da Manhã",
+        date,
+        time: item.time || "",
+        image,
+        content: item.content || buildArticleBody(item),
+        product,
+      };
+
+      if (!item.id) {
+        item.id = articleId;
+      }
+
+      if (!item.link || item.link === "noticia.html") {
+        item.link = `noticia.html?id=${articleId}&product=${product}`;
+      }
+    });
+  });
+
+  portalMockData.articles = articles;
+  portalMockData.articleAliases = articleAliasMap;
+}
+
+normalizeArticleData();

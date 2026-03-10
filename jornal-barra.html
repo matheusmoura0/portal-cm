@@ -12,10 +12,11 @@
     <script src="js/components/ProductHeader.js"></script>
     <script src="js/components/RegionalNews.js"></script>
     <script src="js/components/MobileMenu.js"></script>
+    <script src="js/mock-data.js"></script>
     <script src="js/main.js"></script>
 </head>
 
-<body class="has-regional-headers theme-barra">
+<body class="has-regional-headers theme-barra" data-regional-key="barra">
     <!-- Product Header -->
     <div id="product-header" data-product-name="Jornal da Barra" data-product-short-name="Barra"
         data-product-color="#1A1A1A" data-product-url="jornal-barra.html"></div>
@@ -23,18 +24,6 @@
     <!-- Regional News Container -->
     <div id="regional-news-container"></div>
 
-    <script>
-        // Initialize all components
-        document.addEventListener("DOMContentLoaded", function () {
-            TinyHeader.render();
-            ProductHeader.render();
-            RegionalNews.render("barra");
-            // Initialize MobileMenu listeners
-            if (window.CM && window.CM.MobileMenu) window.CM.MobileMenu.init();
-        });
-    </script>
-        <script src="js/mock-data.js"></script>
-        <script src="js/data-loader.js"></script>
 </body>
 
 </html>

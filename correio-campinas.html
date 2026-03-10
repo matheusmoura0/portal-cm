@@ -13,9 +13,12 @@
         <script src="js/components/TinyHeader.js"></script>
         <script src="js/components/ProductHeader.js"></script>
         <script src="js/components/RegionalNews.js"></script>
+        <script src="js/components/MobileMenu.js"></script>
+        <script src="js/mock-data.js"></script>
+        <script src="js/main.js"></script>
     </head>
 
-    <body class="has-regional-headers theme-campinas">
+    <body class="has-regional-headers theme-campinas" data-regional-key="campinas">
         <!-- Product Header -->
         <div
             id="product-header"
@@ -28,15 +31,5 @@
         <!-- Regional News Container -->
         <div id="regional-news-container"></div>
 
-        <script>
-            // Initialize all components
-            document.addEventListener("DOMContentLoaded", function () {
-                TinyHeader.render();
-                ProductHeader.render();
-                RegionalNews.render("campinas");
-            });
-        </script>
-        <script src="js/mock-data.js"></script>
-        <script src="js/data-loader.js"></script>
     </body>
 </html>

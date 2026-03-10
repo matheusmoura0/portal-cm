@@ -165,7 +165,7 @@ function loadArticle(articleId, product) {
   const productData = ProductConfig[product] || ProductConfig.nacional;
 
   // Try to get article from mock data
-  const article = getArticleData(articleId);
+  const article = getArticleData(articleId, product);
 
   if (!article) {
     showError();
@@ -201,14 +201,43 @@ function loadArticle(articleId, product) {
 /**
  * Get article data from mock data or use default
  */
-function getArticleData(articleId) {
+function getArticleData(articleId, product) {
+  if (!portalMockData) {
+    return {
+      ...defaultArticle,
+      id: articleId,
+    };
+  }
+
+  const aliasedId = portalMockData.articleAliases?.[articleId] || articleId;
+
   // Check if article exists in mock data
-  if (
-    portalMockData &&
-    portalMockData.articles &&
-    portalMockData.articles[articleId]
-  ) {
-    return portalMockData.articles[articleId];
+  if (portalMockData.articles && portalMockData.articles[aliasedId]) {
+    const article = portalMockData.articles[aliasedId];
+    return {
+      ...article,
+      product: article.product || product,
+    };
+  }
+
+  const productDataKey = getProductDataKey(product);
+  const productArticles = productDataKey ? portalMockData[productDataKey] : null;
+
+  if (Array.isArray(productArticles)) {
+    const index = getLegacyArticleIndex(aliasedId);
+    if (index !== null && productArticles[index]) {
+      const item = productArticles[index];
+      return {
+        category: item.category || item.tag || "NOTÍCIAS",
+        title: item.title || defaultArticle.title,
+        subtitle: item.excerpt || defaultArticle.subtitle,
+        author: item.author || defaultArticle.author,
+        date: item.date || defaultArticle.date,
+        time: item.time || defaultArticle.time,
+        image: item.image || item.img || defaultArticle.image,
+        content: item.content || defaultArticle.content,
+      };
+    }
   }
 
   // Return default article with ID for tracking
@@ -216,6 +245,31 @@ function getArticleData(articleId) {
     ...defaultArticle,
     id: articleId,
   };
+}
+
+function getLegacyArticleIndex(articleId) {
+  if (/^\d+$/.test(articleId)) {
+    return Number(articleId) - 1;
+  }
+
+  const match = articleId.match(/-(\d+)$/);
+  return match ? Number(match[1]) - 1 : null;
+}
+
+function getProductDataKey(product) {
+  const productMap = {
+    nacional: "nacional",
+    sp: "sao-paulo",
+    df: "distrito-federal",
+    sulfluminense: "sul-fluminense",
+    petropolis: "petropolis",
+    campinas: "campinas",
+    barra: "jornal-da-barra",
+    turismo: "jornal-turismo",
+    servidor: "servidor",
+  };
+
+  return productMap[product] || "nacional";
 }
 
 /**

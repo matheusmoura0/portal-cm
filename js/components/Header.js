@@ -19,8 +19,8 @@ const Header = {
             <div class="container">
                 <div class="header-content">
                     <div class="logo-section">
-                        <a href="index.html" style="font-family: Arial, Helvetica, sans-serif;">
-                            <span class="logo-cm" style="font-family: inherit; color="white">CM</span>
+                        <a href="index.html" class="portal-brand" style="font-family: Arial, Helvetica, sans-serif;">
+                            <span class="logo-cm" style="font-family: inherit; color: white;">CM</span>
                             <div class="logo-text">
                                 <h1 class="logo" style="font-family: inherit;">www.cm.com.br</h1>
                                 <span class="logo-portal" style="font-family: inherit;">O portal do grupo correio da manhã</span>

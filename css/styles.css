@@ -3555,7 +3555,9 @@ body main.container .opinion-section-title {
 }
 
 /* Seção de Colunas (lista vertical) */
-.opinion-highlights-grid div[style*="border-bottom: 1px solid #eaeaea"] span[style*="text-transform: uppercase"] {
+.opinion-highlights-grid
+    div[style*="border-bottom: 1px solid #eaeaea"]
+    span[style*="text-transform: uppercase"] {
     font-family: "Noto Sans", sans-serif !important;
 }
 
@@ -3684,6 +3686,7 @@ body main.container .opinion-section-title {
     }
 
     .section {
+        padding: 10px;
         margin-bottom: 30px !important;
     }
 
@@ -3966,7 +3969,7 @@ header.scrolled,
 /* Responsividade para Mobile */
 @media (max-width: 768px) {
     .hero-grid {
-        pa
+        padding: 10px;
         grid-template-columns: 1fr;
         gap: 25px;
     }

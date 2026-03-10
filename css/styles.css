@@ -3463,14 +3463,16 @@ input:focus {
 
 /* --- PÁGINA DE OPINIÃO --- */
 
+/* PERMANENTE: Títulos, labels, elementos fixos - Noto Sans (sem serifa) */
 .page-header-title {
-    font-family: var(--font-ui);
+    font-family: "Noto Sans", sans-serif;
     font-size: 2.5rem;
     color: #1a1a2e;
     margin: 0 0 10px 0;
 }
 
 .page-header-subtitle {
+    font-family: "Noto Sans", sans-serif;
     color: #666;
     font-size: 1.1rem;
     margin: 0 0 40px 0;
@@ -3478,7 +3480,7 @@ input:focus {
 
 /* Títulos de Seção com Linha Inferior */
 .opinion-section-title {
-    font-family: var(--font-ui);
+    font-family: "Noto Sans", sans-serif;
     font-size: 1.4rem;
     font-weight: 800;
     color: #1a1a2e;
@@ -3497,7 +3499,6 @@ input:focus {
     width: 60px;
     height: 3px;
     background-color: #1a3a5c;
-    /* Tracinho azul institutional */
 }
 
 /* Grid de Destaques */
@@ -3520,6 +3521,59 @@ input:focus {
     background: #f8f9fa;
     padding: 30px;
     border-left: 4px solid #1a3a5c;
+}
+
+/* ======================================== */
+/* --- TIPOGRAFIA OPINIÃO: REGRA GERAL --- */
+/* ======================================== */
+
+/* Força Noto Sans para elementos permanentes na página de opinião */
+body main.container span[style*="text-transform: uppercase"],
+body main.container .opinion-section-title {
+    font-family: "Noto Sans", sans-serif !important;
+}
+
+/* Labels como "Colunista", "Há X horas" - SEM SERIFA */
+.opinion-highlights-grid span[style*="text-transform: uppercase"],
+.opinion-highlights-grid span[style*="color: #aaa"],
+.opinion-highlights-grid span[style*="color: #1a3a5c"],
+.opinion-highlights-grid span[style*="color: #666"] {
+    font-family: "Noto Sans", sans-serif !important;
+}
+
+/* VARIÁVEL: Nomes de colunistas, manchetes, conteúdo - COM SERIFA */
+.opinion-highlights-grid h4[style*="Noto Serif"],
+.opinion-highlights-grid h3[style*="Noto Serif"],
+.opinion-highlights-grid p[style*="Noto Serif"] {
+    font-family: "Noto Serif", serif !important;
+}
+
+/* Links e títulos de artigos - COM SERIFA */
+.opinion-highlights-grid a h3,
+.opinion-highlights-grid a h4 {
+    font-family: "Noto Serif", serif !important;
+}
+
+/* Seção de Colunas (lista vertical) */
+.opinion-highlights-grid div[style*="border-bottom: 1px solid #eaeaea"] span[style*="text-transform: uppercase"] {
+    font-family: "Noto Sans", sans-serif !important;
+}
+
+.opinion-highlights-grid div[style*="border-bottom: 1px solid #eaeaea"] h4,
+.opinion-highlights-grid div[style*="border-bottom: 1px solid #eaeaea"] h3,
+.opinion-highlights-grid div[style*="border-bottom: 1px solid #eaeaea"] p {
+    font-family: "Noto Serif", serif !important;
+}
+
+/* Cards de editoriais - títulos COM SERIFA */
+.editorial-card h3,
+.editorial-card h4 {
+    font-family: "Noto Serif", serif !important;
+}
+
+.editorial-card span,
+.editorial-card time {
+    font-family: "Noto Sans", sans-serif !important;
 }
 
 /* Responsividade */
@@ -3912,6 +3966,7 @@ header.scrolled,
 /* Responsividade para Mobile */
 @media (max-width: 768px) {
     .hero-grid {
+        pa
         grid-template-columns: 1fr;
         gap: 25px;
     }
@@ -4556,7 +4611,6 @@ header.scrolled,
 }
 
 .video-main-title {
-    font-family: "Noto Serif", serif;
     font-size: 1.4rem;
     font-weight: 800;
     line-height: 1.3;
@@ -7270,7 +7324,7 @@ img {
 }
 
 .newsletter-content h3 {
-    font-family: var(--font-serif);
+    font-family: var(--font-body);
     font-weight: 700;
     font-size: 1.75rem;
     color: var(--text-main);

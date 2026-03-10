@@ -18,6 +18,7 @@ const DataLoader = {
     categoryName = null,
     limit = null,
     hideMetadata = false,
+    hiddenStartIndex = null,
   ) {
     const container = document.getElementById(containerId);
     if (!container) {
@@ -39,7 +40,11 @@ const DataLoader = {
     let html = "";
     newsToRender.forEach((item, index) => {
       const isFirst = index === 0;
-      const cardClass = isFirst ? "news-card featured" : "news-card";
+      const hiddenClass =
+        hiddenStartIndex !== null && index >= hiddenStartIndex ? " hidden" : "";
+      const cardClass = isFirst
+        ? `news-card featured${hiddenClass}`
+        : `news-card${hiddenClass}`;
 
       html += this.renderCard(
         item,
@@ -72,8 +77,7 @@ const DataLoader = {
     const author = item.author || "Correio da Manhã";
     const categoryTag = item.category || category || "Notícias";
 
-    // Add product parameter to link if provided
-    const linkWithProduct = product ? `${link}?product=${product}` : link;
+    const linkWithProduct = this.appendProductToLink(link, product);
 
     const imageHTML = `<img src="${imageUrl}" alt="${this.escapeHtml(title)}">`;
     const excerptHTML = excerpt
@@ -91,13 +95,13 @@ const DataLoader = {
 
     return `
             <article class="${cardClass}">
-                <a href="${linkWithProduct}" target="_blank" class="news-image">
+                <a href="${linkWithProduct}" class="news-image">
                     ${imageHTML}
                 </a>
                 <div class="news-content">
                     <span class="category-tag">${this.escapeHtml(categoryTag)}</span>
                     <h3>
-                        <a href="${linkWithProduct}" target="_blank">${this.escapeHtml(title)}</a>
+                        <a href="${linkWithProduct}">${this.escapeHtml(title)}</a>
                     </h3>
                     ${excerptHTML}
                     ${metadataHTML}
@@ -315,7 +319,11 @@ const DataLoader = {
         `${section}-grid`,
         section,
         this.formatCategoryName(section),
+        null,
+        false,
+        6,
       );
+      this.initLoadMore(mainGrid);
     }
 
     // Modern section (if exists)
@@ -383,8 +391,12 @@ const DataLoader = {
    * Load homepage regional grids
    */
   loadHomepageRegionals() {
-    // Map grid IDs to data keys (only regional grids, not section grids)
-    const regionalGrids = {
+    const homepageGrids = {
+      "politica-grid": "politica",
+      "economia-grid": "economia",
+      "justica-grid": "justica",
+      "cultura-grid": "cultura",
+      "esportes-grid": "esportes",
       "rio-de-janeiro-grid": "nacional",
       "sao-paulo-grid": "sao-paulo",
       "campinas-grid": "campinas",
@@ -397,16 +409,15 @@ const DataLoader = {
       "mundo-grid": "mundo",
     };
 
-    console.log("DataLoader: Loading homepage regional grids...");
+    console.log("DataLoader: Loading homepage editorial and regional grids...");
 
-    // Load regional grids using renderSection (limit to 4 items, hide metadata)
-    for (const [gridId, dataKey] of Object.entries(regionalGrids)) {
+    for (const [gridId, dataKey] of Object.entries(homepageGrids)) {
       const container = document.getElementById(gridId);
       if (container) {
         console.log(
           `DataLoader: Loading grid ${gridId} with data key ${dataKey}`,
         );
-        this.renderSection(gridId, dataKey, null, 4, true); // Limit to 4 news items, hide metadata
+        this.renderSection(gridId, dataKey, null, 4, true);
       } else {
         console.warn(`DataLoader: Container ${gridId} not found`);
       }
@@ -439,6 +450,52 @@ const DataLoader = {
     const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
+  },
+
+  appendProductToLink(link, product) {
+    if (!product || !link || /^https?:\/\//i.test(link) || link.startsWith("#")) {
+      return link;
+    }
+
+    const [base, hash = ""] = link.split("#");
+    const separator = base.includes("?") ? "&" : "?";
+    const linkedBase = base.includes("product=")
+      ? base
+      : `${base}${separator}product=${encodeURIComponent(product)}`;
+
+    return hash ? `${linkedBase}#${hash}` : linkedBase;
+  },
+
+  initLoadMore(container) {
+    const loadMoreBtn = document.getElementById("load-more-btn");
+    const loadingSpinner = document.getElementById("loading-spinner");
+    if (!container || !loadMoreBtn) return;
+
+    const cardsPerLoad = 3;
+    const getHiddenCards = () => container.querySelectorAll(".news-card.hidden");
+
+    const updateButtonState = () => {
+      if (getHiddenCards().length === 0) {
+        loadMoreBtn.textContent = "Não há mais notícias";
+        loadMoreBtn.disabled = true;
+      }
+    };
+
+    updateButtonState();
+
+    loadMoreBtn.addEventListener("click", () => {
+      if (loadingSpinner) loadingSpinner.style.display = "block";
+      loadMoreBtn.disabled = true;
+
+      window.setTimeout(() => {
+        const hiddenCards = Array.from(getHiddenCards()).slice(0, cardsPerLoad);
+        hiddenCards.forEach((card) => card.classList.remove("hidden"));
+
+        if (loadingSpinner) loadingSpinner.style.display = "none";
+        loadMoreBtn.disabled = false;
+        updateButtonState();
+      }, 500);
+    });
   },
 };
 

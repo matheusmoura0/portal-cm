@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             htmlFinal += `
                 <article class="news-card">
-                    <a href="${link}" target="_blank" class="news-image">
+                    <a href="${link}" class="news-image">
                         <img src="${imageUrl}" alt="Imagem da notícia">
                     </a>
                     <div class="news-content">
                         <span class="category-tag">${categoryName}</span>
                         <h3>
-                            <a href="${link}" target="_blank">${title}</a>
+                            <a href="${link}">${title}</a>
                         </h3>
                     </div>
                 </article>

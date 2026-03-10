@@ -3,38 +3,55 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Mundo - Notícias Internacionais</title>
-        <link rel="stylesheet" href="css/styles.css" />
-        <link rel="stylesheet" href="css/regional-headers.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        <meta
+            name="description"
+            content="Mundo - portal CM. Notícias internacionais, geopolítica e cobertura do mundo."
         />
-        <script src="js/components/TinyHeader.js"></script>
-        <script src="js/components/ProductHeader.js"></script>
-        <script src="js/components/RegionalNews.js"></script>
+        <title>Mundo | portal CM</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <script src="js/components/Header.js"></script>
+        <script src="js/components/Footer.js"></script>
+        <script src="js/components/MainLayout.js"></script>
     </head>
 
-    <body class="has-regional-headers theme-mundo">
-        <!-- Product Header -->
-        <div
-            id="product-header"
-            data-product-name="Mundo"
-            data-product-short-name="MUNDO"
-            data-product-color="#003366"
-            data-product-url="mundo.html"
-        ></div>
+    <body class="category-mundo">
+        <div id="global-header"></div>
 
-        <!-- Regional News Container -->
-        <div id="regional-news-container"></div>
+        <div class="ad-placeholder ad-970x150">
+            Espaço Publicitário - 970x150
+        </div>
 
-        <script>
-            // Initialize all components
-            document.addEventListener("DOMContentLoaded", function () {
-                TinyHeader.render();
-                ProductHeader.render();
-                RegionalNews.render("mundo");
-            });
-        </script>
+        <main class="main-content category-view">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Mundo</h1>
+                    <p>
+                        Notícias internacionais, geopolítica e cobertura do
+                        mundo.
+                    </p>
+                </div>
+
+                <div class="newspaper-grid" id="mundo-grid"></div>
+
+                <div class="load-more-container">
+                    <div class="loading-spinner" id="loading-spinner"></div>
+                    <button class="load-more-btn" id="load-more-btn">
+                        Carregar mais notícias
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <div id="global-footer"></div>
+
+        <script src="js/main.js"></script>
+        <script src="js/mock-data.js"></script>
+        <script src="js/data-loader.js"></script>
     </body>
 </html>

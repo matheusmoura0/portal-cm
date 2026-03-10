@@ -395,7 +395,6 @@ const DataLoader = {
       "politica-grid": "politica",
       "economia-grid": "economia",
       "justica-grid": "justica",
-      "cultura-grid": "cultura",
       "esportes-grid": "esportes",
       "rio-de-janeiro-grid": "nacional",
       "sao-paulo-grid": "sao-paulo",
@@ -405,7 +404,6 @@ const DataLoader = {
       "sul-fluminense-grid": "sul-fluminense",
       "jornal-barra-grid": "jornal-da-barra",
       "jornal-turismo-grid": "jornal-turismo",
-      "jornal-servidor-grid": "servidor",
       "mundo-grid": "mundo",
     };
 

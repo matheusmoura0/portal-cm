@@ -9606,23 +9606,25 @@ body.has-regional-headers {
 }
 
 /* ========================================= */
-/* --- LAYOUT PRINCIPAL (SIDEBAR + CONTEÚDO) --- */
+/* --- LAYOUT RESTAURADO E SIDEBAR FLUTUANTE --- */
 /* ========================================= */
 
-/* O Container que vai segurar a Esquerda e a Direita */
+/* 1. Trava o container no centro da tela, idêntico às outras seções */
 .home-master-layout {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 1600px;
-    gap: 60px;
-    margin: 40px auto;
-    padding: 0 40px;
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    /* Ajuste para a largura máxima padrão do seu site */
+    margin: 40px auto !important;
+    /* Centraliza à força */
+    padding: 0 !important;
 }
 
+/* 2. Devolve os 100% de espaço para as notícias quentes */
 .main-news-wrapper {
-    flex: 0 1 1200px;
-    min-width: 0;
+    width: 100% !important;
+    display: block !important;
 }
 
 /* ========================================= */
@@ -9635,11 +9637,10 @@ body.has-regional-headers {
     background: #ffffff;
     border-radius: 4px;
     height: fit-content;
-    /* Para não esticar caso a coluna de notícias seja muito longa */
 }
 
 .digital-editions-title {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
     font-size: 1.1rem;
     font-weight: 900;
     color: #1a1a2e;
@@ -9654,11 +9655,9 @@ body.has-regional-headers {
 .digital-editions-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* 2 colunas para as capas */
     gap: 15px;
 }
 
-/* O 7º item centralizado na última linha (exatamente como no desenho) */
 .digital-editions-grid a:last-child {
     grid-column: 1 / -1;
     width: 65%;
@@ -9671,7 +9670,9 @@ body.has-regional-headers {
     align-items: center;
     text-decoration: none;
     color: #222;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .edition-card:hover {
@@ -9683,11 +9684,9 @@ body.has-regional-headers {
     border-color: #1a3a5c;
 }
 
-/* O estilo de capa de jornal/PDF */
 .edition-cover {
     width: 100%;
     aspect-ratio: 1 / 1.4;
-    /* Proporção clássica de jornal impresso */
     background: #f4f5f7;
     border: 1px solid #d1d5db;
     display: flex;
@@ -9719,52 +9718,54 @@ body.has-regional-headers {
     font-family: sans-serif;
 }
 
-/* Responsividade: Empilha a sidebar no celular/tablet */
-@media (max-width: 1400px) {
-    .home-master-layout {
-        gap: 40px;
-        padding: 0 20px;
-    }
-}
-
-@media (max-width: 1100px) {
-    .home-master-layout {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-
-    .main-news-wrapper {
-        width: 100%;
-    }
-
-    /* Move a sidebar para cima das notícias no mobile */
+/* 3. A MÁGICA: Em monitores grandes, a sidebar fica levitando do lado de fora */
+@media (min-width: 1450px) {
     .digital-editions-sidebar {
-        order: -1;
-        width: 100%;
-        max-width: 500px;
-    }
-
-    /* Coloca as capas em uma linha horizontal no tablet para economizar espaço */
-    .digital-editions-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .digital-editions-grid a:last-child {
-        grid-column: auto;
-        width: 100%;
+        position: absolute !important;
+        top: 0 !important;
+        /* right: 100% empurra para fora da caixa. O + 30px dá a distância ideal */
+        right: calc(100% + 50px) !important;
+        width: 244px !important;
+        margin: 0 !important;
+        z-index: 10;
     }
 }
 
-@media (max-width: 600px) {
+/* 4. Telas Médias (Laptops onde a margem vazia é pequena) */
+@media (max-width: 1449px) and (min-width: 769px) {
+    .digital-editions-sidebar {
+        position: relative !important;
+        width: 100% !important;
+        right: auto !important;
+        margin-bottom: 40px !important;
+    }
 
-    /* No celular, volta a ter 2 por linha */
     .digital-editions-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr) !important;
+        /* Deita os PDFs */
     }
 
     .digital-editions-grid a:last-child {
-        grid-column: 1 / -1;
-        width: 50%;
+        grid-column: auto !important;
+        width: 100% !important;
+    }
+}
+
+/* 5. Celular (Empilha de 2 em 2 no topo) */
+@media (max-width: 768px) {
+    .digital-editions-sidebar {
+        position: relative !important;
+        width: 100% !important;
+        right: auto !important;
+        margin-bottom: 30px !important;
+    }
+
+    .digital-editions-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .digital-editions-grid a:last-child {
+        grid-column: 1 / -1 !important;
+        width: 50% !important;
     }
 }

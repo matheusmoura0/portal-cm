@@ -23,7 +23,7 @@ const Header = {
                             <span class="logo-cm" style="font-family: inherit; color: white;">CM</span>
                             <div class="logo-text">
                                 <h1 class="logo" style="font-family: inherit;">www.cm.com.br</h1>
-                                <span class="logo-portal" style="font-family: inherit;">O portal do grupo correio da manhã</span>
+                                <span class="logo-portal" style="font-family: inherit;">O portal do grupo Correio da Manhã</span>
                             </div>
                         </a>
                     </div>

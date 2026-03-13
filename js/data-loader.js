@@ -19,6 +19,7 @@ const DataLoader = {
     limit = null,
     hideMetadata = false,
     hiddenStartIndex = null,
+    product = null,
   ) {
     const container = document.getElementById(containerId);
     if (!container) {
@@ -51,7 +52,7 @@ const DataLoader = {
         displayName,
         cardClass,
         hideMetadata,
-        category,
+        product,
       );
     });
 
@@ -129,16 +130,18 @@ const DataLoader = {
     const displayName = categoryName || this.formatCategoryName(category);
     const mainNews = news[0];
     const sideNews = news.slice(1, 4);
+    const product = this.getProductSlug(category);
+    const mainLink = this.appendProductToLink(mainNews.link, product);
 
     let html = `
             <article class="modern-section-main" style="display: flex; flex-direction: column; background: #fff; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden;">
-                <a href="${mainNews.link}" class="news-image" style="display: block;">
+                <a href="${mainLink}" class="news-image" style="display: block;">
                     <img src="${mainNews.img}" alt="${this.escapeHtml(mainNews.title)}" style="width: 100%; height: 250px; object-fit: cover;">
                     <span class="category-tag" style="position: absolute; top: 10px; left: 10px; background: #d0021b; color: #fff; padding: 5px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">${this.escapeHtml(displayName)}</span>
                 </a>
                 <div class="news-content" style="padding: 20px;">
                     <h3 style="font-family: 'Noto Serif', serif; font-size: 1.4rem; line-height: 1.3; margin: 10px 0;">
-                        <a href="${mainNews.link}" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(mainNews.title)}</a>
+                        <a href="${mainLink}" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(mainNews.title)}</a>
                     </h3>
                     ${mainNews.excerpt ? `<p style="color: #666; margin: 10px 0;">${this.escapeHtml(mainNews.excerpt.substring(0, 150))}...</p>` : ""}
                     <div class="article-meta" style="font-size: 0.85rem; color: #666; margin-top: 10px;">
@@ -151,14 +154,15 @@ const DataLoader = {
         `;
 
     sideNews.forEach((item) => {
+      const itemLink = this.appendProductToLink(item.link, product);
       html += `
                 <article class="modern-section-item" style="display: flex; background: #fff; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden;">
-                    <a href="${item.link}" class="news-image" style="display: block; width: 120px; flex-shrink: 0;">
+                    <a href="${itemLink}" class="news-image" style="display: block; width: 120px; flex-shrink: 0;">
                         <img src="${item.img}" alt="${this.escapeHtml(item.title)}" style="width: 100%; height: 80px; object-fit: cover;">
                     </a>
                     <div class="news-content" style="padding: 10px; flex: 1;">
                         <h4 style="font-family: 'Noto Serif', serif; font-size: 0.95rem; line-height: 1.3; margin: 0;">
-                            <a href="${item.link}" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(item.title)}</a>
+                            <a href="${itemLink}" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(item.title)}</a>
                         </h4>
                         <span class="time" style="font-size: 0.75rem; color: #999;">${this.escapeHtml(item.time || "Há pouco")}</span>
                     </div>
@@ -187,13 +191,15 @@ const DataLoader = {
     }
 
     let html = "";
+    const product = this.getProductSlug(regionKey);
     news.forEach((item) => {
       const tag = item.tag || item.category || "Notícias";
       const title = item.title;
       const imageUrl = item.img || item.image;
+      const itemLink = this.appendProductToLink(item.link, product);
 
       html += `
-                <a href="${item.link}" class="regional-card-item">
+                <a href="${itemLink}" class="regional-card-item">
                     <img src="${imageUrl}" alt="${this.escapeHtml(title)}">
                     <div class="regional-card-content">
                         <span class="regional-tag">${this.escapeHtml(tag)}</span>
@@ -322,6 +328,7 @@ const DataLoader = {
         null,
         false,
         6,
+        null,
       );
       this.initLoadMore(mainGrid);
     }
@@ -415,7 +422,15 @@ const DataLoader = {
         console.log(
           `DataLoader: Loading grid ${gridId} with data key ${dataKey}`,
         );
-        this.renderSection(gridId, dataKey, null, 4, true);
+        this.renderSection(
+          gridId,
+          dataKey,
+          null,
+          4,
+          true,
+          null,
+          this.getProductSlug(dataKey),
+        );
       } else {
         console.warn(`DataLoader: Container ${gridId} not found`);
       }
@@ -448,6 +463,22 @@ const DataLoader = {
     const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
+  },
+
+  getProductSlug(key) {
+    const productMap = {
+      nacional: "nacional",
+      "sao-paulo": "sp",
+      "distrito-federal": "df",
+      "sul-fluminense": "sulfluminense",
+      petropolis: "petropolis",
+      campinas: "campinas",
+      "jornal-da-barra": "barra",
+      "jornal-turismo": "turismo",
+      servidor: "servidor",
+    };
+
+    return productMap[key] || null;
   },
 
   appendProductToLink(link, product) {

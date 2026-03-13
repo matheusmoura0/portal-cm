@@ -315,18 +315,8 @@ const MobileController = {
   },
 
   bindEvents() {
-    // 1. Delegated click handling for all types of hamburger buttons
+    // 1. Delegated dropdown handling for the portal header
     document.addEventListener("click", (e) => {
-      // Main Portal, Tiny Header, Product Header, Regional Global Header
-      const toggle = e.target.closest("#mobile-menu-toggle, #tiny-menu-toggle, #product-menu-btn, #regional-mobile-toggle");
-      
-      if (toggle) {
-        console.log("MobileController: Hamburguer detectado via clique");
-        e.preventDefault();
-        this.openUnifiedMenu();
-        return;
-      }
-
       // Dropdown toggle click (mobile only)
       const dropdownToggle = e.target.closest(".dropdown-toggle");
       if (dropdownToggle && window.innerWidth <= 768) {
@@ -888,10 +878,17 @@ const Search = {
 // ========================================
 
 const Newsletter = {
+  initialized: false,
+
   init() {
+    if (this.initialized) return;
+
     this.form = document.getElementById("newsletter-form");
     this.emailInput = document.getElementById("newsletter-email");
+    if (!this.form || !this.emailInput) return;
+
     this.bindEvents();
+    this.initialized = true;
   },
 
   bindEvents() {

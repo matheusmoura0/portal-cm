@@ -3,12 +3,135 @@
  * Reusable header for all portal pages
  */
 
+const DEFAULT_COLUMN_LABELS = [
+  "Correio Político",
+  "Correio Bastidores",
+  "Brasilianas",
+  "Petropolitanas",
+  "Correio Econômico",
+  "Correio Esportivo",
+  "Correio no Mundo",
+  "Correio Jurídico",
+  "Correio do Aposentado",
+  "Jornal de Turismo",
+  "Correio Fluminense",
+  "Correio Carioca",
+  "Correio da Baixada",
+  "Correio Paulista",
+  "Correio Paulistano",
+  "Correio Grande SP",
+  "Correio de Campinas",
+  "Grande Campinas",
+  "Correio das Regiões",
+  "Correio Serrano",
+  "Correio do Vale",
+  "Correio Vale Paraíba",
+  "Correio Vale do Café",
+  "Correio Agulhas Negras",
+  "Correio Regional",
+  "Correio Norte/Noroeste",
+  "Correio Nacional",
+  "Correio Centro-Oeste",
+  "Correio Sudeste",
+  "Correio Nordeste",
+  "Correio Norte",
+  "Correio Sul",
+];
+
+function slugifyColumnLabel(label) {
+  return String(label || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[\/]/g, " ")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function buildColumnCatalog() {
+  return DEFAULT_COLUMN_LABELS.map((label, index) => {
+    const slug = slugifyColumnLabel(label);
+    return {
+      id: index + 1,
+      label,
+      slug,
+      url: `coluna.html?slug=${encodeURIComponent(slug)}`,
+    };
+  });
+}
+
+window.CMColumns = window.CMColumns || {
+  catalog: buildColumnCatalog(),
+
+  slugify: slugifyColumnLabel,
+
+  getCatalog() {
+    return this.catalog.slice();
+  },
+
+  getColumnUrl(slug) {
+    const safeSlug = encodeURIComponent(slug || this.catalog[0]?.slug || "");
+    return `coluna.html?slug=${safeSlug}`;
+  },
+
+  getColumnBySlug(slug) {
+    if (!slug) return this.catalog[0] || null;
+    return this.catalog.find((item) => item.slug === slug) || this.catalog[0] || null;
+  },
+
+  getMenuColumns(columnCount = 3) {
+    const columns = [];
+    const source = this.getCatalog();
+    const itemsPerColumn = Math.ceil(source.length / columnCount);
+
+    for (let index = 0; index < columnCount; index += 1) {
+      const start = index * itemsPerColumn;
+      const end = start + itemsPerColumn;
+      columns.push(source.slice(start, end));
+    }
+
+    return columns.filter((items) => items.length > 0);
+  },
+};
+
 const Header = {
+  getColumnsMegaMenuHTML() {
+    const columns = window.CMColumns.getMenuColumns(3);
+    const menuColumns = columns
+      .map((items) => {
+        const links = items
+          .map(
+            (item) => `
+              <li>
+                <a href="${item.url}">${item.label}</a>
+              </li>
+            `,
+          )
+          .join("");
+
+        return `
+          <div class="mega-menu-column">
+            <ul>
+              ${links}
+            </ul>
+          </div>
+        `;
+      })
+      .join("");
+
+    return `
+      <div class="dropdown-menu mega-menu columns-mega-menu">
+        <div class="mega-menu-grid">
+          ${menuColumns}
+        </div>
+      </div>
+    `;
+  },
+
   render() {
     const headerPlaceholder = document.getElementById("global-header");
     if (!headerPlaceholder) return;
 
-    // Create temporary container to parse HTML
     const temp = document.createElement("div");
     temp.innerHTML = `
 
@@ -52,7 +175,11 @@ const Header = {
                     <span></span>
                 </button>
                 <ul class="nav-menu" id="nav-menu">
-                    <li><a href="#opiniao" class="nav-link">Colunas</a></li>
+                    <li class="nav-dropdown">
+                        <a href="coluna.html" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Colunas ▾</a>
+                        ${this.getColumnsMegaMenuHTML()}
+                    </li>
+                    <li><a href="index.html#opiniao" class="nav-link">Opinião</a></li>
                     <li><a href="#politica" class="nav-link">Política</a></li>
                     <li><a href="#economia" class="nav-link">Economia</a></li>
                     <li><a href="#justica" class="nav-link">Justiça</a></li>
@@ -61,7 +188,7 @@ const Header = {
                     <li><a href="#mundo" class="nav-link">Mundo</a></li>
                     <li><a href="#tv" class="nav-link">CM News TV</a></li>
                     <li class="nav-dropdown">
-                        <a href="#produtos" class="nav-link dropdown-toggle">Nossos Jornais ▾</a>
+                        <a href="#produtos" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Nossos Jornais ▾</a>
                         <ul class="dropdown-menu">
                             <li><a href="#rio-de-janeiro">Correio da Manhã RJ</a></li>
                             <li><a href="#sao-paulo">Correio da Manhã SP</a></li>
@@ -80,131 +207,159 @@ const Header = {
     </div>
     `;
 
-    // Move nodes out of the placeholder to ensure 'position: sticky' has the correct boundary
     const parent = headerPlaceholder.parentNode;
     while (temp.firstChild) {
       parent.insertBefore(temp.firstChild, headerPlaceholder);
     }
 
-    // Remove the placeholder as it's no longer needed and would constrain sticky elements
     headerPlaceholder.remove();
 
     this.initNavigation();
   },
 
+  resolveInPageTarget(href) {
+    if (!href) return null;
+
+    let hash = "";
+    if (href.startsWith("#")) {
+      hash = href;
+    } else if (href.includes("#")) {
+      const [base, targetHash] = href.split("#");
+      const currentPage =
+        window.location.pathname.split("/").pop() || "index.html";
+      const normalizedBase = base || currentPage;
+
+      if (
+        normalizedBase === currentPage ||
+        (normalizedBase === "index.html" &&
+          (currentPage === "index.html" || currentPage === ""))
+      ) {
+        hash = `#${targetHash}`;
+      }
+    }
+
+    if (!hash || hash === "#") return null;
+    return document.querySelector(hash);
+  },
+
   initNavigation() {
-    // Initialize mobile menu toggle
     const mobileToggle = document.getElementById("mobile-menu-toggle");
     const navMenu = document.getElementById("nav-menu");
 
     if (mobileToggle && navMenu) {
       mobileToggle.addEventListener("click", (e) => {
         e.preventDefault();
-        // Use unified MobileMenu if available
         if (window.CMMobileMenu) {
           window.CMMobileMenu.toggle(true);
         } else {
-          // Fallback to local toggle if needed
           navMenu.classList.toggle("active");
           mobileToggle.classList.toggle("active");
         }
       });
     }
 
-    // Initialize dropdown hover behavior
     const dropdowns = document.querySelectorAll(".nav-dropdown");
+
+    const closeDropdown = (dropdown) => {
+      const toggle = dropdown.querySelector(".dropdown-toggle");
+      const menu = dropdown.querySelector(".dropdown-menu");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+      if (menu) menu.classList.remove("show");
+      dropdown.classList.remove("active");
+    };
 
     dropdowns.forEach((dropdown) => {
       const toggle = dropdown.querySelector(".dropdown-toggle");
       const menu = dropdown.querySelector(".dropdown-menu");
 
-      if (toggle && menu) {
-        // Desktop hover behavior
-        dropdown.addEventListener("mouseenter", () => {
-          if (window.innerWidth > 768) {
-            menu.classList.add("show");
-          }
-        });
+      if (!toggle || !menu) return;
 
-        dropdown.addEventListener("mouseleave", () => {
-          if (window.innerWidth > 768) {
-            menu.classList.remove("show");
-          }
-        });
+      dropdown.addEventListener("mouseenter", () => {
+        if (window.innerWidth > 768) {
+          menu.classList.add("show");
+          toggle.setAttribute("aria-expanded", "true");
+        }
+      });
 
-        // Mobile click behavior for toggle
-        toggle.addEventListener("click", (e) => {
-          if (window.innerWidth <= 768) {
-            e.preventDefault();
-            menu.classList.toggle("show");
-          }
-        });
+      dropdown.addEventListener("mouseleave", () => {
+        if (window.innerWidth > 768) {
+          closeDropdown(dropdown);
+        }
+      });
 
-        // Handle dropdown links with smooth scroll
-        const dropdownLinks = menu.querySelectorAll("a");
-        dropdownLinks.forEach((link) => {
-          link.addEventListener("click", (e) => {
-            const href = link.getAttribute("href");
-
-            // Check if it's an anchor link
-            if (href && href.startsWith("#")) {
-              const target = document.querySelector(href);
-
-              if (target) {
-                e.preventDefault();
-                target.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                });
-              }
-            }
-
-            // Close dropdown and mobile menu
-            menu.classList.remove("show");
-            if (navMenu) {
-              navMenu.classList.remove("active");
-            }
-            if (mobileToggle) {
-              mobileToggle.classList.remove("active");
-            }
-          });
-        });
-      }
-    });
-
-    // Smooth scroll for main navigation anchor links
-    const anchorLinks = document.querySelectorAll(
-      '.nav-menu > li > a[href^="#"]',
-    );
-    anchorLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        const href = link.getAttribute("href");
-
-        // Check if the target section exists on the current page
-        const target = document.querySelector(href);
-
-        if (target && href !== "#produtos") {
-          // Target exists on current page - smooth scroll (index.html behavior)
+      toggle.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
           e.preventDefault();
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
+          const isOpen = menu.classList.contains("show");
+
+          dropdowns.forEach((item) => {
+            if (item !== dropdown) closeDropdown(item);
           });
 
-          // Close mobile menu if open
+          menu.classList.toggle("show", !isOpen);
+          dropdown.classList.toggle("active", !isOpen);
+          toggle.setAttribute("aria-expanded", String(!isOpen));
+        }
+      });
+
+      const dropdownLinks = menu.querySelectorAll("a");
+      dropdownLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const href = link.getAttribute("href");
+          const target = this.resolveInPageTarget(href);
+
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          } else if (href && href.startsWith("#")) {
+            e.preventDefault();
+            window.location.href = `index.html${href}`;
+          }
+
+          closeDropdown(dropdown);
           if (navMenu) {
             navMenu.classList.remove("active");
           }
           if (mobileToggle) {
             mobileToggle.classList.remove("active");
           }
-        } else if (!target && href !== "#produtos") {
-          // Target doesn't exist - redirect to index.html#section
+        });
+      });
+    });
+
+    const topLevelLinks = document.querySelectorAll(
+      '.nav-menu > li > a.nav-link:not(.dropdown-toggle)',
+    );
+
+    topLevelLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        const target = this.resolveInPageTarget(href);
+
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+
+          if (navMenu) {
+            navMenu.classList.remove("active");
+          }
+          if (mobileToggle) {
+            mobileToggle.classList.remove("active");
+          }
+        } else if (href && href.startsWith("#")) {
           e.preventDefault();
           window.location.href = `index.html${href}`;
         }
       });
     });
+
+    this.setActiveLink();
   },
 
   setActiveLink() {

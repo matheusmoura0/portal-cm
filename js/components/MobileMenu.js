@@ -1,12 +1,21 @@
 /**
  * Mobile Menu Component
  * Standardized overlay for mobile navigation across all portal products
- * Matches desktop header navigation with expandable sub-menus
  */
 
 const MobileMenu = {
+  getColumnsSubmenuHTML() {
+    const items = (window.CMColumns && window.CMColumns.getCatalog()) || [];
+    return items
+      .map(
+        (item) => `
+          <li><a href="${item.url}">${item.label}</a></li>
+        `,
+      )
+      .join("");
+  },
+
   render() {
-    // Prevent double rendering
     if (document.getElementById("mobile-menu-overlay")) return;
 
     const overlay = document.createElement("div");
@@ -36,7 +45,16 @@ const MobileMenu = {
 
         <nav class="mobile-nav-links">
           <ul class="mobile-nav-main">
-            <li><a href="opiniao.html"><i class="fas fa-star"></i> Colunas</a></li>
+            <li class="mobile-nav-has-submenu">
+              <button class="mobile-submenu-toggle" aria-expanded="false" aria-haspopup="true">
+                <span><i class="fas fa-star"></i> Colunas</span>
+                <i class="fas fa-chevron-down mobile-submenu-arrow"></i>
+              </button>
+              <ul class="mobile-submenu mobile-submenu-columns" id="mobile-submenu-colunas">
+                ${this.getColumnsSubmenuHTML()}
+              </ul>
+            </li>
+            <li><a href="index.html#opiniao"><i class="fas fa-comment-alt"></i> Opinião</a></li>
             <li><a href="index.html#politica"><i class="fas fa-landmark"></i> Política</a></li>
             <li><a href="index.html#economia"><i class="fas fa-chart-line"></i> Economia</a></li>
             <li><a href="index.html#justica"><i class="fas fa-balance-scale"></i> Justiça</a></li>
@@ -98,15 +116,12 @@ const MobileMenu = {
         if (query) {
           console.log("Searching for:", query);
           this.toggle(false);
-          // Redirect or handle search
         }
       });
     }
 
-    // Initialize sub-menu toggles
     this.initSubmenus();
 
-    // Handle main navigation links to close menu
     const mainLinks = overlay?.querySelectorAll(".mobile-nav-main > li > a");
     mainLinks?.forEach((link) => {
       link.addEventListener("click", (e) => {
@@ -123,7 +138,6 @@ const MobileMenu = {
       });
     });
 
-    // Handle sub-menu links
     const subLinks = overlay?.querySelectorAll(".mobile-submenu a");
     subLinks?.forEach((link) => {
       link.addEventListener("click", (e) => {
@@ -176,7 +190,6 @@ const MobileMenu = {
         const arrow = toggle.querySelector(".mobile-submenu-arrow");
         const isExpanded = toggle.getAttribute("aria-expanded") === "true";
 
-        // Close all other submenus
         toggles.forEach((otherToggle) => {
           if (otherToggle !== toggle) {
             otherToggle.setAttribute("aria-expanded", "false");
@@ -190,11 +203,10 @@ const MobileMenu = {
           }
         });
 
-        // Toggle current submenu
-        toggle.setAttribute("aria-expanded", !isExpanded);
-        toggle.classList.toggle("active");
-        if (submenu) submenu.classList.toggle("active");
-        if (arrow) arrow.classList.toggle("active");
+        toggle.setAttribute("aria-expanded", String(!isExpanded));
+        toggle.classList.toggle("active", !isExpanded);
+        if (submenu) submenu.classList.toggle("active", !isExpanded);
+        if (arrow) arrow.classList.toggle("active", !isExpanded);
       });
     });
   },
@@ -204,7 +216,6 @@ const MobileMenu = {
     if (!overlay) {
       if (show) {
         this.render();
-        // Recurse once after render
         setTimeout(() => this.toggle(true), 10);
       }
       return;
@@ -213,14 +224,12 @@ const MobileMenu = {
     if (show) {
       overlay.classList.add("active");
       document.body.classList.add("mobile-menu-open");
-      // Prevent body scroll
       document.body.style.overflow = "hidden";
     } else {
       overlay.classList.remove("active");
       document.body.classList.remove("mobile-menu-open");
       document.body.style.overflow = "";
 
-      // Close all submenus when closing main menu
       const toggles = document.querySelectorAll(".mobile-submenu-toggle");
       toggles.forEach((toggle) => {
         toggle.setAttribute("aria-expanded", "false");

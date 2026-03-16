@@ -1120,6 +1120,94 @@ const portalMockData = {
   ],
 };
 
+const columnPlaceholderAuthors = [
+  "Equipe CM",
+  "Redação Especial",
+  "Análise CM",
+  "Editor Convidado",
+  "Colunista Especial",
+  "Correspondente CM",
+];
+
+const columnHighlightTopics = [
+  "os bastidores da semana",
+  "os movimentos mais recentes da editoria",
+  "o cenário que influencia a cobertura atual",
+];
+
+const columnArticleTopics = [
+  "as leituras do dia",
+  "os desdobramentos mais relevantes",
+  "os efeitos práticos desta agenda",
+  "o impacto no noticiário regional",
+  "as articulações que ganharam força",
+  "o que muda para os próximos dias",
+  "os personagens que concentram a atenção",
+  "os sinais que o mercado acompanha",
+  "a pauta que entrou no radar da redação",
+];
+
+function getSharedColumnCatalog() {
+  if (
+    typeof window !== "undefined" &&
+    window.CMColumns &&
+    typeof window.CMColumns.getCatalog === "function"
+  ) {
+    return window.CMColumns.getCatalog();
+  }
+
+  return [];
+}
+
+function buildColumnDescription(label) {
+  return `${label} reúne análises, bastidores e leituras editoriais do Correio da Manhã para a edição digital do portal.`;
+}
+
+function buildColumnItem(column, columnIndex, itemIndex, type) {
+  const topicList =
+    type === "highlight" ? columnHighlightTopics : columnArticleTopics;
+  const topic = topicList[itemIndex % topicList.length];
+  const author =
+    columnPlaceholderAuthors[(columnIndex + itemIndex) % columnPlaceholderAuthors.length];
+  const itemNumber = itemIndex + 1;
+  const itemId = `${column.slug}-${type}-${itemNumber}`;
+  const titlePrefix = type === "highlight" ? "Panorama" : "Análise";
+  const title = `${column.label}: ${titlePrefix} sobre ${topic}`;
+  const excerpt = `${column.label} destaca ${topic} com foco editorial, leitura de contexto e acompanhamento permanente da redação.`;
+
+  return {
+    id: itemId,
+    title,
+    excerpt,
+    img: `https://picsum.photos/seed/${column.slug}-${type}-${itemNumber}/600/400`,
+    link: `noticia.html?id=${itemId}&product=nacional`,
+    author,
+    role: "Colunista",
+    time: `Há ${itemNumber + 1} horas`,
+    category: column.label,
+    avatarImage: "",
+  };
+}
+
+function buildColumnsPayload() {
+  return getSharedColumnCatalog().map((column, columnIndex) => ({
+    slug: column.slug,
+    label: column.label,
+    description: buildColumnDescription(column.label),
+    highlights: Array.from({ length: 3 }, (_, itemIndex) =>
+      buildColumnItem(column, columnIndex, itemIndex, "highlight"),
+    ),
+    articles: Array.from({ length: 9 }, (_, itemIndex) =>
+      buildColumnItem(column, columnIndex, itemIndex, "article"),
+    ),
+  }));
+}
+
+portalMockData.colunas = buildColumnsPayload();
+portalMockData.colunasBySlug = Object.fromEntries(
+  portalMockData.colunas.map((column) => [column.slug, column]),
+);
+
 const portalProductMap = {
   politica: "nacional",
   justica: "nacional",
@@ -1173,45 +1261,79 @@ function buildArticleId(sectionKey, index, item) {
   return explicitId || `${sectionKey}-${index + 1}`;
 }
 
+function buildColumnArticleBody(column, item) {
+  const excerpt = item.excerpt || "Conteúdo indisponível.";
+  const author = item.author || "Correio da Manhã";
+
+  return `
+    <p>${excerpt}</p>
+    <p>${author} apresenta os principais pontos de ${column.label.toLowerCase()} para a edição digital, com leitura de contexto e atualização permanente.</p>
+    <h2>Leitura editorial</h2>
+    <p>${column.description}</p>
+    <p>Novos textos desta coluna serão incorporados conforme a pauta avance ao longo do dia.</p>
+  `;
+}
+
+function registerArticle(articles, articleId, item, product, contentBuilder = null) {
+  const date = item.date || "10 de março de 2026";
+  const image =
+    item.image ||
+    item.img ||
+    "https://placehold.co/1200x600/1a3a5c/ffffff?text=Imagem+de+Destaque";
+  const title = item.title || "Sem título";
+
+  articles[articleId] = {
+    id: articleId,
+    category: item.category || item.tag || "Notícias",
+    title,
+    subtitle: item.excerpt || "",
+    author: item.author || "Correio da Manhã",
+    date,
+    time: item.time || "",
+    image,
+    content:
+      typeof contentBuilder === "function"
+        ? contentBuilder(item)
+        : item.content || buildArticleBody(item),
+    product,
+  };
+
+  if (!item.id) {
+    item.id = articleId;
+  }
+
+  if (!item.link || item.link === "noticia.html") {
+    item.link = `noticia.html?id=${articleId}&product=${product}`;
+  }
+}
+
 function normalizeArticleData() {
   const articles = {};
 
   Object.entries(portalMockData).forEach(([sectionKey, items]) => {
     if (!Array.isArray(items)) return;
+    if (sectionKey === "colunas") return;
 
     const product = portalProductMap[sectionKey] || "nacional";
 
     items.forEach((item, index) => {
       const articleId = buildArticleId(sectionKey, index, item);
-      const date = item.date || "10 de março de 2026";
-      const image =
-        item.image ||
-        item.img ||
-        "https://placehold.co/1200x600/1a3a5c/ffffff?text=Imagem+de+Destaque";
-      const title = item.title || "Sem título";
-
-      articles[articleId] = {
-        id: articleId,
-        category: item.category || item.tag || "Notícias",
-        title,
-        subtitle: item.excerpt || "",
-        author: item.author || "Correio da Manhã",
-        date,
-        time: item.time || "",
-        image,
-        content: item.content || buildArticleBody(item),
-        product,
-      };
-
-      if (!item.id) {
-        item.id = articleId;
-      }
-
-      if (!item.link || item.link === "noticia.html") {
-        item.link = `noticia.html?id=${articleId}&product=${product}`;
-      }
+      registerArticle(articles, articleId, item, product);
     });
   });
+
+  if (Array.isArray(portalMockData.colunas)) {
+    portalMockData.colunas.forEach((column) => {
+      const allItems = [...(column.highlights || []), ...(column.articles || [])];
+
+      allItems.forEach((item, index) => {
+        const articleId = item.id || `${column.slug}-item-${index + 1}`;
+        registerArticle(articles, articleId, item, "nacional", (articleItem) =>
+          buildColumnArticleBody(column, articleItem),
+        );
+      });
+    });
+  }
 
   portalMockData.articles = articles;
   portalMockData.articleAliases = articleAliasMap;

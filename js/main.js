@@ -846,13 +846,18 @@ const Search = {
   },
 
   handleSearch(query) {
-    if (query.length < 2) return;
-
-    // Efeito visual nos cards
     const cards = document.querySelectorAll(
       ".news-card, .opinion-article, .news-list-item",
     );
-    const normalizedQuery = query.toLowerCase();
+    const normalizedQuery = query.trim().toLowerCase();
+
+    if (normalizedQuery.length < 2) {
+      cards.forEach((card) => {
+        card.style.display = "";
+        card.classList.remove("search-highlight");
+      });
+      return;
+    }
 
     cards.forEach((card) => {
       const title =

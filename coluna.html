@@ -602,11 +602,12 @@
                                         Lorem ipsum dolor sit amet.
                                     </p>
                                     <form
-                                        id="newsletter-form"
+                                        id="column-newsletter-form"
                                         style="margin-top: 15px"
                                     >
                                         <input
                                             type="email"
+                                            id="column-newsletter-email"
                                             placeholder="Seu e-mail"
                                             required
                                             style="
@@ -780,8 +781,9 @@
                 }
 
                 // Newsletter form handling
-                const newsletterForm =
-                    document.getElementById("newsletter-form");
+                const newsletterForm = document.getElementById(
+                    "column-newsletter-form",
+                );
                 if (newsletterForm) {
                     newsletterForm.addEventListener("submit", (e) => {
                         e.preventDefault();

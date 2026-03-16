@@ -78,11 +78,19 @@ const DataLoader = {
     const author = item.author || "Correio da Manhã";
     const categoryTag = item.category || category || "Notícias";
 
-    const linkWithProduct = this.appendProductToLink(link, product);
+    const linkWithProduct = this.sanitizeUrl(
+      this.appendProductToLink(link, product),
+      "noticia.html",
+    );
+    const safeImageUrl = this.sanitizeUrl(
+      imageUrl,
+      "https://placehold.co/600x400?text=Sem+Imagem",
+    );
 
-    const imageHTML = `<img src="${imageUrl}" alt="${this.escapeHtml(title)}">`;
+    const safeImageAttr = this.escapeHtml(safeImageUrl);
+    const imageHTML = `<img src="${safeImageAttr}" alt="${this.escapeHtml(title)}">`;
     const excerptHTML = excerpt
-      ? `<p class="news-excerpt">${this.escapeHtml(excerpt)}</p>`
+      ? `<p class="news-excerpt">${this.escapeHtml(this.stripHtml(excerpt))}</p>`
       : "";
 
     const metadataHTML = hideMetadata
@@ -94,15 +102,17 @@ const DataLoader = {
       </div>
     `;
 
+    const safeLinkAttr = this.escapeHtml(linkWithProduct);
+
     return `
             <article class="${cardClass}">
-                <a href="${linkWithProduct}" class="news-image">
+                <a href="${safeLinkAttr}" class="news-image">
                     ${imageHTML}
                 </a>
                 <div class="news-content">
                     <span class="category-tag">${this.escapeHtml(categoryTag)}</span>
                     <h3>
-                        <a href="${linkWithProduct}">${this.escapeHtml(title)}</a>
+                        <a href="${safeLinkAttr}">${this.escapeHtml(title)}</a>
                     </h3>
                     ${excerptHTML}
                     ${metadataHTML}
@@ -131,17 +141,24 @@ const DataLoader = {
     const mainNews = news[0];
     const sideNews = news.slice(1, 4);
     const product = this.getProductSlug(category);
-    const mainLink = this.appendProductToLink(mainNews.link, product);
+    const mainLink = this.sanitizeUrl(
+      this.appendProductToLink(mainNews.link, product),
+      "noticia.html",
+    );
+    const mainImage = this.sanitizeUrl(
+      mainNews.img || mainNews.image,
+      "https://placehold.co/600x400?text=Sem+Imagem",
+    );
 
     let html = `
             <article class="modern-section-main" style="display: flex; flex-direction: column; background: #fff; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden;">
-                <a href="${mainLink}" class="news-image" style="display: block;">
-                    <img src="${mainNews.img}" alt="${this.escapeHtml(mainNews.title)}" style="width: 100%; height: 250px; object-fit: cover;">
+                <a href="${this.escapeHtml(mainLink)}" class="news-image" style="display: block;">
+                    <img src="${this.escapeHtml(mainImage)}" alt="${this.escapeHtml(mainNews.title)}" style="width: 100%; height: 250px; object-fit: cover;">
                     <span class="category-tag" style="position: absolute; top: 10px; left: 10px; background: #d0021b; color: #fff; padding: 5px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">${this.escapeHtml(displayName)}</span>
                 </a>
                 <div class="news-content" style="padding: 20px;">
                     <h3 style="font-family: 'Noto Serif', serif; font-size: 1.4rem; line-height: 1.3; margin: 10px 0;">
-                        <a href="${mainLink}" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(mainNews.title)}</a>
+                        <a href="${this.escapeHtml(mainLink)}" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(mainNews.title)}</a>
                     </h3>
                     ${mainNews.excerpt ? `<p style="color: #666; margin: 10px 0;">${this.escapeHtml(mainNews.excerpt.substring(0, 150))}...</p>` : ""}
                     <div class="article-meta" style="font-size: 0.85rem; color: #666; margin-top: 10px;">
@@ -154,15 +171,22 @@ const DataLoader = {
         `;
 
     sideNews.forEach((item) => {
-      const itemLink = this.appendProductToLink(item.link, product);
+      const itemLink = this.sanitizeUrl(
+        this.appendProductToLink(item.link, product),
+        "noticia.html",
+      );
+      const itemImage = this.sanitizeUrl(
+        item.img || item.image,
+        "https://placehold.co/600x400?text=Sem+Imagem",
+      );
       html += `
                 <article class="modern-section-item" style="display: flex; background: #fff; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden;">
-                    <a href="${itemLink}" class="news-image" style="display: block; width: 120px; flex-shrink: 0;">
-                        <img src="${item.img}" alt="${this.escapeHtml(item.title)}" style="width: 100%; height: 80px; object-fit: cover;">
+                    <a href="${this.escapeHtml(itemLink)}" class="news-image" style="display: block; width: 120px; flex-shrink: 0;">
+                        <img src="${this.escapeHtml(itemImage)}" alt="${this.escapeHtml(item.title)}" style="width: 100%; height: 80px; object-fit: cover;">
                     </a>
                     <div class="news-content" style="padding: 10px; flex: 1;">
                         <h4 style="font-family: 'Noto Serif', serif; font-size: 0.95rem; line-height: 1.3; margin: 0;">
-                            <a href="${itemLink}" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(item.title)}</a>
+                            <a href="${this.escapeHtml(itemLink)}" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(item.title)}</a>
                         </h4>
                         <span class="time" style="font-size: 0.75rem; color: #999;">${this.escapeHtml(item.time || "Há pouco")}</span>
                     </div>
@@ -195,12 +219,18 @@ const DataLoader = {
     news.forEach((item) => {
       const tag = item.tag || item.category || "Notícias";
       const title = item.title;
-      const imageUrl = item.img || item.image;
-      const itemLink = this.appendProductToLink(item.link, product);
+      const imageUrl = this.sanitizeUrl(
+        item.img || item.image,
+        "https://placehold.co/600x400?text=Sem+Imagem",
+      );
+      const itemLink = this.sanitizeUrl(
+        this.appendProductToLink(item.link, product),
+        "noticia.html",
+      );
 
       html += `
-                <a href="${itemLink}" class="regional-card-item">
-                    <img src="${imageUrl}" alt="${this.escapeHtml(title)}">
+                <a href="${this.escapeHtml(itemLink)}" class="regional-card-item">
+                    <img src="${this.escapeHtml(imageUrl)}" alt="${this.escapeHtml(title)}">
                     <div class="regional-card-content">
                         <span class="regional-tag">${this.escapeHtml(tag)}</span>
                         <h3>${this.escapeHtml(title)}</h3>
@@ -230,6 +260,7 @@ const DataLoader = {
 
     let html = "";
     opinions.forEach((item) => {
+      const itemLink = this.sanitizeUrl(item.link, "coluna.html");
       html += `
                 <article class="opinion-article" style="background: #fff; border: 1px solid #eaeaea; border-radius: 8px; padding: 20px; margin-bottom: 15px;">
                     <div class="opinion-author" style="display: flex; align-items: center; margin-bottom: 15px;">
@@ -242,9 +273,9 @@ const DataLoader = {
                         </div>
                     </div>
                     <h3 style="font-family: 'Noto Serif', serif; font-size: 1.2rem; margin-bottom: 10px;">
-                        <a href="${item.link}" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(item.title)}</a>
+                        <a href="${this.escapeHtml(itemLink)}" style="color: #1a1a2e; text-decoration: none;">${this.escapeHtml(item.title)}</a>
                     </h3>
-                    <p style="color: #666; line-height: 1.5;">${this.escapeHtml(item.excerpt)}</p>
+                    <p style="color: #666; line-height: 1.5;">${this.escapeHtml(this.stripHtml(item.excerpt || ""))}</p>
                     <span class="time" style="font-size: 0.85rem; color: #999; margin-top: 10px; display: block;">${this.escapeHtml(item.time)}</span>
                 </article>
             `;
@@ -280,6 +311,11 @@ const DataLoader = {
     // Opinion page
     if (filename.includes("opiniao")) {
       this.loadOpinionPage();
+      return;
+    }
+
+    if (filename.includes("noticias")) {
+      this.loadNewsPage();
       return;
     }
 
@@ -328,7 +364,7 @@ const DataLoader = {
         null,
         false,
         6,
-        null,
+        this.getProductSlug(section),
       );
       this.initLoadMore(mainGrid);
     }
@@ -437,6 +473,19 @@ const DataLoader = {
     }
   },
 
+  loadNewsPage() {
+    console.log("DataLoader: Loading aggregated news page");
+
+    const container = document.getElementById("news-container");
+    if (!container) {
+      return;
+    }
+
+    container.innerHTML = this.collectNewsPageItems()
+      .map((item, index) => this.renderNewsPageCard(item, index))
+      .join("");
+  },
+
   /**
    * Format category name for display
    */
@@ -467,6 +516,13 @@ const DataLoader = {
 
   getProductSlug(key) {
     const productMap = {
+      politica: "nacional",
+      economia: "nacional",
+      justica: "nacional",
+      cultura: "nacional",
+      esportes: "nacional",
+      brasil: "nacional",
+      mundo: "nacional",
       nacional: "nacional",
       "sao-paulo": "sp",
       "distrito-federal": "df",
@@ -493,6 +549,90 @@ const DataLoader = {
       : `${base}${separator}product=${encodeURIComponent(product)}`;
 
     return hash ? `${linkedBase}#${hash}` : linkedBase;
+  },
+
+  sanitizeUrl(url, fallback = "#") {
+    if (!url) return fallback;
+
+    const value = String(url).trim();
+    if (!value) return fallback;
+
+    if (value.startsWith("#")) {
+      return value;
+    }
+
+    if (/^(javascript|data):/i.test(value)) {
+      return fallback;
+    }
+
+    return value;
+  },
+
+  stripHtml(text) {
+    const div = document.createElement("div");
+    div.innerHTML = text || "";
+    return div.textContent || div.innerText || "";
+  },
+
+  collectNewsPageItems() {
+    const sections = [
+      "politica",
+      "economia",
+      "justica",
+      "cultura",
+      "esportes",
+      "brasil",
+      "mundo",
+    ];
+
+    return sections.flatMap((sectionKey) => {
+      const items = Array.isArray(portalMockData[sectionKey])
+        ? portalMockData[sectionKey]
+        : [];
+      const product = this.getProductSlug(sectionKey) || "nacional";
+
+      return items.map((item, index) => ({
+        id: item.id || `${sectionKey}-${index + 1}`,
+        categoryKey: sectionKey,
+        categoryLabel:
+          item.category || item.tag || this.formatCategoryName(sectionKey),
+        title: item.title || "Sem título",
+        excerpt: this.stripHtml(item.excerpt || ""),
+        author: item.author || "Correio da Manhã",
+        time: item.time || "Há pouco",
+        image: this.sanitizeUrl(
+          item.img || item.image,
+          "https://placehold.co/600x400?text=Sem+Imagem",
+        ),
+        link: this.sanitizeUrl(
+          this.appendProductToLink(item.link || "noticia.html", product),
+          "noticia.html",
+        ),
+      }));
+    });
+  },
+
+  renderNewsPageCard(item, index) {
+    return `
+      <article class="news-card" data-category="${this.escapeHtml(item.categoryKey)}" data-order="${index}">
+        <a href="${this.escapeHtml(item.link)}" class="news-card-image">
+          <img src="${this.escapeHtml(item.image)}" alt="${this.escapeHtml(item.title)}" />
+          <span class="news-card-category ${this.escapeHtml(item.categoryKey)}">
+            ${this.escapeHtml(item.categoryLabel)}
+          </span>
+        </a>
+        <div class="news-card-content">
+          <h3 class="news-card-title">
+            <a href="${this.escapeHtml(item.link)}">${this.escapeHtml(item.title)}</a>
+          </h3>
+          <p class="news-card-excerpt">${this.escapeHtml(item.excerpt)}</p>
+          <div class="news-card-meta">
+            <span class="news-card-author">Por ${this.escapeHtml(item.author)}</span>
+            <span class="time">${this.escapeHtml(item.time)}</span>
+          </div>
+        </div>
+      </article>
+    `;
   },
 
   initLoadMore(container) {

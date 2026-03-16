@@ -770,23 +770,32 @@ const RegionalNews = {
   },
 
   getTemplate(featuredArticle, gridArticles, productKey) {
+    const featuredLink = this.safeUrl(
+      featuredArticle.link || this.getArticleUrl(featuredArticle.id, productKey),
+      "noticia.html",
+    );
+    const featuredImage = this.safeUrl(
+      featuredArticle.image,
+      "https://placehold.co/800x450/f0f0f0/999999?text=Imagem+Indispon%C3%ADvel",
+    );
+
     return `
       <!-- Hero Article -->
       <article class="regional-hero-article">
-        <a href="${featuredArticle.link || this.getArticleUrl(featuredArticle.id, productKey)}" class="regional-hero-link">
+        <a href="${this.escapeText(featuredLink)}" class="regional-hero-link">
           <div class="regional-hero-image">
-            <img src="${featuredArticle.image}" alt="${featuredArticle.title}"
+            <img src="${this.escapeText(featuredImage)}" alt="${this.escapeText(featuredArticle.title)}"
                  onerror="this.src='https://placehold.co/800x450/f0f0f0/999999?text=Imagem+Indisponível'">
             <span class="regional-category-tag" style="--category-color: ${featuredArticle.categoryColor}; border-left-color: ${featuredArticle.categoryColor};">
-              ${featuredArticle.category}
+              ${this.escapeText(featuredArticle.category)}
             </span>
           </div>
           <div class="regional-hero-content">
-            <h2 class="regional-hero-title">${featuredArticle.title}</h2>
-            <p class="regional-hero-excerpt">${featuredArticle.excerpt}</p>
+            <h2 class="regional-hero-title">${this.escapeText(featuredArticle.title)}</h2>
+            <p class="regional-hero-excerpt">${this.escapeText(featuredArticle.excerpt)}</p>
             <div class="regional-article-meta">
-              <span class="regional-author">${featuredArticle.author}</span>
-              <span class="regional-time">${featuredArticle.time}</span>
+              <span class="regional-author">${this.escapeText(featuredArticle.author)}</span>
+              <span class="regional-time">${this.escapeText(featuredArticle.time)}</span>
             </div>
           </div>
         </a>
@@ -798,20 +807,20 @@ const RegionalNews = {
           .map(
             (article) => `
           <article class="regional-news-card">
-            <a href="${article.link || this.getArticleUrl(article.id, productKey)}" class="regional-card-link">
+            <a href="${this.escapeText(this.safeUrl(article.link || this.getArticleUrl(article.id, productKey), "noticia.html"))}" class="regional-card-link">
               <div class="regional-card-image">
-                <img src="${article.image}" alt="${article.title}"
+                <img src="${this.escapeText(this.safeUrl(article.image, "https://placehold.co/400x300/f0f0f0/999999?text=Sem+Imagem"))}" alt="${this.escapeText(article.title)}"
                      onerror="this.src='https://placehold.co/400x300/f0f0f0/999999?text=Sem+Imagem'">
                 <span class="regional-category-tag" style="--category-color: ${article.categoryColor}; border-left-color: ${article.categoryColor};">
-                  ${article.category}
+                  ${this.escapeText(article.category)}
                 </span>
               </div>
               <div class="regional-card-content">
-                <h3 class="regional-card-title" style="--category-color: ${article.categoryColor};">${article.title}</h3>
-                <p class="regional-card-excerpt">${article.excerpt}</p>
+                <h3 class="regional-card-title" style="--category-color: ${article.categoryColor};">${this.escapeText(article.title)}</h3>
+                <p class="regional-card-excerpt">${this.escapeText(article.excerpt)}</p>
                 <div class="regional-article-meta">
-                  <span class="regional-author">${article.author}</span>
-                  <span class="regional-time">${article.time}</span>
+                  <span class="regional-author">${this.escapeText(article.author)}</span>
+                  <span class="regional-time">${this.escapeText(article.time)}</span>
                 </div>
               </div>
             </a>
@@ -830,6 +839,23 @@ const RegionalNews = {
 
   getArticleUrl(articleId, productKey) {
     return `noticia.html?id=${encodeURIComponent(articleId)}&product=${encodeURIComponent(productKey)}`;
+  },
+
+  safeUrl(value, fallback = "#") {
+    if (!value) return fallback;
+
+    const url = String(value).trim();
+    if (!url || /^(javascript|data):/i.test(url)) {
+      return fallback;
+    }
+
+    return url;
+  },
+
+  escapeText(value) {
+    const div = document.createElement("div");
+    div.textContent = value || "";
+    return div.innerHTML;
   },
 
   getProductKey(region) {

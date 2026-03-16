@@ -121,8 +121,11 @@ document.addEventListener("DOMContentLoaded", () => {
 function initializeProductPage(product) {
   const productData = ProductConfig[product] || ProductConfig.nacional;
 
-  // Set body class for theming
-  document.body.className = `has-regional-headers ${productData.themeClass}`;
+  // Preserve previously applied body state while switching the product theme.
+  Object.values(ProductConfig).forEach(({ themeClass }) => {
+    document.body.classList.remove(themeClass);
+  });
+  document.body.classList.add("has-regional-headers", productData.themeClass);
   document.body.setAttribute("data-product-loaded", "true");
 
   // Set CSS variables for product color
@@ -305,7 +308,7 @@ function setElement(id, content) {
  */
 function setElementHTML(id, content) {
   const el = document.getElementById(id);
-  if (el) el.innerHTML = content;
+  if (el) el.innerHTML = sanitizeArticleContent(content);
 }
 
 /**
@@ -335,4 +338,36 @@ function adjustColor(color, amount) {
   b = clamp(b + amount, 0, 255);
 
   return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+}
+
+function sanitizeArticleContent(content) {
+  if (typeof content !== "string") {
+    return "";
+  }
+
+  const template = document.createElement("template");
+  template.innerHTML = content;
+
+  template.content.querySelectorAll("script").forEach((node) => node.remove());
+
+  template.content.querySelectorAll("*").forEach((node) => {
+    Array.from(node.attributes).forEach((attribute) => {
+      const name = attribute.name.toLowerCase();
+      const value = attribute.value.trim();
+
+      if (name.startsWith("on")) {
+        node.removeAttribute(attribute.name);
+        return;
+      }
+
+      if (
+        (name === "href" || name === "src") &&
+        /^javascript:/i.test(value)
+      ) {
+        node.removeAttribute(attribute.name);
+      }
+    });
+  });
+
+  return template.innerHTML;
 }

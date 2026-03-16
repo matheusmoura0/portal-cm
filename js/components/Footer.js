@@ -33,21 +33,20 @@ const Footer = {
                 <div class="footer-section">
                     <span class="footer-title">Sobre</span>
                     <ul class="footer-links">
-                        <li><a href="/sobre.html">Quem somos</a></li>
-                        <li><a href="/expediente.html">Expediente</a></li>
-                        <li><a href="/privacidade.html">Política de Privacidade</a></li>
-                        <li><a href="/termos.html">Termos de Uso</a></li>
+                        <li><a href="sobre.html">Quem somos</a></li>
+
+                    
                     </ul>
                 </div>
                 <div class="footer-section">
                     <span class="footer-title">Editorias</span>
                     <ul class="footer-links">
-                        <li><a href="/opiniao.html">Opinião</a></li>
-                        <li><a href="/politica.html">Política</a></li>
-                        <li><a href="/economia.html">Economia</a></li>
-                        <li><a href="/justica.html">Justiça</a></li>
-                        <li><a href="/esportes.html">Esportes</a></li>
-                        <li><a href="/cultura.html">Cultura</a></li>
+                        <li><a href="opiniao.html">Opinião</a></li>
+                        <li><a href="politica.html">Política</a></li>
+                        <li><a href="economia.html">Economia</a></li>
+                        <li><a href="justica.html">Justiça</a></li>
+                        <li><a href="esportes.html">Esportes</a></li>
+                        <li><a href="cultura.html">Cultura</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -63,10 +62,9 @@ const Footer = {
                 <div class="footer-section">
                     <span class="footer-title">Contato</span>
                     <ul class="footer-links">
-                        <li><a href="/contato.html">Fale conosco</a></li>
-                        <li><a href="/trabalhe-conosco.html">Trabalhe conosco</a></li>
-                        <li><a href="/anuncie.html">Anuncie</a></li>
-                        <li><a href="/assine.html">Assine</a></li>
+                        <li><a href="contato.html">Fale conosco</a></li>
+                        <li><a href="anuncie.html">Anuncie</a></li>
+                        <li><a href="assine.html">Assine</a></li>
                     </ul>
                 </div>
             </div>

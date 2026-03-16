@@ -110,17 +110,14 @@ const MobileMenu = {
     const mainLinks = overlay?.querySelectorAll(".mobile-nav-main > li > a");
     mainLinks?.forEach((link) => {
       link.addEventListener("click", (e) => {
-        // Don't close if it's a hash link that stays on same page
         const href = link.getAttribute("href");
-        if (href && href.startsWith("#")) {
+        const target = this.resolveInPageTarget(href);
+
+        if (target) {
           e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
           this.toggle(false);
-        } else if (href && !href.includes("index.html#")) {
-          // Regular link - let it navigate naturally
+        } else if (href) {
           this.toggle(false);
         }
       });
@@ -131,25 +128,42 @@ const MobileMenu = {
     subLinks?.forEach((link) => {
       link.addEventListener("click", (e) => {
         const href = link.getAttribute("href");
-        if (href && href.startsWith("#")) {
+        const target = this.resolveInPageTarget(href);
+
+        if (target) {
           e.preventDefault();
-          // If on index.html, scroll to section
-          if (
-            window.location.pathname.endsWith("index.html") ||
-            window.location.pathname.endsWith("/")
-          ) {
-            const target = document.querySelector(href);
-            if (target) {
-              target.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-          }
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
           this.toggle(false);
-        } else {
-          // Regular link
+        } else if (href) {
           this.toggle(false);
         }
       });
     });
+  },
+
+  resolveInPageTarget(href) {
+    if (!href) return null;
+
+    let hash = "";
+    if (href.startsWith("#")) {
+      hash = href;
+    } else if (href.includes("#")) {
+      const [base, targetHash] = href.split("#");
+      const currentPage =
+        window.location.pathname.split("/").pop() || "index.html";
+      const normalizedBase = base || currentPage;
+
+      if (
+        normalizedBase === currentPage ||
+        (normalizedBase === "index.html" &&
+          (currentPage === "index.html" || currentPage === ""))
+      ) {
+        hash = `#${targetHash}`;
+      }
+    }
+
+    if (!hash || hash === "#") return null;
+    return document.querySelector(hash);
   },
 
   initSubmenus() {

@@ -1371,153 +1371,30 @@ const NewsNavigation = {
 };
 
 // ========================================
-// Geolocalização e Localização
+// Tema padrão do portal
 // ========================================
 
 const RegionalColors = {
+  defaultHeaderColor: "#1a3a5c",
+
   init() {
-    this.detectRegion();
+    this.clearLegacyRegionCache();
+    this.applyDefaultTheme();
   },
 
-  detectRegion() {
-    // Tenta obter região do localStorage primeiro (cache)
-    const cachedRegion = localStorage.getItem("cm_region");
-    if (cachedRegion) {
-      this.updateRegionInfo(cachedRegion);
-      return;
-    }
-
-    // Se não há cache, tenta usar geolocalização
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const region = this.getRegionFromCoords(
-            position.coords.latitude,
-            position.coords.longitude,
-          );
-          localStorage.setItem("cm_region", region);
-          this.updateRegionInfo(region);
-        },
-        (error) => {
-          console.log("Geolocalização não permitida");
-          this.updateRegionInfo("default");
-        },
-      );
-    } else {
-      // Sem geolocalização
-      this.updateRegionInfo("default");
+  clearLegacyRegionCache() {
+    try {
+      localStorage.removeItem("cm_region");
+    } catch (error) {
+      console.warn("Nao foi possivel limpar o cache legado de regiao.", error);
     }
   },
 
-  getRegionFromCoords(lat, lon) {
-    // Mapeamento aproximado de coordenadas para regiões
-    // Rio de Janeiro: aproximadamente -22.9, -43.2
-    // São Paulo: aproximadamente -23.5, -46.6
-    // Brasília: aproximadamente -15.8, -47.9
-
-    // Distância aproximada de cada centro regional
-    const regions = [
-      {
-        name: "Rio de Janeiro",
-        lat: -22.9068,
-        lon: -43.1729,
-        threshold: 150, // km
-      },
-      {
-        name: "São Paulo",
-        lat: -23.5505,
-        lon: -46.6333,
-        threshold: 150, // km
-      },
-      {
-        name: "Distrito Federal",
-        lat: -15.8267,
-        lon: -47.9218,
-        threshold: 100, // km
-      },
-      {
-        name: "Sul Fluminense",
-        lat: -22.5,
-        lon: -44.1,
-        threshold: 80, // km
-      },
-      {
-        name: "Petrópolis",
-        lat: -22.5113,
-        lon: -43.1779,
-        threshold: 30, // km
-      },
-    ];
-
-    let closestRegion = "default";
-    let minDistance = Infinity;
-
-    regions.forEach((region) => {
-      const distance = this.calculateDistance(lat, lon, region.lat, region.lon);
-      if (distance < region.threshold && distance < minDistance) {
-        closestRegion = region.name;
-        minDistance = distance;
-      }
-    });
-
-    return closestRegion;
-  },
-
-  calculateDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // Raio da Terra em km
-    const dLat = this.toRad(lat2 - lat1);
-    const dLon = this.toRad(lon2 - lon1);
-    const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(this.toRad(lat1)) *
-        Math.cos(this.toRad(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c;
-  },
-
-  toRad(degrees) {
-    return degrees * (Math.PI / 180);
-  },
-
-  updateRegionInfo(region) {
-    // Cores de cada portal regional (baseado nos sites reais)
-    const regionColors = {
-      "Rio de Janeiro": "#cc0000", // Vermelho do Correio da Manhã
-      "São Paulo": "#1a365d", // Azul escuro do Correio da Manhã SP
-      "Sul Fluminense": "#1e6ba8", // Azul médio do Correio Sul Fluminense
-      Petrópolis: "#d60000", // Vermelho do Correio Petropolitano
-      "Distrito Federal": "#1a3a5c", // Azul padrão (DF usa template padrão)
-      default: "#1a3a5c", // Azul padrão do portal
-    };
-
-    const headerColor = regionColors[region] || regionColors.default;
-
-    // Atualiza a variável CSS --color-header-bg
+  applyDefaultTheme() {
     document.documentElement.style.setProperty(
       "--color-header-bg",
-      headerColor,
+      this.defaultHeaderColor,
     );
-
-    // Atualiza o texto de localização se existir
-    const weatherInfo = document.getElementById("weather-info");
-    if (weatherInfo && region !== "default") {
-      const cityNames = {
-        "Rio de Janeiro": "Rio de Janeiro",
-        "São Paulo": "São Paulo",
-        "Sul Fluminense": "Sul Fluminense",
-        Petrópolis: "Petrópolis",
-        "Distrito Federal": "Brasília",
-      };
-      const currentText = weatherInfo.textContent;
-      const tempMatch = currentText.match(/:\s*\d+°C/);
-      const temp = tempMatch ? tempMatch[0] : ": 22°C";
-      weatherInfo.textContent = `${cityNames[region] || region}${temp}`;
-    }
-
-    console.log("Região detectada:", region);
-    console.log("Cor do header definida:", headerColor);
   },
 };
 

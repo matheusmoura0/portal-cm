@@ -284,6 +284,77 @@ const DataLoader = {
     container.innerHTML = html;
   },
 
+  getHomepageColumnsSelection() {
+    return [
+      {
+        slug: "correio-politico",
+        icon: "fa-building-columns",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        slug: "correio-bastidores",
+        icon: "fa-user-secret",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        slug: "correio-economico",
+        icon: "fa-chart-line",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        slug: "correio-fluminense",
+        icon: "fa-map-location-dot",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+    ];
+  },
+
+  getCatalogColumnBySlug(slug) {
+    const catalog = window.CMColumns?.getCatalog?.() || [];
+    return catalog.find((item) => item.slug === slug) || null;
+  },
+
+  renderHomepageColumns(containerId = "home-columns-grid") {
+    const container = document.getElementById(containerId);
+    if (!container) {
+      return;
+    }
+
+    const cards = this.getHomepageColumnsSelection()
+      .map((item) => {
+        const catalogColumn = this.getCatalogColumnBySlug(item.slug);
+        const payloadColumn = portalMockData.colunasBySlug?.[item.slug] || null;
+
+        if (!catalogColumn && !payloadColumn) {
+          console.warn(`DataLoader: Column ${item.slug} not found in shared catalog`);
+          return null;
+        }
+
+        const label = payloadColumn?.label || catalogColumn?.label || item.slug;
+        const link =
+          catalogColumn?.url || `coluna.html?slug=${encodeURIComponent(item.slug)}`;
+
+        return `
+          <article class="home-column-card">
+            <a href="${this.escapeHtml(link)}" class="home-column-card-link">
+              <div class="home-column-card-icon" aria-hidden="true">
+                <i class="fas ${this.escapeHtml(item.icon)}"></i>
+              </div>
+              <div class="home-column-card-content">
+                <span class="home-column-card-eyebrow">Lorem ipsum</span>
+                <h3>${this.escapeHtml(label)}</h3>
+                <p>${this.escapeHtml(item.description)}</p>
+              </div>
+            </a>
+          </article>
+        `;
+      })
+      .filter(Boolean)
+      .join("");
+
+    container.innerHTML = cards;
+  },
+
   /**
    * Auto-detect page type and load appropriate data
    */
@@ -471,6 +542,8 @@ const DataLoader = {
         console.warn(`DataLoader: Container ${gridId} not found`);
       }
     }
+
+    this.renderHomepageColumns();
   },
 
   loadNewsPage() {

@@ -457,8 +457,41 @@ button {
     white-space: nowrap;
 }
 
+.nav-link-row {
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-link-primary {
+    padding-right: 4px;
+}
+
+.nav-link-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    padding-left: 2px;
+    padding-right: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    appearance: none;
+}
+
+.nav-link-caret {
+    font-size: 0.72rem;
+    line-height: 1;
+}
+
 .nav-link:hover,
 .nav-link.active {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.nav-dropdown:hover .nav-link-toggle,
+.nav-dropdown.active .nav-link-toggle {
     color: #ffffff;
     border-bottom-color: #ffffff;
 }
@@ -4625,6 +4658,122 @@ header.scrolled,
 @media (max-width: 600px) {
     .colunistas-cards-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+.home-columns-section {
+    padding: 10px 0 60px;
+    scroll-margin-top: 130px;
+}
+
+.home-columns-title-wrap {
+    margin-bottom: 0;
+}
+
+.home-columns-intro {
+    max-width: 640px;
+    margin: -10px 0 28px;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: #5c6672;
+}
+
+.home-columns-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.home-column-card {
+    min-width: 0;
+}
+
+.home-column-card-link {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 100%;
+    padding: 28px 24px;
+    background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
+    border: 1px solid #e1e7ef;
+    border-radius: 18px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 12px 28px rgba(26, 58, 92, 0.08);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.home-column-card-link:hover {
+    transform: translateY(-4px);
+    border-color: #c4d2e2;
+    box-shadow: 0 18px 34px rgba(26, 58, 92, 0.12);
+}
+
+.home-column-card-icon {
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(26, 58, 92, 0.14), rgba(26, 58, 92, 0.03));
+    color: #1a3a5c;
+    font-size: 1.5rem;
+}
+
+.home-column-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.home-column-card-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8b98a8;
+}
+
+.home-column-card-content h3 {
+    margin: 0;
+    font-family: "Noto Serif", serif;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    color: #16283f;
+}
+
+.home-column-card-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #586476;
+}
+
+@media (max-width: 1100px) {
+    .home-columns-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .home-columns-section {
+        padding: 0 0 50px;
+    }
+
+    .home-columns-intro {
+        margin: -4px 0 24px;
+    }
+
+    .home-columns-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-column-card-link {
+        padding: 24px 20px;
     }
 }
 
@@ -9974,6 +10123,39 @@ body.has-regional-headers {
     padding: 14px 0;
 }
 
+.mobile-nav-link-row {
+    display: flex;
+    align-items: stretch;
+}
+
+.mobile-nav-link-primary {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    color: #333333;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+}
+
+.mobile-nav-link-primary i {
+    width: 20px;
+    text-align: center;
+    color: #1a3a5c;
+}
+
+.mobile-nav-link-row .mobile-submenu-toggle {
+    width: auto;
+    padding: 14px 0 14px 16px;
+    flex-shrink: 0;
+}
+
+.mobile-nav-link-row .mobile-submenu-toggle .mobile-submenu-arrow {
+    color: #999999;
+}
+
 /* Sub-menu Toggle Button */
 .mobile-submenu-toggle {
     width: 100%;
@@ -9989,6 +10171,10 @@ body.has-regional-headers {
     text-align: left;
     cursor: pointer;
     transition: background-color 0.2s ease;
+}
+
+.mobile-nav-link-row .mobile-submenu-toggle span {
+    display: none;
 }
 
 .mobile-submenu-toggle:hover {

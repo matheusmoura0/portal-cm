@@ -45,16 +45,26 @@ const MobileMenu = {
 
         <nav class="mobile-nav-links">
           <ul class="mobile-nav-main">
-            <li class="mobile-nav-has-submenu">
-              <button class="mobile-submenu-toggle" aria-expanded="false" aria-haspopup="true">
-                <span><i class="fas fa-star"></i> Colunas</span>
-                <i class="fas fa-chevron-down mobile-submenu-arrow"></i>
-              </button>
+            <li><a href="index.html#opiniao"><i class="fas fa-comment-alt"></i> Opinião</a></li>
+            <li class="mobile-nav-has-submenu mobile-nav-has-split-link">
+              <div class="mobile-nav-link-row">
+                <a href="index.html#colunas" class="mobile-nav-link-primary">
+                  <i class="fas fa-star"></i> Colunas
+                </a>
+                <button
+                  class="mobile-submenu-toggle"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-controls="mobile-submenu-colunas"
+                  aria-label="Abrir menu de Colunas"
+                >
+                  <i class="fas fa-chevron-down mobile-submenu-arrow"></i>
+                </button>
+              </div>
               <ul class="mobile-submenu mobile-submenu-columns" id="mobile-submenu-colunas">
                 ${this.getColumnsSubmenuHTML()}
               </ul>
             </li>
-            <li><a href="index.html#opiniao"><i class="fas fa-comment-alt"></i> Opinião</a></li>
             <li><a href="index.html#politica"><i class="fas fa-landmark"></i> Política</a></li>
             <li><a href="index.html#economia"><i class="fas fa-chart-line"></i> Economia</a></li>
             <li><a href="index.html#justica"><i class="fas fa-balance-scale"></i> Justiça</a></li>
@@ -122,24 +132,8 @@ const MobileMenu = {
 
     this.initSubmenus();
 
-    const mainLinks = overlay?.querySelectorAll(".mobile-nav-main > li > a");
-    mainLinks?.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        const href = link.getAttribute("href");
-        const target = this.resolveInPageTarget(href);
-
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-          this.toggle(false);
-        } else if (href) {
-          this.toggle(false);
-        }
-      });
-    });
-
-    const subLinks = overlay?.querySelectorAll(".mobile-submenu a");
-    subLinks?.forEach((link) => {
+    const links = overlay?.querySelectorAll(".mobile-nav-main a");
+    links?.forEach((link) => {
       link.addEventListener("click", (e) => {
         const href = link.getAttribute("href");
         const target = this.resolveInPageTarget(href);

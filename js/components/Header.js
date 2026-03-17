@@ -120,7 +120,7 @@ const Header = {
       .join("");
 
     return `
-      <div class="dropdown-menu mega-menu columns-mega-menu">
+      <div id="columns-mega-menu" class="dropdown-menu mega-menu columns-mega-menu">
         <div class="mega-menu-grid">
           ${menuColumns}
         </div>
@@ -175,11 +175,23 @@ const Header = {
                     <span></span>
                 </button>
                 <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html#opiniao" class="nav-link">Opinião</a></li>
                     <li class="nav-dropdown">
-                        <a href="coluna.html" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Colunas ▾</a>
+                        <div class="nav-link-row">
+                            <a href="index.html#colunas" class="nav-link nav-link-primary">Colunas</a>
+                            <button
+                                type="button"
+                                class="nav-link nav-link-toggle dropdown-toggle"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                aria-controls="columns-mega-menu"
+                                aria-label="Abrir menu de Colunas"
+                            >
+                                <span class="nav-link-caret">▾</span>
+                            </button>
+                        </div>
                         ${this.getColumnsMegaMenuHTML()}
                     </li>
-                    <li><a href="index.html#opiniao" class="nav-link">Opinião</a></li>
                     <li><a href="#politica" class="nav-link">Política</a></li>
                     <li><a href="#economia" class="nav-link">Economia</a></li>
                     <li><a href="#justica" class="nav-link">Justiça</a></li>
@@ -288,8 +300,11 @@ const Header = {
       });
 
       toggle.addEventListener("click", (e) => {
-        if (window.innerWidth <= 768) {
+        const isButtonToggle = toggle.tagName === "BUTTON";
+
+        if (window.innerWidth <= 768 || isButtonToggle) {
           e.preventDefault();
+          e.stopPropagation();
           const isOpen = menu.classList.contains("show");
 
           dropdowns.forEach((item) => {
@@ -331,7 +346,7 @@ const Header = {
     });
 
     const topLevelLinks = document.querySelectorAll(
-      '.nav-menu > li > a.nav-link:not(.dropdown-toggle)',
+      ".nav-menu .nav-link:not(.dropdown-toggle)",
     );
 
     topLevelLinks.forEach((link) => {
@@ -341,6 +356,7 @@ const Header = {
 
         if (target) {
           e.preventDefault();
+          dropdowns.forEach((dropdown) => closeDropdown(dropdown));
           target.scrollIntoView({
             behavior: "smooth",
             block: "start",

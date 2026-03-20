@@ -175,6 +175,7 @@ const Header = {
                     <span></span>
                 </button>
                 <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html#magnavita" class="nav-link">MAGNAVITA</a></li>
                     <li><a href="index.html#opiniao" class="nav-link">Opinião</a></li>
                     <li class="nav-dropdown">
                         <div class="nav-link-row">

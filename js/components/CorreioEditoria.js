@@ -286,23 +286,6 @@ const CorreioEditoria = {
 
     this.container.innerHTML = `
       <div class="correio-editoria-page" style="--editoria-accent: ${this.escapeText(this.state.productConfig.brandColor)};">
-        <section class="correio-editoria-intro">
-          <div class="correio-editoria-breadcrumb">
-            <a href="${this.escapeText(this.state.productConfig.landingUrl)}">${this.escapeText(this.state.productConfig.name)}</a>
-            <span>/</span>
-            <strong>${this.escapeText(this.state.editoria.label)}</strong>
-          </div>
-          <div class="correio-editoria-heading">
-            <div>
-              <span class="correio-editoria-kicker">Editoria</span>
-              <h1 class="correio-editoria-title">${this.escapeText(this.state.editoria.label)}</h1>
-            </div>
-            <p class="correio-editoria-description">${this.escapeText(pageData.description)}</p>
-          </div>
-        </section>
-
-        ${this.renderEditoriaRail()}
-
         <section class="correio-editoria-hero-layout">
           ${this.renderHero(pageData.hero)}
           <div class="correio-editoria-highlight-stack">

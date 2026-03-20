@@ -807,6 +807,7 @@ const PageBootstrap = {
         : null;
 
     if (bootstrapData) {
+      document.body.classList.add("is-correio-editoria-page");
       document.body.dataset.regionalKey = bootstrapData.productKey;
       document.body.dataset.productKey = bootstrapData.productKey;
       document.body.dataset.editoriaSlug = bootstrapData.editoriaSlug;
@@ -822,6 +823,9 @@ const PageBootstrap = {
         productHeader.dataset.productShortName = bootstrapData.productShortName;
         productHeader.dataset.productColor = bootstrapData.productColor;
         productHeader.dataset.productUrl = bootstrapData.productUrl;
+        productHeader.dataset.productKey = bootstrapData.productKey;
+        productHeader.dataset.editoriaSlug = bootstrapData.editoriaSlug;
+        productHeader.dataset.editoriaLabel = bootstrapData.editoriaLabel;
       }
     }
 

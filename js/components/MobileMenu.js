@@ -45,6 +45,7 @@ const MobileMenu = {
 
         <nav class="mobile-nav-links">
           <ul class="mobile-nav-main">
+            <li><a href="index.html#magnavita"><i class="fas fa-pen-nib"></i> MAGNAVITA</a></li>
             <li><a href="index.html#opiniao"><i class="fas fa-comment-alt"></i> Opinião</a></li>
             <li class="mobile-nav-has-submenu mobile-nav-has-split-link">
               <div class="mobile-nav-link-row">

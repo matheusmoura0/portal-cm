@@ -18,6 +18,9 @@ const ProductHeader = {
     const productUrl =
       headerPlaceholder.dataset.productUrl ||
       window.location.pathname.split("/").pop();
+    const productKey = headerPlaceholder.dataset.productKey || "";
+    const editoriaSlug = headerPlaceholder.dataset.editoriaSlug || "";
+    const editoriaLabel = headerPlaceholder.dataset.editoriaLabel || "";
 
     // Create temporary container to parse HTML
     const temp = document.createElement("div");
@@ -26,6 +29,9 @@ const ProductHeader = {
       productShortName,
       productColor,
       productUrl,
+      productKey,
+      editoriaSlug,
+      editoriaLabel,
     );
 
     // Move nodes out of the placeholder
@@ -44,7 +50,88 @@ const ProductHeader = {
     this.initProductHeader();
   },
 
-  getTemplate(productName, productShortName, productColor, productUrl) {
+  getEditorialNavHTML(productKey, editoriaSlug) {
+    const productConfig =
+      window.CorreioEditoria &&
+      window.CorreioEditoria.productConfigs &&
+      window.CorreioEditoria.productConfigs[productKey];
+
+    if (!productConfig || !Array.isArray(productConfig.editorias)) {
+      return "";
+    }
+
+    const links = productConfig.editorias
+      .map(
+        (editoria) => `
+          <a
+            href="correio-editoria.html?product=${encodeURIComponent(productKey)}&editoria=${encodeURIComponent(editoria.slug)}"
+            class="product-editoria-nav-link ${editoria.slug === editoriaSlug ? "is-active" : ""}"
+          >
+            ${editoria.label}
+          </a>
+        `,
+      )
+      .join("");
+
+    return `
+      <nav class="product-editoria-nav" aria-label="Editorias do produto">
+        <div class="product-editoria-nav-container">
+          ${links}
+        </div>
+      </nav>
+    `;
+  },
+
+  getTemplate(
+    productName,
+    productShortName,
+    productColor,
+    productUrl,
+    productKey = "",
+    editoriaSlug = "",
+    editoriaLabel = "",
+  ) {
+    if (editoriaLabel) {
+      const trimmedShortName = String(productShortName || "").trim();
+      const logoMark =
+        trimmedShortName && trimmedShortName.length <= 4
+          ? `<span class="product-logo-mark">${trimmedShortName}</span>`
+          : "";
+
+      return `
+        <header class="product-header product-header-editoria" style="--product-color: ${productColor};">
+          <div class="product-header-mainbar">
+            <div class="product-header-container product-header-container-editoria">
+              <div class="product-header-left">
+                <button class="product-menu-btn product-menu-btn-editoria" id="product-menu-btn" aria-label="Menu">
+                  <i class="fas fa-bars"></i>
+                  <span class="product-menu-label">Menu</span>
+                </button>
+
+                <div class="product-header-context">
+                  <a href="${productUrl}" class="product-logo product-logo-editoria" style="--product-color: ${productColor};">
+                    ${logoMark}
+                    <span class="product-logo-name">${productName}</span>
+                  </a>
+                  <span class="product-header-divider" aria-hidden="true"></span>
+                  <span class="product-header-editoria-name">${editoriaLabel}</span>
+                </div>
+              </div>
+
+              <div class="product-header-actions">
+                <button class="product-search-btn product-search-btn-editoria" id="product-search-btn" aria-label="Buscar">
+                  <i class="fas fa-search"></i>
+                  <span class="product-search-label">Buscar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          ${this.getEditorialNavHTML(productKey, editoriaSlug)}
+        </header>
+      `;
+    }
+
     return `
       <header class="product-header" style="--product-color: ${productColor};">
         <div class="product-header-container">

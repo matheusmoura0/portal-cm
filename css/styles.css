@@ -3565,6 +3565,7 @@ input:focus {
 }
 
 @media (max-width: 768px) {
+
     .column-page-shell .opinion-grid,
     .column-page-shell .opinion-highlights-grid {
         grid-template-columns: 1fr;
@@ -4456,6 +4457,220 @@ header.scrolled,
     }
 }
 
+/* --- SEÇÃO MAGNAVITA --- */
+
+.magnavita-wrapper {
+    padding: 30px 0 10px;
+    scroll-margin-top: 145px;
+}
+
+.magnavita-panel {
+    padding: 30px;
+    border-radius: 22px;
+    border: 1px solid #dbe3ec;
+    border-top: 6px solid #1a3a5c;
+    background:
+        linear-gradient(180deg, #f8fbfe 0%, #ffffff 26%),
+        #ffffff;
+    box-shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+}
+
+.magnavita-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.magnavita-heading-main {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.magnavita-kicker {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(26, 58, 92, 0.08);
+    color: #1a3a5c;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.magnavita-author {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.magnavita-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffffff;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+.magnavita-author-copy h2 {
+    margin: 0 0 6px 0;
+    font-family: var(--font-ui);
+    font-size: 2.15rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: #10253b;
+}
+
+.magnavita-author-copy p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: #526173;
+    max-width: 760px;
+}
+
+.magnavita-header-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    width: fit-content;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid #d7e0ea;
+    background: #ffffff;
+    color: #1a3a5c;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.magnavita-header-link:hover {
+    transform: translateY(-1px);
+    border-color: #c5d3e0;
+    background: #f5f8fb;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+}
+
+.magnavita-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.9fr);
+    gap: 20px;
+}
+
+.magnavita-featured,
+.magnavita-compact {
+    min-width: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.magnavita-featured-link {
+    display: block;
+    min-height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.magnavita-featured-content,
+.magnavita-compact {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 14px;
+}
+
+.magnavita-featured-content {
+    justify-content: center;
+}
+
+.magnavita-stack {
+    display: grid;
+    gap: 18px;
+}
+
+.magnavita-story-tag {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(26, 58, 92, 0.08);
+    color: #1a3a5c;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.magnavita-featured-content h3,
+.magnavita-compact h3 {
+    margin: 0;
+    font-family: "Noto Serif", serif;
+    font-size: 1.3rem;
+    line-height: 1.26;
+    color: #121826;
+}
+
+.magnavita-featured-content h3 {
+    font-size: 2rem;
+    line-height: 1.1;
+}
+
+.magnavita-featured-content p,
+.magnavita-compact p {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: #4a5565;
+}
+
+.magnavita-story-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #748092;
+}
+
+.magnavita-story-link {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-top: 2px;
+    color: #1a3a5c;
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.magnavita-story-link:hover {
+    text-decoration: underline;
+}
+
 /* --- SEÇÃO COLUNISTAS (CARDS MODERNOS) --- */
 
 .colunistas-wrapper {
@@ -4600,6 +4815,17 @@ header.scrolled,
     border: 2px solid #f4f5f7;
 }
 
+.card-col-avatar-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d8e3ee 0%, #edf2f7 100%);
+    color: #1a3a5c;
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
 .card-col-info h3 {
     font-family: "Noto Sans", serif;
     font-size: 1.2rem;
@@ -4666,12 +4892,84 @@ header.scrolled,
 }
 
 @media (max-width: 992px) {
+    .magnavita-panel {
+        padding: 24px;
+    }
+
+    .magnavita-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .magnavita-stack {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .colunistas-cards-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+@media (max-width: 768px) {
+    .magnavita-wrapper {
+        padding: 28px 0 6px;
+    }
+
+    .magnavita-panel {
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .magnavita-heading,
+    .magnavita-author {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .magnavita-author-copy h2 {
+        font-size: 1.7rem;
+    }
+
+    .magnavita-featured-link {
+        display: block;
+    }
+
+    .magnavita-stack {
+        grid-template-columns: 1fr;
+    }
+
+    .magnavita-featured-content h3 {
+        font-size: 1.6rem;
+    }
+}
+
 @media (max-width: 600px) {
+    .magnavita-panel {
+        padding: 18px;
+    }
+
+    .magnavita-avatar {
+        width: 76px;
+        height: 76px;
+    }
+
+    .magnavita-featured-content,
+    .magnavita-compact {
+        padding: 20px;
+    }
+
+    .magnavita-compact h3 {
+        font-size: 1.12rem;
+    }
+
+    .magnavita-featured-content h3 {
+        font-size: 1.42rem;
+    }
+
+    .magnavita-story-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .colunistas-cards-grid {
         grid-template-columns: 1fr;
     }
@@ -7513,7 +7811,7 @@ body.dark-mode .dark-mode-toggle .sun-icon {
 
 .sticky-nav-unified.scrolled .logo {
     display: block !important;
-    font-size: 1.9rem !important;
+    font-size: 1.49rem !important;
 }
 
 .sticky-nav-unified.scrolled .logo-portal {
@@ -8683,7 +8981,7 @@ img {
     grid-area: 1 / 4 / 3 / 5 !important;
 }
 
-.item-anuncio > div {
+.item-anuncio>div {
     width: 100%;
     height: 100%;
 }
@@ -8796,13 +9094,13 @@ img {
         height: 250px;
     }
 
-    .item-anuncio > div {
+    .item-anuncio>div {
         min-height: 320px !important;
     }
 }
 
 @media (max-width: 768px) {
-    .item-anuncio > div {
+    .item-anuncio>div {
         min-height: 240px !important;
     }
 }
@@ -10344,12 +10642,6 @@ body.has-regional-headers {
     gap: 15px;
 }
 
-.digital-editions-grid a:last-child {
-    grid-column: 1 / -1;
-    width: 65%;
-    margin: 0 auto;
-}
-
 .edition-card {
     display: flex;
     flex-direction: column;
@@ -10427,13 +10719,7 @@ body.has-regional-headers {
     }
 
     .digital-editions-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-        /* Deita os PDFs */
-    }
-
-    .digital-editions-grid a:last-child {
-        grid-column: auto !important;
-        width: 100% !important;
+        grid-template-columns: repeat(3, 1fr) !important;
     }
 }
 
@@ -10448,10 +10734,5 @@ body.has-regional-headers {
 
     .digital-editions-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-    }
-
-    .digital-editions-grid a:last-child {
-        grid-column: 1 / -1 !important;
-        width: 50% !important;
     }
 }

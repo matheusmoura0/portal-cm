@@ -4329,13 +4329,11 @@ header.scrolled,
 
 .hero-grid {
     display: grid;
-    /* 1.6fr para acomodar melhor o quadrado principal sem esticar a lateral */
-    grid-template-columns: 1.6fr 1fr;
-    gap: 30px;
-    align-items: start;
-    /* Alinha tudo pelo topo */
+    grid-template-columns: 1.72fr 0.88fr;
+    gap: 24px;
+    align-items: stretch;
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 28px auto 20px;
 }
 
 /* Responsividade para Mobile */
@@ -4351,8 +4349,7 @@ header.scrolled,
 .hero-sidebar {
     display: flex;
     flex-direction: column;
-    /* Espaço entre os cards para preencher a altura visual se necessário */
-    gap: 25px;
+    gap: 18px;
 }
 
 /* Notícia Principal e Itens Laterais */
@@ -4360,6 +4357,10 @@ header.scrolled,
 .sidebar-card {
     display: flex;
     flex-direction: column;
+}
+
+.main-featured-news {
+    min-width: 0;
 }
 
 /* Figuras e Imagens Quadradas (O Ponto Chave) */
@@ -4371,12 +4372,18 @@ header.scrolled,
 
 .hero-figure img {
     width: 100%;
-    /* O segredo do visual: Quadrado Perfeito */
     aspect-ratio: 2 / 1;
     object-fit: cover;
-    /* Recorta para manter a proporção */
     border-radius: 4px;
     display: block;
+}
+
+.main-featured-news .hero-figure img {
+    aspect-ratio: 1.75 / 1;
+}
+
+.hero-sidebar .hero-figure img {
+    aspect-ratio: 2.45 / 1;
 }
 
 /* Category Tags (Badges) */
@@ -4400,7 +4407,7 @@ header.scrolled,
     font-size: 2em;
     line-height: 1.1;
     font-weight: 800;
-    margin: 20px 0 15px 0;
+    margin: 16px 0 12px 0;
     color: #111;
     font-family: "Noto Serif", serif;
 }
@@ -4409,7 +4416,7 @@ header.scrolled,
     font-size: 1.1rem;
     line-height: 1.5;
     color: #444;
-    margin-bottom: 15px;
+    margin-bottom: 0;
 }
 
 /* Ajuste dos Textos Laterais */
@@ -4417,7 +4424,7 @@ header.scrolled,
     font-size: 1rem;
     line-height: 1.2;
     font-weight: 700;
-    margin: 10px 0 5px 0;
+    margin: 8px 0 0 0;
     color: #111;
     font-family: "Noto Serif", serif;
 }
@@ -4437,6 +4444,15 @@ header.scrolled,
 @media (max-width: 768px) {
     .hero-content h1 {
         font-size: 1.5em;
+    }
+
+    .hero-grid {
+        margin: 24px auto 16px;
+    }
+
+    .main-featured-news .hero-figure img,
+    .hero-sidebar .hero-figure img {
+        aspect-ratio: 16 / 9;
     }
 }
 

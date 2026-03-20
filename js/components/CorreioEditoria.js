@@ -194,13 +194,22 @@ const CorreioEditoria = {
     },
   },
 
-  fallbackAngles: [
-    "os bastidores que movimentam a cobertura",
-    "o que muda no noticiário desta semana",
-    "os principais pontos que entram no radar da redação",
-    "como a pauta impacta o dia a dia do leitor",
-    "o contexto que explica os novos desdobramentos",
-    "as frentes que concentram atenção nesta editoria",
+  placeholderTitles: [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
+    "Excepteur sint occaecat cupidatat non proident, sunt in culpa.",
+    "Curabitur blandit tempus porttitor donec ullamcorper nulla non metus.",
+  ],
+
+  placeholderExcerpts: [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
+    "Sed posuere consectetur est at lobortis. Maecenas faucibus mollis interdum donec id elit non mi porta gravida at eget metus.",
+    "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean lacinia bibendum nulla sed consectetur.",
+    "Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum.",
+    "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui.",
+    "Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
   ],
 
   state: null,
@@ -344,47 +353,9 @@ const CorreioEditoria = {
   },
 
   getEditorialItems() {
-    const { productKey, editoria } = this.state;
-    const editoriaLabelSlug = this.slugify(editoria.label);
-    const sourceItems = [];
-
-    if (
-      typeof portalMockData !== "undefined" &&
-      Array.isArray(portalMockData[editoria.slug])
-    ) {
-      sourceItems.push(...portalMockData[editoria.slug]);
-    }
-
-    if (
-      typeof portalMockData !== "undefined" &&
-      Array.isArray(portalMockData[editoriaLabelSlug]) &&
-      editoriaLabelSlug !== editoria.slug
-    ) {
-      sourceItems.push(...portalMockData[editoriaLabelSlug]);
-    }
-
-    const regionalSource =
-      window.RegionalNews &&
-      window.RegionalNews.mockNews &&
-      Array.isArray(window.RegionalNews.mockNews[productKey])
-        ? window.RegionalNews.mockNews[productKey]
-        : [];
-
-    if (regionalSource.length > 0) {
-      sourceItems.push(
-        ...regionalSource.filter(
-          (item) =>
-            this.slugify(item.category) === editoria.slug ||
-            this.slugify(item.category) === editoriaLabelSlug,
-        ),
-      );
-    }
-
-    const normalizedItems = this.dedupeByTitle(
-      sourceItems.map((item, index) => this.normalizeArticle(item, index)),
+    return Array.from({ length: 18 }, (_, index) =>
+      this.createPlaceholderArticle(index),
     );
-
-    return this.ensureMinimumItems(normalizedItems, 18);
   },
 
   normalizeArticle(item, index) {
@@ -419,28 +390,28 @@ const CorreioEditoria = {
     const safeItems = Array.isArray(items) ? [...items] : [];
 
     while (safeItems.length < minimumCount) {
-      safeItems.push(this.createFallbackArticle(safeItems.length));
+      safeItems.push(this.createPlaceholderArticle(safeItems.length));
     }
 
     return safeItems;
   },
 
-  createFallbackArticle(index) {
-    const { productKey, productConfig, editoria } = this.state;
-    const angle = this.fallbackAngles[index % this.fallbackAngles.length];
-    const articleId = `${productKey}-${editoria.slug}-fallback-${index + 1}`;
+  createPlaceholderArticle(index) {
+    const { productKey, editoria } = this.state;
+    const articleId = `${productKey}-${editoria.slug}-placeholder-${index + 1}`;
     const title =
-      index % 2 === 0
-        ? `${editoria.label}: ${angle}`
-        : `${productConfig.name} amplia a cobertura de ${editoria.label.toLowerCase()} com novos desdobramentos`;
+      this.placeholderTitles[index % this.placeholderTitles.length];
+    const excerpt =
+      this.placeholderExcerpts[index % this.placeholderExcerpts.length];
+    const imageLabel = encodeURIComponent(`${editoria.label} Placeholder`);
 
     return {
       id: articleId,
       title,
-      excerpt: `${productConfig.name} organiza a editoria de ${editoria.label.toLowerCase()} em uma leitura contínua, com destaques, contexto e serviço para o leitor.`,
-      image: `https://picsum.photos/seed/${articleId}/900/600`,
-      author: productConfig.name,
-      time: `Há ${index + 2} horas`,
+      excerpt,
+      image: `https://placehold.co/900x600/f3f4f6/1a3a5c?text=${imageLabel}`,
+      author: "Redação placeholder",
+      time: "00/00/0000",
       category: editoria.label,
       link: `noticia.html?id=${encodeURIComponent(articleId)}&product=${encodeURIComponent(productKey)}`,
     };

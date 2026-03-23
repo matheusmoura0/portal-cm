@@ -5,11 +5,18 @@
 
 const MobileMenu = {
   getColumnsSubmenuHTML() {
-    const items = (window.CMColumns && window.CMColumns.getCatalog()) || [];
-    return items
+    const groups = (window.CMColumns && window.CMColumns.getMenuGroups?.()) || [];
+    return groups
       .map(
-        (item) => `
-          <li><a href="${item.url}">${item.label}</a></li>
+        (group) => `
+          <li class="mobile-submenu-group-label">${group.title}</li>
+          ${group.items
+            .map(
+              (item) => `
+                <li><a href="${item.url}">${item.label}</a></li>
+              `,
+            )
+            .join("")}
         `,
       )
       .join("");
@@ -175,13 +182,23 @@ const MobileMenu = {
     return document.querySelector(hash);
   },
 
+  getSubmenuForToggle(toggle) {
+    if (!toggle) return null;
+
+    return (
+      toggle.nextElementSibling ||
+      toggle.closest(".mobile-nav-has-submenu")?.querySelector(".mobile-submenu") ||
+      null
+    );
+  },
+
   initSubmenus() {
     const toggles = document.querySelectorAll(".mobile-submenu-toggle");
 
     toggles.forEach((toggle) => {
       toggle.addEventListener("click", (e) => {
         e.preventDefault();
-        const submenu = toggle.nextElementSibling;
+        const submenu = this.getSubmenuForToggle(toggle);
         const arrow = toggle.querySelector(".mobile-submenu-arrow");
         const isExpanded = toggle.getAttribute("aria-expanded") === "true";
 
@@ -189,7 +206,7 @@ const MobileMenu = {
           if (otherToggle !== toggle) {
             otherToggle.setAttribute("aria-expanded", "false");
             otherToggle.classList.remove("active");
-            const otherSubmenu = otherToggle.nextElementSibling;
+            const otherSubmenu = this.getSubmenuForToggle(otherToggle);
             const otherArrow = otherToggle.querySelector(
               ".mobile-submenu-arrow",
             );
@@ -229,7 +246,7 @@ const MobileMenu = {
       toggles.forEach((toggle) => {
         toggle.setAttribute("aria-expanded", "false");
         toggle.classList.remove("active");
-        const submenu = toggle.nextElementSibling;
+        const submenu = this.getSubmenuForToggle(toggle);
         const arrow = toggle.querySelector(".mobile-submenu-arrow");
         if (submenu) submenu.classList.remove("active");
         if (arrow) arrow.classList.remove("active");

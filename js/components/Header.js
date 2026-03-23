@@ -38,6 +38,71 @@ const DEFAULT_COLUMN_LABELS = [
   "Correio Sul",
 ];
 
+const COLUMN_MENU_GROUPS = [
+  {
+    title: "Nacional",
+    items: [
+      "Correio Político",
+      "Correio Bastidores",
+      "Correio Econômico",
+      "Correio Jurídico",
+      "Correio do Aposentado",
+      "Correio Esportivo",
+      "Correio no Mundo",
+      "Jornal de Turismo",
+    ],
+  },
+  {
+    title: "RJ",
+    items: [
+      "Correio Fluminense",
+      "Correio Carioca",
+      "Correio da Baixada",
+      "Correio Norte/Noroeste",
+    ],
+  },
+  {
+    title: "Petrópolis",
+    items: ["Correio Serrano", "Petropolitanas"],
+  },
+  {
+    title: "Sul Fluminense",
+    items: [
+      "Correio do Vale",
+      "Correio Agulhas Negras",
+      "Correio Vale do Café",
+      "Correio Vale Paraíba",
+      "Correio Regional",
+      "Correio Esportivo",
+    ],
+  },
+  {
+    title: "São Paulo",
+    items: [
+      "Correio Paulista",
+      "Correio Paulistano",
+      "Correio Grande SP",
+      "Correio das Regiões",
+    ],
+  },
+  {
+    title: "Campinas",
+    items: ["Correio de Campinas", "Grande Campinas"],
+  },
+  {
+    title: "DF",
+    items: [
+      "Brasilianas",
+      "Correio Nacional",
+      "Correio Centro-Oeste",
+      "Correio Nordeste",
+      "Correio Norte",
+      "Correio Sul",
+      "Correio Sudeste",
+    ],
+  },
+];
+
 function slugifyColumnLabel(label) {
   return String(label || "")
     .normalize("NFD")
@@ -60,6 +125,29 @@ function buildColumnCatalog() {
   });
 }
 
+function buildColumnMenuGroups(sourceCatalog) {
+  const catalog = Array.isArray(sourceCatalog) ? sourceCatalog : [];
+  const catalogByLabel = new Map(catalog.map((item) => [item.label, item]));
+
+  return COLUMN_MENU_GROUPS.map((group) => ({
+    title: group.title,
+    items: group.items.map((label) => {
+      const record = catalogByLabel.get(label);
+
+      if (record) {
+        return { ...record };
+      }
+
+      const slug = slugifyColumnLabel(label);
+      return {
+        label,
+        slug,
+        url: `coluna.html?slug=${encodeURIComponent(slug)}`,
+      };
+    }),
+  }));
+}
+
 window.CMColumns = window.CMColumns || {
   catalog: buildColumnCatalog(),
 
@@ -67,6 +155,10 @@ window.CMColumns = window.CMColumns || {
 
   getCatalog() {
     return this.catalog.slice();
+  },
+
+  getMenuGroups() {
+    return buildColumnMenuGroups(this.getCatalog());
   },
 
   getColumnUrl(slug) {
@@ -96,10 +188,10 @@ window.CMColumns = window.CMColumns || {
 
 const Header = {
   getColumnsMegaMenuHTML() {
-    const columns = window.CMColumns.getMenuColumns(3);
-    const menuColumns = columns
-      .map((items) => {
-        const links = items
+    const groups = window.CMColumns.getMenuGroups();
+    const menuGroups = groups
+      .map((group) => {
+        const links = group.items
           .map(
             (item) => `
               <li>
@@ -111,6 +203,7 @@ const Header = {
 
         return `
           <div class="mega-menu-column">
+            <div class="columns-group-title">${group.title}</div>
             <ul>
               ${links}
             </ul>
@@ -122,7 +215,7 @@ const Header = {
     return `
       <div id="columns-mega-menu" class="dropdown-menu mega-menu columns-mega-menu">
         <div class="mega-menu-grid">
-          ${menuColumns}
+          ${menuGroups}
         </div>
       </div>
     `;

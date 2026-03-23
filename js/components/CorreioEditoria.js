@@ -13,9 +13,9 @@ const CorreioEditoria = {
     nacional: {
       key: "nacional",
       name: "Correio da Manhã",
-      shortName: "CM",
-      brandColor: "#D20A11",
-      landingUrl: "correio-nacional.html",
+      shortName: "Correio da Manhã",
+      brandColor: "#d71e15",
+      landingUrl: "correio-produto.html?product=nacional",
       themeClass: "theme-nacional",
       editorias: [
         { slug: "politica", label: "Política", subtopics: [] },
@@ -29,10 +29,10 @@ const CorreioEditoria = {
     },
     sp: {
       key: "sp",
-      name: "Correio SP",
-      shortName: "SP",
+      name: "Correio da Manhã SP",
+      shortName: "Correio SP",
       brandColor: "#194466",
-      landingUrl: "correio-sp.html",
+      landingUrl: "correio-produto.html?product=sp",
       themeClass: "theme-sp",
       editorias: [
         { slug: "politica", label: "Política", subtopics: [] },
@@ -45,10 +45,10 @@ const CorreioEditoria = {
     },
     df: {
       key: "df",
-      name: "Correio DF",
-      shortName: "DF",
-      brandColor: "#1E73BE",
-      landingUrl: "correio-df.html",
+      name: "Correio da Manhã DF",
+      shortName: "Correio DF",
+      brandColor: "#1f92c4",
+      landingUrl: "correio-produto.html?product=df",
       themeClass: "theme-df",
       editorias: [
         { slug: "politica", label: "Política", subtopics: [] },
@@ -63,8 +63,8 @@ const CorreioEditoria = {
       key: "sulfluminense",
       name: "Correio Sul Fluminense",
       shortName: "Sul Fluminense",
-      brandColor: "#003366",
-      landingUrl: "correio-sulfluminense.html",
+      brandColor: "#d20a11",
+      landingUrl: "correio-produto.html?product=sulfluminense",
       themeClass: "theme-sulfluminense",
       editorias: [
         { slug: "economia", label: "Economia", subtopics: [] },
@@ -80,7 +80,7 @@ const CorreioEditoria = {
       name: "Correio Petropolitano",
       shortName: "Petropolitano",
       brandColor: "#D20A11",
-      landingUrl: "correio-petropolitano.html",
+      landingUrl: "correio-produto.html?product=petropolis",
       themeClass: "theme-petropolitano",
       editorias: [
         { slug: "turismo", label: "Turismo", subtopics: [] },

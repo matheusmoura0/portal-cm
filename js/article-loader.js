@@ -7,65 +7,65 @@
 const ProductConfig = {
   nacional: {
     name: "Correio da Manhã",
-    shortName: "CM",
-    color: "#D20A11",
-    url: "correio-nacional.html",
+    shortName: "Correio da Manhã",
+    color: "#d71e15",
+    url: "correio-produto.html?product=nacional",
     themeClass: "theme-nacional",
   },
   sp: {
-    name: "Correio SP",
-    shortName: "SP",
+    name: "Correio da Manhã SP",
+    shortName: "Correio SP",
     color: "#194466",
-    url: "correio-sp.html",
+    url: "correio-produto.html?product=sp",
     themeClass: "theme-sp",
   },
   df: {
-    name: "Correio DF",
-    shortName: "DF",
-    color: "#1E73BE",
-    url: "correio-df.html",
+    name: "Correio da Manhã DF",
+    shortName: "Correio DF",
+    color: "#1f92c4",
+    url: "correio-produto.html?product=df",
     themeClass: "theme-df",
   },
   sulfluminense: {
     name: "Correio Sul Fluminense",
     shortName: "Sul Fluminense",
-    color: "#003366",
-    url: "correio-sulfluminense.html",
+    color: "#d20a11",
+    url: "correio-produto.html?product=sulfluminense",
     themeClass: "theme-sulfluminense",
   },
   petropolis: {
     name: "Correio Petropolitano",
     shortName: "Petropolitano",
     color: "#D20A11",
-    url: "correio-petropolitano.html",
+    url: "correio-produto.html?product=petropolis",
     themeClass: "theme-petropolitano",
   },
   campinas: {
     name: "Correio Campinas",
     shortName: "Campinas",
     color: "#003366",
-    url: "correio-campinas.html",
+    url: "correio-produto.html?product=campinas",
     themeClass: "theme-campinas",
   },
   barra: {
     name: "Jornal da Barra",
     shortName: "Barra",
     color: "#1a1a1a",
-    url: "jornal-barra.html",
+    url: "correio-produto.html?product=barra",
     themeClass: "theme-barra",
   },
   turismo: {
     name: "Jornal de Turismo",
     shortName: "Turismo",
     color: "#ff6600",
-    url: "jornal-turismo.html",
+    url: "correio-produto.html?product=turismo",
     themeClass: "theme-turismo",
   },
   servidor: {
     name: "Jornal do Servidor",
     shortName: "Servidor",
     color: "#003366",
-    url: "jornal-servidor.html",
+    url: "correio-produto.html?product=servidor",
     themeClass: "theme-servidor",
   },
 };
@@ -99,19 +99,24 @@ const defaultArticle = {
 
 // Article loader
 document.addEventListener("DOMContentLoaded", () => {
-  // Get URL parameters
   const urlParams = new URLSearchParams(window.location.search);
-  const articleId = urlParams.get("id") || "article-001";
-  const product = urlParams.get("product") || "nacional"; // Default to nacional
+  const fallbackArticleId = urlParams.get("id") || "article-001";
 
-  console.log(
-    `Article Loader: Loading article ${articleId} from product ${product}`,
-  );
+  if (window.CorreioShell) {
+    window.CorreioShell.init({
+      pageType: "article",
+      onProductChange: (state) => {
+        const articleId = state.articleId || fallbackArticleId;
+        initializeProductPage(state.productKey);
+        loadArticle(articleId, state.productKey);
+      },
+    });
+    return;
+  }
 
-  // Initialize page with product theming
+  const articleId = fallbackArticleId;
+  const product = normalizeProductKey(urlParams.get("product") || "nacional");
   initializeProductPage(product);
-
-  // Load article content
   loadArticle(articleId, product);
 });
 
@@ -119,14 +124,19 @@ document.addEventListener("DOMContentLoaded", () => {
  * Initialize page with product-specific theming
  */
 function initializeProductPage(product) {
-  const productData = ProductConfig[product] || ProductConfig.nacional;
+  const productData = getProductConfig(product);
 
   // Preserve previously applied body state while switching the product theme.
   Object.values(ProductConfig).forEach(({ themeClass }) => {
     document.body.classList.remove(themeClass);
   });
-  document.body.classList.add("has-regional-headers", productData.themeClass);
+  document.body.classList.add(
+    "has-regional-headers",
+    "has-correio-shell",
+    productData.themeClass,
+  );
   document.body.setAttribute("data-product-loaded", "true");
+  document.body.dataset.productKey = normalizeProductKey(product);
 
   // Set CSS variables for product color
   document.documentElement.style.setProperty(
@@ -137,35 +147,13 @@ function initializeProductPage(product) {
     "--product-color-dark",
     adjustColor(productData.color, -30),
   );
-
-  // Render Tiny Header
-  if (window.TinyHeader) {
-    window.TinyHeader.render();
-  }
-
-  // Render Product Header with product data
-  if (window.ProductHeader) {
-    const productHeaderDiv = document.getElementById("product-header");
-    if (productHeaderDiv) {
-      productHeaderDiv.setAttribute("data-product-name", productData.name);
-      productHeaderDiv.setAttribute(
-        "data-product-short-name",
-        productData.shortName,
-      );
-      productHeaderDiv.setAttribute("data-product-color", productData.color);
-      productHeaderDiv.setAttribute("data-product-url", productData.url);
-      window.ProductHeader.render();
-    }
-  }
-
-  console.log(`Article Loader: Page initialized for ${productData.name}`);
 }
 
 /**
  * Load and display article content
  */
 function loadArticle(articleId, product) {
-  const productData = ProductConfig[product] || ProductConfig.nacional;
+  const productData = getProductConfig(product);
 
   // Try to get article from mock data
   const article = getArticleData(articleId, product);
@@ -260,6 +248,7 @@ function getLegacyArticleIndex(articleId) {
 }
 
 function getProductDataKey(product) {
+  const normalizedProduct = normalizeProductKey(product);
   const productMap = {
     nacional: "nacional",
     sp: "sao-paulo",
@@ -272,14 +261,14 @@ function getProductDataKey(product) {
     servidor: "servidor",
   };
 
-  return productMap[product] || "nacional";
+  return productMap[normalizedProduct] || "nacional";
 }
 
 /**
  * Update breadcrumb navigation
  */
 function updateBreadcrumb(product, category) {
-  const productData = ProductConfig[product] || ProductConfig.nacional;
+  const productData = getProductConfig(product);
 
   // Update product link in breadcrumb
   const breadProduct = document.getElementById("bread-product");
@@ -293,6 +282,38 @@ function updateBreadcrumb(product, category) {
   if (breadCategory) {
     breadCategory.textContent = category || "Notícias";
   }
+}
+
+function normalizeProductKey(product) {
+  if (window.CorreioShell && typeof window.CorreioShell.normalizeProductKey === "function") {
+    return window.CorreioShell.normalizeProductKey(product);
+  }
+
+  const fallbackAliases = {
+    rio: "nacional",
+    rj: "nacional",
+    petropolitano: "petropolis",
+  };
+
+  return fallbackAliases[product] || product || "nacional";
+}
+
+function getProductConfig(product) {
+  const normalizedProduct = normalizeProductKey(product);
+  const fallbackConfig = ProductConfig[normalizedProduct] || ProductConfig.nacional;
+
+  if (window.CorreioShell && typeof window.CorreioShell.getProductConfig === "function") {
+    const shellConfig = window.CorreioShell.getProductConfig(normalizedProduct);
+    return {
+      name: shellConfig.brandTitle,
+      shortName: fallbackConfig.shortName,
+      color: shellConfig.brandColor,
+      url: window.CorreioShell.getProductPageUrl(normalizedProduct),
+      themeClass: shellConfig.themeClass,
+    };
+  }
+
+  return fallbackConfig;
 }
 
 /**

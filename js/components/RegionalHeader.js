@@ -7,10 +7,10 @@
 const RegionalHeader = {
   // Brand colors for each region
   brandColors: {
-    nacional: "#D20A11",
+    nacional: "#d71e15",
     sp: "#194466",
-    df: "#1E73BE",
-    sulfluminense: "#003366",
+    df: "#1f92c4",
+    sulfluminense: "#d20a11",
     petropolitano: "#D20A11",
     servidor: "#003366",
     barra: "#1A1A1A",
@@ -18,21 +18,19 @@ const RegionalHeader = {
 
   // Default regions configuration
   defaultRegions: [
-    { name: "Nacional", url: "correio-nacional.html", id: "nacional" },
-    { name: "São Paulo", url: "correio-sp.html", id: "sp" },
-    { name: "Distrito Federal", url: "correio-df.html", id: "df" },
+    { name: "Correio da Manhã", url: "correio-nacional.html", id: "nacional" },
+    { name: "Correio da Manhã SP", url: "correio-sp.html", id: "sp" },
     {
-      name: "Sul Fluminense",
+      name: "Correio Sul Fluminense",
       url: "correio-sulfluminense.html",
       id: "sulfluminense",
     },
     {
-      name: "Petropolitano",
+      name: "Correio Petropolitano",
       url: "correio-petropolitano.html",
       id: "petropolitano",
     },
-    { name: "Jornal do Servidor", url: "jornal-servidor.html", id: "servidor" },
-    { name: "Jornal da Barra", url: "jornal-barra.html", id: "barra" },
+    { name: "Correio da Manhã DF", url: "correio-df.html", id: "df" },
   ],
 
   render() {

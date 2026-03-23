@@ -86,15 +86,11 @@ const MobileMenu = {
                 <i class="fas fa-chevron-down mobile-submenu-arrow"></i>
               </button>
               <ul class="mobile-submenu" id="mobile-submenu-jornais">
-                <li><a href="index.html#rio-de-janeiro">Correio da Manhã RJ</a></li>
+                <li><a href="index.html#rio-de-janeiro">Correio da Manhã</a></li>
                 <li><a href="index.html#sao-paulo">Correio da Manhã SP</a></li>
-                <li><a href="index.html#campinas">Correio da Manhã Campinas</a></li>
-                <li><a href="index.html#distrito-federal">Correio da Manhã DF</a></li>
-                <li><a href="index.html#petropolitano">Correio Petropolitano</a></li>
                 <li><a href="index.html#sul-fluminense">Correio Sul Fluminense</a></li>
-                <li><a href="index.html#jornal-barra">Jornal da Barra</a></li>
-                <li><a href="index.html#jornal-turismo">Jornal de Turismo</a></li>
-                <li><a href="index.html#jornal-servidor">Jornal do Servidor</a></li>
+                <li><a href="index.html#petropolitano">Correio Petropolitano</a></li>
+                <li><a href="index.html#distrito-federal">Correio da Manhã DF</a></li>
               </ul>
             </li>
           </ul>

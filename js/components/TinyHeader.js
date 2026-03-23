@@ -5,22 +5,19 @@
 
 const TinyHeader = {
   sites: [
-    { name: "Nacional", url: "correio-nacional.html", id: "nacional" },
-    { name: "São Paulo", url: "correio-sp.html", id: "sp" },
-    { name: "Distrito Federal", url: "correio-df.html", id: "df" },
+    { name: "Correio da Manhã", url: "correio-nacional.html", id: "nacional" },
+    { name: "Correio da Manhã SP", url: "correio-sp.html", id: "sp" },
     {
-      name: "Sul Fluminense",
+      name: "Correio Sul Fluminense",
       url: "correio-sulfluminense.html",
       id: "sulfluminense",
     },
     {
-      name: "Petropolitano",
+      name: "Correio Petropolitano",
       url: "correio-petropolitano.html",
       id: "petropolitano",
     },
-    { name: "Campinas", url: "correio-campinas.html", id: "campinas" },
-    { name: "Jornal do Servidor", url: "jornal-servidor.html", id: "servidor" },
-    { name: "Jornal da Barra", url: "jornal-barra.html", id: "barra" },
+    { name: "Correio da Manhã DF", url: "correio-df.html", id: "df" },
   ],
 
   getCurrentSite() {

@@ -760,6 +760,10 @@ const HomeManager = {
 
 const PageBootstrap = {
   detectPage() {
+    if (document.getElementById("correio-product-page")) {
+      return "correio-product";
+    }
+
     if (document.getElementById("correio-editoria-container")) {
       return "correio-editoria";
     }
@@ -778,9 +782,17 @@ const PageBootstrap = {
   initLayout(pageType) {
     if (
       window.CMMainLayout &&
-      (pageType === "portal" || pageType === "article")
+      (pageType === "portal" ||
+        pageType === "article" ||
+        pageType === "correio-product")
     ) {
       window.CMMainLayout.init();
+    }
+  },
+
+  initCorreioProductPage() {
+    if (window.CorreioProductPage) {
+      window.CorreioProductPage.init();
     }
   },
 
@@ -1453,6 +1465,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const pageType = PageBootstrap.detectPage();
 
   PageBootstrap.initLayout(pageType);
+
+  if (pageType === "correio-product") {
+    PageBootstrap.initCorreioProductPage();
+  }
 
   if (pageType === "correio-editoria") {
     PageBootstrap.initCorreioEditoriaPage();

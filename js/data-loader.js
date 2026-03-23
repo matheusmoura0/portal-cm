@@ -20,6 +20,7 @@ const DataLoader = {
     hideMetadata = false,
     hiddenStartIndex = null,
     product = null,
+    highlightFirst = false ,
   ) {
     const container = document.getElementById(containerId);
     if (!container) {
@@ -40,7 +41,7 @@ const DataLoader = {
 
     let html = "";
     newsToRender.forEach((item, index) => {
-      const isFirst = index === 0;
+      const isFirst = highlightFirst && index === 0;
       const hiddenClass =
         hiddenStartIndex !== null && index >= hiddenStartIndex ? " hidden" : "";
       const cardClass = isFirst
@@ -505,6 +506,17 @@ const DataLoader = {
    * Load homepage regional grids
    */
   loadHomepageRegionals() {
+    const homepageRegionalGridIds = new Set([
+      "rio-de-janeiro-grid",
+      "sao-paulo-grid",
+      "campinas-grid",
+      "distrito-federal-grid",
+      "petropolitano-grid",
+      "sul-fluminense-grid",
+      "jornal-barra-grid",
+      "jornal-turismo-grid",
+    ]);
+
     const homepageGrids = {
       "politica-grid": "politica",
       "economia-grid": "economia",
@@ -537,6 +549,7 @@ const DataLoader = {
           true,
           null,
           this.getProductSlug(dataKey),
+          !homepageRegionalGridIds.has(gridId),
         );
       } else {
         console.warn(`DataLoader: Container ${gridId} not found`);

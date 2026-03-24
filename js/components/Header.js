@@ -296,8 +296,9 @@ const Header = {
                     <li class="nav-dropdown">
                         <a href="#produtos" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Nossos Jornais ▾</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#rio-de-janeiro">Correio da Manhã</a></li>
+                            <li><a href="#rio-de-janeiro">Correio da Manhã RJ</a></li>
                             <li><a href="#sao-paulo">Correio da Manhã SP</a></li>
+                            <li><a href="#campinas">Correio da Manhã Campinas</a></li>
                             <li><a href="#sul-fluminense">Correio Sul Fluminense</a></li>
                             <li><a href="#petropolitano">Correio Petropolitano</a></li>
                             <li><a href="#distrito-federal">Correio da Manhã DF</a></li>

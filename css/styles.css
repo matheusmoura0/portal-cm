@@ -4741,40 +4741,71 @@ header.scrolled,
 /* Grid de Cards */
 /* --- CARROSSEL HORIZONTAL DE COLUNISTAS (Desktop e Mobile) --- */
 
-.colunistas-cards-grid {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-    /* Suavidade no iOS */
+.colunistas-showcase {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
     gap: 30px;
-    padding-bottom: 25px;
-    /* Espaço para a barra de rolagem e sombra do hover */
+    align-items: start;
+}
+
+.colunistas-carousel-shell {
+    min-width: 0;
+}
+
+.colunistas-carousel-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.colunistas-carousel-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #d8dee8;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #1a3a5c;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.colunistas-carousel-btn:hover:not(:disabled) {
+    border-color: #1a3a5c;
+    background: #f4f8fc;
+}
+
+.colunistas-carousel-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.colunistas-carousel-viewport {
+    overflow: hidden;
+}
+
+.colunistas-carousel-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
-    /* Efeito de ímã ao rolar */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
 
-/* Customização da Barra de Rolagem do Carrossel */
-.colunistas-cards-grid::-webkit-scrollbar {
-    height: 6px;
-}
-
-.colunistas-cards-grid::-webkit-scrollbar-track {
-    background: #eaeaea;
-    border-radius: 4px;
-}
-
-.colunistas-cards-grid::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    /* Barra azul CM elegante */
-    border-radius: 4px;
+.colunistas-carousel-track::-webkit-scrollbar {
+    display: none;
 }
 
 /* Trava a largura do Card para o Carrossel */
 .card-colunista {
     flex: 0 0 auto !important;
-    width: 320px !important;
-    max-width: 85vw !important;
+    width: calc((100% - 48px) / 3) !important;
+    max-width: none !important;
     scroll-snap-align: start;
     background-color: #ffffff;
     border-radius: 10px;
@@ -4790,13 +4821,12 @@ header.scrolled,
 }
 
 .colunistas-ad-slot {
-    flex: 0 0 auto !important;
-    width: 300px !important;
-    max-width: 85vw !important;
-    scroll-snap-align: start;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: sticky;
+    top: 24px;
+    margin-top: 70px;
 }
 
 .colunistas-ad-slot .ad-placeholder {
@@ -4928,8 +4958,18 @@ header.scrolled,
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .colunistas-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .colunistas-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .colunistas-ad-slot {
+        position: static;
+        justify-content: flex-start;
+        margin-top: 0;
+    }
+
+    .card-colunista {
+        width: calc((100% - 24px) / 2) !important;
     }
 }
 
@@ -4994,12 +5034,12 @@ header.scrolled,
         align-items: flex-start;
     }
 
-    .colunistas-cards-grid {
-        grid-template-columns: 1fr;
+    .card-colunista {
+        width: 100% !important;
     }
 
     .colunistas-ad-slot {
-        width: 300px !important;
+        width: 100%;
     }
 }
 
@@ -7831,7 +7871,7 @@ body.dark-mode .dark-mode-toggle .sun-icon {
 .sticky-nav-unified .logo {
     display: block !important;
     margin: 0;
-    font-size: 1.82rem;
+    font-size: 0.9rem;
     font-weight: 800;
     line-height: 1;
     color: #ffffff;
@@ -7853,7 +7893,7 @@ body.dark-mode .dark-mode-toggle .sun-icon {
 
 .sticky-nav-unified.scrolled .logo {
     display: block !important;
-    font-size: 1.4rem !important;
+    font-size: 0.72rem !important;
 }
 
 .sticky-nav-unified.scrolled .logo-portal {
@@ -7866,7 +7906,7 @@ body.dark-mode .dark-mode-toggle .sun-icon {
     }
 
     .sticky-nav-unified .logo {
-        font-size: 1.58rem;
+        font-size: 0.86rem;
     }
 
     .sticky-nav-unified .logo-portal {
@@ -7902,7 +7942,7 @@ body.dark-mode .dark-mode-toggle .sun-icon {
     }
 
     .sticky-nav-unified .logo {
-        font-size: 0.86rem;
+        font-size: 0.8rem;
         letter-spacing: -0.02em;
     }
 
@@ -7915,7 +7955,7 @@ body.dark-mode .dark-mode-toggle .sun-icon {
     }
 
     .sticky-nav-unified.scrolled .logo {
-        font-size: 0.84rem !important;
+        font-size: 0.64rem !important;
     }
 
     .sticky-nav-unified.scrolled .logo-portal {

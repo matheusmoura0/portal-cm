@@ -53,7 +53,7 @@ const COLUMN_MENU_GROUPS = [
     ],
   },
   {
-    title: "RJ",
+    title: "Rio de Janeiro",
     items: [
       "Correio Fluminense",
       "Correio Carioca",
@@ -62,7 +62,7 @@ const COLUMN_MENU_GROUPS = [
     ],
   },
   {
-    title: "Petrópolis",
+    title: "Região Serrana - RJ",
     items: ["Correio Serrano", "Petropolitanas"],
   },
   {
@@ -90,7 +90,7 @@ const COLUMN_MENU_GROUPS = [
     items: ["Correio de Campinas", "Grande Campinas"],
   },
   {
-    title: "DF",
+    title: "Distrito Federal e Estados",
     items: [
       "Brasilianas",
       "Correio Nacional",

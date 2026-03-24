@@ -8301,8 +8301,11 @@ img {
 }
 
 .columns-mega-menu {
-    min-width: min(920px, calc(100vw - 40px)) !important;
-    padding: 24px !important;
+    width: min(640px, calc(100vw - 24px)) !important;
+    min-width: min(640px, calc(100vw - 24px)) !important;
+    max-width: min(640px, calc(100vw - 24px)) !important;
+    box-sizing: border-box;
+    padding: 16px !important;
 }
 
 .nav-dropdown:hover .columns-mega-menu,
@@ -8312,8 +8315,8 @@ img {
 
 .columns-mega-menu .mega-menu-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
-    gap: 22px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
     align-items: start;
 }
 
@@ -8322,13 +8325,13 @@ img {
 }
 
 .columns-group-title {
-    margin: 0 0 12px;
-    padding-bottom: 8px;
+    margin: 0 0 10px;
+    padding-bottom: 6px;
     border-bottom: 1px solid #d9e2ec;
     color: #1a3a5c;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
@@ -8347,9 +8350,10 @@ img {
 }
 
 .columns-mega-menu .mega-menu-column a {
-    padding: 10px 0 !important;
+    padding: 8px 0 !important;
     white-space: normal !important;
-    line-height: 1.4;
+    line-height: 1.32;
+    font-size: 0.82rem !important;
 }
 
 @media (max-width: 768px) {
@@ -11267,9 +11271,12 @@ body.has-regional-headers.has-correio-shell {
 }
 
 .correio-shell-dropdown-menu-grouped {
-    min-width: 280px;
-    max-width: 360px;
-    padding: 10px;
+    width: min(640px, calc(100vw - 24px));
+    min-width: min(640px, calc(100vw - 24px));
+    max-width: min(640px, calc(100vw - 24px));
+    box-sizing: border-box;
+    padding: 8px;
+    overflow: visible;
 }
 
 .correio-shell-dropdown-group+.correio-shell-dropdown-group {
@@ -11279,10 +11286,10 @@ body.has-regional-headers.has-correio-shell {
 }
 
 .correio-shell-dropdown-group-label {
-    padding: 8px 14px 6px;
-    font-size: 0.72rem;
+    padding: 8px 12px 6px;
+    font-size: 0.68rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--correio-shell-brand);
 }

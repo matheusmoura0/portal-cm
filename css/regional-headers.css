@@ -1685,6 +1685,10 @@ body.is-correio-editoria-page #correio-editoria-container {
         display: none;
     }
 
+    body.is-correio-editoria-page .product-header-editoria .product-menu-btn-editoria {
+        display: none;
+    }
+
     .product-header-editoria .product-header-context {
         gap: 10px;
     }

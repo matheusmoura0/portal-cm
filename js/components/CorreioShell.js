@@ -21,7 +21,7 @@ const CorreioShell = {
       ],
     },
     {
-      title: "RJ",
+      title: "Rio de Janeiro",
       items: [
         "Correio Fluminense",
         "Correio Carioca",
@@ -30,7 +30,7 @@ const CorreioShell = {
       ],
     },
     {
-      title: "Petrópolis",
+      title: "Região Serrana - RJ",
       items: ["Correio Serrano", "Petropolitanas"],
     },
     {
@@ -58,7 +58,7 @@ const CorreioShell = {
       items: ["Correio de Campinas", "Grande Campinas"],
     },
     {
-      title: "DF",
+      title: "Distrito Federal e Estados",
       items: [
         "Brasilianas",
         "Correio Nacional",
@@ -334,11 +334,11 @@ const CorreioShell = {
   getColumnGroupsForProduct(rawKey) {
     const productKey = this.normalizeProductKey(rawKey);
     const groupTitlesByProduct = {
-      nacional: ["Nacional", "RJ"],
+      nacional: ["Nacional", "Rio de Janeiro"],
       sp: ["São Paulo"],
-      df: ["DF"],
+      df: ["Distrito Federal e Estados"],
       sulfluminense: ["Sul Fluminense"],
-      petropolis: ["Petrópolis"],
+      petropolis: ["Região Serrana - RJ"],
       campinas: ["Campinas"],
     };
 

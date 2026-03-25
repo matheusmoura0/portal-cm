@@ -9140,6 +9140,22 @@ img {
     height: 380px;
 }
 
+.second-caderno-cover-art {
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef2f6;
+    color: #4b5563;
+    font-family: var(--font-ui);
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 24px;
+}
+
 .item-pequeno-1 img,
 .item-pequeno-2 img,
 .item-pequeno-3 img,
@@ -9166,6 +9182,16 @@ img {
 .item-vertical .titulo-blindado {
     font-size: 1.5rem;
     margin-bottom: 10px;
+}
+
+.second-caderno-cover-edition {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1a3a5c;
 }
 
 .culture-featured-excerpt {

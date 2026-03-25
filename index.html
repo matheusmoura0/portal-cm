@@ -191,10 +191,6 @@
                         <span class="edition-name">Volta Redonda</span>
                     </a>
 
-                    <a href="#" class="edition-card">
-                        <div class="edition-cover"><i class="far fa-file-pdf"></i><span>PDF</span></div>
-                        <span class="edition-name">Jornal da Barra</span>
-                    </a>
                 </div>
             </aside>
 
@@ -212,8 +208,9 @@
                         </figure>
                         <div class="hero-content">
                             <a href="noticia.html?id=noticia-002&product=nacional" class="link-reset-inherit">
-                                <h1 class="headline-mixed"><span class="headline-prefix">CORREIO POLÍTICO |</span> <span
-                                        class="headline-title">Lula pode ir com o MDB de vice em 2026?</span></h1>
+                                <h1 class="headline-mixed"><span class="headline-prefix"></span> <span
+                                        class="headline-title">CORREIO POLÍTICO | Lula pode ir com o MDB de vice em
+                                        2026?</span></h1>
                             </a>
                             <p>MDB é cortejado por Lula e por Tarcísio para compor as chapas de 2026, sendo o fiel da
                                 balança no xadrez político nacional. O partido busca protagonismo nas próximas eleições.
@@ -294,6 +291,76 @@
             </div>
         </section>
 
+        <section class="magnavita-wrapper" id="magnavita">
+            <div class="container">
+                <div class="magnavita-panel">
+                    <div class="magnavita-heading">
+                        <div class="magnavita-heading-main">
+                            <span class="magnavita-kicker">Coluna exclusiva</span>
+                            <div class="magnavita-author">
+                                <img src="images/colunistas/img_colunistas_magnavita-87116.jpg" alt="Magnavita"
+                                    class="magnavita-avatar">
+                                <div class="magnavita-author-copy">
+                                    <h2>MAGNAVITA</h2>
+                                    <p>Bastidores, articulação e leitura política em um espaço próprio dentro do portal.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="coluna.html" class="magnavita-header-link">Ver coluna &rarr;</a>
+                    </div>
+
+                    <div class="magnavita-layout">
+                        <article class="magnavita-featured">
+                            <a href="coluna.html" class="magnavita-featured-link">
+                                <div class="magnavita-featured-content">
+                                    <span class="magnavita-story-tag">Última coluna</span>
+                                    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.
+                                    </h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                                        ante
+                                        venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet
+                                        fermentum.
+                                    </p>
+                                    <div class="magnavita-story-meta">
+                                        <span>00/00/0000</span>
+                                        <span>Leitura 3 min</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+
+                        <div class="magnavita-stack">
+                            <article class="magnavita-compact">
+                                <span class="magnavita-story-tag">Placeholder 02</span>
+                                <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est
+                                    at lobortis.</p>
+                                <div class="magnavita-story-meta">
+                                    <span>00/00/0000</span>
+                                    <span>Leitura 2 min</span>
+                                </div>
+                                <a href="coluna.html" class="magnavita-story-link">Ler coluna &rarr;</a>
+                            </article>
+
+                            <article class="magnavita-compact">
+                                <span class="magnavita-story-tag">Placeholder 03</span>
+                                <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis
+                                    interdum.</p>
+                                <div class="magnavita-story-meta">
+                                    <span>00/00/0000</span>
+                                    <span>Leitura 2 min</span>
+                                </div>
+                                <a href="coluna.html" class="magnavita-story-link">Ler coluna &rarr;</a>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="colunistas-wrapper">
             <div class="container">
 
@@ -303,75 +370,33 @@
                             <i class="far fa-star"></i>
                         </div>
                         <div class="colunistas-title-text">
-                            <h2>Colunistas em Destaque</h2>
+                            <h2>Artigos em Destaque</h2>
                             <p>Análises exclusivas dos nossos especialistas</p>
                         </div>
                     </div>
-                    <a href="opiniao.html" class="btn-outline-brand">Ver todos os colunistas &rarr;</a>
+                    <a href="opiniao.html" class="btn-outline-brand">Ver todos os artigos &rarr;</a>
                 </div>
 
-                <div class="colunistas-cards-grid">
+                <div class="colunistas-showcase">
+                    <div class="colunistas-carousel-shell" id="featured-columnists-carousel">
+                        <div class="colunistas-carousel-toolbar">
+                            <button type="button" class="colunistas-carousel-btn" data-colunistas-prev
+                                aria-label="Ver colunistas anteriores">
+                                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="colunistas-carousel-btn" data-colunistas-next
+                                aria-label="Ver mais colunistas">
+                                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="colunistas-carousel-viewport">
+                            <div class="colunistas-carousel-track" id="featured-columnists-track"></div>
+                        </div>
+                    </div>
 
-                    <article class="card-colunista">
-                        <div class="card-col-header">
-                            <img src="images/colunistas/img_colunistas_magnavita-87116.jpg" alt="Magnavita"
-                                class="card-col-avatar">
-                            <div class="card-col-info">
-                                <h3>MAGNAVITA</h3>
-                                <span>Placeholder Role</span>
-                            </div>
-                        </div>
-                        <p class="card-col-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="card-col-latest">
-                            <div class="card-col-latest-title">
-                                <i class="far fa-comment-dots"></i>
-                                <h4>Lorem Ipsum Headline Title</h4>
-                            </div>
-                            <span class="card-col-date">00/00/0000</span>
-                        </div>
-                        <a href="coluna.html" class="card-col-action">Ver todas as colunas &rarr;</a>
-                    </article>
-
-                    <article class="card-colunista">
-                        <div class="card-col-header">
-                            <img src="images/colunistas/tales_faria_foto__colunista_300px-445320.jpg" alt="Tales Faria"
-                                class="card-col-avatar">
-                            <div class="card-col-info">
-                                <h3>Tales Faria</h3>
-                                <span>Placeholder Role</span>
-                            </div>
-                        </div>
-                        <p class="card-col-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="card-col-latest">
-                            <div class="card-col-latest-title">
-                                <i class="far fa-comment-dots"></i>
-                                <h4>Lorem Ipsum Headline Title</h4>
-                            </div>
-                            <span class="card-col-date">00/00/0000</span>
-                        </div>
-                        <a href="coluna.html" class="card-col-action">Ver todas as colunas &rarr;</a>
-                    </article>
-
-                    <article class="card-colunista">
-                        <div class="card-col-header">
-                            <img src="images/colunistas/colunista_fernando_molica-157938.jpg" alt="Fernando Molica"
-                                class="card-col-avatar">
-                            <div class="card-col-info">
-                                <h3>Fernando Molica</h3>
-                                <span>Placeholder Role</span>
-                            </div>
-                        </div>
-                        <p class="card-col-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="card-col-latest">
-                            <div class="card-col-latest-title">
-                                <i class="far fa-comment-dots"></i>
-                                <h4>Lorem Ipsum Headline Title</h4>
-                            </div>
-                            <span class="card-col-date">00/00/0000</span>
-                        </div>
-                        <a href="coluna.html" class="card-col-action">Ver todas as colunas &rarr;</a>
-                    </article>
-
+                    <div class="colunistas-ad-slot">
+                        <div class="ad-placeholder ad-300x250">Espaço Publicitário - 300x250</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -380,6 +405,7 @@
             <div class="container">
                 <div class="section-title-wrap home-columns-title-wrap">
                     <h2 class="section-title">Colunas</h2>
+                    <a href="coluna.html" class="btn-outline-brand">Ver todas as colunas &rarr;</a>
                 </div>
                 <p class="home-columns-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 <div id="home-columns-grid" class="home-columns-grid">
@@ -393,7 +419,8 @@
             <div class="container">
                 <div class="section-title-wrap">
                     <h2 class="section-title">Política</h2>
-                    <a href="politica.html" class="section-link">Ver todos →</a>
+                    <a href="correio-editoria.html?product=nacional&editoria=politica" class="section-link">Ver todos
+                        →</a>
                 </div>
                 <div id="politica-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -411,7 +438,8 @@
             <div class="container">
                 <div class="section-title-wrap">
                     <h2 class="section-title">Economia</h2>
-                    <a href="economia.html" class="section-link">Ver todos →</a>
+                    <a href="correio-editoria.html?product=nacional&editoria=economia" class="section-link">Ver todos
+                        →</a>
                 </div>
                 <div id="economia-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -424,7 +452,8 @@
             <div class="container">
                 <div class="section-title-wrap">
                     <h2 class="section-title">Justiça</h2>
-                    <a href="justica.html" class="section-link">Ver todos →</a>
+                    <a href="correio-editoria.html?product=nacional&editoria=justica" class="section-link">Ver todos
+                        →</a>
                 </div>
                 <div id="justica-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -496,8 +525,8 @@
         <section id="rio-de-janeiro" class="editorial-section">
             <div class="container">
                 <div class="section-title-wrap">
-                    <h2 class="section-title">Rio de Janeiro</h2>
-                    <a href="correio-nacional.html" class="section-link">Ver todos →</a>
+                    <h2 class="section-title">Correio da Manhã RJ</h2>
+                    <a href="correio-nacional.html" class="section-link">Ver site →</a>
                 </div>
                 <div id="rio-de-janeiro-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -508,8 +537,8 @@
         <section id="sao-paulo" class="editorial-section">
             <div class="container">
                 <div class="section-title-wrap">
-                    <h2 class="section-title">São Paulo</h2>
-                    <a href="correio-sp.html" class="section-link">Ver todos →</a>
+                    <h2 class="section-title">Correio da Manhã SP</h2>
+                    <a href="correio-sp.html" class="section-link">Ver site →</a>
                 </div>
                 <div id="sao-paulo-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -520,8 +549,8 @@
         <section id="campinas" class="editorial-section">
             <div class="container">
                 <div class="section-title-wrap">
-                    <h2 class="section-title">Campinas</h2>
-                    <a href="correio-campinas.html" class="section-link">Ver todos →</a>
+                    <h2 class="section-title">Correio da Manhã Campinas</h2>
+                    <a href="correio-campinas.html" class="section-link">Ver site →</a>
                 </div>
                 <div id="campinas-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -532,8 +561,8 @@
         <section id="distrito-federal" class="editorial-section">
             <div class="container">
                 <div class="section-title-wrap">
-                    <h2 class="section-title">Distrito Federal</h2>
-                    <a href="correio-df.html" class="section-link">Ver todos →</a>
+                    <h2 class="section-title">Correio da Manhã DF</h2>
+                    <a href="correio-df.html" class="section-link">Ver site →</a>
                 </div>
                 <div id="distrito-federal-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -541,11 +570,15 @@
             </div>
         </section>
 
+        <div class="ad-placeholder ad-970x150">
+            Espaço Publicitário - 970x150
+        </div>
+
         <section id="petropolitano" class="editorial-section">
             <div class="container">
                 <div class="section-title-wrap">
-                    <h2 class="section-title">Petrópolis</h2>
-                    <a href="correio-petropolitano.html" class="section-link">Ver todos →</a>
+                    <h2 class="section-title">Correio Petropolitano</h2>
+                    <a href="correio-petropolitano.html" class="section-link">Ver site →</a>
                 </div>
                 <div id="petropolitano-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -556,8 +589,8 @@
         <section id="sul-fluminense" class="editorial-section">
             <div class="container">
                 <div class="section-title-wrap">
-                    <h2 class="section-title">Sul Fluminense</h2>
-                    <a href="correio-sulfluminense.html" class="section-link">Ver todos →</a>
+                    <h2 class="section-title">Correio Sul Fluminense</h2>
+                    <a href="correio-sulfluminense.html" class="section-link">Ver site →</a>
                 </div>
                 <div id="sul-fluminense-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -569,7 +602,7 @@
             <div class="container">
                 <div class="section-title-wrap">
                     <h2 class="section-title">Jornal da Barra</h2>
-                    <a href="jornal-barra.html" class="section-link">Ver todos →</a>
+                    <a href="jornal-barra.html" class="section-link">Ver site →</a>
                 </div>
                 <div id="jornal-barra-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -581,7 +614,7 @@
             <div class="container">
                 <div class="section-title-wrap">
                     <h2 class="section-title">Jornal de Turismo</h2>
-                    <a href="jornal-turismo.html" class="section-link">Ver todos →</a>
+                    <a href="jornal-turismo.html" class="section-link">Ver site →</a>
                 </div>
                 <div id="jornal-turismo-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -594,20 +627,18 @@
                     CULTURA
                     <span class="culture-section-title-accent"></span>
                 </h2>
-                <a href="cultura.html" class="culture-section-link">VER
+                <a href="correio-editoria.html?product=nacional&editoria=cultura" class="culture-section-link">VER
                     TODOS &rarr;</a>
             </div>
 
             <div class="grid-cultura-blindado">
-                <a href="noticia.html?id=cultura-1&product=nacional" class="card-blindado item-vertical">
-                    <img src="https://picsum.photos/seed/vert/500/600" alt="Destaque">
+                <div class="card-blindado item-vertical second-caderno-cover">
+                    <div class="second-caderno-cover-art" aria-hidden="true">CAPA DO SEGUNDO CADERNO</div>
                     <div class="conteudo-blindado">
-                        <h3 class="titulo-blindado">Festival de Cinema de Gramado anuncia seleção oficial
-                        </h3>
-                        <p class="culture-featured-excerpt">Obras independentes
-                            ganham destaque na mostra competitiva deste ano.</p>
+                        <span class="second-caderno-cover-edition">Edição xx/xx</span>
+                        <h3 class="titulo-blindado">Segundo caderno</h3>
                     </div>
-                </a>
+                </div>
 
                 <a href="noticia.html?id=cultura-2&product=nacional" class="card-blindado item-pequeno-1">
                     <img src="https://picsum.photos/seed/p1/300/200" alt="Teatro">
@@ -655,7 +686,7 @@
             <div class="container">
                 <div class="section-title-wrap">
                     <h2 class="section-title">Mundo</h2>
-                    <a href="mundo.html" class="section-link">Ver todos →</a>
+                    <a href="correio-editoria.html?product=nacional&editoria=mundo" class="section-link">Ver todos →</a>
                 </div>
                 <div id="mundo-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>
@@ -668,7 +699,8 @@
             <div class="container">
                 <div class="section-title-wrap">
                     <h2 class="section-title">Esportes</h2>
-                    <a href="esportes.html" class="section-link">Ver todos →</a>
+                    <a href="correio-editoria.html?product=nacional&editoria=esportes" class="section-link">Ver todos
+                        →</a>
                 </div>
                 <div id="esportes-grid" class="newspaper-grid">
                     <div class="loading-spinner">Carregando...</div>

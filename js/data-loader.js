@@ -20,6 +20,7 @@ const DataLoader = {
     hideMetadata = false,
     hiddenStartIndex = null,
     product = null,
+    highlightFirst = false ,
   ) {
     const container = document.getElementById(containerId);
     if (!container) {
@@ -40,7 +41,7 @@ const DataLoader = {
 
     let html = "";
     newsToRender.forEach((item, index) => {
-      const isFirst = index === 0;
+      const isFirst = highlightFirst && index === 0;
       const hiddenClass =
         hiddenStartIndex !== null && index >= hiddenStartIndex ? " hidden" : "";
       const cardClass = isFirst
@@ -284,27 +285,158 @@ const DataLoader = {
     container.innerHTML = html;
   },
 
+  getHomepageFeaturedColumnists() {
+    return [
+      {
+        name: "Tales Faria",
+        image: "images/colunistas/tales_faria_foto__colunista_300px-445320.jpg",
+        role: "Colunista",
+        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        latestTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        date: "00/00/0000",
+        link: "opiniao.html",
+      },
+      {
+        name: "Fernando Molica",
+        image: "images/colunistas/colunista_fernando_molica-157938.jpg",
+        role: "Colunista",
+        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        latestTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        date: "00/00/0000",
+        link: "opiniao.html",
+      },
+      {
+        name: "Aristóteles Drummond",
+        image: "images/colunistas/aristoteles_drummond___300px___foto_colunistas-161912.jpg",
+        role: "Colunista",
+        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        latestTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        date: "00/00/0000",
+        link: "opiniao.html",
+      },
+      {
+        name: "Huguette Gallo",
+        image: "images/colunistas/Huguette-Gallo-colunista.jpg",
+        role: "Colunista",
+        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        latestTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        date: "00/00/0000",
+        link: "opiniao.html",
+      },
+      {
+        name: "Sergio Nery",
+        image: "images/colunistas/foto-colunista-sergio-nery.jpg",
+        role: "Colunista",
+        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        latestTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        date: "00/00/0000",
+        link: "opiniao.html",
+      },
+      {
+        name: "Vinicius Lummertz",
+        image: "images/colunistas/ViniciusLummertz-colunista.jpg",
+        role: "Colunista",
+        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        latestTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        date: "00/00/0000",
+        link: "opiniao.html",
+      },
+      {
+        name: "William França",
+        image: "images/colunistas/william_franca_coluna_brasilianas-356519.jpg",
+        role: "Colunista",
+        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        latestTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        date: "00/00/0000",
+        link: "opiniao.html",
+      },
+    ];
+  },
+
+  renderHomepageFeaturedColumnists(trackId = "featured-columnists-track") {
+    const track = document.getElementById(trackId);
+    if (!track) {
+      return;
+    }
+
+    const cards = this.getHomepageFeaturedColumnists()
+      .map(
+        (item) => `
+          <article class="card-colunista">
+            <div class="card-col-header">
+              <img src="${this.escapeHtml(item.image)}" alt="${this.escapeHtml(item.name)}" class="card-col-avatar">
+              <div class="card-col-info">
+                <h3>${this.escapeHtml(item.name)}</h3>
+                <span>${this.escapeHtml(item.role)}</span>
+              </div>
+            </div>
+            <p class="card-col-bio">${this.escapeHtml(item.bio)}</p>
+            <div class="card-col-latest">
+              <div class="card-col-latest-title">
+                <i class="far fa-comment-dots"></i>
+                <h4>${this.escapeHtml(item.latestTitle)}</h4>
+              </div>
+              <span class="card-col-date">${this.escapeHtml(item.date)}</span>
+            </div>
+            <a href="${this.escapeHtml(item.link)}" class="card-col-action">Ver artigos &rarr;</a>
+          </article>
+        `,
+      )
+      .join("");
+
+    track.innerHTML = cards;
+  },
+
+  initHomepageFeaturedColumnistsCarousel(rootId = "featured-columnists-carousel") {
+    const root = document.getElementById(rootId);
+    if (!root) {
+      return;
+    }
+
+    const scroller = root.querySelector(".colunistas-carousel-track");
+    const prevBtn = root.querySelector("[data-colunistas-prev]");
+    const nextBtn = root.querySelector("[data-colunistas-next]");
+
+    if (!scroller || !prevBtn || !nextBtn) {
+      return;
+    }
+
+    const updateButtons = () => {
+      const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+      prevBtn.disabled = scroller.scrollLeft <= 4;
+      nextBtn.disabled = scroller.scrollLeft >= maxScrollLeft - 4;
+    };
+
+    const scrollByPage = (direction) => {
+      scroller.scrollBy({
+        left: scroller.clientWidth * direction,
+        behavior: "smooth",
+      });
+    };
+
+    prevBtn.addEventListener("click", () => scrollByPage(-1));
+    nextBtn.addEventListener("click", () => scrollByPage(1));
+    scroller.addEventListener("scroll", () => window.requestAnimationFrame(updateButtons), {
+      passive: true,
+    });
+    window.addEventListener("resize", updateButtons);
+
+    updateButtons();
+  },
+
   getHomepageColumnsSelection() {
     return [
       {
         slug: "correio-politico",
-        icon: "fa-building-columns",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
         slug: "correio-bastidores",
-        icon: "fa-user-secret",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
         slug: "correio-economico",
-        icon: "fa-chart-line",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
         slug: "correio-fluminense",
-        icon: "fa-map-location-dot",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
     ];
   },
@@ -333,17 +465,24 @@ const DataLoader = {
         const label = payloadColumn?.label || catalogColumn?.label || item.slug;
         const link =
           catalogColumn?.url || `coluna.html?slug=${encodeURIComponent(item.slug)}`;
+        const leadStory =
+          payloadColumn?.highlights?.[0] || payloadColumn?.articles?.[0] || null;
+        const headline =
+          leadStory?.title || "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+        const image = this.sanitizeUrl(
+          leadStory?.img || leadStory?.image,
+          "https://placehold.co/640x420/f2f4f7/8792a2?text=Coluna",
+        );
 
         return `
           <article class="home-column-card">
             <a href="${this.escapeHtml(link)}" class="home-column-card-link">
-              <div class="home-column-card-icon" aria-hidden="true">
-                <i class="fas ${this.escapeHtml(item.icon)}"></i>
-              </div>
               <div class="home-column-card-content">
-                <span class="home-column-card-eyebrow">Lorem ipsum</span>
-                <h3>${this.escapeHtml(label)}</h3>
-                <p>${this.escapeHtml(item.description)}</p>
+                <span class="home-column-card-label">${this.escapeHtml(label)}</span>
+                <h3>${this.escapeHtml(headline)}</h3>
+              </div>
+              <div class="home-column-card-media">
+                <img src="${this.escapeHtml(image)}" alt="${this.escapeHtml(label)}">
               </div>
             </a>
           </article>
@@ -505,6 +644,17 @@ const DataLoader = {
    * Load homepage regional grids
    */
   loadHomepageRegionals() {
+    const homepageRegionalGridIds = new Set([
+      "rio-de-janeiro-grid",
+      "sao-paulo-grid",
+      "campinas-grid",
+      "distrito-federal-grid",
+      "petropolitano-grid",
+      "sul-fluminense-grid",
+      "jornal-barra-grid",
+      "jornal-turismo-grid",
+    ]);
+
     const homepageGrids = {
       "politica-grid": "politica",
       "economia-grid": "economia",
@@ -537,6 +687,7 @@ const DataLoader = {
           true,
           null,
           this.getProductSlug(dataKey),
+          !homepageRegionalGridIds.has(gridId),
         );
       } else {
         console.warn(`DataLoader: Container ${gridId} not found`);
@@ -544,6 +695,8 @@ const DataLoader = {
     }
 
     this.renderHomepageColumns();
+    this.renderHomepageFeaturedColumnists();
+    this.initHomepageFeaturedColumnistsCarousel();
   },
 
   loadNewsPage() {

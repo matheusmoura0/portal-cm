@@ -778,57 +778,100 @@ const RegionalNews = {
       featuredArticle.image,
       "https://placehold.co/800x450/f0f0f0/999999?text=Imagem+Indispon%C3%ADvel",
     );
-
+    const sidebarArticles = gridArticles.slice(0, 2);
+    const remainingArticles = gridArticles.slice(2);
     return `
-      <!-- Hero Article -->
-      <article class="regional-hero-article">
-        <a href="${this.escapeText(featuredLink)}" class="regional-hero-link">
-          <div class="regional-hero-image">
-            <img src="${this.escapeText(featuredImage)}" alt="${this.escapeText(featuredArticle.title)}"
-                 onerror="this.src='https://placehold.co/800x450/f0f0f0/999999?text=Imagem+Indisponível'">
-            <span class="regional-category-tag" style="--category-color: ${featuredArticle.categoryColor}; border-left-color: ${featuredArticle.categoryColor};">
-              ${this.escapeText(featuredArticle.category)}
-            </span>
-          </div>
-          <div class="regional-hero-content">
-            <h2 class="regional-hero-title">${this.escapeText(featuredArticle.title)}</h2>
-            <p class="regional-hero-excerpt">${this.escapeText(featuredArticle.excerpt)}</p>
-            <div class="regional-article-meta">
-              <span class="regional-author">${this.escapeText(featuredArticle.author)}</span>
-              <span class="regional-time">${this.escapeText(featuredArticle.time)}</span>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <!-- News Grid -->
-      <div class="regional-news-grid">
-        ${gridArticles
-          .map(
-            (article) => `
-          <article class="regional-news-card">
-            <a href="${this.escapeText(this.safeUrl(article.link || this.getArticleUrl(article.id, productKey), "noticia.html"))}" class="regional-card-link">
-              <div class="regional-card-image">
-                <img src="${this.escapeText(this.safeUrl(article.image, "https://placehold.co/400x300/f0f0f0/999999?text=Sem+Imagem"))}" alt="${this.escapeText(article.title)}"
-                     onerror="this.src='https://placehold.co/400x300/f0f0f0/999999?text=Sem+Imagem'">
-                <span class="regional-category-tag" style="--category-color: ${article.categoryColor}; border-left-color: ${article.categoryColor};">
-                  ${this.escapeText(article.category)}
+      <section class="regional-top-stories">
+        <div class="regional-top-stories-grid">
+          <article class="regional-hero-article">
+            <a href="${this.escapeText(featuredLink)}" class="regional-hero-link">
+              <div class="regional-hero-image">
+                <img src="${this.escapeText(featuredImage)}" alt="${this.escapeText(featuredArticle.title)}"
+                     onerror="this.src='https://placehold.co/800x450/f0f0f0/999999?text=Imagem+Indisponível'">
+                <span class="regional-category-tag" style="--category-color: ${featuredArticle.categoryColor}; border-left-color: ${featuredArticle.categoryColor};">
+                  ${this.escapeText(featuredArticle.category)}
                 </span>
               </div>
-              <div class="regional-card-content">
-                <h3 class="regional-card-title" style="--category-color: ${article.categoryColor};">${this.escapeText(article.title)}</h3>
-                <p class="regional-card-excerpt">${this.escapeText(article.excerpt)}</p>
+              <div class="regional-hero-content">
+                <h2 class="regional-hero-title">${this.escapeText(featuredArticle.title)}</h2>
+                <p class="regional-hero-excerpt">${this.escapeText(featuredArticle.excerpt)}</p>
                 <div class="regional-article-meta">
-                  <span class="regional-author">${this.escapeText(article.author)}</span>
-                  <span class="regional-time">${this.escapeText(article.time)}</span>
+                  <span class="regional-author">${this.escapeText(featuredArticle.author)}</span>
+                  <span class="regional-time">${this.escapeText(featuredArticle.time)}</span>
                 </div>
               </div>
             </a>
           </article>
-        `,
-          )
-          .join("")}
-      </div>
+
+          ${
+            sidebarArticles.length > 0
+              ? `
+                <aside class="regional-hero-sidebar">
+                  ${sidebarArticles
+                    .map(
+                      (article) => `
+                        <article class="regional-hero-side-card">
+                          <a href="${this.escapeText(this.safeUrl(article.link || this.getArticleUrl(article.id, productKey), "noticia.html"))}" class="regional-hero-side-link">
+                            <div class="regional-hero-side-image">
+                              <img src="${this.escapeText(this.safeUrl(article.image, "https://placehold.co/400x300/f0f0f0/999999?text=Sem+Imagem"))}" alt="${this.escapeText(article.title)}"
+                                   onerror="this.src='https://placehold.co/400x300/f0f0f0/999999?text=Sem+Imagem'">
+                              <span class="regional-category-tag" style="--category-color: ${article.categoryColor}; border-left-color: ${article.categoryColor};">
+                                ${this.escapeText(article.category)}
+                              </span>
+                            </div>
+                            <div class="regional-hero-side-content">
+                              <h3 class="regional-hero-side-title">${this.escapeText(article.title)}</h3>
+                              <p class="regional-hero-side-excerpt">${this.escapeText(article.excerpt)}</p>
+                              <div class="regional-article-meta">
+                                <span class="regional-author">${this.escapeText(article.author)}</span>
+                                <span class="regional-time">${this.escapeText(article.time)}</span>
+                              </div>
+                            </div>
+                          </a>
+                        </article>
+                      `,
+                    )
+                    .join("")}
+                </aside>
+              `
+              : ""
+          }
+        </div>
+      </section>
+
+      ${
+        remainingArticles.length > 0
+          ? `
+            <div class="regional-news-grid">
+              ${remainingArticles
+                .map(
+            (article) => `
+                <article class="regional-news-card">
+                  <a href="${this.escapeText(this.safeUrl(article.link || this.getArticleUrl(article.id, productKey), "noticia.html"))}" class="regional-card-link">
+                    <div class="regional-card-image">
+                      <img src="${this.escapeText(this.safeUrl(article.image, "https://placehold.co/400x300/f0f0f0/999999?text=Sem+Imagem"))}" alt="${this.escapeText(article.title)}"
+                           onerror="this.src='https://placehold.co/400x300/f0f0f0/999999?text=Sem+Imagem'">
+                      <span class="regional-category-tag" style="--category-color: ${article.categoryColor}; border-left-color: ${article.categoryColor};">
+                        ${this.escapeText(article.category)}
+                      </span>
+                    </div>
+                    <div class="regional-card-content">
+                      <h3 class="regional-card-title" style="--category-color: ${article.categoryColor};">${this.escapeText(article.title)}</h3>
+                      <p class="regional-card-excerpt">${this.escapeText(article.excerpt)}</p>
+                      <div class="regional-article-meta">
+                        <span class="regional-author">${this.escapeText(article.author)}</span>
+                        <span class="regional-time">${this.escapeText(article.time)}</span>
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              `,
+                )
+                .join("")}
+            </div>
+          `
+          : ""
+      }
 
       <!-- Advertisement Banner -->
       <div class="ad-placeholder ad-970x150">

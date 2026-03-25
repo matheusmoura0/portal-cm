@@ -19,12 +19,8 @@
         />
     </head>
 
-    <body class="has-regional-headers">
-        <!-- Tiny Header Placeholder -->
-        <div id="tiny-header"></div>
-
-        <!-- Product Header Placeholder -->
-        <div id="product-header"></div>
+    <body class="has-regional-headers has-correio-shell">
+        <div id="correio-shell-root"></div>
 
         <!-- Anúncio Topo Padrão -->
         <div class="ad-placeholder ad-970x150">
@@ -40,7 +36,7 @@
                 >
                     <a href="index.html">Home</a>
                     <span class="breadcrumb-separator">&rsaquo;</span>
-                    <a href="correio-nacional.html" id="bread-product">Produto</a>
+                    <a href="correio-produto.html?product=nacional" id="bread-product">Produto</a>
                     <span class="breadcrumb-separator">&rsaquo;</span>
                     <span id="bread-category">Categoria</span>
                 </nav>
@@ -104,8 +100,8 @@
 
         <!-- Scripts do Sistema -->
         <script src="js/mock-data.js"></script>
-        <script src="js/components/TinyHeader.js"></script>
-        <script src="js/components/ProductHeader.js"></script>
+        <script src="js/components/CorreioShell.js"></script>
+        <script src="js/components/CorreioEditoria.js"></script>
         <script src="js/components/Footer.js"></script>
         <script src="js/components/MainLayout.js"></script>
         <script src="js/main.js"></script>

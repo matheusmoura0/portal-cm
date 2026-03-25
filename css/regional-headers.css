@@ -25,10 +25,18 @@ body.has-regional-headers {
     /* 49px tiny + 90px product */
 }
 
+body.is-correio-editoria-page {
+    padding-top: 173px !important;
+}
+
 @media (max-width: 768px) {
     body.has-regional-headers {
         padding-top: 147px !important;
         /* 49px tiny + 98px product on mobile */
+    }
+
+    body.is-correio-editoria-page {
+        padding-top: 153px !important;
     }
 }
 
@@ -571,6 +579,718 @@ body.has-regional-headers {
 }
 
 /* ========================================
+   CORREIO EDITORIA HEADER VARIANT
+   Two-bar editorial chrome inspired by O Globo,
+   adapted to the CM visual system.
+   ======================================== */
+
+body.is-correio-editoria-page .tiny-header {
+    height: 42px;
+    background: #1a3a5c;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: none;
+}
+
+body.is-correio-editoria-page .tiny-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background: var(--product-color, #d20a11);
+}
+
+body.is-correio-editoria-page .tiny-header-container {
+    height: 100%;
+}
+
+body.is-correio-editoria-page .tiny-logo-link {
+    color: #ffffff;
+}
+
+body.is-correio-editoria-page .tiny-logo-cm,
+body.is-correio-editoria-page .tiny-logo-text,
+body.is-correio-editoria-page .tiny-dropdown-text,
+body.is-correio-editoria-page .tiny-dropdown-icon {
+    color: #ffffff;
+}
+
+body.is-correio-editoria-page .tiny-dropdown-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+body.is-correio-editoria-page .tiny-dropdown-btn:hover,
+body.is-correio-editoria-page .tiny-dropdown-btn.active {
+    background: transparent;
+}
+
+body.is-correio-editoria-page .tiny-menu-toggle span {
+    background-color: #ffffff;
+}
+
+.product-header.product-header-editoria {
+    position: fixed;
+    top: 42px;
+    left: 0;
+    right: 0;
+    margin-top: 0;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    z-index: 1001;
+}
+
+.product-header-editoria .product-header-mainbar {
+    background: linear-gradient(180deg, #2a5888 0%, #21486f 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+.product-header-editoria .product-header-container-editoria {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 72px;
+}
+
+.product-header-editoria .product-header-left,
+.product-header-editoria .product-header-actions,
+.product-header-editoria .product-header-context {
+    display: flex;
+    align-items: center;
+}
+
+.product-header-editoria .product-header-left {
+    min-width: 0;
+    gap: 22px;
+}
+
+.product-header-editoria .product-menu-btn-editoria,
+.product-header-editoria .product-search-btn-editoria {
+    width: auto;
+    height: auto;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.product-header-editoria .product-menu-btn-editoria:hover,
+.product-header-editoria .product-search-btn-editoria:hover {
+    color: #ffffff;
+    opacity: 0.82;
+}
+
+.product-header-editoria .product-menu-label,
+.product-header-editoria .product-search-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.product-header-editoria .product-menu-btn-editoria i,
+.product-header-editoria .product-search-btn-editoria i {
+    font-size: 1.5rem;
+}
+
+.product-header-editoria .product-header-context {
+    min-width: 0;
+    gap: 18px;
+}
+
+.product-header-editoria .product-logo-editoria {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    text-transform: none;
+    letter-spacing: 0;
+    text-align: left;
+    flex: 0 1 auto;
+}
+
+.product-header-editoria .product-logo-editoria:hover {
+    color: #ffffff;
+    opacity: 0.92;
+}
+
+.product-header-editoria .product-logo-mark {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.product-header-editoria .product-logo-name {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2.05rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.product-header-editoria .product-header-divider {
+    width: 1px;
+    height: 34px;
+    background: rgba(255, 255, 255, 0.4);
+    flex-shrink: 0;
+}
+
+.product-header-editoria .product-header-editoria-name {
+    font-family: "Noto Serif", serif;
+    font-size: 1.9rem;
+    line-height: 1;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.product-header-editoria .product-editoria-nav {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.product-header-editoria .product-editoria-nav-container {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.product-header-editoria .product-editoria-nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 18px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4b5563;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.product-header-editoria .product-editoria-nav-link + .product-editoria-nav-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 22px;
+    transform: translateY(-50%);
+    background: #e5e7eb;
+}
+
+.product-header-editoria .product-editoria-nav-link:hover,
+.product-header-editoria .product-editoria-nav-link.is-active {
+    color: #1a1a2e;
+}
+
+.product-header-editoria .product-editoria-nav-link.is-active {
+    font-weight: 800;
+}
+
+.product-header-editoria .product-editoria-nav-link.is-active::after {
+    content: "";
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 0;
+    height: 3px;
+    background: var(--product-color, #d20a11);
+    border-radius: 999px 999px 0 0;
+}
+
+body.is-correio-editoria-page #correio-editoria-container {
+    margin-top: 22px;
+}
+
+/* ========================================
+   CORREIO EDITORIA CONTENT
+   ======================================== */
+
+#correio-editoria-container {
+    max-width: 1280px;
+    margin: 40px auto 60px;
+    padding: 0 20px;
+}
+
+.correio-editoria-page {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    color: #1a1a2e;
+}
+
+.correio-editoria-hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.95fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.correio-editoria-hero-card,
+.correio-editoria-highlight-card,
+.correio-editoria-module {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+}
+
+.correio-editoria-hero-card {
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+.correio-editoria-hero-link,
+.correio-editoria-highlight-link,
+.correio-editoria-feed-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.correio-editoria-hero-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #e5e7eb;
+}
+
+.correio-editoria-hero-image img,
+.correio-editoria-highlight-image img,
+.correio-editoria-feed-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.correio-editoria-hero-card:hover .correio-editoria-hero-image img,
+.correio-editoria-highlight-card:hover .correio-editoria-highlight-image img,
+.correio-editoria-feed-card:hover .correio-editoria-feed-image img {
+    transform: scale(1.03);
+}
+
+.correio-editoria-tag,
+.correio-editoria-feed-tag,
+.correio-editoria-highlight-tag {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(26, 58, 92, 0.08);
+    color: var(--product-color, #1a3a5c);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.correio-editoria-tag {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    background: rgba(255, 255, 255, 0.96);
+}
+
+.correio-editoria-hero-content {
+    padding: 26px 28px 28px;
+}
+
+.correio-editoria-hero-content h2 {
+    margin: 0 0 14px 0;
+    font-family: "Noto Serif", serif;
+    font-size: 2.2rem;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: #111827;
+}
+
+.correio-editoria-hero-content p {
+    margin: 0 0 18px 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #4b5563;
+}
+
+.correio-editoria-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 0.84rem;
+    color: #6b7280;
+}
+
+.correio-editoria-highlight-stack {
+    display: grid;
+    gap: 18px;
+}
+
+.correio-editoria-highlight-card {
+    overflow: hidden;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.correio-editoria-highlight-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.correio-editoria-highlight-link {
+    display: grid;
+    grid-template-columns: 154px minmax(0, 1fr);
+    min-height: 100%;
+}
+
+.correio-editoria-highlight-image {
+    min-height: 148px;
+    background: #e5e7eb;
+}
+
+.correio-editoria-highlight-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px;
+}
+
+.correio-editoria-highlight-content h3 {
+    margin: 0;
+    font-family: "Noto Serif", serif;
+    font-size: 1.08rem;
+    line-height: 1.35;
+    color: #111827;
+}
+
+.correio-editoria-highlight-time {
+    font-size: 0.82rem;
+    color: #6b7280;
+}
+
+.correio-editoria-content-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) 340px;
+    gap: 32px;
+    align-items: start;
+}
+
+.correio-editoria-main,
+.correio-editoria-sidebar {
+    min-width: 0;
+}
+
+.correio-editoria-sidebar {
+    position: sticky;
+    top: 188px;
+}
+
+.correio-editoria-feed-section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.correio-editoria-section-header,
+.correio-editoria-module-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.correio-editoria-section-header h2,
+.correio-editoria-module-header h2 {
+    margin: 0;
+    font-family: "Noto Serif", serif;
+    font-size: 1.8rem;
+    line-height: 1.1;
+    color: #111827;
+}
+
+.correio-editoria-section-eyebrow,
+.correio-editoria-module-kicker {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--product-color, #1a3a5c);
+}
+
+.correio-editoria-section-note {
+    font-size: 0.82rem;
+    color: #6b7280;
+}
+
+.correio-editoria-feed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.correio-editoria-feed-card {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.correio-editoria-feed-card:last-child {
+    border-bottom: none;
+}
+
+.correio-editoria-feed-link {
+    display: grid;
+    grid-template-columns: 228px minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.correio-editoria-feed-image {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #e5e7eb;
+}
+
+.correio-editoria-feed-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.correio-editoria-feed-content h3 {
+    margin: 0;
+    font-family: "Noto Serif", serif;
+    font-size: 1.34rem;
+    line-height: 1.24;
+    color: #111827;
+}
+
+.correio-editoria-feed-content p {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: #4b5563;
+}
+
+.correio-editoria-load-more,
+.correio-editoria-cta-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: var(--product-color, #1a3a5c);
+    color: #ffffff;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.correio-editoria-load-more:hover,
+.correio-editoria-cta-link:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+.correio-editoria-module {
+    padding: 22px 24px;
+}
+
+.correio-editoria-market-grid,
+.correio-editoria-scores-grid {
+    display: grid;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.correio-editoria-market-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.correio-editoria-market-item,
+.correio-editoria-score-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.correio-editoria-market-label,
+.correio-editoria-next-competition {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--product-color, #1a3a5c);
+}
+
+.correio-editoria-market-value {
+    font-size: 1.15rem;
+    color: #111827;
+}
+
+.correio-editoria-market-change {
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.correio-editoria-market-change.is-up {
+    color: #15803d;
+}
+
+.correio-editoria-market-change.is-down {
+    color: #b91c1c;
+}
+
+.correio-editoria-market-change.is-neutral {
+    color: #1d4ed8;
+}
+
+.correio-editoria-agenda-list,
+.correio-editoria-next-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.correio-editoria-agenda-item {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+}
+
+.correio-editoria-agenda-time,
+.correio-editoria-next-time {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--product-color, #1a3a5c);
+    text-transform: uppercase;
+}
+
+.correio-editoria-agenda-item strong,
+.correio-editoria-next-item strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #111827;
+}
+
+.correio-editoria-agenda-item p,
+.correio-editoria-cta p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+.correio-editoria-scores-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.correio-editoria-score-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.correio-editoria-score-status {
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.correio-editoria-score-status.is-live {
+    background: rgba(220, 38, 38, 0.12);
+    color: #b91c1c;
+}
+
+.correio-editoria-score-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.correio-editoria-next-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.correio-editoria-cta p {
+    margin-bottom: 18px;
+}
+
+@media (max-width: 1180px) {
+    .correio-editoria-market-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .correio-editoria-scores-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .correio-editoria-hero-layout,
+    .correio-editoria-content-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .correio-editoria-highlight-stack {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .correio-editoria-highlight-link {
+        grid-template-columns: 1fr;
+    }
+
+    .correio-editoria-highlight-image {
+        min-height: 180px;
+    }
+
+    .correio-editoria-sidebar {
+        position: static;
+        top: auto;
+    }
+}
+
+/* ========================================
    REGIONAL NEWS LAYOUT (Newspaper Style)
    ======================================== */
 
@@ -822,6 +1542,45 @@ body.has-regional-headers {
 }
 
 @media (max-width: 768px) {
+    #correio-editoria-container {
+        padding: 0 15px;
+        margin: 28px auto 40px;
+    }
+
+    .correio-editoria-page {
+        gap: 22px;
+    }
+
+    .correio-editoria-hero-content {
+        padding: 20px;
+    }
+
+    .correio-editoria-hero-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .correio-editoria-highlight-stack {
+        grid-template-columns: 1fr;
+    }
+
+    .correio-editoria-feed-link {
+        grid-template-columns: 1fr;
+    }
+
+    .correio-editoria-feed-image {
+        max-width: 100%;
+    }
+
+    .correio-editoria-market-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .correio-editoria-section-header,
+    .correio-editoria-module-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     #regional-news-container {
         padding: 0 15px;
         margin: 30px auto;
@@ -889,9 +1648,82 @@ body.has-regional-headers {
     .product-search-btn i {
         font-size: 1rem;
     }
+
+    body.is-correio-editoria-page .tiny-header {
+        height: 40px;
+    }
+
+    .product-header.product-header-editoria {
+        top: 40px;
+    }
+
+    .product-header-editoria .product-header-container-editoria {
+        min-height: 62px;
+        padding: 0 15px;
+        gap: 14px;
+    }
+
+    .product-header-editoria .product-header-left {
+        gap: 14px;
+    }
+
+    .product-header-editoria .product-logo-name {
+        font-size: 1.55rem;
+    }
+
+    .product-header-editoria .product-logo-mark {
+        font-size: 0.82rem;
+    }
+
+    .product-header-editoria .product-header-editoria-name {
+        font-size: 1.35rem;
+    }
+
+    .product-header-editoria .product-menu-label,
+    .product-header-editoria .product-search-label,
+    .product-header-editoria .product-header-divider {
+        display: none;
+    }
+
+    body.is-correio-editoria-page .product-header-editoria .product-menu-btn-editoria {
+        display: none;
+    }
+
+    .product-header-editoria .product-header-context {
+        gap: 10px;
+    }
+
+    .product-header-editoria .product-editoria-nav-container {
+        padding: 0 10px;
+    }
+
+    .product-header-editoria .product-editoria-nav-link {
+        min-height: 44px;
+        padding: 0 14px;
+        font-size: 0.88rem;
+    }
+
+    .product-header-editoria .product-editoria-nav-link.is-active::after {
+        left: 14px;
+        right: 14px;
+    }
+
+    body.is-correio-editoria-page #correio-editoria-container {
+        margin-top: 18px;
+    }
 }
 
 @media (max-width: 480px) {
+    .correio-editoria-hero-content h2,
+    .correio-editoria-section-header h2,
+    .correio-editoria-module-header h2 {
+        font-size: 1.55rem;
+    }
+
+    .correio-editoria-market-grid {
+        grid-template-columns: 1fr;
+    }
+
     .regional-hero-title {
         font-size: 1.25rem;
     }

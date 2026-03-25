@@ -5,26 +5,36 @@
 
 const TinyHeader = {
   sites: [
-    { name: "Nacional", url: "correio-nacional.html", id: "nacional" },
-    { name: "São Paulo", url: "correio-sp.html", id: "sp" },
-    { name: "Distrito Federal", url: "correio-df.html", id: "df" },
+    { name: "Correio da Manhã", url: "correio-nacional.html", id: "nacional" },
+    { name: "Correio da Manhã SP", url: "correio-sp.html", id: "sp" },
     {
-      name: "Sul Fluminense",
+      name: "Correio Sul Fluminense",
       url: "correio-sulfluminense.html",
       id: "sulfluminense",
     },
     {
-      name: "Petropolitano",
+      name: "Correio Petropolitano",
       url: "correio-petropolitano.html",
       id: "petropolitano",
     },
-    { name: "Jornal do Servidor", url: "jornal-servidor.html", id: "servidor" },
-    { name: "Jornal da Barra", url: "jornal-barra.html", id: "barra" },
+    { name: "Correio da Manhã DF", url: "correio-df.html", id: "df" },
   ],
 
   getCurrentSite() {
     const path = window.location.pathname;
     const filename = path.split("/").pop() || "index.html";
+    const params = new URLSearchParams(window.location.search);
+    const productFromQuery =
+      filename === "correio-editoria.html"
+        ? (params.get("product") || "").trim().toLowerCase()
+        : "";
+
+    if (productFromQuery) {
+      const siteByQuery = this.sites.find((site) => site.id === productFromQuery);
+      if (siteByQuery) {
+        return siteByQuery;
+      }
+    }
 
     for (const site of this.sites) {
       if (filename === site.url) {
@@ -64,8 +74,8 @@ const TinyHeader = {
             ${this.sites
               .map(
                 (site) => `
-              <a href="${site.url}" class="tiny-dropdown-item ${currentPage === site.url ? "active" : ""}" data-site="${site.id}">
-                <i class="fas fa-${currentPage === site.url ? "check-circle" : "circle"} tiny-dropdown-check"></i>
+              <a href="${site.url}" class="tiny-dropdown-item ${currentSite && currentSite.id === site.id ? "active" : ""}" data-site="${site.id}">
+                <i class="fas fa-${currentSite && currentSite.id === site.id ? "check-circle" : "circle"} tiny-dropdown-check"></i>
                 <span>${site.name}</span>
               </a>
             `,

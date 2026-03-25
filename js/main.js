@@ -760,6 +760,14 @@ const HomeManager = {
 
 const PageBootstrap = {
   detectPage() {
+    if (document.getElementById("correio-product-page")) {
+      return "correio-product";
+    }
+
+    if (document.getElementById("correio-editoria-container")) {
+      return "correio-editoria";
+    }
+
     if (document.getElementById("article-loader-wrapper")) {
       return "article";
     }
@@ -774,9 +782,17 @@ const PageBootstrap = {
   initLayout(pageType) {
     if (
       window.CMMainLayout &&
-      (pageType === "portal" || pageType === "article")
+      (pageType === "portal" ||
+        pageType === "article" ||
+        pageType === "correio-product")
     ) {
       window.CMMainLayout.init();
+    }
+  },
+
+  initCorreioProductPage() {
+    if (window.CorreioProductPage) {
+      window.CorreioProductPage.init();
     }
   },
 
@@ -792,6 +808,49 @@ const PageBootstrap = {
     const regionalKey = document.body.dataset.regionalKey;
     if (regionalKey && window.RegionalNews) {
       window.RegionalNews.render(regionalKey);
+    }
+  },
+
+  initCorreioEditoriaPage() {
+    const bootstrapData =
+      window.CorreioEditoria &&
+      typeof window.CorreioEditoria.getBootstrapData === "function"
+        ? window.CorreioEditoria.getBootstrapData()
+        : null;
+
+    if (bootstrapData) {
+      document.body.classList.add("is-correio-editoria-page");
+      document.body.dataset.regionalKey = bootstrapData.productKey;
+      document.body.dataset.productKey = bootstrapData.productKey;
+      document.body.dataset.editoriaSlug = bootstrapData.editoriaSlug;
+
+      Object.values(window.CorreioEditoria.productConfigs).forEach((config) => {
+        document.body.classList.remove(config.themeClass);
+      });
+      document.body.classList.add(bootstrapData.themeClass);
+
+      const productHeader = document.getElementById("product-header");
+      if (productHeader) {
+        productHeader.dataset.productName = bootstrapData.productName;
+        productHeader.dataset.productShortName = bootstrapData.productShortName;
+        productHeader.dataset.productColor = bootstrapData.productColor;
+        productHeader.dataset.productUrl = bootstrapData.productUrl;
+        productHeader.dataset.productKey = bootstrapData.productKey;
+        productHeader.dataset.editoriaSlug = bootstrapData.editoriaSlug;
+        productHeader.dataset.editoriaLabel = bootstrapData.editoriaLabel;
+      }
+    }
+
+    if (window.TinyHeader) {
+      window.TinyHeader.render();
+    }
+
+    if (window.ProductHeader) {
+      window.ProductHeader.render();
+    }
+
+    if (window.CorreioEditoria) {
+      window.CorreioEditoria.init();
     }
   },
 
@@ -1407,6 +1466,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   PageBootstrap.initLayout(pageType);
 
+  if (pageType === "correio-product") {
+    PageBootstrap.initCorreioProductPage();
+  }
+
+  if (pageType === "correio-editoria") {
+    PageBootstrap.initCorreioEditoriaPage();
+  }
+
   if (pageType === "regional") {
     PageBootstrap.initRegionalPage();
   }
@@ -1443,4 +1510,5 @@ window.CM = {
   RegionalColors,
   NewsService,
   HomeManager,
+  CorreioEditoria: window.CorreioEditoria,
 };
